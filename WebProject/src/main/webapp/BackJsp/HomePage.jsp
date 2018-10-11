@@ -55,6 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="submenu">
 							<li class="ww">
 								<a href="xgp/Interior.jsp" class="test" target="right_main">
+								<a href="LDL/authorityManagement.jsp" class="test" target="right_main">
 									<i class="menu-icon fa fa-caret-right"></i>
 									内部通讯录
 								</a>
