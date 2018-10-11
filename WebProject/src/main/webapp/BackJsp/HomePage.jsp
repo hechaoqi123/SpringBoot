@@ -127,24 +127,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<b class="arrow"></b>
 						</ul>
 					</li>
-					
 					<!-- 财务中心  -->
 					<li  class="w">
                         <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
                         <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
                         <img src="../assets/img/persons.png" style="margin-right:10px;"/>财务中心 </span>
-						</a>
 						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
 						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
 								<span style="color:#E6E6E6">费用管理</span>
-								<b class="arrow"></b>
-							</li>
-							</a>
-						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-									<span style="color:#E6E6E6">票据管理</span>
-							</li>
+
+	                          </li>
 							</a>
 							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww">
@@ -163,8 +156,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 								<b class="arrow"></b>
 						</ul>
+
+					<!-- 信息中心 -->
+					<li class="Myli" style="display:none">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-cog"></i>
+							<span class="menu-text">信息中心</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="ww">
+								<a href="xgp/Interior.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									内部通讯录
+								</a>
+								<b class="arrow"></b>
+							</li>
+							</a>
+						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww">
+								<a href="xgp/External.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									外部通讯录
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="xgp/Notice.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									公告管理
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="xgp/Document.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									文档管理
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="xgp/Knowledge.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									知识社区
+								</a>
+								<b class="arrow"></b>
 					</li>
-					
 					
 					<!-- 注销登陆 -->
 					<li  class="w">
