@@ -47,23 +47,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="Myli" style="display:none">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-cog"></i>
-							<span class="menu-text">系统设置</span>
+							<span class="menu-text">信息中心</span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<b class="arrow"></b>
 
 						<ul class="submenu">
 							<li class="ww">
-								<a href="MyJsp.jsp" class="test" target="right_main">
+								<a href="xgp/Interior.jsp" class="test" target="right_main">
 									<i class="menu-icon fa fa-caret-right"></i>
-									MyJsp.jsp
+									内部通讯录
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="xgp/External.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									外部通讯录
 								</a>
 								<b class="arrow"></b>
 							</li>
 							<li class="ww">
 								<a href="MyJsp.jsp" class="test" target="right_main">
 									<i class="menu-icon fa fa-caret-right"></i>
-									MyJsp.jsp
+									公告管理
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="MyJsp.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									文档管理
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="ww">
+								<a href="MyJsp.jsp" class="test" target="right_main">
+									<i class="menu-icon fa fa-caret-right"></i>
+									知识社区
 								</a>
 								<b class="arrow"></b>
 							</li>
