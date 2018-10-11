@@ -78,8 +78,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  float:left;
 	  
 	}
-	
-	
+	*{
+	   color:#000;
+	 }
+	 button:hover{
+	    color:red;
+	 }
 	</style>
 
    <script type="text/javascript" src="<%=basePath%>assets/js/jquery-2.0.3.min.js"></script>
@@ -96,10 +100,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
    </div> --%>
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
-	    <button type="button" class="btn btn-default">后退</button>
-	    <button type="button" class="btn btn-default">登记记录</button>
-	    <button type="button" class="btn btn-default">查找</button>
-	    <button type="button" class="btn btn-default">刷新</button>
+	    <button type="button" style="color:#000;background:#fff" class="btn btn-default">后退</button>
+	    <button type="button" style="color:#000;background:#fff" class="btn btn-default">登记记录</button>
+	    <button type="button" style="color:#000;background:#fff" class="btn btn-default">查找</button>
+	    <button type="button" style="color:#000;background:#fff" class="btn btn-default">刷新</button>
      </div>
    </br>
     <table id="zero">

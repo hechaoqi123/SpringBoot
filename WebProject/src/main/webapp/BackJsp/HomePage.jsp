@@ -162,7 +162,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
                         <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
                         <img src="../assets/img/persons.png" style="margin-right:10px;"/>信息中心 </span>
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<b class="arrow"></b>
 

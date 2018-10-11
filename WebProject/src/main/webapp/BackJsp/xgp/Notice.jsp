@@ -85,6 +85,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      border-bottom:1px solid black;
      
    }
+     *{
+        color:#000
+     }
    </style>
   </head>
   
@@ -92,10 +95,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:30px;"><i>公告管理</i></h2>
      
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
-	    <button type="button" class="btn btn-default">后退</button>
-	    <button type="button" class="btn btn-default">发布新公告</button>
-	    <button type="button" class="btn btn-default">查找</button>
-	    <button type="button" class="btn btn-default">刷新</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">后退</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">发布新公告</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">查找</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">刷新</button>
      </div>
      </br>
      <table id="zero">
@@ -220,11 +223,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </table>
     <!--  分页按钮 -->
      <div class="btn-group" style="margin-left:220px;margin-top:-40px;">
-	    <button type="button" class="btn btn-default">首页</button>
-	    <button type="button" class="btn btn-default">上页</button>
-	    <button type="button" class="btn btn-default">当前页</button>
-	    <button type="button" class="btn btn-default">下页</button>
-	    <button type="button" class="btn btn-default">尾页</button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">首页</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">上页</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">当前页</button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">下页</button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">尾页</button>
      </div>
       
    
