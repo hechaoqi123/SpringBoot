@@ -19,6 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">  
+	<script src="<%=basePath%>assets/js/jquery.min.js"></script>
+	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
+	
+	
 	<style type="text/css">
 	.menuDiv { 
         border: 2px solid #D8D8D8; 
@@ -84,12 +89,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:30px;"><i>内部通讯录</i></h2>
-    <div style="margin-left:900px;margin-top:-50px;">
+    <%-- <div style="margin-left:900px;margin-top:-50px;">
      <img src="<%=basePath%>BackJsp/img/one.png">
      <img src="<%=basePath%>BackJsp/img/two.png">
      <img src="<%=basePath%>BackJsp/img/three.png">
      
-   </div>
+   </div> --%>
+     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
+	    <button type="button" class="btn btn-default">后退</button>
+	    <button type="button" class="btn btn-default">登记记录</button>
+	    <button type="button" class="btn btn-default">查找</button>
+	    <button type="button" class="btn btn-default">刷新</button>
+     </div>
    </br>
     <table id="zero">
        <tr>
@@ -170,11 +181,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </td>
     </table>
     <div style="margin-left:400px;">
-    <a>首页</a>
-    <a>上一页</a>
-    <a>当前页</a>
-    <a>下一页</a>
-    <a>尾页</a>
+    <!--  分页按钮 -->
+     <div class="btn-group" style="margin-left:0px;margin-top:-40px;">
+	    <button type="button" class="btn btn-default">首页</button>
+	    <button type="button" class="btn btn-default">上页</button>
+	    <button type="button" class="btn btn-default">当前页</button>
+	    <button type="button" class="btn btn-default">下页</button>
+	    <button type="button" class="btn btn-default">尾页</button>
+     </div>
     </div>
 </body>
 </html>
