@@ -54,9 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<ul class="submenu">
 							<li class="ww">
-								<a href="MyJsp.jsp" class="test" target="right_main">
+								<a href="LDL/authorityManagement.jsp" class="test" target="right_main">
 									<i class="menu-icon fa fa-caret-right"></i>
-									MyJsp.jsp
+									权限管理
 								</a>
 								<b class="arrow"></b>
 							</li>
