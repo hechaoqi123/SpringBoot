@@ -156,63 +156,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 								<b class="arrow"></b>
 						</ul>
-
+						</a></li>
 					<!-- 信息中心 -->
-					<li class="Myli" style="display:none">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-cog"></i>
-							<span class="menu-text">信息中心</span>
+					<li class="w">
+						<a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>信息中心 </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<b class="arrow"></b>
 
-						<ul class="submenu">
-							<li class="ww">
-								<a href="xgp/Interior.jsp" class="test" target="right_main">
-									<i class="menu-icon fa fa-caret-right"></i>
-									内部通讯录
-								</a>
-								<b class="arrow"></b>
-							</li>
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+						    <a href="xgp/Interior.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+						      <li class="ww">
+								<span style="color:#E6E6E6">内部通讯录</span>
+							   </li>
+							 </a>
+						    <a href="xgp/External.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">外部通讯录</span>
+
+	                          </li>
 							</a>
-						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-								<a href="xgp/External.jsp" class="test" target="right_main">
-									<i class="menu-icon fa fa-caret-right"></i>
-									外部通讯录
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="ww">
-								<a href="xgp/Notice.jsp" class="test" target="right_main">
-									<i class="menu-icon fa fa-caret-right"></i>
-									公告管理
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="ww">
-								<a href="xgp/Document.jsp" class="test" target="right_main">
-									<i class="menu-icon fa fa-caret-right"></i>
-									文档管理
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="ww">
-								<a href="xgp/Knowledge.jsp" class="test" target="right_main">
-									<i class="menu-icon fa fa-caret-right"></i>
-									知识社区
-								</a>
-								<b class="arrow"></b>
-					</li>
-					
-					<!-- 注销登陆 -->
+							
+							<a href="xgp/Notice.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">公告管理</span>
+
+	                          </li>
+							</a>
+							
+							<a href="xgp/Document.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">文档管理</span>
+
+	                          </li>
+							</a>
+							
+							<a href="xgp/Knowledge.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">知识社区</span>
+
+	                          </li>
+							</a>
+				</ul>
+				<!-- 注销登陆 -->
 					<li  class="w">
 						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 						</a>
 					</li>
-				</ul>
 			</div>
 
 
