@@ -46,13 +46,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  margin-top:1px;
 			}
 			.ww:hover{
-			  background:#000;
+			  background:#08465B;
 			}
 			a:hover{
 			   text-decoration:none
 			}
 			.Myli .submenu{
 			  display:none;
+			}
+			.nav-list .w{
+			   margin-top:1px;
+			   opacity:0.8;
+			   background-image:url(../assets/img/bg1.jpg);
+			   background-position: -100px -100px;
+			}
+			.nav-list .w:hover{
+			  background:#09384B;
 			}
 		</style>
 </head>
@@ -72,70 +81,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 				<ul class="nav nav-list" >
 				   <!-- 我的桌面 -->
-					<li >
-						<a href="getAllLog2.action" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:15px;" id="home" >
+					<li class="w">
+						<a href="getAllLog2.action" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/desktop.png" style="margin-right:10px;"/>我的桌面 </span>
 						</a>
 					</li>
-					<li>
-						<a href="getAllLog2.action"target="right_main"   style="line-height:13px;color:#000;height:35px;font-size:15px;" >
-							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-							<img src="../assets/img/desktop.png" style="margin-right:10px;"/>注销登陆 </span>
+					<!-- 人力资源  -->
+					<li  class="w">
+                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>人力资源 </span>
 						</a>
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+							  <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+									<span style="color:#E6E6E6">我的人事 </span>
+								<b class="arrow"></b>
+							</li></a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">员工管理</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">招聘和配置</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">考勤管理</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">福利和关怀</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">绩效管理</span>
+								</li>
+								</a>
+								<b class="arrow"></b>
+						</ul>
 					</li>
 					
-					
-					
-					<!-- 系统设置 -->
-					
-					<li class="Myli" >
-                        <a href="#" class="dropdown-toggle" style="line-height:13px;color:#000;height:35px;font-size:15px;">							
+					<!-- 财务中心  -->
+					<li  class="w">
+                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
                         <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/desktop.png" style="margin-right:10px;"/>系统设置 </span>
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>财务中心 </span>
 						</a>
-						<ul class="submenu" style="padding:0px;margin:0px;">
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:14px;" target="right_main">
-									<span style="color:#E6E6E6">MyJsp.jsp</span>
-								</a>
+								<span style="color:#E6E6E6">费用管理</span>
 								<b class="arrow"></b>
 							</li>
+							</a>
+						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww">
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:14px;" target="right_main">
-									<span style="color:#E6E6E6">MyJsp.jsp</span>
-								</a>
-								<b class="arrow"></b>
+									<span style="color:#E6E6E6">票据管理</span>
 							</li>
+							</a>
+							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww">
+							   <span style="color:#E6E6E6">资金管理</span>
+							</li>
+							</a>
+							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww">
+								<span style="color:#E6E6E6">收入管理</span>
+							</li>
+							</a>
+							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww">
+								<span style="color:#E6E6E6">支出管理</span>
+							</li>
+							</a>
+								<b class="arrow"></b>
 						</ul>
 					</li>
 					
 					
-					<li class="Myli">
-                        <a href="#" class="dropdown-toggle" style="line-height:13px;color:#000;height:35px;font-size:15px;">							
-                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/desktop.png" style="margin-right:10px;"/>系统设置 </span>
-						</a>
-						<ul class="submenu" style="padding:0px;margin:0px;">
-							<li class="ww" >
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:14px;" target="right_main">
-									<span style="color:#E6E6E6">MyJsp.jsp</span>
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="ww">
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:14px;" target="right_main">
-									<span style="color:#E6E6E6">MyJsp.jsp</span>
-								</a>
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
 					<!-- 注销登陆 -->
-					<li>
-						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:15px;" id="home" >
+					<li  class="w">
+						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-							<img src="../assets/img/desktop.png" style="margin-right:10px;"/>注销登陆 </span>
+							<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 						</a>
 					</li>
 				</ul>
@@ -145,7 +180,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 
 <script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
-<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
 <script src="<%=basePath%>assets/js/ace-elements.min.js"></script>
 <script src="<%=basePath%>assets/js/ace.min.js"></script>
 <script type="text/javascript">
@@ -168,12 +202,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	};
 	$(".ww").click(function(){
 	      $(".ww").each(function(){
-	       $(this).css("background","")
+	         $(this).css("background","")
 	      })
 	      $("a").css("text-decoration","none")
-	      $(this).css("background","#000")
+	      $(this).css("background","#08465B")
+	     $(this).parent().css("background","")
 	})
-	
-	
   </script>
 </html>
