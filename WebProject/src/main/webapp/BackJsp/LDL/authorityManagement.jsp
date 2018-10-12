@@ -23,11 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--悬浮样式  -->
 	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
+	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/view.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
-	
+	<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
+	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
   </head>
   <body>
 <table style="min-width:980px;width:100%;height:100%;" cellspacing="0" cellpadding="0" border="0">
@@ -46,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								* 用户具有自身、所属组织机构以及所属岗位角色的综合权限
 							</td>
 							<td id="oWorkflowList" align="right">
-								<a class="button1 button1L" href="">
-									<i class="fa">新增一级</i>
+								<a class="button1 button1L">
+									<i class="fa" data-toggle="modal" data-target="#myModal">新增一级</i>
 								</a><span id="oWorkflowList1"></span><a class="button1 button1R" href="">
 									<i class="fa">新增二级</i>
 								</a>
@@ -67,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 				<br>
 				<div id="colloaMenu2">
-					<a class="textHighlight" href="">
+					<a class="" href="">
 						<img src="../assets/images/key.gif" border="0"> 模块访问权设置
 					</a>
 					<a href="">
@@ -95,8 +97,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>操作</th>
 							</tr>
 						</thead>
+						<tbody id="myTbody">
+							<tr onclick="sund(this)" >{{obj}}
+								<td v-for="obj in objs">{{obj}}</td>
+							</tr>
+						</tbody>
 						<tr onclick="sund(this)">
-							<td>1</td>
+							<td>{{data}}</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
@@ -115,24 +122,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 	</tbody>
 </table>
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					增加一级导航
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form  id="form-add" enctype="multipart/form-data">
+					<table>
+						<tr>
+							<td>模块名字</td>
+							<td><input type="text" name="mname" v-model="mname"></td>
+						</tr>
+						<tr>
+							<td>模块描述</td>
+							<td><input type="text" name="mdescribe" v-model="mdescribe"></td>
+						</tr>
+						<tr>
+							<td>模块状态</td>
+							<td><input type="radio" checked="checked" name="msequnce" v-model="msequnce" value="1">启用
+								<input type="radio" name="msequnce"  v-model="msequnce" value="0">禁用</td>
+						</tr>
+						<tr>
+							<td>模块标志图</td>
+							<td><input type="file" name="file" v-model="file"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitFunction()" >
+					提交
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
 </body>
 	
-<script type="text/javascript">
-	function sund(obj){
-		$(".myTr").remove();
-		var tr = "<tr class='myTr'>"+
-					"<td>&nbsp;&nbsp;&nbsp;222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-				"</tr>";
-				//通过after在标签后边追加内容
-				$(obj).after(tr);
-		
-	}
-	
-	
-</script>
+<script type="text/javascript" src="<%=basePath%>assets/js/LDL/authorityManagement.js"></script>
 
 </html>
