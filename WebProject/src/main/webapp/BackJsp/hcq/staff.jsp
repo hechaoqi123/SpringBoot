@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'staff.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,15 +20,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
       <style>
-         *{
-           border:opx;
-           margin:0px;
-           padding:0px;
+         #hea div{
+           float:left;
          }
       </style>
   </head>
   
   <body>
-                 <iframe src="BackJsp/HomePage.jsp"  name="left_main" frameborder="0" scrolling="no" width="18%" height="1000px"></iframe><iframe src="BackJsp/hcq/staff.jsp" name="right_main" frameborder="0" scrolling="auto" width="82%" height="1000px"></iframe> 
+      <!-- head -->
+      <div style="height:200px;padding-left:30px;" id="hea">
+          <div style="padding-top:30px;width:500px;"><img src="BackJsp/hcq/img/log.png"/><b style="font-size:30px;">员工管理</b></div>
+          <div style="padding-top:30px;">按钮</div>
+      </div>
+      <!-- BODY -->
+      <div>
+         qwe
+      </div>
   </body>
 </html>
