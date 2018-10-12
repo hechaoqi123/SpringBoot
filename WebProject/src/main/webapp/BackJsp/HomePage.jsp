@@ -82,10 +82,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="nav nav-list" >
 				   <!-- 我的桌面 -->
 					<li class="w">
-						<a href="getAllLog2.action" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
+						<a href="wsq/look.jsp" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/desktop.png" style="margin-right:10px;"/>我的桌面 </span>
 						</a>
+					</li>
+					<!--  目标管理 -->
+					<li  class="w">
+                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>目标管理 </span>
+						</a>
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+							  <a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+									<span style="color:#E6E6E6">我的工作计划 </span>
+								<b class="arrow"></b>
+							</li></a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作计划</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">我的工作任务</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作任务</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">我的工作报告</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作报告</span>
+								</li>
+								</a>
+								<b class="arrow"></b>
+						</ul>
 					</li>
 					<!-- 人力资源  -->
 					<li  class="w">
