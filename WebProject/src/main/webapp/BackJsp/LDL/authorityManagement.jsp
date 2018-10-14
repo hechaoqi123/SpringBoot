@@ -69,20 +69,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 				<br>
 				<div id="colloaMenu2">
-					<a class="" href="">
+					<a class="" href="javascript:getvo();">
 						<img src="../assets/images/key.gif" border="0"> 模块访问权设置
 					</a>
-					<a href="">
+					<a href="javascript:getvo();">
 						<img src="../assets/images/key2.gif" border="0"> 模块操作权设置
 					</a>
-					<a href="">
+					<a href="javascript:getvo();">
 						<img src="../assets/images/share.gif" border="0"> 按用户设置权限
 					</a>
 				</div>
 				<div id="colloaContent2">
 					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
-							<col>
+							<col width="10">
 							<col width="100px">
 							<col width="80px">
 							<col width="80px">
@@ -90,32 +90,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</colgroup>
 						<thead>
 							<tr>
+								<th>编号</th>
 								<th>名称</th>
-								<th>内部标志号</th>
 								<th>排序号</th>
 								<th>状态</th>
-								<th>操作</th>
+								<th>图标</th>
 							</tr>
 						</thead>
 						<tbody id="myTbody">
-							<tr onclick="sund(this)" >{{obj}}
-								<td v-for="obj in objs">{{obj}}</td>
+							<tr onclick="sund(this)" ondblclick="sundTwo(this)" v-for="Visitonemodile in Visitonemodiles">
+								<td>{{Visitonemodile.mOneId}}</td>
+								<td>{{Visitonemodile.mname}}</td>
+								<td v-if="Visitonemodile.mdescribe=1">启用</td>
+								<td v-if="Visitonemodile.mdescribe=0">禁用</td>
+								<td>{{Visitonemodile.msequnce}}</td>
+								<td><img v-bind:src="Visitonemodile.mimageurl"/></td>
 							</tr>
 						</tbody>
-						<tr onclick="sund(this)">
-							<td>{{data}}</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-						<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
 					</table>
 				</div>
 			</td>

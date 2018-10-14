@@ -11,6 +11,10 @@ function sund(obj){
 				$(obj).after(tr);
 		
 	}
+function sundTwo(obj){
+	$(".myTr").remove();
+	
+}
 
 //新增一级菜单
 function submitFunction() {
@@ -36,14 +40,14 @@ function submitFunction() {
 var myTbody = new Vue({
 				el:'#myTbody',
 				data:{
-					objs:''
+					Visitonemodiles:''
 				}
 			});
 
-Vue.http.get(
+var getvo = Vue.http.get(
 	  	"/DuthorityManagementController/selectVisitonemodile"
 	  ).then(function(data){
-		  myTbody.msg=data.bodyText;
+		  myTbody.Visitonemodiles=data.body;
 	  },function(error){
 	  	alert(1111);
 	  });

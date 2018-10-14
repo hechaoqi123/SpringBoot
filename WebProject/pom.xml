@@ -122,6 +122,12 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-        </plugins>
+			<!--mybatis逆向工程插件  -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+			</plugin>
+     </plugins>
     </build>
 </project>
