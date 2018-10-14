@@ -49,9 +49,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</td>
 							<td id="oWorkflowList" align="right">
 								<a class="button1 button1L">
-									<i class="fa" data-toggle="modal" data-target="#myModal">新增一级</i>
+									<i class="fa" data-toggle="modal" data-target="#myModalOne">新增一级</i>
 								</a><span id="oWorkflowList1"></span><a class="button1 button1R" href="">
-									<i class="fa">新增二级</i>
+									<i class="fa" data-toggle="modal" data-target="#myModalTwo">新增二级</i>
 								</a>
 							</td>
 							
@@ -126,7 +126,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+<div class="modal fade" id="myModalOne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					增加一级导航
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form  id="form-add" enctype="multipart/form-data">
+					<table>
+						<tr>
+							<td>模块名字</td>
+							<td><input type="text" name="mname" v-model="mname"></td>
+						</tr>
+						<tr>
+							<td>模块描述</td>
+							<td><input type="text" name="mdescribe" v-model="mdescribe"></td>
+						</tr>
+						<tr>
+							<td>模块状态</td>
+							<td><input type="radio" checked="checked" name="msequnce" v-model="msequnce" value="1">启用
+								<input type="radio" name="msequnce"  v-model="msequnce" value="0">禁用</td>
+						</tr>
+						<tr>
+							<td>模块标志图</td>
+							<td><input type="file" name="file" v-model="file"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitFunction()" >
+					提交
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModalTwo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
