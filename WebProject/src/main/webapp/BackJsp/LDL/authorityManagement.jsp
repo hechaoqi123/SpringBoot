@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</a>
 				</div>
 				<div id="colloaContent2">
-					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
+					<table class="tableList" style="table-layout:fixed;color: #000;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
 							<col width="10">
 							<col width="100px">
