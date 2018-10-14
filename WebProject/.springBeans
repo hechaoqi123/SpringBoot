@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.aaa.BootApplication</config>
+		<config>java:com.csdn.ingo.BootApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
