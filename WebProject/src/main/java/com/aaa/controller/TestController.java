@@ -17,16 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aaa.bean.Visitonemodile;
-import com.aaa.service.UserService;
 
 @RestController
 public class TestController{
-	@Autowired
-	private UserService userServiceImpl;
-@RequestMapping("test")
-public String test(){
-return userServiceImpl.getAllUser().toString();
-}
 @RequestMapping("vueTest")
 @ResponseBody
 public String vueTest(Visitonemodile visitonemodile){

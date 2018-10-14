@@ -256,6 +256,7 @@ function $form2word() {
 			obj_range.SetRange(range_flg.End-sId.length,range_flg.End);
 			var aTRs = opener.document.getElementById(sStaticStr+i).getElementsByTagName('TR');
 			obj_tbl = obj_tables.Add(obj_range, aTRs.length, aTRs.item(0).cells.length);
+			
 				if(style != "������") style = "������";
 				ApplyStyleHeadingRows = true;
 				ApplyStyleLastRow = true;
