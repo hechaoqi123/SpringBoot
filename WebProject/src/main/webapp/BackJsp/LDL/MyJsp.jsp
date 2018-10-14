@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'MyJsp.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,16 +20,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-      <style>
-         *{
-           border:opx;
-           margin:0px;
-           padding:0px;
-         }
-      </style>
+
   </head>
   
   <body>
-                 <iframe src="BackJsp/HomePage.jsp"  name="left_main" frameborder="0" scrolling="no" width="18%" height="1000px"></iframe><iframe src="BackJsp/wsq/look.jsp" name="right_main" frameborder="0" scrolling="no" width="82%" height="1000px"></iframe> 
+     	<tbody>
+   		<tr>
+   			<td>
+   				<h1>
+   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 权限管理
+   				</h1>
+			</td>
+			<td class="textGray" align="center">
+				* 用户具有自身、所属组织机构以及所属岗位角色的综合权限
+			</td>
+			<td id="oWorkflowList" align="right">
+				<a class="button1 button1L" title="后退" href="javaScript:windowClose();">
+					<i class="fa fa-angle-left"></i>
+				</a>
+				<span id="oWorkflowList1"></span>
+				<a class="button1 button1R" title="刷新" href="javaScript:location.reload();">
+					<i class="fa fa-bolt"></i>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+	<br>
   </body>
 </html>

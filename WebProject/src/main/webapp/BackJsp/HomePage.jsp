@@ -82,10 +82,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="nav nav-list" >
 				   <!-- 我的桌面 -->
 					<li class="w">
-						<a href="getAllLog2.action" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
+						<a href="wsq/look.jsp" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/desktop.png" style="margin-right:10px;"/>我的桌面 </span>
 						</a>
+					</li>
+					<!--  目标管理 -->
+					<li  class="w">
+                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>目标管理 </span>
+						</a>
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+							  <a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+									<span style="color:#E6E6E6">我的工作计划 </span>
+								<b class="arrow"></b>
+							</li></a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作计划</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">我的工作任务</span>
+								</li>
+								</a>
+									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作任务</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">我的工作报告</span>
+								</li>
+								</a>
+								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">全部工作报告</span>
+								</li>
+								</a>
+								<b class="arrow"></b>
+						</ul>
 					</li>
 					<!-- 人力资源  -->
 					<li  class="w">
@@ -127,24 +167,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<b class="arrow"></b>
 						</ul>
 					</li>
-					
 					<!-- 财务中心  -->
 					<li  class="w">
                         <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
                         <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
                         <img src="../assets/img/persons.png" style="margin-right:10px;"/>财务中心 </span>
-						</a>
 						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
 						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
 								<span style="color:#E6E6E6">费用管理</span>
-								<b class="arrow"></b>
-							</li>
-							</a>
-						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-									<span style="color:#E6E6E6">票据管理</span>
-							</li>
+
+	                          </li>
 							</a>
 							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww">
@@ -163,17 +196,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 								<b class="arrow"></b>
 						</ul>
-					</li>
-					
-					
-					<!-- 注销登陆 -->
+						</a></li>
+					<!-- 信息中心 -->
+					<li class="w">
+						<a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>信息中心 </span>
+						</a>
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+						    <a href="xgp/Interior.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+						      <li class="ww">
+								<span style="color:#E6E6E6">内部通讯录</span>
+							   </li>
+							 </a>
+						    <a href="xgp/External.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">外部通讯录</span>
+
+	                          </li>
+							</a>
+							
+							<a href="xgp/Notice.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">公告管理</span>
+
+	                          </li>
+							</a>
+							
+							<a href="xgp/Document.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">文档管理</span>
+
+	                          </li>
+							</a>
+							
+							<a href="xgp/Knowledge.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+								<span style="color:#E6E6E6">知识社区</span>
+
+	                          </li>
+							</a>
+				</ul>
+				<!-- 注销登陆 -->
 					<li  class="w">
 						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 						</a>
 					</li>
-				</ul>
 			</div>
 
 
