@@ -7,4 +7,5 @@ import org.springframework.stereotype.Service;
 import com.aaa.bean.User;
 public interface UserService {
 	List<User> getAllUser();
+	
 }

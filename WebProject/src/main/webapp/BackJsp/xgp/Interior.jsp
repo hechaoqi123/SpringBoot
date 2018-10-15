@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Interior.jsp' starting page</title>
+    <title>内部通讯录</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         width:200px;
         margin-top:-500px;
      }
+    
      .menuDiv a {
         text-decoration: none;
     }
@@ -42,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     #i{
     position: absolute;
      margin-top:3px;
+     margin-left:30px;
     }
 	.cx{
 	    width: 120px;
@@ -59,12 +61,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:1000px;
 	  width:100%;
 	  float:left;
+	  margin-left:50px;
 	}
 	
 	#zero1{
 	  height:1000px;
 	  width:20%;
 	  
+	}
+	#zero1 div:hover{
+	
 	}
 	
 	#zero2{
@@ -92,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:30px;"><i>内部通讯录</i></h2>
+   <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>内部通讯录</i></h2>
     <%-- <div style="margin-left:900px;margin-top:-50px;">
      <img src="<%=basePath%>BackJsp/img/one.png">
      <img src="<%=basePath%>BackJsp/img/two.png">
@@ -167,8 +173,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <img src="<%=basePath%>BackJsp/img/h9.png"style="margin-top:10px;margin-left:10px;">
            </div>
            <div> 
-                                       姓名：<br>
-                                       名言：<br>
+             <br/><img src="<%=basePath%>BackJsp/img/six.png">姓名：<br>
+                                       名言：<br><br><br>
                                        从属机构：<br>
                                        固定电话：<br>
                                        移动电话：<br>
@@ -177,10 +183,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </div>
          
          </div>
-          <div style="height:200px;width:350px; border: 1px solid #bbf;">
-         </div>
-         <div style="height:200px;width:350px; border: 1px solid #bbf;">
-         </div>
+          
+       
+        
+         
+         
+        
+         
+         
        </div>
        </td>
     </table>

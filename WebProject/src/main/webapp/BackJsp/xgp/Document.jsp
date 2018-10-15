@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Document.jsp' starting page</title>
+    <title>文档管理</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     #i{
     position:absolute;
      margin-top:3px;
+     margin-left:30px;
     }
     #zero{
 	  height:500px;
@@ -54,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  width:210px;
 	  border:1px solid #bbf;
 	  font-size:14;
-	  
+	  background-color:#F4F4F4;
 	  margin-top:-120px;
 	}
 	.zero12{
@@ -73,9 +74,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  margin-top:8px;
 	  margin-left:22px;
 	}
+	.zero12 div span:hover{
+	 color:#3366FF;
+	}
 	.zero13 div{
 	  margin-top:8px;
 	  margin-left:22px;
+	}
+	.zero13 div span:hover{
+	 color:#3366FF;
 	}
 	#zero2 {
 	border:1px solid #bbf;
@@ -94,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-       <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:30px;"><i>文档管理</i></h2>
+       <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>文档管理</i></h2>
      
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
 	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">后退</button>
@@ -147,97 +154,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>更新时间</th>
 							</tr>
 						</thead>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
-						<tr onclick="sund(this)">
-							<td style="height:30px">1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
+						<tr  onclick="sund(this)">
+							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
 						</tr>
 					</table>
 				</div>
