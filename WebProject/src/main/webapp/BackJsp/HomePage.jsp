@@ -134,32 +134,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <img src="../assets/img/persons.png" style="margin-right:10px;"/>人力资源 </span>
 						</a>
 						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-							  <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							  <a href="/userdetail/getUserdetail" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
 									<span style="color:#E6E6E6">我的人事 </span>
 								<b class="arrow"></b>
 							</li></a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="hcq/staff.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">员工管理</span>
 								</li>
 								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="hcq/recruit.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">招聘和配置</span>
 								</li>
 								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="hcq/check.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">考勤管理</span>
 								</li>
 								</a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">福利和关怀</span>
-								</li>
-								</a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">绩效管理</span>
 								</li>
