@@ -71,15 +71,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- #section:basics/sidebar -->
 			<div id="sidebar"  class="sidebar responsive" style="font-size:17px;">
 				<div id="tx" style="height:128px;border-bottom:1px solid #999">
-						   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff">
-						   </div>
-						   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
-						         <img src="../assets/img/userXStatus0.png"/>划水	<br/>
-						        <p style="">探索协同运营管理之道</p>
-						   
-						   </div>
-						</div>
-				<ul class="nav nav-list" >
+					   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
+					   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
+					         <img src="../assets/img/userXStatus0.png"/>划水	<br/>
+					        <p style="">探索协同运营管理之道</p>
+					   </div>
+				</div>
+				<ul class="nav nav-list" id="oneModel">
 				   <!-- 我的桌面 -->
 					<li class="w">
 						<a href="wsq/look.jsp" target="right_main" style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
@@ -90,150 +88,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!--  目标管理 -->
 					<li  class="w">
                         <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
-                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>目标管理 </span>
+	                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+	                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>目标管理 </span>
 						</a>
 						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-							  <a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
+							  	<a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 									<span style="color:#E6E6E6">我的工作计划 </span>
-								<b class="arrow"></b>
-							</li></a>
+									<b class="arrow"></b>
+								</a>
+							</li>
+							<li class="ww">
 								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">全部工作计划</span>
-								</li>
+								<span style="color:#E6E6E6">我的工作报告</span>
 								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">我的工作任务</span>
-								</li>
-								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">全部工作任务</span>
-								</li>
-								</a>
+							</li>
+							<li class="ww">
 								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">我的工作报告</span>
-								</li>
-								</a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">全部工作报告</span>
-								</li>
+								<span style="color:#E6E6E6">全部工作报告</span>
 								</a>
 								<b class="arrow"></b>
+							</li>
 						</ul>
 					</li>
-					<!-- 人力资源  -->
-					<li  class="w">
-                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
-                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>人力资源 </span>
+					<li class="w" v-for="Visitonemodile in Visitonemodiles">
+						 <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+	                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6" v-bind:title="Visitonemodile.mdescribe">
+	                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>
 						</a>
-						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-							  <a href="/userdetail/getUserdetail" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-									<span style="color:#E6E6E6">我的人事 </span>
-								<b class="arrow"></b>
-							</li></a>
-								<a href="hcq/staff.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">员工管理</span>
-								</li>
+						<ul v-for="Visittwomodile in Visittwomodiles" class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+							<li v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)" class="ww" > 
+							  	<a v-bind:href="Visittwomodile.murl" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<span style="color:#E6E6E6">{{Visittwomodile.mname}}</span>
+									<b class="arrow"></b>
 								</a>
-									<a href="hcq/recruit.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">招聘和配置</span>
-								</li>
-								</a>
-									<a href="hcq/check.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">考勤管理</span>
-								</li>
-								</a>
-								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-								<li class="ww">
-									<span style="color:#E6E6E6">绩效管理</span>
-								</li>
-								</a>
-								<b class="arrow"></b>
+							</li>
 						</ul>
 					</li>
-					<!-- 财务中心  -->
-					<li  class="w">
-                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
-                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>财务中心 </span>
-						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-						    <a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-								<span style="color:#E6E6E6">费用管理</span>
-
-	                          </li>
-							</a>
-							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-							   <span style="color:#E6E6E6">资金管理</span>
-							</li>
-							</a>
-							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-								<span style="color:#E6E6E6">收入管理</span>
-							</li>
-							</a>
-							<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww">
-								<span style="color:#E6E6E6">支出管理</span>
-							</li>
-							</a>
-								<b class="arrow"></b>
-						</ul>
-						</a></li>
-					<!-- 信息中心 -->
-					<li class="w">
-						<a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
-                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
-                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>信息中心 </span>
-						</a>
-						<b class="arrow"></b>
-
-						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-						    <a href="xgp/Interior.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-						      <li class="ww">
-								<span style="color:#E6E6E6">内部通讯录</span>
-							   </li>
-							 </a>
-						    <a href="xgp/External.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-								<span style="color:#E6E6E6">外部通讯录</span>
-
-	                          </li>
-							</a>
-							
-							<a href="xgp/Notice.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-								<span style="color:#E6E6E6">公告管理</span>
-
-	                          </li>
-							</a>
-							
-							<a href="xgp/Document.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-								<span style="color:#E6E6E6">文档管理</span>
-
-	                          </li>
-							</a>
-							
-							<a href="xgp/Knowledge.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
-							<li class="ww" >
-								<span style="color:#E6E6E6">知识社区</span>
-
-	                          </li>
-							</a>
-				</ul>
 				<!-- 注销登陆 -->
 					<li  class="w">
 						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
@@ -241,16 +132,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 						</a>
 					</li>
+				</ul>
 			</div>
-
-
+		</div>
+	
 	</body>
 
 <script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 <script src="<%=basePath%>assets/js/ace-elements.min.js"></script>
 <script src="<%=basePath%>assets/js/ace.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 <script type="text/javascript">
-
 	$("#cancel").click(function(){
 	      if(confirm("是否退出？")){
 	         return true;
@@ -275,5 +168,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      $(this).css("background","#08465B")
 	     $(this).parent().css("background","")
 	})
+	var myTbody = new Vue({
+		el:"#oneModel",
+		data:{
+			Visitonemodiles:"",
+			Visittwomodiles:""
+		}
+	});
+	var getvo = Vue.http.get(
+	  	"/DuthorityManagementController/selectVisitonemodile"
+	  ).then(function(data){
+		  myTbody.Visitonemodiles=data.body;
+		  return data.body;
+	  },function(error){
+	  	alert(1111);
+	  });
+	var getvt = Vue.http.get(
+	  	"/DuthorityManagementController/selectVisittwomodile"
+	  ).then(function(data){
+		  myTbody.Visittwomodiles=data.body;
+		  return data.body;
+	  },function(error){
+	  	alert(1111);
+	  });
   </script>
 </html>

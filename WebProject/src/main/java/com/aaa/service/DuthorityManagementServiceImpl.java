@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aaa.bean.Visitonemodile;
+import com.aaa.bean.Visittwomodile;
 import com.aaa.mapper.DuthorityManagementMapper;
 @Service
 public class DuthorityManagementServiceImpl implements DuthorityManagementService {
@@ -19,6 +20,14 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	@Override
 	public List<Map> selectVisitonemodile() {
 		return mapper.selectVisitonemodile();
+	}
+	@Override
+	public int insert(Visittwomodile record) {
+		return mapper.insert(record);
+	}
+	@Override
+	public List<Map> selectVisittwomodile() {
+		return mapper.selectVisittwomodile();
 	}
 
 }

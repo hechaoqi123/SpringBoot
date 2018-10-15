@@ -64,4 +64,12 @@ public class Visittwomodile implements Serializable {
     public void setMoneid(Integer moneid) {
         this.moneid = moneid;
     }
+
+	@Override
+	public String toString() {
+		return "Visittwomodile [mtowid=" + mtowid + ", mname=" + mname + ", murl=" + murl + ", mdescribe=" + mdescribe
+				+ ", msequnce=" + msequnce + ", moneid=" + moneid + "]";
+	}
+    
+    
 }

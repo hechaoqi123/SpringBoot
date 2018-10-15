@@ -20,19 +20,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="shortcut icon" href="../assets/images/colloa.ico">
-	<!--悬浮样式  -->
-	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"></link>
-	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
-	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesomes.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=basePath%>BackJsp/css/bootstrap.css">
+	<link rel="stylesheet" href="<%=basePath%>assets/LDL/css/authorityManagement.css">
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
-	<script type="text/javascript" src="<%=basePath%>assets/js/view.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
   </head>
   <body>
-<table style="min-width:980px;width:100%;height:100%;" cellspacing="0" cellpadding="0" border="0">
+  <div>
+  	<div>
+  		<table>
+  			<tr>
+				   			<td width="20%">
+				   				<h1>
+				   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 权限管理
+				   				</h1>
+							</td>
+							<td class="textGray" align="center">
+								* 用户具有自身、所属组织机构以及所属岗位角色的综合权限
+							</td>
+							<td id="oWorkflowList" align="right">
+								<a class="button1 button1L">
+									<i class="fa" data-toggle="modal" data-target="#myModalOne">新增一级</i>
+								</a><span id="oWorkflowList1"></span><a class="button1 button1R">
+									<i class="fa" data-toggle="modal" data-target="#myModalTwo">新增二级</i>
+								</a>
+							</td>
+							
+							<td id="oWorkflowList" align="right">
+								<a class="button1 button1L" title="后退" href="javaScript:windowClose();">
+									<i class="fa fa-angle-left"></i>
+								</a><span id="oWorkflowList1"><!-- <a href="#" class="button1 button1M">
+										<i class="fa fa-plus"></i> 新增
+								</a> --></span><a class="button1 button1R" title="刷新" href="javaScript:location.reload();">
+									<i class="fa fa-bolt"></i>
+								</a>
+							</td>
+						</tr>
+  		</table>
+  	</div>
+  	<div></div>
+  	<div></div>
+  </div>
+  
+<table>
 	<tbody>
 		<tr valign="top">
 			<td id="colloaContent">
@@ -50,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td id="oWorkflowList" align="right">
 								<a class="button1 button1L">
 									<i class="fa" data-toggle="modal" data-target="#myModalOne">新增一级</i>
-								</a><span id="oWorkflowList1"></span><a class="button1 button1R" href="">
+								</a><span id="oWorkflowList1"></span><a class="button1 button1R">
 									<i class="fa" data-toggle="modal" data-target="#myModalTwo">新增二级</i>
 								</a>
 							</td>
@@ -80,9 +113,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</a>
 				</div>
 				<div id="colloaContent2">
-					<table class="tableList" style="table-layout:fixed;color: #000;" cellspacing="0" cellpadding="0" border="0">
+					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
-							<col width="10">
+							<col width="80">
 							<col width="100px">
 							<col width="80px">
 							<col width="80px">
@@ -94,21 +127,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>名称</th>
 								<th>排序号</th>
 								<th>状态</th>
-								<th>图标</th>
+								<th>信息</th>
 							</tr>
 						</thead>
-						<tbody id="myTbody">
-							<tr onclick="sund(this)" ondblclick="sundTwo(this)" v-for="Visitonemodile in Visitonemodiles">
-								<td>{{Visitonemodile.mOneId}}</td>
-								<td>{{Visitonemodile.mname}}</td>
-								<td v-if="Visitonemodile.mdescribe=1">启用</td>
-								<td v-if="Visitonemodile.mdescribe=0">禁用</td>
-								<td>{{Visitonemodile.msequnce}}</td>
-								<td><img v-bind:src="Visitonemodile.mimageurl"/></td>
-							</tr>
-						</tbody>
 					</table>
-				</div>
+					<div  id="myTbody" class="container">
+						<ul style="list-style: none; float: left;">
+							<li v-for="Visitonemodile in Visitonemodiles" style="list-style: none;">
+								<table class="table">
+									<tr>
+										<td>{{Visitonemodile.mOneId}}</td>
+										<td>{{Visitonemodile.mname}}</td>
+										<td>{{Visitonemodile.mdescribe}}</td>
+										<td v-if="Visitonemodile.msequnce=1">启用</td>
+										<td v-if="Visitonemodile.msequnce=0">禁用</td>
+										<td><img v-bind:src="Visitonemodile.mimageurl"/></td>
+									</tr>
+								</table>
+								<ul v-for="Visittwomodile in Visittwomodiles" style="list-style: none;">
+									<li v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)" style="list-style: none;">
+										<table>
+											<tr>
+												<td>{{Visittwomodile.mOneId}}</td>
+												<td>{{Visittwomodile.mname}}</td>
+												<td>{{Visittwomodile.mdescribe}}</td>
+												<td v-if="Visittwomodile.msequnce=1">启用</td>
+												<td v-if="Visittwomodile.msequnce=0">禁用</td>
+												<td>{{Visittwomodile.murl}}</td>
+											</tr>
+										</table>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 			</td>
 		</tr>
 	</tbody>
@@ -160,6 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
+</div>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModalTwo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
 	<div class="modal-dialog">
@@ -173,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</h4>
 			</div>
 			<div class="modal-body">
-				<form  id="form-add" enctype="multipart/form-data">
+				<form  id="formTwo">
 					<table>
 						<tr>
 							<td>模块名字</td>
@@ -189,8 +242,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<input type="radio" name="msequnce"  v-model="msequnce" value="0">禁用</td>
 						</tr>
 						<tr>
-							<td>模块标志图</td>
-							<td><input type="file" name="file" v-model="file"></td>
+							<td>模块路径</td>
+							<td><input type="text" name="murl"></td>
+						</tr>
+						<tr>
+							<td>父级归属</td>
+							<td>
+								<select name="moneid" id="selectTwo">
+									<option v-for="Visitonemodile in Visitonemodiles" v-bind:value="Visitonemodile.mOneId">{{Visitonemodile.mname}}</option>
+								</select>
+							</td>
 						</tr>
 					</table>
 				</form>
@@ -198,7 +259,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitFunction()" >
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitFunctionTwo()" >
 					提交
 				</button>
 			</div>

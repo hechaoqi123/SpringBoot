@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aaa.bean.Visitonemodile;
+import com.aaa.bean.Visittwomodile;
 import com.aaa.service.DuthorityManagementService;
 
 @RestController
@@ -36,12 +37,20 @@ public class DuthorityManagementController {
 		return "成功插入";
 
 	}
+	@RequestMapping("/insertVisittwomodile")
+	public String insertVisittwomodile(Visittwomodile visittwomodile) throws Exception {
+		service.insert(visittwomodile);
+		return "成功插入";
+		
+	}
 	@RequestMapping("/selectVisitonemodile")
 	public List<Map> selectVisitonemodile(){
-		
 		List<Map> selectVisitonemodile = service.selectVisitonemodile();
-		
 		return selectVisitonemodile;
-		
+	}
+	@RequestMapping("/selectVisittwomodile")
+	public List<Map> selectVisittwomodile(){
+		List<Map> selectVisitonemodile = service.selectVisittwomodile();
+		return selectVisitonemodile;
 	}
 }
