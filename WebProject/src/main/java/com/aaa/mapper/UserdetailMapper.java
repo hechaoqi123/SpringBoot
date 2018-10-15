@@ -7,4 +7,17 @@ import com.aaa.bean.Userdetail;
 public interface UserdetailMapper {
     public List<Userdetail> getAllUserdetail();
 	
+    int deleteByPrimaryKey(Integer detailid);
+
+    int insert(Userdetail record);
+
+    int insertSelective(Userdetail record);
+
+    Userdetail selectByPrimaryKey(Integer detailid);
+
+    int updateByPrimaryKeySelective(Userdetail record);
+
+    int updateByPrimaryKey(Userdetail record);
+
+	List<Userdetail> getAll();
 }
