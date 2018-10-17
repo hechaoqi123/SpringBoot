@@ -1,0 +1,21 @@
+	alert(1);
+			$.ajax({
+				url:'SubcompanyController/addSubcompany.action',
+				type:post,
+				data:{subcompany:datas},
+				dataType:json,
+				success:function(data){
+					alert(data.bodyText);
+				},
+				error:function(error){
+					
+				}
+			})
+			
+			
+			
+			belong:datas.get(belong),
+						scname:datas.get(scname),
+						scdepict:datas.get(scdepict),
+						scjobdescription:datas.get(scjobdescription),
+						scstate:datas.get(scstate)

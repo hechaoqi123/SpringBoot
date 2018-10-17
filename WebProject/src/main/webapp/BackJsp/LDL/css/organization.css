@@ -1,8 +1,7 @@
 @CHARSET "UTF-8";
 #topDiv{padding: 30px;}
 #bottomDiv{width:100%; padding: 20px; height: 100%;}
-#colloaMenu2{padding-left: 20px; float: left;}
-#bottomRightDiv{width: 82%; border: 1px solid #000;float: right;}
+#bottomRightDiv{width: 100%; border: 1px solid #e2e2e2;float: right;}
 .bottomRightDivUl{
 	list-style: none;
 	float: left;
@@ -21,7 +20,7 @@
 	white-space:nowrap;
 }
 
-#myTbody{
+#organizationVue{
 	margin-top: 30px;
 }
 li{
@@ -34,7 +33,6 @@ li{
 	margin-top:1px;
 }
 .ww:hover{
-	/* background:#08465B; */
 		background-color: #e3e9e9;
 }
 .nav-list .w{
@@ -46,7 +44,7 @@ li{
 .nav-list .w a > span{
 	background-color: #ee4fa;
 }
-.nav-list .w:hover{
+.w:hover{
 	background:#09300;
 }
 .nav-list .w > a > span{

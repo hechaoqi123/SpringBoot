@@ -5,7 +5,7 @@
     
 <generatorConfiguration>    
      <properties resource="db.properties" />      
-    <context id="sqlserverTables" targetRuntime="MyBatis3">    
+     <context id="sqlserverTables" targetRuntime="MyBatis3">    
         <!-- 生成的pojo，将implements Serializable-->    
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>    
         <commentGenerator>    
@@ -52,10 +52,11 @@
     
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
          
-        <table schema="first" tableName="visittwomodile" domainObjectName="Visittwomodile"    
+         <table schema="first" tableName="groupcompany" domainObjectName="Groupcompany"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
             <property name="useActualColumnNames" value="false"/>    
-        </table>   
+        </table>  
+         
     </context>    
 </generatorConfiguration>      

@@ -32,11 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <div id="spanTest">
-	<form  id="form-add" enctype="multipart/form-data">
+	<form  id="formadd" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>模块名字</td>
-				<td><input type="text" name="mname"></td>
+				<td><input type="text" name="mname" onblur="fu(this)"></td>
 			</tr>
 			<tr>
 				<td>模块描述</td>
@@ -55,8 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <button type="button" v-on:click="get">提交</button>    
 	</form>
 </div>
+<span id="ss"></span>
 </body>
 <script type="text/javascript">
+function fu(obj){
+ 	var datas = new FormData($("#formadd")[0]);
+ 	var a = [datas];
+ 	$("ss").html(a);	alert(a.toString().toLocaleLowerCase());
+}
+/* 
 new Vue({
 	el:'#form-add',
 	data:{
@@ -78,7 +85,7 @@ new Vue({
 		}
 	}
 });
-
+ */
 function submitFunction() {
     //这里唯一需要注意的就是这个form-add的id
     var formData = new FormData($("#form-add")[0]);

@@ -24,97 +24,108 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesomes.css" type="text/css"></link>
 	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
 	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<%=basePath%>BackJsp/LDL/css/authorityManagement.css">
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/view.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
+	<script src="<%=basePath%>assets/js/ace.min.js"></script>
   </head>
   <body>
-<table style="min-width:980px;width:100%;height:100%;" cellspacing="0" cellpadding="0" border="0">
-	<tbody>
-		<tr valign="top">
-			<td id="colloaContent">
-				<table cellspacing="0" cellpadding="0" border="0">
-					<tbody>
-				   		<tr>
-				   			<td width="20%">
-				   				<h1>
-				   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 权限管理
-				   				</h1>
-							</td>
-							<td class="textGray" align="center">
-								* 用户具有自身、所属组织机构以及所属岗位角色的综合权限
-							</td>
-							<td id="oWorkflowList" align="right">
-								<a class="button1 button1L">
-									<i class="fa" data-toggle="modal" data-target="#myModalOne">新增一级</i>
-								</a><span id="oWorkflowList1"></span><a class="button1 button1R">
-									<i class="fa" data-toggle="modal" data-target="#myModalTwo">新增二级</i>
+  
+<div>
+<br>
+	<div id="topDiv">
+		<table>
+  			<tr>
+	   			<td width="20%">
+	   				<h1>
+	   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 权限管理
+	   				</h1>
+				</td>
+				<td class="textGray" align="center">
+					* 用户具有自身、所属组织机构以及所属岗位角色的综合权限
+				</td>
+				<td id="oWorkflowList" align="right">
+					<a class="button1 button1L">
+						<i class="fa" data-toggle="modal" data-target="#myModalOne">新增一级</i>
+					</a><span id="oWorkflowList1"></span><a class="button1 button1R">
+						<i class="fa" data-toggle="modal" data-target="#myModalTwo">新增二级</i>
+					</a>
+				</td>
+				
+				<td id="oWorkflowList" align="right">
+					<a class="button1 button1L" title="后退" href="javaScript:windowClose();">
+						<i class="fa fa-angle-left"></i>
+					</a><span id="oWorkflowList1"><!-- <a href="#" class="button1 button1M">
+							<i class="fa fa-plus"></i> 新增
+					</a> --></span><a class="button1 button1R" title="刷新" href="javaScript:location.reload();">
+						<i class="fa fa-bolt"></i>
+					</a>
+				</td>
+			</tr>
+  		</table>
+	</div>
+	<div id="bottomDiv">
+		<div id="colloaMenu2"><!--  bottomRightDiv-->
+			<a class="" href="javascript:getvo();">
+				<img src="../assets/images/key.gif" border="0"> 模块访问权设置
+			</a>
+			<a href="javascript:getvo();">
+				<img src="../assets/images/key2.gif" border="0"> 模块操作权设置
+			</a>
+			<a href="javascript:getvo();">
+				<img src="../assets/images/share.gif" border="0"> 按用户设置权限
+			</a>
+		</div>
+		<div id="bottomRightDiv">
+				<ul class="bottomRightDivUl">
+					<li>编号</li>
+					<li>名称</li>
+					<li>描述</li>
+					<li>状态</li>
+					<li>信息</li>
+					<li>操作</li>
+				</ul>
+				
+				<div id="myTbody">
+					<div id="sidebar" class="sidebar">
+						<ul class="nav nav-list">
+							<li class="w" v-for="Visitonemodile in Visitonemodiles">
+								 <a href="#" class="dropdown-toggle">							
+			                        <span>{{Visitonemodile.mOneId}}</span>
+			                        <span>{{Visitonemodile.mname}}</span>
+									<span>{{Visitonemodile.mdescribe}}</span>
+									<span v-if="Visitonemodile.msequnce=1">启用</span>
+									<span v-if="Visitonemodile.msequnce=0">禁用</span>
+									<span><img v-bind:src="Visitonemodile.mimageurl"/></span>
+									<span><img v-bind:src="Visitonemodile.mimageurl"/></span>
 								</a>
-							</td>
-							
-							<td id="oWorkflowList" align="right">
-								<a class="button1 button1L" title="后退" href="javaScript:windowClose();">
-									<i class="fa fa-angle-left"></i>
-								</a><span id="oWorkflowList1"><!-- <a href="#" class="button1 button1M">
-										<i class="fa fa-plus"></i> 新增
-								</a> --></span><a class="button1 button1R" title="刷新" href="javaScript:location.reload();">
-									<i class="fa fa-bolt"></i>
-								</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br>
-				<div id="colloaMenu2">
-					<a class="" href="javascript:getvo();">
-						<img src="../assets/images/key.gif" border="0"> 模块访问权设置
-					</a>
-					<a href="javascript:getvo();">
-						<img src="../assets/images/key2.gif" border="0"> 模块操作权设置
-					</a>
-					<a href="javascript:getvo();">
-						<img src="../assets/images/share.gif" border="0"> 按用户设置权限
-					</a>
+								<ul class="submenu" style="display:none;padding:0px;">
+									<li class="ww" v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)"  > 
+									  	<a style="color:#f7f7f7;font-size:12px;">
+											<span>{{Visittwomodile.mTowId}}</span>
+											<span>{{Visittwomodile.mname}}</span>
+											<span>{{Visittwomodile.mdescribe}}</span>
+											<span style="margin: 10;">{{Visittwomodile.msequnce}}</span>
+											<span style="margin: 10;">{{Visittwomodile.murl}}</span>
+											<span style="margin: 0;">{{Visittwomodile.mname}}</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div id="colloaContent2">
-					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
-						<colgroup>
-							<col width="80">
-							<col width="100px">
-							<col width="80px">
-							<col width="80px">
-							<col width="100px">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>编号</th>
-								<th>名称</th>
-								<th>描述</th>
-								<th>状态</th>
-								<th>图标</th>
-							</tr>
-						</thead>
-						<tbody id="myTbody" >
-							<tr onclick="sund(this)" ondblclick="sundTwo(this)" v-for="Visitonemodile in Visitonemodiles">
-								<td>{{Visitonemodile.mOneId}}</td>
-								<td>{{Visitonemodile.mname}}</td>
-								<td>{{Visitonemodile.mdescribe}}</td>
-								<td v-if="Visitonemodile.msequnce=1">启用</td>
-								<td v-if="Visitonemodile.msequnce=0">禁用</td>
-								<td><img v-bind:src="Visitonemodile.mimageurl"/></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+		</div>
+	</div>
+</div>
 
 
+
+				
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModalOne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
