@@ -1,21 +1,24 @@
-	alert(1);
-			$.ajax({
-				url:'SubcompanyController/addSubcompany.action',
-				type:post,
-				data:{subcompany:datas},
-				dataType:json,
-				success:function(data){
-					alert(data.bodyText);
-				},
-				error:function(error){
-					
-				}
-			})
-			
-			
-			
-			belong:datas.get(belong),
-						scname:datas.get(scname),
-						scdepict:datas.get(scdepict),
-						scjobdescription:datas.get(scjobdescription),
-						scstate:datas.get(scstate)
+    function SendForm () 
+    {
+        if(CheckPost()) 
+        {
+            document.addForm.submit();
+        }
+    }
+
+    function CheckPost () 
+    {
+         if (addForm.user.value == "") 
+         {
+               alert("请填写用户名！");
+               addForm.username.focus();
+               return false;
+         }
+         if (addForm.title.value.length < 5) 
+         {
+               alert("标题不能少于5个字符！");
+               addForm.title.focus();
+               return false;
+         }
+         return true;
+    }

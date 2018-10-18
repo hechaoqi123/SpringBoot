@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div id="tx" style="height:128px;border-bottom:1px solid #999">
 					   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
 					   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
-					         <img src="../assets/img/userXStatus0.png"/>划水	<br/>
+					         <img src="../assets/img/userXStatus0.png"/>${user.uname }	<br/>
 					        <p style="">探索协同运营管理之道</p>
 					   </div>
 				</div>
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 				<!-- 注销登陆 -->
 					<li  class="w">
-						<a href="#"target="right_main" id="cancel"  style="line-height:13px;color:#000;height:35px;font-size:13px;" id="home" >
+						<a onclick='cancel("${user.uid}")' style="line-height:13px;color:#000;height:35px;font-size:13px;">
 							<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 							<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 						</a>
@@ -111,13 +111,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 <script type="text/javascript">
-	$("#cancel").click(function(){
-	      if(confirm("是否退出？")){
+	 function cancel (uid){
+	   if(confirm("是否退出？")){
+	   		 $.ajax({
+	   		 	url:"../Users/logoutUser.action",
+	   		 	type: "post",
+	   		 	data:{},
+	   		 	dataType:"json",
+	   		 	success:function(data){
+	   		 		if(data){
+	   		 			//window.location.href="../BackJsp/login.jsp";
+	   		 			//window.open("../BackJsp/login.jsp");  
+	   		 			parent.window.close();
+	   		 		}
+	   		 	},
+	   		 	error:function(){
+	   		 	
+	   		 	}
+	   		 	
+	   		 });
 	         return true;
 	      }else{
 	        return false;
 	      }
-	 })
+	 }
 	function quit_login(){
 		if(confirm('是否要退出系統？'))window.top.location='login.jsp';
 	};
