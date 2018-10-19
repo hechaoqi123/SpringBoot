@@ -1,5 +1,8 @@
 package com.aaa.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +20,18 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public Users selectByPrimaryKey(Integer uid) {
 		return mapper.selectByPrimaryKey(uid);
+	}
+	@Override
+	public List<Users> getAlluser() {
+		return mapper.getAlluser();
+	}
+	@Override
+	public List<Users> alootTrueUser(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.alootTrueUser(map);
+	}
+	@Override
+	public List<Users> alootFalseUser(Map map) {
+		return mapper.alootFalseUser(map);
 	}
 }

@@ -13,4 +13,10 @@ public interface DuthorityManagementService {
 	//插入二级
 	public int insert(Visittwomodile record);
 	public List<Map> selectVisittwomodile();
+	
+	//根据用户查询二级菜单
+	public List<Map> selectUserTowModile(Integer uid);
+	//根据二级菜单查询一级菜单
+	public List<Map> selectOneMTowModile(Integer uid);
+		
 }

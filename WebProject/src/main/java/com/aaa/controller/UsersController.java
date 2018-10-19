@@ -2,6 +2,9 @@ package com.aaa.controller;
 
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +39,21 @@ public class UsersController{
 	public String logoutUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		HttpSession session = request.getSession();
 		session.invalidate();
-		//response.sendRedirect("../BackJsp/login.jsp");
 		return "true";
 		
+	}
+	@RequestMapping("/aootUser")
+	@ResponseBody
+	public Map<String,List> alootUaer(Integer mTowId,String uname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("mTowId",mTowId);
+		m.put("uname",uname);
+		List<Users> alootTrueUser = service.alootTrueUser(m);
+		List<Users> alootFalseUser = service.alootFalseUser(m);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("alootTrueUser", alootTrueUser);
+		map.put("alootFalseUser", alootFalseUser);
+		return map;
 	}
 	
 }

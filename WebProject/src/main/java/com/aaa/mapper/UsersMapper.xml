@@ -10,9 +10,35 @@
   <sql id="Base_Column_List" >
     uid, uname, unum, upass
   </sql>
+  <!-- List<Users> alootTrueUser(Integer mTowId); -->
+  <select id="alootTrueUser" parameterType="map" resultType="com.aaa.bean.Users">
+	SELECT * from users us
+		JOIN userstowmodile uom
+		ON us.uid = uom.uid
+		WHERE uom.mTowId = #{mTowId}
+		<if test="uname != ''">
+			and us.uname like "%"#{uname}"%"
+		</if>
+  </select>
+  <!-- List<Users> alootFalseUser(Integer mTowId); -->
+  <select id="alootFalseUser" parameterType="map" resultType="com.aaa.bean.Users">
+	  	SELECT * from users us
+			where uid not in(
+				SELECT us.uid from users us
+				JOIN userstowmodile uom
+				ON us.uid = uom.uid
+				WHERE uom.mTowId = #{mTowId})
+			<if test="uname != ''">
+				and us.uname like "%"#{uname}"%"
+			</if>
+  </select>
   <!-- Users getOneUsers(Users record); -->
   <select id="getOneUsers" parameterType="com.aaa.bean.Users" resultType="com.aaa.bean.Users">
   	SELECT * FROM users u WHERE u.unum = #{unum} AND u.upass = #{upass} 
+  </select>
+  <!-- List<Users> getAlluser(); -->
+  <select id="getAlluser" resultType="com.aaa.bean.Users">
+  	SELECT * FROM users
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

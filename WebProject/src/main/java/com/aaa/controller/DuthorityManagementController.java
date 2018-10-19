@@ -35,22 +35,35 @@ public class DuthorityManagementController {
 		file.transferTo(outPath);
 		service.insertVisitonemodile(visitonemodile);
 		return "成功插入";
-
 	}
 	@RequestMapping("/insertVisittwomodile")
 	public String insertVisittwomodile(Visittwomodile visittwomodile) throws Exception {
 		service.insert(visittwomodile);
 		return "成功插入";
-		
 	}
 	@RequestMapping("/selectVisitonemodile")
-	public List<Map> selectVisitonemodile(){
+	public List<Map> selectVisitonemodile(Integer uid){
 		List<Map> selectVisitonemodile = service.selectVisitonemodile();
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/selectVisittwomodile")
-	public List<Map> selectVisittwomodile(){
+	public List<Map> selectVisittwomodile(Integer uid){
 		List<Map> selectVisitonemodile = service.selectVisittwomodile();
 		return selectVisitonemodile;
 	}
+	@RequestMapping("/selectUserTowModile")
+	public List<Map> selectUserTowModile(Integer uid) {
+		return service.selectUserTowModile(uid);
+	}
+	@RequestMapping("/selectOneMTowModile")
+	public List<Map> selectOneMTowModile(Integer uid) {
+		return service.selectOneMTowModile(uid);
+	}
+	@RequestMapping("/towModileAllocation")
+	public String towModileAllocation(Integer mTowId) {
+		System.out.println(mTowId+"-------------------------------");
+		return "true";
+	}
+
+	
 }

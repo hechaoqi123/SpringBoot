@@ -97,3 +97,60 @@ var getvt = Vue.http.get(
 	  },function(error){
 	  	alert(1111);
 	  });
+
+
+//权限分配
+
+function towModileAllocation (mTowId){
+	usersVue.mTowId = mTowId;
+	usersVue.getUsers();
+}
+$("#alootUser").click(
+	  	function alootUser(){
+			  usersVue.getUsers();
+		  }
+	  );
+var usersVue = new Vue({
+  	el:"#usersVue",
+	data:{
+		trueUsers:"",
+		falseUsers:"",
+		userstowmodiles:"",
+		mTowId:0,
+		uname:""
+	},
+	methods:{
+		getUsers:function(){
+			this.$http.post("Users/aootUser",{
+					mTowId:this.mTowId,
+					uname:this.uname
+			},{emulateJSON: true}).then(function(data) {
+			this.trueUsers = data.body.alootTrueUser;
+			this.falseUsers = data.body.alootFalseUser;
+		}, function(dataError) {
+			
+		})
+	},
+	shiftTrueUser:function(uid){
+		this.$http.post("Userstowmodile/delUserstowmodile",{
+			uid:uid,
+			mtowid:this.mTowId
+		},{emulateJSON: true}).then(function(data) {
+			this.getUsers();
+		}, function(error) {
+			
+		})
+		
+	},
+	shiftFalseUser:function(uid){
+		this.$http.post("Userstowmodile/addUserstowmodile",{
+	  				uid:uid,
+	  				mtowid:this.mTowId
+	  			},{emulateJSON: true}).then(function(data) {
+	  				this.getUsers();
+	  			}, function(error) {
+	  				
+	  			})
+	  		}
+	  	}
+	}); 

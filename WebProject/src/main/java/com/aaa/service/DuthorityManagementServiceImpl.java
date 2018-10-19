@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aaa.bean.Visitonemodile;
 import com.aaa.bean.Visittwomodile;
@@ -13,6 +14,7 @@ import com.aaa.mapper.DuthorityManagementMapper;
 public class DuthorityManagementServiceImpl implements DuthorityManagementService {
 	@Autowired
 	DuthorityManagementMapper mapper;
+	@Transactional
 	@Override
 	public void insertVisitonemodile(Visitonemodile visitonemodile) {
 		mapper.insertVisitonemodile(visitonemodile);
@@ -21,6 +23,7 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	public List<Map> selectVisitonemodile() {
 		return mapper.selectVisitonemodile();
 	}
+	@Transactional
 	@Override
 	public int insert(Visittwomodile record) {
 		return mapper.insert(record);
@@ -28,6 +31,14 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	@Override
 	public List<Map> selectVisittwomodile() {
 		return mapper.selectVisittwomodile();
+	}
+	@Override
+	public List<Map> selectUserTowModile(Integer uid) {
+		return mapper.selectUserTowModile(uid);
+	}
+	@Override
+	public List<Map> selectOneMTowModile(Integer uid) {
+		return mapper.selectOneMTowModile(uid);
 	}
 
 }

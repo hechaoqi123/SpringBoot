@@ -72,7 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			#con > div{
 				float:left;
-				border: 1px solid red;
 			}
 		</style>
 </head>
@@ -85,12 +84,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="tx" style="height:128px;border-bottom:1px solid #999">
 						   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
 						   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
-						         <img src="../assets/img/userXStatus0.png"/>${user.uname }	<br/>
+						         <img src="../assets/img/userXStatus0.png"/>${user.uname }<br/>
 						        <p style="">探索协同运营管理之道</p>
 						   </div>
 					</div>
 					<ul class="nav nav-list" id="oneModel">
+						
 						<li class="w" v-for="Visitonemodile in Visitonemodiles">
+						         <input id="uid" value="${user.uid}" style="display: none;">
 							 <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
 		                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6" v-bind:title="Visitonemodile.mdescribe">
 		                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>
@@ -106,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</li>
 					<!-- 注销登陆 -->
 						<li  class="w">
-							<a onclick='cancel("${user.uid}")' style="line-height:13px;color:#000;height:35px;font-size:13px;">
+							<a onclick='cancel()' style="line-height:13px;color:#000;height:35px;font-size:13px;">
 								<span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
 								<img src="../assets/img/exit.png" style="margin-right:10px;"/>安全注销 </span>
 							</a>
@@ -115,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div style="width: 82%;">
-		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="1" scrolling="no" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
+		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="0" scrolling="auto" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
 			</div>
 		</div>
   </body>
@@ -125,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 <script type="text/javascript">
-	 function cancel (uid){
+	 function cancel (){
 	   if(confirm("是否退出？")){
 	   		 $.ajax({
 	   		 	url:"../Users/logoutUser.action",
@@ -164,15 +165,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      $(this).css("background","#08465B")
 	     $(this).parent().css("background","")
 	})
+	var uid = $("#uid").val();
 	var myTbody = new Vue({
 		el:"#oneModel",
 		data:{
+			uid:uid,
 			Visitonemodiles:"",
 			Visittwomodiles:""
 		}
 	});
 	var getvo = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisitonemodile"
+	  	"/DuthorityManagementController/selectOneMTowModile",{
+	  	params:{
+	  		uid:myTbody.uid
+	  	}}
 	  ).then(function(data){
 		  myTbody.Visitonemodiles=data.body;
 		  return data.body;
@@ -180,7 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	alert(1111);
 	  });
 	var getvt = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisittwomodile"
+	  	"/DuthorityManagementController/selectUserTowModile",{
+	  	params:{
+	  		uid:myTbody.uid
+	  	}}
 	  ).then(function(data){
 		  myTbody.Visittwomodiles=data.body;
 		  return data.body;
@@ -188,5 +197,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	alert(1111);
 	  });
   </script>
-  
+
 </html>

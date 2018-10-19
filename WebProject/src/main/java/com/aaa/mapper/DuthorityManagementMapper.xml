@@ -18,6 +18,24 @@
 	<select id="selectVisittwomodile" resultType="java.util.Map">
 		SELECT * FROM visittwomodile
 	</select>
+	<!-- //根据用户查询二级菜单
+	public List<Map> selectUserTowModile(Integer uid); -->
+	<select id="selectUserTowModile" parameterType="integer" resultType="java.util.Map">
+		SELECT * from visittwomodile vtm 
+			JOIN userstowmodile uw 
+			ON uw.mTowId = vtm.mTowId
+			WHERE uw.uid = #{uid}
+	</select>
+	<!-- //根据二级菜单查询一级菜单
+	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
+	<select id="selectOneMTowModile" parameterType="integer" resultType="java.util.Map">
+		SELECT * from visitonemodile vom 
+			JOIN visittwomodile vtm
+			ON vom.moneId = vtm.mTowId
+			JOIN userstowmodile uw 
+			ON uw.mTowId = vtm.mTowId
+			WHERE uw.uid = #{uid}
+	</select>
 </mapper>
 
 

@@ -109,9 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<span>{{Visittwomodile.mTowId}}</span>
 											<span>{{Visittwomodile.mname}}</span>
 											<span>{{Visittwomodile.mdescribe}}</span>
-											<span style="margin: 10;">{{Visittwomodile.msequnce}}</span>
-											<span style="margin: 10;">{{Visittwomodile.murl}}</span>
-											<span style="margin: 0;">{{Visittwomodile.mname}}</span>
+											<span style="margin:0 10;">{{Visittwomodile.msequnce}}</span>
+											<span style="margin:0 10;">{{Visittwomodile.murl}}</span>
+											<span style="margin: 0 20;" @click="towModileAllocation(Visittwomodile.mTowId)" data-toggle="modal" data-target="#myModal">
+												<img src="../assets/img/user_add.png"height="25px">
+											</span>
 										</a>
 									</li>
 								</ul>
@@ -124,8 +126,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 
-
-				
+<!-- 权限分配模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="usersVue">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模块分配
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="userSeek">
+					<div class="input-group">
+					<input type="text" class="form-control" v-model="uname">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" @click="getUsers">
+							Go!
+						</button>
+					</span>
+					</div><!-- /input-group -->
+				</div>
+				<div class="alootDiv">
+					<div class="alootTrue">
+						<div class="alootTrueUser" v-for="trueUser in trueUsers" @click="shiftTrueUser(trueUser.uid)">{{trueUser.uname}}</div>
+					</div>
+					<div class="alootFalse">
+						<div class="alootFalseUser" v-for="falseUser in falseUsers"  @click="shiftFalseUser(falseUser.uid)">{{falseUser.uname}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div>
+</div><!-- /.modal -->		
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModalOne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
