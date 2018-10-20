@@ -23,11 +23,10 @@ public class UsersServiceImpl implements UsersService{
 	}
 	@Override
 	public List<Users> getAlluser() {
-		return mapper.getAlluser();
+		return mapper.selectAll();
 	}
 	@Override
 	public List<Users> alootTrueUser(Map map) {
-		// TODO Auto-generated method stub
 		return mapper.alootTrueUser(map);
 	}
 	@Override

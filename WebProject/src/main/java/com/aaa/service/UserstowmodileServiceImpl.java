@@ -31,7 +31,7 @@ public class UserstowmodileServiceImpl implements UserstowmodileService {
 
 	@Override
 	public int delUserstowmodile(Userstowmodile record) {
-		return mapper.delUserstowmodile(record);
+		return mapper.delete(record);
 	}
 
 }

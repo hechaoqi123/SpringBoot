@@ -2,20 +2,12 @@ package com.aaa.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.aaa.bean.Groupcompany;
 
-public interface GroupcompanyMapper {
-    int deleteByPrimaryKey(Integer gcid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Groupcompany record);
+public interface GroupcompanyMapper extends Mapper<Groupcompany>{
 
-    int insertSelective(Groupcompany record);
-
-    Groupcompany selectByPrimaryKey(Integer gcid);
-
-    int updateByPrimaryKeySelective(Groupcompany record);
-
-    int updateByPrimaryKey(Groupcompany record);
-    
-    public List<Groupcompany> getAllGroupcompany();
 }

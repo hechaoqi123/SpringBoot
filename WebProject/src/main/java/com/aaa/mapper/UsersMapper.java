@@ -5,22 +5,12 @@ import java.util.Map;
 
 import com.aaa.bean.Users;
 
-public interface UsersMapper {
-    int deleteByPrimaryKey(Integer uid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Users record);
-
-    int insertSelective(Users record);
-
-    Users selectByPrimaryKey(Integer uid);
-
-    int updateByPrimaryKeySelective(Users record);
-
-    int updateByPrimaryKey(Users record);
+public interface UsersMapper extends Mapper<Users> {
     
     Users getOneUsers(Users record);
     
-    List<Users> getAlluser();
     //查询有访问权限的用户
     List<Users> alootTrueUser(Map map);
     //查询没有访问权限的用户

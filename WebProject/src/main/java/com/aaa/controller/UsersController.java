@@ -28,7 +28,7 @@ public class UsersController{
 		Users oneUsers = service.getOneUsers(users);
 		System.out.println(oneUsers);
 		if(oneUsers != null){
-			request.getSession().setAttribute("user", oneUsers);
+			request.getSession().setAttribute("CurrentUser", oneUsers);
 			return "index";
 		}else{
 			return "../BackJsp/login";

@@ -5,12 +5,9 @@ import java.util.List;
 import com.aaa.bean.Users;
 import com.aaa.bean.Userstowmodile;
 
-public interface UserstowmodileMapper {
-    int insert(Userstowmodile record);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insertSelective(Userstowmodile record);
-    
-    int delUserstowmodile(Userstowmodile record);
+public interface UserstowmodileMapper extends Mapper<Userstowmodile>{
     
     List<Users> getTwoUsers(Integer mTowId);
 }

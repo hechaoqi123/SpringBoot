@@ -12,6 +12,6 @@ public class GroupcompanyServiceImpl implements GroupcompanyService {
 	@Autowired
 	GroupcompanyMapper mapper;
     public List<Groupcompany> getAllGroupcompany(){
-		return mapper.getAllGroupcompany();
+		return mapper.selectAll();
 	};
 }

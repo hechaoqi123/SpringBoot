@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.bean.Userdetail;
+import com.aaa.bean.Users;
 import com.aaa.service.UserdetailService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,8 +25,8 @@ public class UserdetailController {
 	UserdetailService service;
 	@RequestMapping("/getUserdetail")
    public String selectById(HttpSession session,Model model){
-			Integer id=1;
-			Userdetail user=service.getOne(id);
+		    Users se=(Users) session.getAttribute("CurrentUser");
+			Userdetail user=service.getOne(se.getUid());
 			model.addAttribute("user",user);
 	    return "hcq/MyInfo";
    }

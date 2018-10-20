@@ -84,14 +84,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="tx" style="height:128px;border-bottom:1px solid #999">
 						   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
 						   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
-						         <img src="../assets/img/userXStatus0.png"/>${user.uname }<br/>
+						         <img src="../assets/img/userXStatus0.png"/>${CurrentUser.uname }<br/>
 						        <p style="">探索协同运营管理之道</p>
 						   </div>
 					</div>
 					<ul class="nav nav-list" id="oneModel">
 						
 						<li class="w" v-for="Visitonemodile in Visitonemodiles">
-						         <input id="uid" value="${user.uid}" style="display: none;">
+						         <input id="uid" value="${CurrentUser.uid}" style="display: none;">
 							 <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
 		                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6" v-bind:title="Visitonemodile.mdescribe">
 		                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>

@@ -13,7 +13,7 @@ public class SubcompanyServiceImpl implements SubcompanyService {
 	@Autowired
 	SubcompanyMapper mapper;
     public List<Subcompany> getAllSubcompany(){
-		return mapper.getAllSubcompany();
+		return mapper.selectAll();
 	}
     @Transactional
 	@Override

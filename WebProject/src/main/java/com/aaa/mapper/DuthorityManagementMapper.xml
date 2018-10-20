@@ -9,11 +9,6 @@
 	<select id="selectVisitonemodile" resultType="java.util.Map">
 		SELECT * FROM visitonemodile
 	</select>
-	<!-- public int insert(Visittwomodile record); -->
-	<insert id="insert" parameterType="com.aaa.bean.Visittwomodile">
-	    insert into visittwomodile (mTowId, mname, murl, mdescribe, msequnce, mOneId)
-	    values (#{mtowid}, #{mname}, #{murl}, #{mdescribe}, #{msequnce}, #{moneid})
-  </insert>
 	<!-- public void swlwctVisitteomodile(); -->
 	<select id="selectVisittwomodile" resultType="java.util.Map">
 		SELECT * FROM visittwomodile
@@ -29,12 +24,11 @@
 	<!-- //根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
 	<select id="selectOneMTowModile" parameterType="integer" resultType="java.util.Map">
-		SELECT * from visitonemodile vom 
-			JOIN visittwomodile vtm
-			ON vom.moneId = vtm.mTowId
+		select * from visitonemodile where mOneId in (	SELECT mOneId from  visittwomodile vtm
 			JOIN userstowmodile uw 
 			ON uw.mTowId = vtm.mTowId
 			WHERE uw.uid = #{uid}
+)
 	</select>
 </mapper>
 

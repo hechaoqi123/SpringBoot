@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.DeptMapper" >
-
-  <select id="getAll" resultType="Dept">
-    select * from dept
-  </select>
-
   <resultMap id="BaseResultMap" type="com.aaa.bean.Dept" >
     <id column="deptId" property="deptid" jdbcType="INTEGER" />
     <result column="deptName" property="deptname" jdbcType="VARCHAR" />
@@ -17,6 +12,10 @@
   <sql id="Base_Column_List" >
     deptId, deptName, deptDepict, deptJobDescription, deptState, belong
   </sql>
+  <!--   public List<Dept> getAllDept(); -->
+  <select id="getAllDept" resultType="com.aaa.bean.Dept">
+  		select * from Dept
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
