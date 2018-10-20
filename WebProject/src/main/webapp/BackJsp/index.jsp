@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>假装有标题</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="0" scrolling="auto" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
 			</div>
 		</div>
-  </body>
+ </body>
 <script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 <script src="<%=basePath%>assets/js/ace-elements.min.js"></script>
 <script src="<%=basePath%>assets/js/ace.min.js"></script>

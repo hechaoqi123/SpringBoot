@@ -5,19 +5,8 @@ import java.util.List;
 import com.aaa.bean.Dept;
 import com.aaa.bean.Groupcompany;
 
-public interface DeptMapper {
-    int deleteByPrimaryKey(Integer deptid);
 
-    int insert(Dept record);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insertSelective(Dept record);
-
-    Dept selectByPrimaryKey(Integer deptid);
-
-    int updateByPrimaryKeySelective(Dept record);
-
-    int updateByPrimaryKey(Dept record);
-    
-    public List<Dept> getAllDept();
-    
+public interface DeptMapper extends Mapper<Dept>{
 }

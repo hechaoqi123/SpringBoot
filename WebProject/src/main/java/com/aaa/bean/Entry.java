@@ -2,36 +2,39 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Entry implements Serializable {
+	@Id
     private Integer enntryid;
 
-    private String dutypeople;
+    private String dutypeople;//责任人
 
-    private String entryname;
+    private String entryname;//入职人
 
-    private String entrydate;
+    private String entrydate;//入职日期
 
-    private String entrydepartment;
+    private String entrydepartment;//入职部门
 
-    private String entrypost;
+    private String entrypost;//入职岗位
 
-    private String brthdate;
+    private String brthdate;//出生日期
 
-    private String sex;
+    private String sex;//性别
 
-    private String school;
+    private String school;//毕业院校
 
-    private String major;
+    private String major;//专业
 
-    private String education;
+    private String education;//学历
 
-    private String yearwork;
+    private String yearwork;//工作年限
 
-    private String message;
+    private String message;//备注
 
-    private String status;
+    private String status;//状态
 
-    private String theme;
+    private String theme;//主题
 
     private static final long serialVersionUID = 1L;
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.UserdetailMapper" >
-
-   <select id="getAll" resultType="Userdetail">
+  <cache type="com.aaa.redis.MybatisRedisCache"/>
+  <select id="getAll" resultType="Userdetail">
       select * from userdetail
    </select>
-
+   <select id="queryByCriteria" parameterType="String" resultType="Userdetail">
+      select * from userdetail where status=#{status}
+   </select>
   <resultMap id="BaseResultMap" type="com.aaa.bean.Userdetail" >
     <id column="detailId" property="detailid" jdbcType="INTEGER" />
     <result column="UserSex" property="usersex" jdbcType="VARCHAR" />

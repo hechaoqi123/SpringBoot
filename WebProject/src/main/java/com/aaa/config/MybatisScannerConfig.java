@@ -1,5 +1,6 @@
 package com.aaa.config;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ public class MybatisScannerConfig {
 	public MapperScannerConfigurer mapperScannerConfigurer() {		
 		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 		mapperScannerConfigurer.setBasePackage("com.aaa.mapper");		
+		mapperScannerConfigurer.setMarkerInterface(Mapper.class);
 		return mapperScannerConfigurer;	
 		}
 }

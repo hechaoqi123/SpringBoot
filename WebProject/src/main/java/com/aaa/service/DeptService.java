@@ -8,4 +8,6 @@ public interface DeptService {
     public List<Dept> getAllDept();
     
     int insert(Dept record);
+    
+    List<Dept> getAll();
 }

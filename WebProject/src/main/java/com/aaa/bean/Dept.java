@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Dept implements Serializable {
+	@Id
     private Integer deptid;
 
     private String deptname;
@@ -64,12 +67,4 @@ public class Dept implements Serializable {
     public void setBelong(Integer belong) {
         this.belong = belong;
     }
-
-	@Override
-	public String toString() {
-		return "Dept [deptid=" + deptid + ", deptname=" + deptname + ", deptdepict=" + deptdepict
-				+ ", deptjobdescription=" + deptjobdescription + ", deptstate=" + deptstate + ", belong=" + belong
-				+ "]";
-	}
-    
 }
