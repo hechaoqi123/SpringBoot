@@ -2,42 +2,45 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+//招聘申请
 public class Recruit implements Serializable {
+	@Id
     private Integer recruitid;
 
-    private String principal;
+    private String principal;//责任人
 
-    private String enddate;
+    private String enddate;//到岗日期
 
-    private String department;
+    private String department;//部门
 
-    private String post;
+    private String post;//职位
 
-    private String peoplenumber;
+    private String peoplenumber;//人数
 
-    private String cause;
+    private String cause;//招聘原因
 
-    private String obligation;
+    private String obligation;//职务
 
-    private String language;
+    private String language;//语言要求
 
-    private String workspace;
+    private String workspace;//工作地点
 
-    private String age;
+    private String age;//年龄
 
-    private String sex;
+    private String sex;//性别
 
-    private String education;
+    private String education;//学历
 
-    private String major;
+    private String major;//专业
 
-    private String experience;
+    private String experience;//工作经验
 
-    private String other;
+    private String other;//其他要求
 
-    private String status;
+    private String status;//申请单状态
 
-    private String theme;
+    private String theme;//主题
 
     private static final long serialVersionUID = 1L;
 

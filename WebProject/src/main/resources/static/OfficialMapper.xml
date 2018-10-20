@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.OfficialMapper" >
+
+   <select id="getAll" resultType="Official">
+      select * from official
+   </select>
+
   <resultMap id="BaseResultMap" type="com.aaa.bean.Official" >
     <id column="officialId" property="officialid" jdbcType="INTEGER" />
     <result column="theme" property="theme" jdbcType="VARCHAR" />
     <result column="dutyPeople" property="dutypeople" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="proposer" property="proposer" jdbcType="VARCHAR" />
     <result column="filingDate" property="filingdate" jdbcType="VARCHAR" />
     <result column="department" property="department" jdbcType="VARCHAR" />
@@ -18,7 +24,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     officialId, theme, dutyPeople, proposer, filingDate, department, post, entryDate, 
-    officialDate, workContent, workgrade, issue, superiorremark
+    officialDate, workContent, workgrade, issue, superiorremark,status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,12 +41,12 @@
       proposer, filingDate, department, 
       post, entryDate, officialDate, 
       workContent, workgrade, issue, 
-      superiorremark)
+      superiorremark,status)
     values (#{officialid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{dutypeople,jdbcType=VARCHAR}, 
       #{proposer,jdbcType=VARCHAR}, #{filingdate,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
       #{post,jdbcType=VARCHAR}, #{entrydate,jdbcType=VARCHAR}, #{officialdate,jdbcType=VARCHAR}, 
       #{workcontent,jdbcType=VARCHAR}, #{workgrade,jdbcType=VARCHAR}, #{issue,jdbcType=VARCHAR}, 
-      #{superiorremark,jdbcType=VARCHAR})
+      #{superiorremark,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aaa.bean.Official" >
     insert into official

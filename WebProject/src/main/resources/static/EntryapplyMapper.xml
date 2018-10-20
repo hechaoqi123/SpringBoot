@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.EntryapplyMapper" >
+
+   <select id="getAll" resultType="Entryapply">
+      select * from entryapply
+   </select>
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Entryapply" >
+    <id column="applyID" property="applyid" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="dutyPeople" property="dutypeople" jdbcType="VARCHAR" />
+    <result column="applyPeople" property="applypeople" jdbcType="VARCHAR" />
+    <result column="endDate" property="enddate" jdbcType="VARCHAR" />
+    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
+    <result column="entryPart" property="entrypart" jdbcType="VARCHAR" />
+    <result column="entryPost" property="entrypost" jdbcType="VARCHAR" />
+    <result column="birthDate" property="birthdate" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="background" property="background" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="workAge" property="workage" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    applyID, theme, status, dutyPeople, applyPeople, endDate, entryDate, entryPart, entryPost, 
+    birthDate, sex, school, background, major, workAge, remark, field1, field2, field3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from entryapply
+    where applyID = #{applyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from entryapply
+    where applyID = #{applyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Entryapply" >
+    insert into entryapply (applyID, theme, status, 
+      dutyPeople, applyPeople, endDate, 
+      entryDate, entryPart, entryPost, 
+      birthDate, sex, school, 
+      background, major, workAge, 
+      remark, field1, field2, 
+      field3)
+    values (#{applyid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{dutypeople,jdbcType=VARCHAR}, #{applypeople,jdbcType=VARCHAR}, #{enddate,jdbcType=VARCHAR}, 
+      #{entrydate,jdbcType=VARCHAR}, #{entrypart,jdbcType=VARCHAR}, #{entrypost,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{background,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{workage,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
+      #{field3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Entryapply" >
+    insert into entryapply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyid != null" >
+        applyID,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople,
+      </if>
+      <if test="applypeople != null" >
+        applyPeople,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="entrydate != null" >
+        entryDate,
+      </if>
+      <if test="entrypart != null" >
+        entryPart,
+      </if>
+      <if test="entrypost != null" >
+        entryPost,
+      </if>
+      <if test="birthdate != null" >
+        birthDate,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="background != null" >
+        background,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="workage != null" >
+        workAge,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="field1 != null" >
+        field1,
+      </if>
+      <if test="field2 != null" >
+        field2,
+      </if>
+      <if test="field3 != null" >
+        field3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyid != null" >
+        #{applyid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="entrypart != null" >
+        #{entrypart,jdbcType=VARCHAR},
+      </if>
+      <if test="entrypost != null" >
+        #{entrypost,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null" >
+        #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="workage != null" >
+        #{workage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        #{field3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Entryapply" >
+    update entryapply
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        applyPeople = #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        entryDate = #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="entrypart != null" >
+        entryPart = #{entrypart,jdbcType=VARCHAR},
+      </if>
+      <if test="entrypost != null" >
+        entryPost = #{entrypost,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthDate = #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null" >
+        background = #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="workage != null" >
+        workAge = #{workage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where applyID = #{applyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Entryapply" >
+    update entryapply
+    set theme = #{theme,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      applyPeople = #{applypeople,jdbcType=VARCHAR},
+      endDate = #{enddate,jdbcType=VARCHAR},
+      entryDate = #{entrydate,jdbcType=VARCHAR},
+      entryPart = #{entrypart,jdbcType=VARCHAR},
+      entryPost = #{entrypost,jdbcType=VARCHAR},
+      birthDate = #{birthdate,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      background = #{background,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      workAge = #{workage,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR}
+    where applyID = #{applyid,jdbcType=INTEGER}
+  </update>
+</mapper>

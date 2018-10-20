@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.transferMapper" >
+ 
+  <select id="getAll" resultType="transfer">
+     select * from transfer
+  </select>
+  <resultMap id="BaseResultMap" type="com.aaa.bean.transfer" >
+    <id column="transferId" property="transferid" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="dutyPeople" property="dutypeople" jdbcType="VARCHAR" />
+    <result column="applyPeople" property="applypeople" jdbcType="VARCHAR" />
+    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
+    <result column="oldPart" property="oldpart" jdbcType="VARCHAR" />
+    <result column="newPart" property="newpart" jdbcType="VARCHAR" />
+    <result column="oldpost" property="oldpost" jdbcType="VARCHAR" />
+    <result column="newpost" property="newpost" jdbcType="VARCHAR" />
+    <result column="cause" property="cause" jdbcType="VARCHAR" />
+    <result column="genre" property="genre" jdbcType="VARCHAR" />
+    <result column="oldsuperiorRemark" property="oldsuperiorremark" jdbcType="VARCHAR" />
+    <result column="newsuperiorRemark" property="newsuperiorremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    transferId, theme, status, dutyPeople, applyPeople, entryDate, oldPart, newPart, 
+    oldpost, newpost, cause, genre, oldsuperiorRemark, newsuperiorRemark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from transfer
+    where transferId = #{transferid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from transfer
+    where transferId = #{transferid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.transfer" >
+    insert into transfer (transferId, theme, status, 
+      dutyPeople, applyPeople, entryDate, 
+      oldPart, newPart, oldpost, 
+      newpost, cause, genre, 
+      oldsuperiorRemark, newsuperiorRemark)
+    values (#{transferid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{dutypeople,jdbcType=VARCHAR}, #{applypeople,jdbcType=VARCHAR}, #{entrydate,jdbcType=VARCHAR}, 
+      #{oldpart,jdbcType=VARCHAR}, #{newpart,jdbcType=VARCHAR}, #{oldpost,jdbcType=VARCHAR}, 
+      #{newpost,jdbcType=VARCHAR}, #{cause,jdbcType=VARCHAR}, #{genre,jdbcType=VARCHAR}, 
+      #{oldsuperiorremark,jdbcType=VARCHAR}, #{newsuperiorremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.transfer" >
+    insert into transfer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="transferid != null" >
+        transferId,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople,
+      </if>
+      <if test="applypeople != null" >
+        applyPeople,
+      </if>
+      <if test="entrydate != null" >
+        entryDate,
+      </if>
+      <if test="oldpart != null" >
+        oldPart,
+      </if>
+      <if test="newpart != null" >
+        newPart,
+      </if>
+      <if test="oldpost != null" >
+        oldpost,
+      </if>
+      <if test="newpost != null" >
+        newpost,
+      </if>
+      <if test="cause != null" >
+        cause,
+      </if>
+      <if test="genre != null" >
+        genre,
+      </if>
+      <if test="oldsuperiorremark != null" >
+        oldsuperiorRemark,
+      </if>
+      <if test="newsuperiorremark != null" >
+        newsuperiorRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="transferid != null" >
+        #{transferid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpart != null" >
+        #{oldpart,jdbcType=VARCHAR},
+      </if>
+      <if test="newpart != null" >
+        #{newpart,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpost != null" >
+        #{oldpost,jdbcType=VARCHAR},
+      </if>
+      <if test="newpost != null" >
+        #{newpost,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="genre != null" >
+        #{genre,jdbcType=VARCHAR},
+      </if>
+      <if test="oldsuperiorremark != null" >
+        #{oldsuperiorremark,jdbcType=VARCHAR},
+      </if>
+      <if test="newsuperiorremark != null" >
+        #{newsuperiorremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.transfer" >
+    update transfer
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        applyPeople = #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        entryDate = #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpart != null" >
+        oldPart = #{oldpart,jdbcType=VARCHAR},
+      </if>
+      <if test="newpart != null" >
+        newPart = #{newpart,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpost != null" >
+        oldpost = #{oldpost,jdbcType=VARCHAR},
+      </if>
+      <if test="newpost != null" >
+        newpost = #{newpost,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null" >
+        cause = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="genre != null" >
+        genre = #{genre,jdbcType=VARCHAR},
+      </if>
+      <if test="oldsuperiorremark != null" >
+        oldsuperiorRemark = #{oldsuperiorremark,jdbcType=VARCHAR},
+      </if>
+      <if test="newsuperiorremark != null" >
+        newsuperiorRemark = #{newsuperiorremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where transferId = #{transferid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.transfer" >
+    update transfer
+    set theme = #{theme,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      applyPeople = #{applypeople,jdbcType=VARCHAR},
+      entryDate = #{entrydate,jdbcType=VARCHAR},
+      oldPart = #{oldpart,jdbcType=VARCHAR},
+      newPart = #{newpart,jdbcType=VARCHAR},
+      oldpost = #{oldpost,jdbcType=VARCHAR},
+      newpost = #{newpost,jdbcType=VARCHAR},
+      cause = #{cause,jdbcType=VARCHAR},
+      genre = #{genre,jdbcType=VARCHAR},
+      oldsuperiorRemark = #{oldsuperiorremark,jdbcType=VARCHAR},
+      newsuperiorRemark = #{newsuperiorremark,jdbcType=VARCHAR}
+    where transferId = #{transferid,jdbcType=INTEGER}
+  </update>
+</mapper>

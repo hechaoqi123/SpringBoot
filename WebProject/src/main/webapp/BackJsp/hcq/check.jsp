@@ -26,122 +26,92 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        }
     </style>
   </head>
-  <body style="padding-top:15px;padding-left:30px;">
- <TABLE border="0" cellspacing="0" cellpadding="0">
+  <body style="position:relative;padding-top:15px;padding-left:30px;">
+ <TABLE  border="0" cellspacing="0" cellpadding="0">
+ 
         <TBODY>
         <TR>
           <TD>
-            <H1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">考勤管理</span></H1></TD>
+            <H1><img src="BackJsp/hcq/img/log.png"/><span style="margin-left:7px;">考勤管理</span></H1>
+          <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>考勤记录</button>
+           </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
-      <DIV id="colloaMenu2"><A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703210"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A><A class="textHighlight" 
-      href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703220"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 外出申请</A><A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703230"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A><A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703240"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A><A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703250"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 调休申请</A><A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=705100"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 外勤定位</A></DIV>
+      <DIV id="colloaMenu2">
+      <A href="BackJsp/hcq/check.jsp" class="textHighlight"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 考勤记录</A>
+      <A href="BackJsp/hcq/checking.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
+      <A href="BackJsp/hcq/overtime.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
+      <A href="BackJsp/hcq/leave.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 调休申请</A>
+      <A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703210"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
+      <A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703210"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 调休资源查询</A></DIV>
       <DIV id="colloaContent2">
 <SCRIPT language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=703220&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==110) workflowListOne("workflow.aspx","招聘申请*",703110,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==120) workflowListOne("workflow.aspx","入职申请*",703120,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==150) workflowListOne("workflow.aspx","转正申请*",703150,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==170) workflowListOne("workflow.aspx","岗位调动申请*",703170,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==190) workflowListOne("workflow.aspx","离职申请*",703190,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==210) workflowListOne("workflow.aspx","出差申请*",703210,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==210) workflowListOne("finder.aspx","查找",703215,"<i class='fa fa-search fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==220) workflowListOne("workflow.aspx","外出申请*",703220,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==220) workflowListOne("finder.aspx","查找",703225,"<i class='fa fa-search fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==230) workflowListOne("workflow.aspx","加班申请*",703230,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==230) workflowListOne("finder.aspx","查找",703235,"<i class='fa fa-search fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==240) workflowListOne("workflow.aspx","请休假申请*",703240,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==240) workflowListOne("finder.aspx","查找",703245,"<i class='fa fa-search fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==250) workflowListOne("workflow.aspx","调休申请*",703250,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==250) workflowListOne("finder.aspx","查找",703255,"<i class='fa fa-search fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==510) workflowListOne("workflow.aspx","劳动合同登记*",703510,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==520) workflowListOne("workflow.aspx","员工培训安排*",703520,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==540) workflowListOne("workflow.aspx","员工生日关怀*",703540,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==550) workflowListOne("workflow.aspx","员工专项福利*",703550,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==650) workflowListOne("workflow.aspx","月度绩效考核单*",703650,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==660) workflowListOne("workflow.aspx","季度绩效考核单*",703660,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==670) workflowListOne("workflow.aspx","年度绩效考核单*",703670,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);if(stype==690) workflowListOne("workflow.aspx","奖励和处罚申请*",703690,"<i class='fa fa-plus fa-lg'></i>",703220,sObjects,bPortal,bSelf);}</SCRIPT>
 
 <SCRIPT language="javaScript">workflowList(220);</SCRIPT>
-       
-      <TABLE class="tableList" border="0" cellspacing="0" cellpadding="0">
+       <span id="app">
+      <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">
         <THEAD>
         <TR>
-          <TH>主题</TH>
-          <TH>申请人</TH>
-          <TH>所属部门</TH>
-          <TH>外出地点</TH>
-          <TH>时间段</TH></TR></THEAD>
+          <TH width="400px">主题</TH>
+          <TH>部门</TH>
+          <TH>上传人</TH>
+          <TH>附件</TH>
+          <TH>上传时间</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
-        <TR>
+        <TR v-for="apply in applys">
           <TD><A href="javascript:showItem('事务','1000539');">
-                 <img width="18" src="BackJsp/hcq/img/ico1.png"/> 外出申请-季道晓-1000539 </A></TD>
-          <TD>季道晓&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>广州天河万科地产</TD>
-          <TD>2016/4/19 ~ 2016/4/20</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000529');">
-            <img width="18" src="BackJsp/hcq/img/ico2.png"/>  外出申请-沈涛辉-1000529</A></TD>
-          <TD>沈涛辉&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>南京中山陵</TD>
-          <TD>2016/4/18 8:30 ~ 2016/4/18 11:30</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000536');">
-             <img width="18" src="BackJsp/hcq/img/ico1.png"/>外出申请-季道晓-1000536 </A></TD>
-          <TD>季道晓&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>北京朝阳区盘曦科技</TD>
-          <TD>2016/4/14 8:00 ~ 2016/4/14 15:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000196');">
-          <img width="18" src="BackJsp/hcq/img/ico2.png"/>外出申请-何以书-1000196 </A></TD>
-          <TD>何以书&nbsp;</TD>
-          <TD>采购部&nbsp;</TD>
-          <TD>北京朝阳五金市场</TD>
-          <TD>2016/4/14 8:00 ~ 2016/4/14 12:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000555');">
-                      <img width="18" src="BackJsp/hcq/img/ico2.png"/>外出申请-徐超-1000555 </A></TD>
-          <TD>徐超&nbsp;</TD>
-          <TD>网络部&nbsp;</TD>
-          <TD>北京中关村电脑城</TD>
-          <TD>2016/4/13 14:00 ~ 2016/4/13 18:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000553');">
-                   <img width="18" src="BackJsp/hcq/img/ico1.png"/> 外出申请-赵玉龙-1000553 </A></TD>
-          <TD>赵玉龙&nbsp;</TD>
-          <TD>生产部&nbsp;</TD>
-          <TD>北京五环零售市场</TD>
-          <TD>2016/4/13 8:00 ~ 2016/4/13 10:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000421');"> 
-          <img width="18" src="BackJsp/hcq/img/ico1.png"/>外出申请-王萍-1000421 </A></TD>
-          <TD>王萍&nbsp;</TD>
-          <TD>人事部&nbsp;</TD>
-          <TD>南京新街口</TD>
-          <TD>2016/4/12 8:30 ~ 2016/4/12 17:30</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000197');">
-             <SPAN style="color: rgb(204, 0, 0);">
-             <img width="18" src="BackJsp/hcq/img/ico1.png"/>外出申请-姜大声-1000197</SPAN></A></TD>
-          <TD>姜大声&nbsp;</TD>
-          <TD>技术部&nbsp;</TD>
-          <TD>北京上地创业科技园</TD>
-          <TD>2016/4/11 8:00 ~ 2016/4/11 18:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000511');"> 
-                    <img width="18" src="BackJsp/hcq/img/ico2.png"/>外出申请-沈华-1000511</A></TD>
-          <TD>沈华&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>南京万达</TD>
-          <TD>2016/4/8 9:00 ~ 2016/4/8 15:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000189');">
-             <SPAN 
-            style="color: rgb(204, 0, 0);">
-            <img width="18" src="BackJsp/hcq/img/ico1.png"/>外出申请-李萌-1000189</SPAN> </A></TD>
-          <TD>李萌&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>北京朝阳区金轮大厦</TD>
-          <TD>2016/4/7 9:00 ~ 2016/4/7 11:00</TD></TR>
-        <TR>
-          <TD><A href="javascript:showItem('事务','1000510');">
-                    <img width="18" src="BackJsp/hcq/img/ico2.png"/>外出申请-李萌-1000510 </A></TD>
-          <TD>李萌&nbsp;</TD>
-          <TD>销售部&nbsp;</TD>
-          <TD>南京浦口区</TD>
-          <TD>2016/4/7 8:00 ~ 2016/4/7 15:00</TD></TR></TBODY></TABLE>
-<SCRIPT language="javaScript">cataloguePages(11,20);</SCRIPT>
-      </DIV></TD></TR></TBODY></TABLE>
-<SCRIPT language="javaScript">
-  treeBuild("treeOfMenu", location.href.substring(location.href.indexOf("sid=")+4,location.href.indexOf("&name=")), true);
-  var aH1=document.getElementsByTagName("H1"); if(aH1.length>0) aH1[0].innerHTML="<img style='cursor:pointer;' src='../images/menu.png' onclick=\"var cm=document.getElementById('colloaMenu'); if(cm.style.display=='none') cm.style.display='inline'; else cm.style.display='none';\"> "+aH1[0].innerHTML;
-  //var colloaInterval=setInterval("if(ajax('command.aspx?notify.count&uid=1000071')!='0'){var v=document.getElementById('treeOfMenu').firstChild;if(v.getAttribute('sid')=='100000') v.innerHTML+=' <img src=../images/dotNotify.gif border=0>';clearInterval(colloaInterval);}", 11000);
-</SCRIPT>
+                 <img v-if="apply.status=='结束'" width="18" src="BackJsp/hcq/img/ico2.png"/>
+                 <img v-else width="18" src="BackJsp/hcq/img/ico1.png"/>
+             {{apply.theme}}</A></TD>
+          <TD>{{apply.dept}}&nbsp;</TD>
+          <TD>{{apply.username}}&nbsp;</TD>
+          <TD><a :href="'Checking/down/'+apply.checkingid"><img src="BackJsp/hcq/img/uploadico2.png" width="19" :title="apply.duration"/></a></TD>
+          <TD>{{apply.checkingdate}}</TD>
+         </TR>
+</TBODY></TABLE>
+<br/><span style="margin-left:100px">
+ <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
+</span>
+</span>
+</DIV></TD></TR></TBODY>
+</TABLE>
+<!-- 分页 -->
 </BODY></HTML>
-
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script>
+     $(function(){
+     $("#save").click(function(){
+        window.location.href="BackJsp/hcq/SaveRecord.jsp"
+     })
+       var load=new Vue({
+            el:'#app',
+            data:{
+               applys:null,
+               pageInfo:null
+            },methods:{
+               execute:function(pageNum){
+                 var url="/Checking/getAll";
+                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
+                     this.applys=res.body.list
+                     this.pageInfo=res.body
+                 })
+               }
+            }
+       })
+     load.execute(1);
+     $(".btn").each(function(){
+        $(this).hover(function(){
+          $(this).css("border","1px solid #5ea6eb")
+        },function(){
+          $(this).css("border","1px solid #E0E0E0")
+        })
+     })
+  })
+</script>

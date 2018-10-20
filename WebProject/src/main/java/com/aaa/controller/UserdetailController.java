@@ -24,17 +24,52 @@ public class UserdetailController {
 	UserdetailService service;
 	@RequestMapping("/getUserdetail")
    public String selectById(HttpSession session,Model model){
-		Integer id=1;//此处应该从session中获取
-		Userdetail user=service.getOne(1);
-		model.addAttribute("user",user);
+			Integer id=1;
+			Userdetail user=service.getOne(id);
+			model.addAttribute("user",user);
 	    return "hcq/MyInfo";
    }
+    @RequestMapping("/getDetailInfo")
+    public String selectUserInfo(Integer id,Model model){
+    	
+    	Userdetail user=service.getOne(id);
+		model.addAttribute("user",user);
+    	return "hcq/DetailInfo";
+    }
+	//分页查询
 	@RequestMapping("/getAllUserdetail")
 	@ResponseBody
    public PageInfo<Userdetail> getAll(Integer pageNum){
-	   PageHelper.startPage(pageNum, 6);
+	   PageHelper.startPage(pageNum,13);
 	   List<Userdetail> users=service.getAll();
 	   PageInfo<Userdetail> info=new PageInfo<Userdetail>(users);
         return info;
   }
+	//查询各种类别数量
+	@RequestMapping("/classify")
+	@ResponseBody
+	  public List<Userdetail> getAll(Userdetail user){
+		    return service.getAll();
+	  }
+	//条件检索
+	@RequestMapping("/queryByCriteria")
+	@ResponseBody
+	public PageInfo<Userdetail> queryByCriteria(Integer pageNum,String status){
+		  PageHelper.startPage(pageNum,13);
+		   List<Userdetail> users=service.queryByCriteria(status);
+		   PageInfo<Userdetail> info=new PageInfo<Userdetail>(users);
+	        return info;
+	}
+	//添加员工信息
+	@RequestMapping("/save")
+	public String save(Userdetail user){
+		service.save(user);
+		return "hcq/staff";
+	}
+	//删除员工信息
+	@RequestMapping("/remove")
+	public String remove(Integer userId){
+		service.remove(userId);
+		return "success";
+	}
 }
