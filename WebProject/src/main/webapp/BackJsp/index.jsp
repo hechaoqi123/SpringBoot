@@ -55,6 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.ww:hover{
 			  background:#08465B;
 			}
+			a:{
+			 text-decoration:none
+			}
 			a:hover{
 			   text-decoration:none
 			}
@@ -98,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 							<ul  class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
 								<li v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)" class="ww" > 
-								  	<a v-bind:href="Visittwomodile.murl" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								  	<a  v-bind:href="Visittwomodile.murl" style="display:block;color:#f7f7f7;text-decoration:none;font-size:12px;" target="right_main">
 										<span style="color:#E6E6E6">{{Visittwomodile.mname}}</span>
 										<b class="arrow"></b>
 									</a>
