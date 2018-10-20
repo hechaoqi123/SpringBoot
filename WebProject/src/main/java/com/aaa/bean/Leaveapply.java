@@ -26,7 +26,7 @@ public class Leaveapply implements Serializable {
 
     private String cause;//原因
 
-    private String field1;
+    private String field1;//所用调休资源
 
     private String field2;
 

@@ -42,9 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
       <A class="textHighlight" href="BackJsp/hcq/overtime.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
-      <A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703250"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 调休申请</A>
-      <A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703210"><IMG 
+      <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
       <A href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703200&amp;name=%u8003%u52e4%u7ba1%u7406&amp;ex.sid=703210"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 调休资源查询</A></DIV>
