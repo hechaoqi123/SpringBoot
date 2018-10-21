@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>
 							</a>
 							<ul  class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-								<li v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)" class="ww" > 
+								<li  onclick="stop(this)" v-bind:id="Visittwomodile.moneid" class="ww" v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)"  > 
 								  	<a  v-bind:href="Visittwomodile.murl" style="display:block;color:#f7f7f7;text-decoration:none;font-size:12px;" target="right_main">
 										<span style="color:#E6E6E6">{{Visittwomodile.mname}}</span>
 										<b class="arrow"></b>
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div style="width: 82%;">
-		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="0" scrolling="auto" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
+		        <iframe src="BackJsp/wsq/look.jsp" name="right_main" frameborder="0" scrolling="no" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
 			</div>
 		</div>
  </body>
@@ -160,14 +160,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$(".Myli").css("display","none");
 		}
 	};
-	$(".ww").click(function(){
+	  function  stop(da){
 	      $(".ww").each(function(){
 	         $(this).css("background","")
 	      })
-	      $("a").css("text-decoration","none")
-	      $(this).css("background","#08465B")
-	     $(this).parent().css("background","")
-	})
+	      $(da).css("background","#08465B")
+	}
 	var uid = $("#uid").val();
 	var myTbody = new Vue({
 		el:"#oneModel",

@@ -8,13 +8,13 @@ public class Dept implements Serializable {
 	@Id
     private Integer deptid;
 
-    private String deptname;
+    private String deptname;//部门名称
 
-    private String deptdepict;
+    private String deptdepict;//部门描述
 
-    private String deptjobdescription;
+    private String deptjobdescription;//工作描述
 
-    private Integer deptstate;
+    private Integer deptstate;//部门主管ID
 
     private Integer belong;
 

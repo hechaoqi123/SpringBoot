@@ -26,9 +26,11 @@ public class UsersController{
 	public String selectDept(String unum, String upass,HttpServletRequest request) throws IOException{
 		Users users = new Users(unum,upass);
 		Users oneUsers = service.getOneUsers(users);
-		System.out.println(oneUsers);
+		request.getSession().setMaxInactiveInterval(-1);//设置session时长
 		if(oneUsers != null){
 			request.getSession().setAttribute("CurrentUser", oneUsers);
+			return "index";
+		}else if(request.getSession().getAttribute("CurrentUser")!=null){
 			return "index";
 		}else{
 			return "../BackJsp/login";
