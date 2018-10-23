@@ -42,7 +42,7 @@ public class UserdetailController {
 		model.addAttribute("user",user);
 		String dept=user.getDependence();
 		Dept entity=deptservice.getDept(dept);
-		Userdetail superUser=service.getOne(entity.getDeptstate());
+		Userdetail superUser=service.getOne(Integer.valueOf(entity.getDeptstate()));
 		model.addAttribute("superUserName",superUser.getUsername());
     	return "hcq/DetailInfo";
     }

@@ -41,7 +41,7 @@ public class UsersController{
 			//获取当前部门主管信息
 			String dept=detailservice.getOne(oneUsers.getUid()).getDependence();
 			Dept entity=deptservice.getDept(dept);
-			Userdetail superUser=detailservice.getOne(entity.getDeptstate());
+			Userdetail superUser=detailservice.getOne(Integer.valueOf(entity.getDeptstate()));
 			request.getSession().setAttribute("superUser", superUser);
 			request.getSession().setAttribute("CurrentUser", oneUsers);
 			return "index";

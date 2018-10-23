@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.aaa.mapper.PlanMapper">
+	    
+      <select id="quersa" resultType="com.aaa.bean.dept">
+    	  select * from dept
+       </select>
+	  <select id="query" resultType="java.util.Map">
+     select * from plan p join userdetail u on p.detailld=u.detailId  join dept d on d. deptId=p.deptId where u.username LIKE'李萌'
+	   </select>
+	  <select id="querytwo" resultType="java.util.Map">
+	 select * from plan p join userdetail u on p.detailld=u.detailId  join dept d on d. deptId=p.deptId
+	   </select>
+     <insert  id="add" parameterType="plan">
+      insert into plan(pname,deptid,ksdate,jsdate,detailld,planname,type) VALUES 
+                    (#{pname},#{deptid},#{ksdate},#{jsdate},#{detailld},#{planname},#{type})
+       </insert> 
+            	  <insert  id="addfour" parameterType="perform">
+      insert into perform(pid,plname,plperform,performdate) VALUES ((select MAX(pid) from plan),#{plname},#{plperform},#{performdate})
+      	 </insert>
+      <insert  id="addthere" parameterType="Krar">
+      insert into Krar(pid,kname,letname) VALUES 
+                  ((select MAX(pid) from plan),#{kname},#{letname})
+       </insert>
+   
+    
+      <select id="quer" resultType="com.aaa.bean.plan">
+     select * from  plan 
+       </select>
+      <select id="quers" resultType="com.aaa.bean.Userdetail">
+     select * from  Userdetail
+       </select>
+
+     <select id="querst" resultType="com.aaa.bean.Krar">
+     select * from  Krar
+      </select>
+   
+ </mapper>

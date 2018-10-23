@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aaa.bean.CostManager;
-import com.aaa.bean.Dept;
 import com.aaa.bean.Dimission;
 import com.aaa.service.CostManagerService;
 import com.aaa.service.DeptService;
