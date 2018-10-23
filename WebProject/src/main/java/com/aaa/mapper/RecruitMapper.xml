@@ -1,41 +1,41 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aaa.mapper.RecruitMapper" >
-  <resultMap id="BaseResultMap" type="com.aaa.bean.Recruit" >
-    <id column="recruitId" property="recruitid" jdbcType="INTEGER" />
-    <result column="principal" property="principal" jdbcType="VARCHAR" />
-    <result column="endDate" property="enddate" jdbcType="VARCHAR" />
-    <result column="department" property="department" jdbcType="VARCHAR" />
-    <result column="post" property="post" jdbcType="VARCHAR" />
-    <result column="peopleNumber" property="peoplenumber" jdbcType="VARCHAR" />
-    <result column="cause" property="cause" jdbcType="VARCHAR" />
-    <result column="obligation" property="obligation" jdbcType="VARCHAR" />
-    <result column="language" property="language" jdbcType="VARCHAR" />
-    <result column="workspace" property="workspace" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="major" property="major" jdbcType="VARCHAR" />
-    <result column="experience" property="experience" jdbcType="VARCHAR" />
-    <result column="other" property="other" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="theme" property="theme" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.RecruitMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Recruit">
+    <id column="recruitId" jdbcType="INTEGER" property="recruitid" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="endDate" jdbcType="VARCHAR" property="enddate" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="peopleNumber" jdbcType="VARCHAR" property="peoplenumber" />
+    <result column="cause" jdbcType="VARCHAR" property="cause" />
+    <result column="obligation" jdbcType="VARCHAR" property="obligation" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="workspace" jdbcType="VARCHAR" property="workspace" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="other" jdbcType="VARCHAR" property="other" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     recruitId, principal, endDate, department, post, peopleNumber, cause, obligation, 
     language, workspace, age, sex, education, major, experience, other, status, theme
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from recruit
     where recruitId = #{recruitid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from recruit
     where recruitId = #{recruitid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aaa.bean.Recruit" >
+  <insert id="insert" parameterType="com.aaa.bean.Recruit">
     insert into recruit (recruitId, principal, endDate, 
       department, post, peopleNumber, 
       cause, obligation, language, 
@@ -51,179 +51,179 @@
       #{other,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.bean.Recruit" >
+  <insert id="insertSelective" parameterType="com.aaa.bean.Recruit">
     insert into recruit
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="recruitid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recruitid != null">
         recruitId,
       </if>
-      <if test="principal != null" >
+      <if test="principal != null">
         principal,
       </if>
-      <if test="enddate != null" >
+      <if test="enddate != null">
         endDate,
       </if>
-      <if test="department != null" >
+      <if test="department != null">
         department,
       </if>
-      <if test="post != null" >
+      <if test="post != null">
         post,
       </if>
-      <if test="peoplenumber != null" >
+      <if test="peoplenumber != null">
         peopleNumber,
       </if>
-      <if test="cause != null" >
+      <if test="cause != null">
         cause,
       </if>
-      <if test="obligation != null" >
+      <if test="obligation != null">
         obligation,
       </if>
-      <if test="language != null" >
+      <if test="language != null">
         language,
       </if>
-      <if test="workspace != null" >
+      <if test="workspace != null">
         workspace,
       </if>
-      <if test="age != null" >
+      <if test="age != null">
         age,
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex,
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education,
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major,
       </if>
-      <if test="experience != null" >
+      <if test="experience != null">
         experience,
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         theme,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="recruitid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recruitid != null">
         #{recruitid,jdbcType=INTEGER},
       </if>
-      <if test="principal != null" >
+      <if test="principal != null">
         #{principal,jdbcType=VARCHAR},
       </if>
-      <if test="enddate != null" >
+      <if test="enddate != null">
         #{enddate,jdbcType=VARCHAR},
       </if>
-      <if test="department != null" >
+      <if test="department != null">
         #{department,jdbcType=VARCHAR},
       </if>
-      <if test="post != null" >
+      <if test="post != null">
         #{post,jdbcType=VARCHAR},
       </if>
-      <if test="peoplenumber != null" >
+      <if test="peoplenumber != null">
         #{peoplenumber,jdbcType=VARCHAR},
       </if>
-      <if test="cause != null" >
+      <if test="cause != null">
         #{cause,jdbcType=VARCHAR},
       </if>
-      <if test="obligation != null" >
+      <if test="obligation != null">
         #{obligation,jdbcType=VARCHAR},
       </if>
-      <if test="language != null" >
+      <if test="language != null">
         #{language,jdbcType=VARCHAR},
       </if>
-      <if test="workspace != null" >
+      <if test="workspace != null">
         #{workspace,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
+      <if test="age != null">
         #{age,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         #{education,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         #{major,jdbcType=VARCHAR},
       </if>
-      <if test="experience != null" >
+      <if test="experience != null">
         #{experience,jdbcType=VARCHAR},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         #{other,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         #{theme,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Recruit" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Recruit">
     update recruit
-    <set >
-      <if test="principal != null" >
+    <set>
+      <if test="principal != null">
         principal = #{principal,jdbcType=VARCHAR},
       </if>
-      <if test="enddate != null" >
+      <if test="enddate != null">
         endDate = #{enddate,jdbcType=VARCHAR},
       </if>
-      <if test="department != null" >
+      <if test="department != null">
         department = #{department,jdbcType=VARCHAR},
       </if>
-      <if test="post != null" >
+      <if test="post != null">
         post = #{post,jdbcType=VARCHAR},
       </if>
-      <if test="peoplenumber != null" >
+      <if test="peoplenumber != null">
         peopleNumber = #{peoplenumber,jdbcType=VARCHAR},
       </if>
-      <if test="cause != null" >
+      <if test="cause != null">
         cause = #{cause,jdbcType=VARCHAR},
       </if>
-      <if test="obligation != null" >
+      <if test="obligation != null">
         obligation = #{obligation,jdbcType=VARCHAR},
       </if>
-      <if test="language != null" >
+      <if test="language != null">
         language = #{language,jdbcType=VARCHAR},
       </if>
-      <if test="workspace != null" >
+      <if test="workspace != null">
         workspace = #{workspace,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
+      <if test="age != null">
         age = #{age,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major = #{major,jdbcType=VARCHAR},
       </if>
-      <if test="experience != null" >
+      <if test="experience != null">
         experience = #{experience,jdbcType=VARCHAR},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other = #{other,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         theme = #{theme,jdbcType=VARCHAR},
       </if>
     </set>
     where recruitId = #{recruitid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Recruit" >
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Recruit">
     update recruit
     set principal = #{principal,jdbcType=VARCHAR},
       endDate = #{enddate,jdbcType=VARCHAR},
@@ -244,4 +244,5 @@
       theme = #{theme,jdbcType=VARCHAR}
     where recruitId = #{recruitid,jdbcType=INTEGER}
   </update>
+  
 </mapper>

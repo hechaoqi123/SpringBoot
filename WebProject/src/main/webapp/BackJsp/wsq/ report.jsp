@@ -44,7 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <h1 style="margin-left: 10px;"><img style="cursor:pointer;" src="BackJsp/wsq/img/menu.png" onclick="var cm=document.getElementById(&#39;colloaMenu&#39;); if(cm.style.display==&#39;none&#39;) cm.style.display=&#39;inline&#39;; else cm.style.display=&#39;none&#39;;"> 我的工作报告</h1>
    </td>
  <td align="right">
-  <script language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=133000&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==0) workflowListOne("workflow.aspx","新增工作任务*",133010,"<i class='fa fa-plus fa-lg'></i>",133000,sObjects,bPortal,bSelf);if(stype==0) workflowListOne("finder.aspx","查找",133050,"<i class='fa fa-search fa-lg'></i>",133000,sObjects,bPortal,bSelf);}
+   <div class="btn-group" style="margin-left:220px;margin-top:0px;">
+
+	   
+	    <button type="button" style="background-color:white" class="btn btn-default">》<tton>
+	    <button type="button" style="background-color:white" class="btn btn-default">+撰写工作报告*<tton>
+	    <button type="button" style="background-color:white" class="btn btn-default">刷新<tton>
+     </div>
        </script>
          
        <script language="javaScript">workflowList(0);</script>
@@ -87,84 +93,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td></td>
 <td>
 
-<table cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr><th><img src="BackJsp/wsq/img/priority0.gif">报告名称</th><th>创建人</th><th>所属部门</th><th>评审人</th><th>创建时间</th></tr></thead>
-  <tbody>
-     <tr>
-     <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000391&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年4月份第1周工作报告（沈华） <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>沈华</td><td>销售部</td><td>李萌,</td><td>2016/4/11 14:19</td>
-     </tr>
-     <tr>
-      <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000821&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2015年度工作报告(采购部) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>陈龙天</td><td>采购部</td><td>陈杰,</td><td>2016/4/28 9:54</td>
-     </tr>
-     <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000820&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年1季度工作报告(财务部) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>严必行</td><td>财务部</td><td>陈杰,</td><td>2016/4/28 9:53</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000819&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2015年度工作报告(财务部) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>严必行</td><td>财务部</td><td>陈杰,</td><td>2016/4/28 9:52</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000818&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年1季度工作报告（李萌） <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/28 9:51</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000815&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年1季度工作报告（销售部） <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/28 9:41</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000814&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> 2016年4月份第4周工作报告(李萌) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/28 9:39</td>
-      </tr>
-      <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000813&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年4月份第3周工作报告(李萌) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/28 9:38</td>
-      </tr>
-      <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000811&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2015年度工作报告（销售部） <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/28 9:28</td>
-      </tr>
-      <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000581&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年3月份工作报告(销售部) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/18 16:29</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000050&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> 2016年3月份第2周工作报告 <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>王丽萍</td><td>深圳分公司</td><td>陈杰,刘军,</td><td>2016/4/6 14:39</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000392&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年3月份工作报告（沈涛辉） <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>沈涛辉</td><td>销售部</td><td>李萌,</td><td>2016/4/11 15:31</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000824&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年1季度工作报告(售后部) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李白军</td><td>售后部</td><td>陈杰,</td><td>2016/4/28 9:58</td>
-      </tr>
-      <tr>
-       <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000385&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年3月份工作报告(沈华) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>沈华</td><td>销售部</td><td>李萌,</td><td>2016/4/11 14:04</td>
-      </tr>
-       <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000305&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年3月份工作报告(李萌) <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/11 10:34</td>
-       </tr>
-       <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000299&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> 2016年4月份第2周工作报告 <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李萌</td><td>销售部</td><td>王刚,</td><td>2016/4/11 10:25</td>
-       </tr>
-       <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000236&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> 财务部2016年3月份工作报告 <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>严必行</td><td>财务部</td><td>陈杰,</td><td>2016/4/8 11:12</td>
-       </tr>
-       <tr>
-        <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000228&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> <span style="color:orange">2016年1季度工作报告</span> <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>吴燕</td><td>人事部</td><td>陈杰,刘军,</td><td>2016/4/8 10:59</td>
-       </tr>
-       <tr>
-         <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000078&#39;);"><i style="color:orange;" class="fa fa-calendar-minus-o fa-lg"></i> 2016年4月份第1周工作报告 <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>胡梦泉</td><td>杭州分公司</td><td>陈斌,</td><td>2016/4/6 16:20</td>
-       </tr>
-       <tr>
-         <td><a href="JavaScript:showItem(&#39;工作报告&#39;,&#39;1000077&#39;);"><i style="color:#3cbc3c;" class="fa fa-calendar-check-o fa-lg"></i> 2016年3月份工作报告 <img border="0" src="BackJsp/wsq/img/priority0.gif"></a></td><td>李白军</td><td>售后部</td><td>王刚,</td><td>2016/4/6 16:18</td>
-      </tr>
- </tbody>
+<table cellpadding="0" cellspacing="0" border="0" class="tableList">
+<thead>
+<tr>
+<td><img src="BackJsp/wsq/img/priority0.gif">报告名称</td><td>创建人</td><td>所属部门</td><td>评审人</td><td>创建时间</td>
+</tr></thead>
+   <tbody id="tbody"></tbody>
 </table>
 
 </script>
 <div id="colloaPages">
- <a class="button1 button1L" title="首页" href="javaScript:var n=location.href.indexOf(&#39;&amp;page=&#39;);location.replace((n&gt;0?location.href.substr(0,n):location.href)+&#39;&amp;page=1&#39;);"><i class="fa fa-step-backward"></i></a>
- <a class="button1 button1M" title="上页" href="javaScript:var n=location.href.indexOf(&#39;&amp;page=&#39;);location.replace((n&gt;0?location.href.substr(0,n):location.href)+&#39;&amp;page=1&#39;);"><i class="fa fa-backward"></i></a>
- <span class="button1M">共有 47 条记录，第 1/3 页</span><a class="button1 button1M" title="下页" href="javaScript:var n=location.href.indexOf(&#39;&amp;page=&#39;);location.replace((n&gt;0?location.href.substr(0,n):location.href)+&#39;&amp;page=2&#39;);"><i class="fa fa-forward"></i></a>
- <a class="button1 button1R" title="尾页" href="javaScript:var n=location.href.indexOf(&#39;&amp;page=&#39;);location.replace((n&gt;0?location.href.substr(0,n):location.href)+&#39;&amp;page=3&#39;);"><i class="fa fa-step-forward"></i></a>
+ <a class="button1 button1L" title="首页" ><i class="fa fa-step-backward"></i></a>
+ <a class="button1 button1M" title="上页" id="prepage"><i class="fa fa-backward"></i></a>
+ <span class="button1M" id="nowPage"></span>
+ <a class="button1 button1M" title="下页" id="nextpage"><i class="fa fa-forward"></i></a>
+ <a class="button1 button1R" title="尾页" ><i class="fa fa-step-forward"></i></a>
 </div>
 </td></tr></tbody></table>
 
 
 </body></html>
+<script type="text/javascript" src="BackJsp/wsq/js/jquery-1.8.3.min.js"></script>
 <script language="javaScript">
-  treeBuild("treeOfMenu", location.href.substring(location.href.indexOf("sid=")+4,location.href.indexOf("&name=")), true);
-  var aH1=document.getElementsByTagName("H1"); if(aH1.length>0) aH1[0].innerHTML="<img style='cursor:pointer;' src='../images/menu.png' onclick=\"var cm=document.getElementById('colloaMenu'); if(cm.style.display=='none') cm.style.display='inline'; else cm.style.display='none';\"> "+aH1[0].innerHTML;
-  //var colloaInterval=setInterval("if(ajax('command.aspx?notify.count&uid=1000071')!='0'){var v=document.getElementById('treeOfMenu').firstChild;if(v.getAttribute('sid')=='100000') v.innerHTML+=' <img src=../images/dotNotify.gif border=0>';clearInterval(colloaInterval);}", 11000);
+ 
+  
+  
+  $(function(){
+          getAll(1);
+      });
+   function getAll(pageNum){
+      $.ajax({
+        url:"report/getAll",
+        type:"post",
+        data:{"pageNum":pageNum},
+        dataType:"json",
+        success:function(data){
+           $("#tbody").html("");
+           var datalist=data.list;
+              for(var i=0; i<datalist.length;i++){
+                 var tr="<tr>";
+                 tr+="<td>"+datalist[i].rname+"</td>";
+                   tr+="<td>"+datalist[i].username+"</td>";
+                   tr+="<td>"+datalist[i].deptName+"</td>";
+                   tr+="<td>"+datalist[i].letname+"</td>";
+                   tr+="<td>"+datalist[i].creationdate+"</td>";
+                     tr+="</tr>";
+                   $("#tbody").append(tr);
+             }
+              $("#nowPage").html(data.pageNum);
+          
+             
+      
+           
+            }
+             
+      })
+   
+ }
+ $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+ $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      });
+      
+      
+    
 </script>

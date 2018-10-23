@@ -1,54 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aaa.mapper.UserdetailMapper" >
-
-   <select id="getAll" resultType="Userdetail">
-      select * from userdetail
-   </select>
-
-  <resultMap id="BaseResultMap" type="com.aaa.bean.Userdetail" >
-    <id column="detailId" property="detailid" jdbcType="INTEGER" />
-    <result column="UserSex" property="usersex" jdbcType="VARCHAR" />
-    <result column="UserNum" property="usernum" jdbcType="VARCHAR" />
-    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="birthDate" property="birthdate" jdbcType="VARCHAR" />
-    <result column="positiveDate" property="positivedate" jdbcType="VARCHAR" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="message" property="message" jdbcType="VARCHAR" />
-    <result column="nativeplace" property="nativeplace" jdbcType="VARCHAR" />
-    <result column="nation" property="nation" jdbcType="VARCHAR" />
-    <result column="politics" property="politics" jdbcType="VARCHAR" />
-    <result column="marriage" property="marriage" jdbcType="VARCHAR" />
-    <result column="IDnumber" property="idnumber" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="school" property="school" jdbcType="VARCHAR" />
-    <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="major" property="major" jdbcType="VARCHAR" />
-    <result column="hobby" property="hobby" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="dependence" property="dependence" jdbcType="VARCHAR" />
-    <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.UserdetailMapper">
+  
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Userdetail">
+    <id column="detailId" jdbcType="INTEGER" property="detailid" />
+    <result column="UserSex" jdbcType="VARCHAR" property="usersex" />
+    <result column="UserNum" jdbcType="VARCHAR" property="usernum" />
+    <result column="entryDate" jdbcType="VARCHAR" property="entrydate" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birthDate" jdbcType="VARCHAR" property="birthdate" />
+    <result column="positiveDate" jdbcType="VARCHAR" property="positivedate" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="nativeplace" jdbcType="VARCHAR" property="nativeplace" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="politics" jdbcType="VARCHAR" property="politics" />
+    <result column="marriage" jdbcType="VARCHAR" property="marriage" />
+    <result column="IDnumber" jdbcType="VARCHAR" property="idnumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="dependence" jdbcType="VARCHAR" property="dependence" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     detailId, UserSex, UserNum, entryDate, phone, telephone, email, birthDate, positiveDate, 
     description, message, nativeplace, nation, politics, marriage, IDnumber, address, 
     school, education, major, hobby, status, dependence, position, username
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from userdetail
     where detailId = #{detailid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from userdetail
     where detailId = #{detailid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aaa.bean.Userdetail" >
+  <insert id="insert" parameterType="com.aaa.bean.Userdetail">
     insert into userdetail (detailId, UserSex, UserNum, 
       entryDate, phone, telephone, 
       email, birthDate, positiveDate, 
@@ -68,242 +64,242 @@
       #{status,jdbcType=VARCHAR}, #{dependence,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
       #{username,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.bean.Userdetail" >
+  <insert id="insertSelective" parameterType="com.aaa.bean.Userdetail">
     insert into userdetail
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="detailid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailid != null">
         detailId,
       </if>
-      <if test="usersex != null" >
+      <if test="usersex != null">
         UserSex,
       </if>
-      <if test="usernum != null" >
+      <if test="usernum != null">
         UserNum,
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         entryDate,
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone,
       </if>
-      <if test="telephone != null" >
+      <if test="telephone != null">
         telephone,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-      <if test="birthdate != null" >
+      <if test="birthdate != null">
         birthDate,
       </if>
-      <if test="positivedate != null" >
+      <if test="positivedate != null">
         positiveDate,
       </if>
-      <if test="description != null" >
+      <if test="description != null">
         description,
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         message,
       </if>
-      <if test="nativeplace != null" >
+      <if test="nativeplace != null">
         nativeplace,
       </if>
-      <if test="nation != null" >
+      <if test="nation != null">
         nation,
       </if>
-      <if test="politics != null" >
+      <if test="politics != null">
         politics,
       </if>
-      <if test="marriage != null" >
+      <if test="marriage != null">
         marriage,
       </if>
-      <if test="idnumber != null" >
+      <if test="idnumber != null">
         IDnumber,
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         address,
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         school,
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education,
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major,
       </if>
-      <if test="hobby != null" >
+      <if test="hobby != null">
         hobby,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="dependence != null" >
+      <if test="dependence != null">
         dependence,
       </if>
-      <if test="position != null" >
+      <if test="position != null">
         position,
       </if>
-      <if test="username != null" >
+      <if test="username != null">
         username,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="detailid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailid != null">
         #{detailid,jdbcType=INTEGER},
       </if>
-      <if test="usersex != null" >
+      <if test="usersex != null">
         #{usersex,jdbcType=VARCHAR},
       </if>
-      <if test="usernum != null" >
+      <if test="usernum != null">
         #{usernum,jdbcType=VARCHAR},
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         #{entrydate,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="telephone != null" >
+      <if test="telephone != null">
         #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="birthdate != null" >
+      <if test="birthdate != null">
         #{birthdate,jdbcType=VARCHAR},
       </if>
-      <if test="positivedate != null" >
+      <if test="positivedate != null">
         #{positivedate,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
+      <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         #{message,jdbcType=VARCHAR},
       </if>
-      <if test="nativeplace != null" >
+      <if test="nativeplace != null">
         #{nativeplace,jdbcType=VARCHAR},
       </if>
-      <if test="nation != null" >
+      <if test="nation != null">
         #{nation,jdbcType=VARCHAR},
       </if>
-      <if test="politics != null" >
+      <if test="politics != null">
         #{politics,jdbcType=VARCHAR},
       </if>
-      <if test="marriage != null" >
+      <if test="marriage != null">
         #{marriage,jdbcType=VARCHAR},
       </if>
-      <if test="idnumber != null" >
+      <if test="idnumber != null">
         #{idnumber,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         #{school,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         #{education,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         #{major,jdbcType=VARCHAR},
       </if>
-      <if test="hobby != null" >
+      <if test="hobby != null">
         #{hobby,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="dependence != null" >
+      <if test="dependence != null">
         #{dependence,jdbcType=VARCHAR},
       </if>
-      <if test="position != null" >
+      <if test="position != null">
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="username != null" >
+      <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Userdetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Userdetail">
     update userdetail
-    <set >
-      <if test="usersex != null" >
+    <set>
+      <if test="usersex != null">
         UserSex = #{usersex,jdbcType=VARCHAR},
       </if>
-      <if test="usernum != null" >
+      <if test="usernum != null">
         UserNum = #{usernum,jdbcType=VARCHAR},
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         entryDate = #{entrydate,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="telephone != null" >
+      <if test="telephone != null">
         telephone = #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="birthdate != null" >
+      <if test="birthdate != null">
         birthDate = #{birthdate,jdbcType=VARCHAR},
       </if>
-      <if test="positivedate != null" >
+      <if test="positivedate != null">
         positiveDate = #{positivedate,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
+      <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         message = #{message,jdbcType=VARCHAR},
       </if>
-      <if test="nativeplace != null" >
+      <if test="nativeplace != null">
         nativeplace = #{nativeplace,jdbcType=VARCHAR},
       </if>
-      <if test="nation != null" >
+      <if test="nation != null">
         nation = #{nation,jdbcType=VARCHAR},
       </if>
-      <if test="politics != null" >
+      <if test="politics != null">
         politics = #{politics,jdbcType=VARCHAR},
       </if>
-      <if test="marriage != null" >
+      <if test="marriage != null">
         marriage = #{marriage,jdbcType=VARCHAR},
       </if>
-      <if test="idnumber != null" >
+      <if test="idnumber != null">
         IDnumber = #{idnumber,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         school = #{school,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major = #{major,jdbcType=VARCHAR},
       </if>
-      <if test="hobby != null" >
+      <if test="hobby != null">
         hobby = #{hobby,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="dependence != null" >
+      <if test="dependence != null">
         dependence = #{dependence,jdbcType=VARCHAR},
       </if>
-      <if test="position != null" >
+      <if test="position != null">
         position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="username != null" >
+      <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
     </set>
     where detailId = #{detailid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Userdetail" >
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Userdetail">
     update userdetail
     set UserSex = #{usersex,jdbcType=VARCHAR},
       UserNum = #{usernum,jdbcType=VARCHAR},
@@ -331,4 +327,9 @@
       username = #{username,jdbcType=VARCHAR}
     where detailId = #{detailid,jdbcType=INTEGER}
   </update>
+
+   <select id="getAll" resultType="Userdetail">
+      select * from userdetail
+   </select>
+
 </mapper>

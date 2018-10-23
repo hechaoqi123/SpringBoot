@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aaa.mapper.EntryMapper" >
-  <resultMap id="BaseResultMap" type="com.aaa.bean.Entry" >
-    <id column="enntryId" property="enntryid" jdbcType="INTEGER" />
-    <result column="dutyPeople" property="dutypeople" jdbcType="VARCHAR" />
-    <result column="entryName" property="entryname" jdbcType="VARCHAR" />
-    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
-    <result column="entryDepartment" property="entrydepartment" jdbcType="VARCHAR" />
-    <result column="entryPost" property="entrypost" jdbcType="VARCHAR" />
-    <result column="brthDate" property="brthdate" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="school" property="school" jdbcType="VARCHAR" />
-    <result column="major" property="major" jdbcType="VARCHAR" />
-    <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="yearWork" property="yearwork" jdbcType="VARCHAR" />
-    <result column="message" property="message" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="theme" property="theme" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.EntryMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Entry">
+    <id column="enntryId" jdbcType="INTEGER" property="enntryid" />
+    <result column="dutyPeople" jdbcType="VARCHAR" property="dutypeople" />
+    <result column="entryName" jdbcType="VARCHAR" property="entryname" />
+    <result column="entryDate" jdbcType="VARCHAR" property="entrydate" />
+    <result column="entryDepartment" jdbcType="VARCHAR" property="entrydepartment" />
+    <result column="entryPost" jdbcType="VARCHAR" property="entrypost" />
+    <result column="brthDate" jdbcType="VARCHAR" property="brthdate" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="yearWork" jdbcType="VARCHAR" property="yearwork" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     enntryId, dutyPeople, entryName, entryDate, entryDepartment, entryPost, brthDate, 
     sex, school, major, education, yearWork, message, status, theme
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from entry
     where enntryId = #{enntryid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from entry
     where enntryId = #{enntryid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aaa.bean.Entry" >
+  <insert id="insert" parameterType="com.aaa.bean.Entry">
     insert into entry (enntryId, dutyPeople, entryName, 
       entryDate, entryDepartment, entryPost, 
       brthDate, sex, school, 
@@ -46,152 +46,152 @@
       #{message,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.aaa.bean.Entry" >
+  <insert id="insertSelective" parameterType="com.aaa.bean.Entry">
     insert into entry
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="enntryid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="enntryid != null">
         enntryId,
       </if>
-      <if test="dutypeople != null" >
+      <if test="dutypeople != null">
         dutyPeople,
       </if>
-      <if test="entryname != null" >
+      <if test="entryname != null">
         entryName,
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         entryDate,
       </if>
-      <if test="entrydepartment != null" >
+      <if test="entrydepartment != null">
         entryDepartment,
       </if>
-      <if test="entrypost != null" >
+      <if test="entrypost != null">
         entryPost,
       </if>
-      <if test="brthdate != null" >
+      <if test="brthdate != null">
         brthDate,
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex,
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         school,
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major,
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education,
       </if>
-      <if test="yearwork != null" >
+      <if test="yearwork != null">
         yearWork,
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         message,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         theme,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="enntryid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="enntryid != null">
         #{enntryid,jdbcType=INTEGER},
       </if>
-      <if test="dutypeople != null" >
+      <if test="dutypeople != null">
         #{dutypeople,jdbcType=VARCHAR},
       </if>
-      <if test="entryname != null" >
+      <if test="entryname != null">
         #{entryname,jdbcType=VARCHAR},
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         #{entrydate,jdbcType=VARCHAR},
       </if>
-      <if test="entrydepartment != null" >
+      <if test="entrydepartment != null">
         #{entrydepartment,jdbcType=VARCHAR},
       </if>
-      <if test="entrypost != null" >
+      <if test="entrypost != null">
         #{entrypost,jdbcType=VARCHAR},
       </if>
-      <if test="brthdate != null" >
+      <if test="brthdate != null">
         #{brthdate,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         #{school,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         #{major,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         #{education,jdbcType=VARCHAR},
       </if>
-      <if test="yearwork != null" >
+      <if test="yearwork != null">
         #{yearwork,jdbcType=VARCHAR},
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         #{message,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         #{theme,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Entry" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Entry">
     update entry
-    <set >
-      <if test="dutypeople != null" >
+    <set>
+      <if test="dutypeople != null">
         dutyPeople = #{dutypeople,jdbcType=VARCHAR},
       </if>
-      <if test="entryname != null" >
+      <if test="entryname != null">
         entryName = #{entryname,jdbcType=VARCHAR},
       </if>
-      <if test="entrydate != null" >
+      <if test="entrydate != null">
         entryDate = #{entrydate,jdbcType=VARCHAR},
       </if>
-      <if test="entrydepartment != null" >
+      <if test="entrydepartment != null">
         entryDepartment = #{entrydepartment,jdbcType=VARCHAR},
       </if>
-      <if test="entrypost != null" >
+      <if test="entrypost != null">
         entryPost = #{entrypost,jdbcType=VARCHAR},
       </if>
-      <if test="brthdate != null" >
+      <if test="brthdate != null">
         brthDate = #{brthdate,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="school != null" >
+      <if test="school != null">
         school = #{school,jdbcType=VARCHAR},
       </if>
-      <if test="major != null" >
+      <if test="major != null">
         major = #{major,jdbcType=VARCHAR},
       </if>
-      <if test="education != null" >
+      <if test="education != null">
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="yearwork != null" >
+      <if test="yearwork != null">
         yearWork = #{yearwork,jdbcType=VARCHAR},
       </if>
-      <if test="message != null" >
+      <if test="message != null">
         message = #{message,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="theme != null" >
+      <if test="theme != null">
         theme = #{theme,jdbcType=VARCHAR},
       </if>
     </set>
     where enntryId = #{enntryid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Entry" >
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Entry">
     update entry
     set dutyPeople = #{dutypeople,jdbcType=VARCHAR},
       entryName = #{entryname,jdbcType=VARCHAR},

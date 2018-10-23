@@ -1,12 +1,14 @@
 package com.aaa.bean;
 
-public class dept {
+import java.io.Serializable;
+
+public class dept implements Serializable{
  private Integer deptid;
  private String deptName;
- private String  deptDepict;
- private String  deptJobDescription;
- private String  deptState;
- private String   belong;
+ private String deptDepict;
+ private String deptJobDescription;
+ private String deptState;
+ private String belong;
 public Integer getDeptid() {
 	return deptid;
 }
