@@ -9,10 +9,8 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface GgMapper extends  Mapper<Gg>{
 	public List<Map> getAllGg();
-	
 	//添加
 	public void addGg(Gg gg);
-	
 	public List<Map> getAllGgone1(String ggClassify);
 	public List<Map> getAllGgone2(String ggClassify);
 	public List<Map> getAllGgone3(String ggClassify);

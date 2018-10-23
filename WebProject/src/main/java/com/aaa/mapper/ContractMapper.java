@@ -7,19 +7,14 @@ import org.apache.ibatis.annotations.Param;
 
 import com.aaa.bean.Contract;
 
-public interface ContractMapper {
-    int deleteByPrimaryKey(Integer contractid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Contract record);
+public interface ContractMapper extends Mapper<Contract> {
 
-    int insertSelective(Contract record);
 
-  //  Contract selectByPrimaryKey(Integer contractid);
 
-    int updateByPrimaryKeySelective(Contract record);
 
-    int updateByPrimaryKey(Contract record);
-    public List<Map> selectAll(@Param("key") String key);
+    public List<Map> selectAllByKey(@Param("key") String key);
     //执行中的合同
     public void updateid(Integer ctid);
     //关闭的合同
@@ -29,6 +24,6 @@ public interface ContractMapper {
     //撤销的合同
     public void updateThree(Integer ctid);
     
-   List<Map<String, String>> getOne(Integer contractid);
+    List<Map<String, String>> getOne(Integer contractid);
     
 }

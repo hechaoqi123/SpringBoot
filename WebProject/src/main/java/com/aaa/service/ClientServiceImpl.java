@@ -27,7 +27,7 @@ public class ClientServiceImpl implements ClientService{
 	}
 	@Override
 	public List<Client> select() {
-		return mapper.getAll();
+		return mapper.selectAll();
 	}
 	@Override
 	public void delete(Integer cid) {

@@ -2,16 +2,7 @@ package com.aaa.mapper;
 
 import com.aaa.bean.Itinfor;
 
-public interface ItinforMapper {
-    int deleteByPrimaryKey(Integer itemid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Itinfor record);
-
-    int insertSelective(Itinfor record);
-
-    Itinfor selectByPrimaryKey(Integer itemid);
-
-    int updateByPrimaryKeySelective(Itinfor record);
-
-    int updateByPrimaryKey(Itinfor record);
+public interface ItinforMapper extends Mapper<Itinfor>{
 }

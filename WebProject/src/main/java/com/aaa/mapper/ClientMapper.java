@@ -7,20 +7,9 @@ import org.apache.ibatis.annotations.Param;
 
 import com.aaa.bean.Client;
 
-public interface ClientMapper {
-    int deleteByPrimaryKey(Integer clientid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Client record);
-
-    int insertSelective(Client record);
-
-    Client selectByPrimaryKey(Integer clientid);
-
-    int updateByPrimaryKeySelective(Client record);
-
-    int updateByPrimaryKey(Client record);
-    public List<Client> getAll();
-    public List<Client> selectAll();
+public interface ClientMapper extends Mapper<Client>{
     public List<Map> selectDim(@Param("key") String key);
 
 }

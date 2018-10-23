@@ -78,9 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
   </head>
   
-  <body id="b">
+  <body id="b" style="padding-left:50px;padding-top:50px;">
   <span id="span">
-   <table style="margin-left:200px;margin-top:100px;" id="lotab">
+   <table  id="lotab">
    		<tr>
    			<td style="float:left;border:0px solid #000;"><img src="../assets/images/customersLogo.png" style="float:left;margin-top:10px;"><h1 style="float:left;margin-left:10px;">全部客户</h1></td>
    			<td style="float:right;margin-left:650px;">
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</td>
    		</tr>
    </table>
-   <div style="margin-left:200px;margin-top:50px;height:200px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
+   <div style="height:200px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
    		<div style="background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);height:40px;border-bottom:1px solid #c0c0c0;"><b style="float:left;margin-top:10px;margin-left:30px;">分类</b></div>
    		<div id="classify" style="height:160px;border:0px solid #000;">
    			<table id="tab">

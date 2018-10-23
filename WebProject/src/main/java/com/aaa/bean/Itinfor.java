@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Itinfor implements Serializable {
+	@Id
     private Integer itemid;
 
     private String itemname;

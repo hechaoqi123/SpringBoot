@@ -21,7 +21,7 @@ public class ContractServiceImpl implements ContractService{
 
 	@Override
 	public List<Map> selectAll(String key) {
-		return mapper.selectAll(key);
+		return mapper.selectAllByKey(key);
 	}
 
 	@Override
