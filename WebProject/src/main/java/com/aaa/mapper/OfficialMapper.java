@@ -1,17 +1,13 @@
 package com.aaa.mapper;
 
+import java.util.List;
+
+import com.aaa.bean.Leaveapply;
 import com.aaa.bean.Official;
+import com.aaa.bean.Recruit;
 
-public interface OfficialMapper {
-    int deleteByPrimaryKey(Integer officialid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Official record);
+public interface OfficialMapper extends Mapper<Official>{
 
-    int insertSelective(Official record);
-
-    Official selectByPrimaryKey(Integer officialid);
-
-    int updateByPrimaryKeySelective(Official record);
-
-    int updateByPrimaryKey(Official record);
 }

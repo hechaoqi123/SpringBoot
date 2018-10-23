@@ -1,8 +1,14 @@
 package com.aaa.bean;
 
+import java.sql.Date;
+
+
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Userdetail implements Serializable {
+	@Id
     private Integer detailid;
 
     private String usersex;
@@ -58,7 +64,7 @@ public class Userdetail implements Serializable {
     public Integer getDetailid() {
         return detailid;
     }
-
+     
     public void setDetailid(Integer detailid) {
         this.detailid = detailid;
     }
@@ -254,4 +260,15 @@ public class Userdetail implements Serializable {
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Userdetail [detailid=" + detailid + ", usersex=" + usersex + ", usernum=" + usernum + ", entrydate="
+				+ entrydate + ", phone=" + phone + ", telephone=" + telephone + ", email=" + email + ", birthdate="
+				+ birthdate + ", positivedate=" + positivedate + ", description=" + description + ", message=" + message
+				+ ", nativeplace=" + nativeplace + ", nation=" + nation + ", politics=" + politics + ", marriage="
+				+ marriage + ", idnumber=" + idnumber + ", address=" + address + ", school=" + school + ", education="
+				+ education + ", major=" + major + ", hobby=" + hobby + ", status=" + status + ", dependence="
+				+ dependence + ", position=" + position + ", username=" + username + "]";
+	}
 }

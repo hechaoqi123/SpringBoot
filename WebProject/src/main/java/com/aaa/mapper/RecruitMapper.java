@@ -1,17 +1,11 @@
 package com.aaa.mapper;
 
+import java.util.List;
+
+import com.aaa.bean.Overtime;
 import com.aaa.bean.Recruit;
 
-public interface RecruitMapper {
-    int deleteByPrimaryKey(Integer recruitid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Recruit record);
-
-    int insertSelective(Recruit record);
-
-    Recruit selectByPrimaryKey(Integer recruitid);
-
-    int updateByPrimaryKeySelective(Recruit record);
-
-    int updateByPrimaryKey(Recruit record);
+public interface RecruitMapper extends Mapper<Recruit>{
 }

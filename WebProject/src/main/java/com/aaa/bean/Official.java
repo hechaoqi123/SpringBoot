@@ -2,32 +2,37 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Official implements Serializable {
+	@Id
     private Integer officialid;
 
-    private String theme;
+    private String theme;//主题
 
-    private String dutypeople;
+    private String dutypeople;//责任人
 
-    private String proposer;
+    private String proposer;//申请人
 
-    private String filingdate;
+    private String filingdate;//申请时间
 
-    private String department;
+    private String department;//部门
 
-    private String post;
+    private String post;//岗位
 
-    private String entrydate;
+    private String entrydate;//入职日期
 
-    private String officialdate;
+    private String officialdate;//转正日期
 
-    private String workcontent;
+    private String workcontent;//试用期主要工作
 
-    private String workgrade;
+    private String workgrade;//试用期成绩
 
-    private String issue;
+    private String issue;//问题
 
-    private String superiorremark;
+    private String superiorremark;//主管评语
+    
+    private String status;
 
     private static final long serialVersionUID = 1L;
 
@@ -131,7 +136,15 @@ public class Official implements Serializable {
         return superiorremark;
     }
 
-    public void setSuperiorremark(String superiorremark) {
+    public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setSuperiorremark(String superiorremark) {
         this.superiorremark = superiorremark == null ? null : superiorremark.trim();
     }
 }

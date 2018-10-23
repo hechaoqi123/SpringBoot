@@ -91,7 +91,7 @@ h1{
 
 #colloaBody{
   margin:0px;
-  background-image:url(bg.jpg);
+  background-image:url(/assets/img/bg1.jpg);
   background-position:center top; 
   background-attachment:fixed;
   background-size:cover;
@@ -100,14 +100,14 @@ h1{
   color:#cee2fc;
 }
 #colloaLogin td.left{
-  background-image:url(bg40.png);
+  background-image:url(/assets/img/bg40.png);
   border-top:#cee2fc 1px solid;
   border-bottom:#cee2fc 1px solid;
   border-left:#cee2fc 1px solid;
   border-radius:5px 0px 0px 5px;
 }
 #colloaLogin td.right{
-  background-image:url(bg20.png);
+  background-image:url(/assets/img/bg20.png);
   border-top:#cee2fc 1px solid;
   border-bottom:#cee2fc 1px solid;
   border-right:#cee2fc 1px solid;
@@ -121,7 +121,7 @@ h1{
   background-color:transparent;
 }
 #colloaLogin td.button{
-  background-image:url(bg40.png);
+  background-image:url(/assets/img/bg40.png);
   border:#cee2fc 1px solid;
   border-radius:5px;
   font-size:15px;

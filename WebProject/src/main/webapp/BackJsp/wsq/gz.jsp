@@ -19,203 +19,126 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	 <link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">  
-	<script src="<%=basePath%>assets/js/jquery.min.js"></script>
-	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="BackJsp/wsq/assets/images/colloa.ico">
+
+	
 	<!--悬浮样式  -->
-	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"><nk>
+	  <link rel="stylesheet" href="BackJsp/wsq/css/font-awesome.min.css">
+  <link rel="stylesheet" href="BackJsp/wsq/css/view.css">
+  <script type="text/javascript" src="BackJsp/wsq/js/viewCn.js"></script>
+  <script type="text/javascript" src="BackJsp/wsq/js/view.js"></script>
+		<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"><nk>
 	<link rel="stylesheet" href="<%=basePath%>assets/cssiew.css">
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/jsiewCn.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/jsiew.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/jsue.min.js"></script>
-	
-	
-   <style type="text/css">
-    #i{
-    position:absolute;
-     margin-top:3px;
-    }
-    #zero{
-	  height:1000px;
-	  width:100%;
-	  float:left;
-	}
-	
-	#zero1{
-	  height:1000px;
-	  width:20%;
-	  background-color:white;
-	}
-	
-	#zero2{
-	  height:700px;
-	  width:75%;
-	  background-color:white;
-	border:1px solid #bbf;
-	   position:absolute;
-	 
-	}
-	.zero11{
-	  height:40px;
-	  width:200px;
-	  border:1px solid #bbf;
-	  font-size:14;
-	  background-color:#E8E8E8;
-	  margin-top:-500px;
-	}
-	
-	.zerob{
-	  height:150px;
-	  width:200px;
-	  border:1px solid #bbf;
-	  font-size:16px;
 
-	}
-	.zero12{
-	  height:150px;
-	  width:200px;
-	  border:1px solid #bbf;
-	  font-size:16px;
-	}
-	.zero12 div{
-	  margin-top:8px;
-	  margin-left:22px;
-	}
-	.tableList  tr td{
-border-top:1px solid #bbf;
- height:30px;
-	 	
-	}
-     *{
-        color:#000;
-     }
-   </style>
+  
   </head>
   
   <body>
-      <i id="i"><img src="BackJsp/wsq/img/menu.png"/></i> <h2 style="margin-left:30px;"><i>我的工作计划</i></h2>
-	     <div class="btn-group" style="margin-left:790px;margin-top:-50px;">
-	         <button type="button" style="color:#000;background:#fff" class="btn btn-default"><<tton>
-		     <button type="button" style="color:#000;background:#fff" class="btn btn-default">+制定工作计划<tton>
-		     <button type="button" style="color:#000;background:#fff" class="btn btn-default">查询<tton>
-	      	 <button type="button" style="color:#000;background:#fff" class="btn btn-default">刷新<tton>>
-	     </div>
-     </br>
-     <table id="zero">
-       <tr>
-           <td id="zero1">
-              <div class="zero11"><i style="display:block;margin-top:10px;font-weight:bold;font-family:黑体">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
-                 <div class="zero12">
-                 <div><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">显示所有</span></div>
-                 <div><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">我创建的计划</span></div>
-                 <div><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">我评审的计划</span></div>
-                 <div><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">我执行的计划</span></div>
-                 </div>
-               
-                 <div class="zerob">
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">年度计划</span></div>
-              
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">季度计划</span></div>
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">月度计划</span></div>
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">周计划</span></div>
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">项目计划</span></div>
-                 <div style="padding-left:20px;"><img src="BackJsp/wsq/img/folder.png"><span style="position:absolute;">其他计划</span></div>	
-                 </div>
-           </td>
-           <td id="zero2">
-             <div id="colloaContent2">
-					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
-						<colgroup>
-							<col width="420px" >
-							<col width="105px">
-							<col width="105px">
-							<col width="105px">
-							<col width="105px">
-						</colgroup>
-						<thead>
-							<tr style="height:40px;">
-								<th style="float:left; margin-top:7px;">计划名称</th>
-								<th>创建人</th>
-								<th>所属部门</th>
-								<th>开始时间</th>
-								<th>结束时间</th>
-							</tr>
-						</thead>
-						
-						<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-						<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-							<tr onclick="sund(this)">
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-							<td>1</td>
-						</tr>
-					</table>
-					</div>
-		<div class="btn-group" style="margin-left:220px;margin-top:430px;">
-	      <button type="button" style="color:#000;background:#fff" class="btn btn-default">首页<tton>
-	      <button type="button" style="color:#000;background:#fff" class="btn btn-default">上页<tton>
-	      <button type="button" style="color:#000;background:#fff"class="btn btn-default">当前页<tton>
-	      <button type="button" style="color:#000;background:#fff" class="btn btn-default">下页<tton>
-	      <button type="button" style="color:#000;background:#fff"class="btn btn-default">尾页<tton>
-        </div>
-					
-			
-          </td>
-       </tr>
-     </table>
+  <span id="app">
+ <table cellpadding="0" cellspacing="0" border="0" style="margin-top:30px;">
+ <tbody>
+ <tr>
+   <td>
+   <h1 style="margin-left: 10px;"><img style="cursor:pointer;" src="BackJsp/wsq/img/menu.png" onclick="var cm=document.getElementById(&#39;colloaMenu&#39;); if(cm.style.display==&#39;none&#39;) cm.style.display=&#39;inline&#39;; else cm.style.display=&#39;none&#39;;"> 我的工作任务</h1>
+   </td>
+ <td align="right">
+  <script language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=133000&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==0) workflowListOne("workflow.aspx","新增工作任务*",133010,"<i class='fa fa-plus fa-lg'></i>",133000,sObjects,bPortal,bSelf);if(stype==0) workflowListOne("finder.aspx","查找",133050,"<i class='fa fa-search fa-lg'></i>",133000,sObjects,bPortal,bSelf);}
+       </script>
+         
+       <script language="javaScript">workflowList(0);</script>
  
+ </td>
+ </tr></tbody></table><br>
 
+<table cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;">
+<colgroup>
+<col width="20%"><col width="2%"><col>
+</colgroup>
+<tbody>
+<tr valign="top">
+<td>
+<table cellpadding="0" cellspacing="0" border="0" class="tableList" style="margin-left: 10px;">
+<thead>
+<tr><th style="padding-left:16px;">分类</th></tr>
+</thead>
+<tbody>
+  <tr>
+   <td style="padding:16px;" class="treeOfNavigation">
+ <a class="textHighlight" href="javascript:catalogue();"><img src="BackJsp/wsq/img/folder.png" border="0"> (显示所有)</a>
+ <a href="javascript:catalogue(10,1,&#39;评审中的报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 评审中的报告 <span class="tipCount">20</span></a>
+ <a href="javascript:catalogue(30,1,&#39;已关闭的报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 已关闭的报告 <span class="tipCount">27</span></a>
+ </td>
+</tr>
+<tr>
+<td style="padding:16px;" class="treeOfNavigation">
+<a href="javascript:catalogue(10000,10,&#39;年度报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 年度报告 <span class="tipCount">11</span></a>
+<a href="javascript:catalogue(10000,20,&#39;季度报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 季度报告 <span class="tipCount">14</span></a>
+<a href="javascript:catalogue(10000,30,&#39;月度报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 月度报告 <span class="tipCount">7</span></a>
+<a href="javascript:catalogue(10000,40,&#39;周报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 周报告 <span class="tipCount">12</span></a>
+<a href="javascript:catalogue(10000,100,&#39;项目报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 项目报告 <span class="tipCount">2</span></a>
+<a href="javascript:catalogue(10000,0,&#39;其他报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 其他报告 <span class="tipCount">1</span></a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td></td>
+<td>
 
-  </body>
-</html>
+<table cellpadding="0" cellspacing="0" border="0" class="tableList">
+<thead>
+<tr>
+ <td><img src="BackJsp/wsq/img/priority0.gif">任务名称</td><td>创建人</td><td>执行人</td><td>开始时间</td><td>工作量</td>
+ </tr>
+  <tbody id="tbody">
+   <tr v-for="a in applys">
+    <td>{{a.tname}}</td>
+    <td>{{a.username}}</td>
+    <td>{{a.kname}}</td>
+    <td>{{a.ksdeta}}</td>
+    <td>{{a.workload}}</td>
+   </tr>
+  </tbody>
+ </thead>
+ 
+ 
+</table>
+</script>
+<div id="colloaPages">
+    <span style="margin-left:100px">
+	 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
+	</span>
+</div>
+</td></tr></tbody></table>
+
+</span>
+</body></html>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script>
+     $(function(){
+       var load=new Vue({
+            el:'#app',
+            data:{
+               applys:null,
+               pageInfo:null
+            },methods:{
+               execute:function(pageNum){
+                 var url="task/getAll";
+                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
+                     this.applys=res.body.list
+                     this.pageInfo=res.body
+                 })
+               }
+            }
+       })
+        load.execute(1);
+  })
+</script>
+
+    
+</script>
