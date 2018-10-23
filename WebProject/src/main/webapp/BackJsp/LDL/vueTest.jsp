@@ -24,11 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <span id="app" v-on:click="sss">
+    <span id="app">
     	{{msg}}
     	<input v-model="msg">
     	<p v-if="bool">Admin</p>
     	<li v-for="li in ids">{{li.id}}</li>
+    	<a v-bind:href="hrefs">12121</a>
+    	<p v-html="jiadehref"></p>
     </span>
     <span id="box">
     {{msg}}
@@ -38,9 +40,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {{asd}}
 	    <input v-on:click="post" type="button" value="vuepost测试">
     </span>
+    <button onclick="vueAjax()">111111</button>
+    
   </body>
   <script type="text/javascript">
+  var vm = new Vue({
+  		el : '#app',
+  		data : {
+  			msg : 'aaaa',
+  			bool : true,
+  			hrefs : 'www.baidu.com',
+  			jiadehref : 'dddddd',
+  			ids : [
+  				{id : 'hehe'},
+  				{id : 'xixi'},
+  				{id : 'haha'}
+  			]
+  		},
+  		methods : {
+  			sss : function(){
+  				alert(this.bool);
+  			}
+  		}
+  	});
+  	
+ /* function vueAjax(){
+  	  Vue.http.get(
+	  	"vueTest",{
+	  	
+	  	params : {
+	  		a:"esfsff",
+	  		b:"2",
+	  		c:[{"li":"11"},{"li":"33"},{"li":"22"}]
+	  	}}
+	  ).then(function(data){
+	  	 alert(data.bodyText);
+	  },function(error){
+	  	alert(error);
+	  });
+  }; */
   
+  
+  /* Vue.http.get(
+  	"vueTest",{
+	  	params:{
+	  		a:"esfsff",
+	  		b:"2",
+	  		c:[{"li":"11"},{"li":"33"},{"li":"22"}]
+	  	}
+	  }
+  ).then(function(data){
+  	 alert(data.bodyText);
+  },function(error){
+  	alert(error);
+  }); */
   var vs = new Vue({
     el:'#box',
     data:{
@@ -51,9 +104,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //发送get请求
             this.$http.get('vueTest',{
             	params : {
-            		a:"esfsff",
-            		b:"2",
-            		c:[{"li":"11"},{"li":"33"},{"li":"22"}]
+            		mOneId:11,
+            		mname:"张三",
+            		mdescribe:"huanli"
             		}
             	}).then(function(data){
 	                alert(data.bodyText);    
@@ -73,7 +126,7 @@ new Vue({
   		post:function(){
   			this.$http.post('postTest',{
 	  				params:{
-	  					a:2,
+	  					a:"esfsff",
 	  					maps:[{"li":"11"},{"li":"33"},{"li":"22"}]
 	  				}
   				},{emulateJSON:true}).then(function(data){
@@ -85,23 +138,6 @@ new Vue({
   	}
   });
   
-  	var vm = new Vue({
-  		el : '#app',
-  		data : {
-  			msg : 'aaaa',
-  			bool : true,
-  			ids : [
-  				{id : 'hehe'},
-  				{id : 'xixi'},
-  				{id : 'haha'}
-  			]
-  		},
-  		methods : {
-  			sss : function(){
-  				alert(this.bool);
-  			}
-  		}
-  	});
   	
   	
   </script>

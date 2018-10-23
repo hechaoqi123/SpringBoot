@@ -5,7 +5,9 @@ import java.util.Map;
 
 import com.aaa.bean.Wb;
 
-public interface WbMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface WbMapper extends Mapper<Wb> {
 	public List<Map> getAllWb();
 	
 	public void addWb(Wb list);

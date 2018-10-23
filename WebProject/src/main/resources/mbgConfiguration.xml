@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>    
-<!DOCTYPE generatorConfiguration    
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">    
+<!DOCTYPE generatorConfiguration 
+PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">    
     
 <generatorConfiguration>    
      <properties resource="db.properties" />      
@@ -39,37 +39,13 @@
             <property name="trimStrings" value="true" />    
         </javaModelGenerator>    
     
-        <!--对应的mapper.xml文件  -->    
-        <sqlMapGenerator targetPackage="com.aaa.mapper" targetProject="./src/main/java">    
-            <property name="enableSubPackages" value="true"/>    
-        </sqlMapGenerator>    
-    
-        <!-- 对应的Mapper接口类文件 -->    
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aaa.mapper" targetProject="./src/main/java">    
-            <property name="enableSubPackages" value="true"/>    
-        </javaClientGenerator>    
-    
     
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
-        <table schema="first" tableName="entry" domainObjectName="Entry"    
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
-               enableSelectByExample="false" selectByExampleQueryId="false" >    
-            <property name="useActualColumnNames" value="false"/>    
-        </table>    
-        <table schema="first" tableName="official" domainObjectName="Official"    
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
-               enableSelectByExample="false" selectByExampleQueryId="false" >    
-            <property name="useActualColumnNames" value="false"/>    
-        </table> 
-        <table schema="first" tableName="recruit" domainObjectName="Recruit"    
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
-               enableSelectByExample="false" selectByExampleQueryId="false" >    
-            <property name="useActualColumnNames" value="false"/>    
-        </table>   
-        <table schema="first" tableName="userdetail" domainObjectName="Userdetail"    
+                <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
+        <table schema="first" tableName="expendManager" domainObjectName="Expendmanager"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
             <property name="useActualColumnNames" value="false"/>    
         </table>   
     </context>    
-</generatorConfiguration>      
+</generatorConfiguration>   

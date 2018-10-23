@@ -5,7 +5,9 @@ import java.util.Map;
 
 import com.aaa.bean.Gg;
 
-public interface GgMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface GgMapper extends  Mapper<Gg>{
 	public List<Map> getAllGg();
 	
 	//添加

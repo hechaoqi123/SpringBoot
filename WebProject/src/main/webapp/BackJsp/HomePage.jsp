@@ -94,32 +94,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <img src="../assets/img/persons.png" style="margin-right:10px;"/>目标管理 </span>
 						</a>
 						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
-							  <a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							  <a href="wsq/task.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 							<li class="ww" >
 									<span style="color:#E6E6E6">我的工作计划 </span>
 								<b class="arrow"></b>
 							</li></a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="wsq/tasktwo.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">全部工作计划</span>
 								</li>
 								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="wsq/gz.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">我的工作任务</span>
 								</li>
 								</a>
-									<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="wsq/schedule.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">全部工作任务</span>
 								</li>
 								</a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="wsq/report.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">我的工作报告</span>
 								</li>
 								</a>
-								<a href="MyJsp.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="wsq/ reporttwo.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">全部工作报告</span>
 								</li>

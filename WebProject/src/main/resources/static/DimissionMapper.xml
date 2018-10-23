@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.DimissionMapper" >
+
+  <select id="getAll" resultType="Dimission">
+     select * from Dimission
+  </select>
+
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Dimission" >
+    <id column="dimissionId" property="dimissionid" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="applyDate" property="applydate" jdbcType="VARCHAR" />
+    <result column="part" property="part" jdbcType="VARCHAR" />
+    <result column="post" property="post" jdbcType="VARCHAR" />
+    <result column="entryDate" property="entrydate" jdbcType="VARCHAR" />
+    <result column="dimissionDate" property="dimissiondate" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="supperRemark" property="supperremark" jdbcType="VARCHAR" />
+    <result column="dimissionName" property="dimissionname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dimissionId, theme, applyDate, part, post, entryDate, dimissionDate, status, type, 
+    supperRemark, dimissionName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dimission
+    where dimissionId = #{dimissionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dimission
+    where dimissionId = #{dimissionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Dimission" >
+    insert into dimission (dimissionId, theme, applyDate, 
+      part, post, entryDate, 
+      dimissionDate, status, type, 
+      supperRemark, dimissionName)
+    values (#{dimissionid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{applydate,jdbcType=VARCHAR}, 
+      #{part,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{entrydate,jdbcType=VARCHAR}, 
+      #{dimissiondate,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{supperremark,jdbcType=VARCHAR}, #{dimissionname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Dimission" >
+    insert into dimission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dimissionid != null" >
+        dimissionId,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="applydate != null" >
+        applyDate,
+      </if>
+      <if test="part != null" >
+        part,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="entrydate != null" >
+        entryDate,
+      </if>
+      <if test="dimissiondate != null" >
+        dimissionDate,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="supperremark != null" >
+        supperRemark,
+      </if>
+      <if test="dimissionname != null" >
+        dimissionName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dimissionid != null" >
+        #{dimissionid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null" >
+        #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="part != null" >
+        #{part,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="dimissiondate != null" >
+        #{dimissiondate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="supperremark != null" >
+        #{supperremark,jdbcType=VARCHAR},
+      </if>
+      <if test="dimissionname != null" >
+        #{dimissionname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Dimission" >
+    update dimission
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null" >
+        applyDate = #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="part != null" >
+        part = #{part,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        entryDate = #{entrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="dimissiondate != null" >
+        dimissionDate = #{dimissiondate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="supperremark != null" >
+        supperRemark = #{supperremark,jdbcType=VARCHAR},
+      </if>
+      <if test="dimissionname != null" >
+        dimissionName = #{dimissionname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dimissionId = #{dimissionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Dimission" >
+    update dimission
+    set theme = #{theme,jdbcType=VARCHAR},
+      applyDate = #{applydate,jdbcType=VARCHAR},
+      part = #{part,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      entryDate = #{entrydate,jdbcType=VARCHAR},
+      dimissionDate = #{dimissiondate,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      supperRemark = #{supperremark,jdbcType=VARCHAR},
+      dimissionName = #{dimissionname,jdbcType=VARCHAR}
+    where dimissionId = #{dimissionid,jdbcType=INTEGER}
+  </update>
+</mapper>
