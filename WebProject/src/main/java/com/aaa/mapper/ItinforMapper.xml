@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.ItinforMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Itinfor" >
+    <id column="itemid" property="itemid" jdbcType="INTEGER" />
+    <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+    <result column="itemsort" property="itemsort" jdbcType="VARCHAR" />
+    <result column="itemnumber" property="itemnumber" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="planstarttime" property="planstarttime" jdbcType="VARCHAR" />
+    <result column="planendtime" property="planendtime" jdbcType="VARCHAR" />
+    <result column="clientid" property="clientid" jdbcType="INTEGER" />
+    <result column="contractid" property="contractid" jdbcType="INTEGER" />
+    <result column="itemperson" property="itemperson" jdbcType="VARCHAR" />
+    <result column="ittelephone" property="ittelephone" jdbcType="VARCHAR" />
+    <result column="itmobilephone" property="itmobilephone" jdbcType="VARCHAR" />
+    <result column="itemqq" property="itemqq" jdbcType="VARCHAR" />
+    <result column="estimateworkload" property="estimateworkload" jdbcType="VARCHAR" />
+    <result column="estimatecost" property="estimatecost" jdbcType="VARCHAR" />
+    <result column="demandtarget" property="demandtarget" jdbcType="VARCHAR" />
+    <result column="detailid" property="detailid" jdbcType="INTEGER" />
+    <result column="organization" property="organization" jdbcType="VARCHAR" />
+    <result column="itworkplan" property="itworkplan" jdbcType="VARCHAR" />
+    <result column="itsum" property="itsum" jdbcType="VARCHAR" />
+    <result column="itstate" property="itstate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    itemid, itemname, itemsort, itemnumber, department, planstarttime, planendtime, clientid, 
+    contractid, itemperson, ittelephone, itmobilephone, itemqq, estimateworkload, estimatecost, 
+    demandtarget, detailid, organization, itworkplan, itsum, itstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from itinfor
+    where itemid = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from itinfor
+    where itemid = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Itinfor" >
+    insert into itinfor (itemid, itemname, itemsort, 
+      itemnumber, department, planstarttime, 
+      planendtime, clientid, contractid, 
+      itemperson, ittelephone, itmobilephone, 
+      itemqq, estimateworkload, estimatecost, 
+      demandtarget, detailid, organization, 
+      itworkplan, itsum, itstate
+      )
+    values (#{itemid,jdbcType=INTEGER}, #{itemname,jdbcType=VARCHAR}, #{itemsort,jdbcType=VARCHAR}, 
+      #{itemnumber,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{planstarttime,jdbcType=VARCHAR}, 
+      #{planendtime,jdbcType=VARCHAR}, #{clientid,jdbcType=INTEGER}, #{contractid,jdbcType=INTEGER}, 
+      #{itemperson,jdbcType=VARCHAR}, #{ittelephone,jdbcType=VARCHAR}, #{itmobilephone,jdbcType=VARCHAR}, 
+      #{itemqq,jdbcType=VARCHAR}, #{estimateworkload,jdbcType=VARCHAR}, #{estimatecost,jdbcType=VARCHAR}, 
+      #{demandtarget,jdbcType=VARCHAR}, #{detailid,jdbcType=INTEGER}, #{organization,jdbcType=VARCHAR}, 
+      #{itworkplan,jdbcType=VARCHAR}, #{itsum,jdbcType=VARCHAR}, #{itstate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Itinfor" >
+    insert into itinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        itemid,
+      </if>
+      <if test="itemname != null" >
+        itemname,
+      </if>
+      <if test="itemsort != null" >
+        itemsort,
+      </if>
+      <if test="itemnumber != null" >
+        itemnumber,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="planstarttime != null" >
+        planstarttime,
+      </if>
+      <if test="planendtime != null" >
+        planendtime,
+      </if>
+      <if test="clientid != null" >
+        clientid,
+      </if>
+      <if test="contractid != null" >
+        contractid,
+      </if>
+      <if test="itemperson != null" >
+        itemperson,
+      </if>
+      <if test="ittelephone != null" >
+        ittelephone,
+      </if>
+      <if test="itmobilephone != null" >
+        itmobilephone,
+      </if>
+      <if test="itemqq != null" >
+        itemqq,
+      </if>
+      <if test="estimateworkload != null" >
+        estimateworkload,
+      </if>
+      <if test="estimatecost != null" >
+        estimatecost,
+      </if>
+      <if test="demandtarget != null" >
+        demandtarget,
+      </if>
+      <if test="detailid != null" >
+        detailid,
+      </if>
+      <if test="organization != null" >
+        organization,
+      </if>
+      <if test="itworkplan != null" >
+        itworkplan,
+      </if>
+      <if test="itsum != null" >
+        itsum,
+      </if>
+      <if test="itstate != null" >
+        itstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsort != null" >
+        #{itemsort,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnumber != null" >
+        #{itemnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="planstarttime != null" >
+        #{planstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="planendtime != null" >
+        #{planendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="contractid != null" >
+        #{contractid,jdbcType=INTEGER},
+      </if>
+      <if test="itemperson != null" >
+        #{itemperson,jdbcType=VARCHAR},
+      </if>
+      <if test="ittelephone != null" >
+        #{ittelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="itmobilephone != null" >
+        #{itmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="itemqq != null" >
+        #{itemqq,jdbcType=VARCHAR},
+      </if>
+      <if test="estimateworkload != null" >
+        #{estimateworkload,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatecost != null" >
+        #{estimatecost,jdbcType=VARCHAR},
+      </if>
+      <if test="demandtarget != null" >
+        #{demandtarget,jdbcType=VARCHAR},
+      </if>
+      <if test="detailid != null" >
+        #{detailid,jdbcType=INTEGER},
+      </if>
+      <if test="organization != null" >
+        #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="itworkplan != null" >
+        #{itworkplan,jdbcType=VARCHAR},
+      </if>
+      <if test="itsum != null" >
+        #{itsum,jdbcType=VARCHAR},
+      </if>
+      <if test="itstate != null" >
+        #{itstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Itinfor" >
+    update itinfor
+    <set >
+      <if test="itemname != null" >
+        itemname = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsort != null" >
+        itemsort = #{itemsort,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnumber != null" >
+        itemnumber = #{itemnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="planstarttime != null" >
+        planstarttime = #{planstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="planendtime != null" >
+        planendtime = #{planendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null" >
+        clientid = #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="contractid != null" >
+        contractid = #{contractid,jdbcType=INTEGER},
+      </if>
+      <if test="itemperson != null" >
+        itemperson = #{itemperson,jdbcType=VARCHAR},
+      </if>
+      <if test="ittelephone != null" >
+        ittelephone = #{ittelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="itmobilephone != null" >
+        itmobilephone = #{itmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="itemqq != null" >
+        itemqq = #{itemqq,jdbcType=VARCHAR},
+      </if>
+      <if test="estimateworkload != null" >
+        estimateworkload = #{estimateworkload,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatecost != null" >
+        estimatecost = #{estimatecost,jdbcType=VARCHAR},
+      </if>
+      <if test="demandtarget != null" >
+        demandtarget = #{demandtarget,jdbcType=VARCHAR},
+      </if>
+      <if test="detailid != null" >
+        detailid = #{detailid,jdbcType=INTEGER},
+      </if>
+      <if test="organization != null" >
+        organization = #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="itworkplan != null" >
+        itworkplan = #{itworkplan,jdbcType=VARCHAR},
+      </if>
+      <if test="itsum != null" >
+        itsum = #{itsum,jdbcType=VARCHAR},
+      </if>
+      <if test="itstate != null" >
+        itstate = #{itstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where itemid = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Itinfor" >
+    update itinfor
+    set itemname = #{itemname,jdbcType=VARCHAR},
+      itemsort = #{itemsort,jdbcType=VARCHAR},
+      itemnumber = #{itemnumber,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      planstarttime = #{planstarttime,jdbcType=VARCHAR},
+      planendtime = #{planendtime,jdbcType=VARCHAR},
+      clientid = #{clientid,jdbcType=INTEGER},
+      contractid = #{contractid,jdbcType=INTEGER},
+      itemperson = #{itemperson,jdbcType=VARCHAR},
+      ittelephone = #{ittelephone,jdbcType=VARCHAR},
+      itmobilephone = #{itmobilephone,jdbcType=VARCHAR},
+      itemqq = #{itemqq,jdbcType=VARCHAR},
+      estimateworkload = #{estimateworkload,jdbcType=VARCHAR},
+      estimatecost = #{estimatecost,jdbcType=VARCHAR},
+      demandtarget = #{demandtarget,jdbcType=VARCHAR},
+      detailid = #{detailid,jdbcType=INTEGER},
+      organization = #{organization,jdbcType=VARCHAR},
+      itworkplan = #{itworkplan,jdbcType=VARCHAR},
+      itsum = #{itsum,jdbcType=VARCHAR},
+      itstate = #{itstate,jdbcType=VARCHAR}
+    where itemid = #{itemid,jdbcType=INTEGER}
+  </update>
+</mapper>
