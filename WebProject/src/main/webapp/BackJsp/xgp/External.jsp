@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">  
 	<script src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-1.10.2.min.js"></script>
 	
 	
 	
@@ -37,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
+	  margin-left:50px;
 	}
 	
 	#zero1{
@@ -47,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	#zero2{
 	  height:432px;
-	  width:80%;
+	  width:70%;
 	   	
 	
 	   position:absolute;
@@ -98,138 +99,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
       <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>外部通讯录</i></h2>
-     
+        
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">后退</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">登记记录</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">查找</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">刷新</button>
+       
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddExternal.jsp">登记记录</a></button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><i onclick="replaceDoc()">刷新</i></button>
      </div>
      </br>
      <table id="zero">
        <tr>
            <td id="zero1">
-              <div class="zero11"><i style="display:block;margin-top:10px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
+              <div class="zero11"><i style="display:block;margin-top:10px;font-weight:bold;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
                  <div class="zero12">
-                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">显示所有</span></div>
-                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">快递服务类</span></div>
-                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">外卖订餐类</span></div>
-                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">银行客服类</span></div>
+                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" id="one1">显示所有</span></div>
+                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one2">快递服务类</span></div>
+                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one3">外卖订餐类</span></div>
+                 <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one4">银行客服类</span></div>
                  </div>
           
            </td>
            <td id="zero2">
               <div id="colloaContent2">
-					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
+					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0" >
 						<colgroup>
 							<col width="300px">
-							<col width="150px">
-							<col width="150px">
-							<col width="150px">
-							<col width="150px">
+							<col width="100px">
+							<col width="100px">
+							<col width="100px">
+							<col width="100px">
 						</colgroup>
-						<thead>
-							<tr>
-								<th style="height:40px">姓名</th>
-								<th>头衔</th>
-								<th>所属单位</th>
-								<th>固定电话</th>
-								<th>移动电话</th>
+							<tr style="border-top:2px solid #999;background-color:#F4F4F4;font-weight:bold">
+								<td style="height:40px">姓名</td>
+								<td>头衔</td>
+								<td>所属单位</td>
+								<td>固定电话</td>
+								<td>移动电话</td>
 							</tr>
-						</thead>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;"><a href="#">EMS邮政特快专递</a></td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						
-						
+						   <tbody id="tbody"></tbody>
 						
 					</table>
 				</div>
@@ -238,15 +144,208 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
-     <div class="btn-group" style="margin-left:220px;margin-top:-40px;">
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">首页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">上页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">当前页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">下页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">尾页</button>
+     <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
+	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default"><i style="color:#000">首页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"  id="prepage"><i style="color:#000">上一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default">尾页</button>
      </div>
       
     
       
   </body>
 </html>
+<script>
+   function goBack()
+  {
+  /* window.history.back(-1) */
+  window.history.go(-1)
+  }
+function replaceDoc()
+{
+    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
+}
+
+      $(function(){
+          getAll(1);
+      });
+      function getAll(pagenum){
+         $.ajax({
+            url:"Wb/getAllWb",
+            type:"post",
+            data:{"pageNum":pagenum},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
+                   tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
+                   tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
+                   tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphonenum+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            },error:function(){
+              alert(33)
+            }
+         
+         })
+      }
+      //条件查询
+      $("#one1").click(function(){
+        $.ajax({
+            url:"Wb/getAllWbone1",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphonenum+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+      
+      
+      //条件查询
+      $("#one2").click(function(){
+        $.ajax({
+            url:"Wb/getAllWbone2",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphonenum+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+      //条件查询3
+       $("#one3").click(function(){
+        $.ajax({
+            url:"Wb/getAllWbone3",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphonenum+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+     //条件查询4
+      $("#one4").click(function(){
+        $.ajax({
+            url:"Wb/getAllWbone4",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
+                   tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphonenum+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+     
+      
+      
+      
+      
+      $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+       $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      })
+     
+      
+    
+
+</script>
+
+

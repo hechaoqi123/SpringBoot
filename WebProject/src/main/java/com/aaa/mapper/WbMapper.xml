@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.WbMapper" >
+
+   <select id="getAllWb" resultType="java.util.Map">
+      select * from Wb
+   </select>
+   <insert id="addWb" parameterType="com.aaa.bean.Wb">
+      insert into Wb(wbname,wbfl,wbtx,wbssdw,wbphone,wbphonenum,wbyj,wbjstx,wbbz,wbxb) VALUES
+       (#{wbname},#{wbfl},#{wbtx},#{wbssdw},#{wbphone},#{wbphonenum},#{wbyj},#{wbjstx},#{wbbz},#{wbxb})       
+   </insert>
+   <select id="getAllWbone1" resultType="java.util.Map">
+      select * from Wb 
+   </select>
+   <select id="getAllWbone2" resultType="java.util.Map">
+      select * from Wb where wbfl='1'
+   </select>
+   <select id="getAllWbone3" resultType="java.util.Map">
+      select * from Wb where wbfl='外卖'
+   </select>
+   <select id="getAllWbone4" resultType="java.util.Map">
+      select * from Wb where wbfl='银行'
+   </select>
+</mapper>   
+   

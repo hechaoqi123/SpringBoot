@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">  
 	<script src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-1.10.2.min.js"></script>
   
      <style type="text/css">
     #i{
@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
+	  margin-left:50px;
 	}
 	
 	#zero1{
@@ -43,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	#zero2{
-	  height:450px;
-	  width:80%;
+	  height:432px;
+	  width:69%;
 	   	
 	
 	   position:absolute;
@@ -113,27 +114,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <td id="zero1">
               <div class="zero11"><i style="display:block;margin-top:10px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
                  <div class="zero12">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">(显示所有)</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">新闻资讯</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">通知公告</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">规章制度</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">行业动态</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one1">(显示所有)</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one2">新闻资讯</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one3">通知公告</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one4">规章制度</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one5">行业动态</span></div>
                  </div>
                  <div class="zero13">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本周新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本月新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本季度新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one6">本周新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one7">本月新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;"id="one8">本季度新增</span></div>
                 </div>
            </td>
            <td id="zero2">
               <div id="colloaContent2">
 					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
-							<col width="450px">
-							
-							<col width="150px">
-							<col width="150px">
-							<col width="150px">
+							<col width="400px">
+							<col width="120px">
+							<col width="120px">
+							<col width="120px">
 						</colgroup>
 						<thead>
 							<tr>
@@ -143,96 +143,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>更新时间</th>
 							</tr>
 						</thead>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
+					   <tbody id="tbody"></tbody>
 						
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						    <td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						
-						</tr>
 					</table>
 				</div>
               
@@ -240,16 +152,219 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
-     <div class="btn-group" style="margin-left:220px;margin-top:-40px;">
+     <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">首页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">上页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">当前页</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">下页</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"id="prepage"><i style="color:#000">上一页</i></button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"id="nextpage"><i style="color:#000">下一页</i></button>
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">尾页</button>
      </div>
       
-   
-   
-   
   </body>
 </html>
+
+<script type="text/javascript">
+
+ $(function(){
+          getAll(1);
+      });
+ function getAll(pagenum){
+         $.ajax({
+            url:"Gg/getAllGg",
+            type:"post",
+            data:{"pageNum":pagenum},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            },error:function(){
+              alert(33)
+            }
+         
+         })
+      }
+       $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+       $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      })
+     
+//条件查询
+      $("#one1").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone1",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+ 
+//条件查询
+      $("#one2").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone2",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+
+//条件查询
+      $("#one3").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone3",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+
+//条件查询
+      $("#one4").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone4",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+
+//条件查询
+      $("#one5").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone5",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+
+
+ 
+</script>
+

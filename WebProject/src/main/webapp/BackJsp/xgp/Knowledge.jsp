@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
+	  margin-left:50px;
 	}
 	
 	#zero1{
@@ -44,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	#zero2{
 	  height:432px;
-	  width:80%;
+	  width:70%;
 	   	
 	
 	   position:absolute;
@@ -153,11 +154,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div id="colloaContent2">
 					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
-							<col width="450px">
-							<col width="200px">
-							<col width="100px">
-							<col width="100px">
-							<col width="100px">
+							<col width="300px">
+							<col width="120px">
+							<col width="120px">
+							<col width="120px">
+							<col width="120px">
 						</colgroup>
 						<thead>
 							<tr>
@@ -266,7 +267,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
-     <div class="btn-group" style="margin-left:220px;margin-top:-40px;">
+     <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
 	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">首页</button>
 	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">上页</button>
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">当前页</button>

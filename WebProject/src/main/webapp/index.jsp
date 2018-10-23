@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-1.10.2.min.js"></script>
   </head>
   
   <body>
@@ -39,24 +39,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script>
       $(function(){
-          getAll(1);
+          getAll();
       });
       function getAll(){
+      alert(1)
          $.ajax({
-            url:"stu/getAll",
+            url:"userdetail/getAllUser",
             type:"post",
-            data:{"pageNum":pageNum},
+            data:{"pageNum":1},
             dataType:"json",
             success:function(data){
             $("#tbody").html("");
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr>";
-                   tr+="<td><input type='checkbox' value='"+datalist[i].sid+"'/></td>";
-                   tr+="<td>"+datalist[i].sid+"</td>";
-                   tr+="<td>"+datalist[i].sname+"</td>";
-                   tr+="<td>"+datalist[i].sdate+"</td>";
-                   tr+="<td>"+datalist[i].cname+"</td>";
+                  
+                  tr+="<td>"+datalist[i].detailid+"</td>";
+                   tr+="<td>"+datalist[i].usernum+"</td>";
+                   tr+="<td>"+datalist[i].entrydate+"</td>";
+                   tr+="<td>"+datalist[i].phone+"</td>";
                    tr+="</tr>";
                    $("#tbody").append(tr);
                }
@@ -68,6 +69,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 if(data.isLastPage){$("#nextpage").hide()}else{
                   $("#nextpage").show()
                 }
+            },error:function(){
+              alert(33)
             }
          
          })
@@ -80,30 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            var nowpage=parseInt($("#nowPage").html());
            getAll(nowpage+1);
       })
-      $("#delAll").click(function(){
-           //判断是否选中
-           var arr=new Array();
-           $("#tbody :checkbox").each(function(){
-               if($(this).prop("checked")){
-                  //封装json字符
-                  //使用数组
-                  arr.push($(this).val())
-                  //将所有的id都通过一个特殊字符拼成字符串，通过特殊字符变成数组
-                 //str.join(",")  str.split()
-               }
-           });
-            $.ajax({
-            url:"stu/delAll/"+arr,
-            type:"post",
-            data:{},
-            dataType:"json",
-            success:function(data){
-            var nowpage=parseInt($("#nowPage").html());
-                  getAll(nowpage);
-            }
-            })
+     
       
-      })
+    
 
 </script>
 
