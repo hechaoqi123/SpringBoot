@@ -68,6 +68,27 @@ public class GgServiceImpl implements GgService{
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
 	}
+	@Override
+	public PageInfo getAllGgone6(Integer pageNum, String ggClassify) {
+		 PageHelper.startPage(pageNum, 13);
+         List<Map> list=mapper.getAllGgone6(ggClassify);
+		PageInfo<Map> info=new PageInfo<Map>(list);
+		return info;
+	}
+	@Override
+	public PageInfo getAllGgone7(Integer pageNum, String ggClassify) {
+		 PageHelper.startPage(pageNum, 13);
+         List<Map> list=mapper.getAllGgone7(ggClassify);
+		PageInfo<Map> info=new PageInfo<Map>(list);
+		return info;
+	}
+	@Override
+	public PageInfo getAllGgone8(Integer pageNum, String ggClassify) {
+		 PageHelper.startPage(pageNum, 13);
+         List<Map> list=mapper.getAllGgone8(ggClassify);
+		PageInfo<Map> info=new PageInfo<Map>(list);
+		return info;
+	}
 
 
 }

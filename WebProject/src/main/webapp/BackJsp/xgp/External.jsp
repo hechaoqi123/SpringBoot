@@ -103,7 +103,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
        
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddExternal.jsp">登记记录</a></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><i onclick="replaceDoc()">刷新</i></button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">
+	    
+	    <span onclick="replaceDoc()">刷新</span>
+	    </button>
      </div>
      </br>
      <table id="zero">
@@ -157,15 +160,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 </html>
 <script>
+  //刷新
+  	 function replaceDoc()
+{
+    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
+}
+
    function goBack()
   {
   /* window.history.back(-1) */
   window.history.go(-1)
   }
-function replaceDoc()
-{
-    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
-}
+
 
       $(function(){
           getAll(1);

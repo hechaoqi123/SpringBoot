@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.GgMapper" >
-<select id="getAllGg" resultType="java.util.Map">
+   <select id="getAllGg" resultType="java.util.Map">
       select * from Gg
    </select>
    
@@ -22,6 +22,15 @@
    </select>
    <select id="getAllGgone5" resultType="java.util.Map">
       select * from Gg  where ggClassify='行业动态'
+   </select>
+   <select id="getAllGgone6" resultType="java.util.Map">
+     select * from Gg  where date_sub(curdate(),INTERVAL 7 DAY) &lt;= date(ggDate) 
+   </select>
+   <select id="getAllGgone7" resultType="java.util.Map">
+       select * from Gg where date_sub(curdate(), INTERVAL 30 DAY) &lt;= date(ggDate)
+   </select>
+   <select id="getAllGgone8" resultType="java.util.Map">
+      select * from Gg where QUARTER(ggDate)=QUARTER(now())
    </select>
   
    </mapper>

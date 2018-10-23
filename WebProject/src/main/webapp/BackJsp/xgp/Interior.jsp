@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="btn-group" style="margin-left:70px;margin-top:-150px;color:#000">
 	    <button type="button" class="btn btn-default"><i style="color:#000">首页</i></button>
 	    <button type="button" class="btn btn-default" id="prepage"><i style="color:#000">上一页</i></button>
-	    <button type="button" class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
+	    <button type="button" class="btn btn-default"><i style="color:#000">当前是第<i id="nowPage"></i>页</i></button>
 	    <button type="button" class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
 	    <button type="button" class="btn btn-default"><i style="color:#000">尾页</i></button>
      </div>

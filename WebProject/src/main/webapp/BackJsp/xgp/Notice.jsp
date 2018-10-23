@@ -103,10 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>公告管理</i></h2>
      
      <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">后退</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">发布新公告</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">查找</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">刷新</button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddNotice.jsp">发布新公告</a></button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><span onclick="replaceDoc()">刷新</span></button>
      </div>
      </br>
      <table id="zero">
@@ -164,6 +162,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 
 <script type="text/javascript">
+ //刷新
+  	 function replaceDoc()
+{
+    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
+}
+
+
+
 
  $(function(){
           getAll(1);
@@ -363,6 +369,99 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         })
     }) 
+    //条件查询
+      $("#one6").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone6",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+    //条件查询
+      $("#one7").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone7",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+    //条件查询
+      $("#one8").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone8",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
 
 
  

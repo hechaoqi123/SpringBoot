@@ -16,5 +16,8 @@ public interface GgMapper {
 	public List<Map> getAllGgone3(String ggClassify);
 	public List<Map> getAllGgone4(String ggClassify);
 	public List<Map> getAllGgone5(String ggClassify);
+	public List<Map> getAllGgone6(String ggClassify);
+	public List<Map> getAllGgone7(String ggClassify);
+	public List<Map> getAllGgone8(String ggClassify);
 
 }

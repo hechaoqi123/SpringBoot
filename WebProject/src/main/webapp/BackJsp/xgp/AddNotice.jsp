@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <COL width="60">
         <COL>
         <COL width="80">
-        <COL width="120"></COLGROUP>
+        <COL width="140"></COLGROUP>
         <TBODY>
         <TR>
              <TD align="right">&nbsp;步骤:</TD>
@@ -189,8 +189,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <!--   生日 (日期和时间): <input type="datetime-local" name="ggDate"> -->
                
-    
-        <input type="submit" value="添加"  id="add" onclick="sub()"/>
+         <button type="submit" style="margin-top:100px;"class="btn btn-primary btn-lg btn-block" id="add" onclick="sub()">添加</button>
+        <!-- <input type="submit" value="添加"  id="add" onclick="sub()"/> -->
       
      </FORM>
      </DIV>

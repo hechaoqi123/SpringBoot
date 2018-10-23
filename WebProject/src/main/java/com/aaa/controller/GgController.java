@@ -51,6 +51,18 @@ public class GgController {
 	public @ResponseBody PageInfo getAllGgone5(Integer pageNum,String ggClassify){
 		return ggservice.getAllGgone5(pageNum, ggClassify);
 	}
+	@RequestMapping("/getAllGgone6")
+	public @ResponseBody PageInfo getAllGgone6(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone6(pageNum, ggClassify);
+	}
+	@RequestMapping("/getAllGgone7")
+	public @ResponseBody PageInfo getAllGgone7(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone7(pageNum, ggClassify);
+	}
+	@RequestMapping("/getAllGgone8")
+	public @ResponseBody PageInfo getAllGgone8(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone8(pageNum, ggClassify);
+	}
 	
 	/*@RequestMapping("/AddGg")
 	public  String  AddGg(Gg gg) throws ServletException, IOException{
