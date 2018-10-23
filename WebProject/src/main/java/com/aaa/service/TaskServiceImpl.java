@@ -21,9 +21,9 @@ public class TaskServiceImpl implements TaskService {
    private  TaskMapper mapper;
 
 	@Override
-	public PageInfo<Map> query(Integer pageNum) {
+	public PageInfo<Map> query(Integer pageNum,String name) {
 		//PageHelper.startPage(pageNum,17);
-		List<Map> list=mapper.query();
+		List<Map> list=mapper.query(name);
 		
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;

@@ -121,17 +121,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 
 </tbody></table>
-<script language="javascript">
-function onTypeChange(n){
-	var d=new Date();
-	if(n==10) $("dbf.subject").value(d.getFullYear()+"年度工作计划");
-	else if(n==20) {var m=d.getMonth(); $("dbf.subject").value(d.getFullYear()+"年"+(m<3?1:(m<6?2:(m<9?3:4)))+"季度工作计划");}
-	else if(n==30) $("dbf.subject").value(d.getFullYear()+"年"+(d.getMonth()+1)+"月份工作计划");
-	else if(n==40) $("dbf.subject").value(d.getFullYear()+"年"+(d.getMonth()+1)+"月份第?周工作计划");
-	else if(n==100) $("dbf.subject").value("某某项目计划");
-	else $("dbf.subject").value("某某工作计划");
-}
-</script>
 
    <input style="margin-left:960px;height:30px;width:50px" type="submit" value="保存" id="add"/>
 
@@ -163,35 +152,6 @@ function onTypeChange(n){
 </body></html>
 <script type="text/javascript" src="BackJsp/wsq/js/jquery-1.8.3.min.js"></script>
 <script language="javaScript">
-   /* $("#ww").click(function (){
- 			var f = new FormData($("#myform")[0])
- 			var plname =new Array();
- 			var plperform=new Array();
-			var performdate=new Array();
- 			for(var i=0;i<6;i++){
- 			    if(f.get("plname["+i+"]")!=""){
- 			      if(f.get("plperform["+i+"]")!=""){
- 			        if(f.get("performdate["+i+"]")!=""){
- 			         plname.push(f.get("plname["+i+"]"));
-					 plperform.push(f.get("plperform["+i+"]"));
-					 performdate.push(f.get("performdate["+i+"]"));
- 			        }
- 			      }
- 			    }
- 			} });*/
- 		/* 	$.ajax({
-                 url:"/plan/addAll",
-  /*             type:"post",
-       /plan/addAlltaType:"json",
-                 data:{
-                 	plname:plname,
-                 	plperform:plperform,
-                 	performdate:performdate
-                 },
-                 success:function(data){
-					alert(data);
-                 }
-              }); */							
 
 
      $(function(){
@@ -241,10 +201,10 @@ function onTypeChange(n){
         type:"post",
         dataType:"json",
         success:function(data){
-         $("deptName").html();
+         $("#deptName").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].deptid+"'>"+data[i]. deptName+"</option>";
+           option+="<option value='"+data[i].deptid+"'>"+data[i]. deptname+"</option>";
        
           }
          $("#deptName").append(option);
@@ -255,24 +215,5 @@ function onTypeChange(n){
        //begin
      });
      
-/*      $("#add").click(function(){
-        var jsonA/* new Array();
-       $("#myform tr").each(function(){
-			var pname=$(this).find(".pname").val();
-			var planname=$(this).find("planname").val();
-			var deptname=$(this).find().val("deptname");
-			var ksdate=$(this).find(".ksdate").val();
-			var jsdate=$(this).find(".jsdate").val();
-			var username=$(this).find(".username").val();
-			var kname=$(this).find("kname").val();
-			var letname=$(this).find("letname").val();
-			var jsonStr={"pname":pname,"planname":planname,"username":username,"deptname":deptname,"ksdate":ksdate,"jsdate":jsdate,"kname":kname,"letname":letname };
-             jsonArr.push(jsonStr)
-              })
-              
-     }); */
-     
-
-
 
 </script>

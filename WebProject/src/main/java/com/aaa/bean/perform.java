@@ -2,12 +2,15 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class perform implements Serializable{
- private Integer plid;
- private String plname;//计划事项
- private String plperform;//执行人
- private String performdate;//执行时间
- private String pid;
+	@Id
+	 private Integer plid;
+	 private String plname;//计划事项
+	 private String plperform;//执行人
+	 private String performdate;//执行时间
+	 private String pid;
 public Integer getPlid() {
 	return plid;
 }

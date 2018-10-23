@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper  namespace="com.aaa.mapper.PlanMapper">
 	    
-      <select id="quersa" resultType="com.aaa.bean.dept">
+      <select id="quersa" resultType="Dept">
     	  select * from dept
        </select>
-	  <select id="query" resultType="java.util.Map">
-     select * from plan p join userdetail u on p.detailld=u.detailId  join dept d on d. deptId=p.deptId where u.username LIKE'李萌'
+	  <select id="query" parameterType="java.lang.String" resultType="java.util.Map">
+     select * from plan p join userdetail u on p.detailld=u.detailId  join dept d on d. deptId=p.deptId where u.username =#{name}
 	   </select>
 	  <select id="querytwo" resultType="java.util.Map">
 	 select * from plan p join userdetail u on p.detailld=u.detailId  join dept d on d. deptId=p.deptId

@@ -2,8 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
-public class reportser implements Serializable {
+import javax.persistence.Id;
 
+public class reportser implements Serializable {
+	@Id
 	private Integer reid;
 	private String renames;
 	private Integer rid;

@@ -9,4 +9,10 @@ public interface UserdetailService {
 	public Userdetail getOne(Integer id);
 	//获取所有员工信息
 	public List<Userdetail> getAll();
+	//添加员工信息
+	public void save(Userdetail user);
+	//条件检索
+	public List<Userdetail> queryByCriteria(String status);
+	//删除员工信息
+	public void remove(Integer userId);
 }

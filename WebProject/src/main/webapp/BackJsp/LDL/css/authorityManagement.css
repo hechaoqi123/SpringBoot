@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+#topDiv{padding: 30px;}
+#bottomDiv{width:100%; padding: 20px; height: 100%;}
+#colloaMenu2{padding-left: 20px; float: left;}
+#bottomRightDiv{width: 82%; border: 1px solid #000;float: right;}
+.bottomRightDivUl{
+	list-style: none;
+	float: left;
+	width: 100%;
+	border: 1px solid #e3e3e3;
+}
+.bottomRightDivUl li{
+	float: left;
+	width: 16%;
+	height: 30px;
+	text-align: center;
+	font-weight: bold;
+	padding:3px 2px 3px 10px;
+	font-size:15px;
+	text-align:left;
+	white-space:nowrap;
+}
+
+#myTbody{
+	margin-top: 30px;
+}
+li{
+  	list-style:none;
+}
+.ww{
+	height:35px;
+	padding-left:50px;
+	line-height:35px;
+	margin-top:1px;
+}
+.ww:hover{
+	/* background:#08465B; */
+		background-color: #e3e9e9;
+}
+.nav-list .w{
+	height:auto;
+	margin-top:1px;
+	opacity:0.8;
+	background-color:#E3333;
+}
+.nav-list .w a > span{
+	background-color: #ee4fa;
+}
+.nav-list .w:hover{
+	background:#09300;
+}
+.nav-list .w > a > span{
+	margin: 0 50px;
+}
+.ww > a{
+	text-decoration:none;
+}
+.ww > a > span{
+	margin: 0 50px;
+	color: #000;
+}
+/* 分配窗口 */
+.userSeek{
+			width: 100%;
+			height: 50px;
+		}
+.alootDiv{
+	width: 100%;
+	height: 35%;
+	border: 1px solid #e3e3e3;
+}
+.alootDiv > div{
+	float: left;
+}
+.alootTrue{
+	width: 50%;
+	height:100%;
+	border: 1px solid #e3e3e3;
+	overflow: auto;
+}
+.alootFalse{
+	width: 50%;
+	height:100%;
+	border: 1px solid #e3e3e3;
+	overflow: auto;
+}
+.alootTrueUser{
+	width: 100%;
+	height:35px;
+	float: left;
+	line-height:35px;
+	font-weight:bold;
+	text-align:center;
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #F1e8e8;
+}
+.alootFalseUser{
+	width: 100%;
+	height:35px;
+	float: left;
+	line-height:35px;
+	font-weight:bold;
+	text-align:center;
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #F1e8e8;
+}
+.alootTrueUser:HOVER {
+	background-color: #fff;
+	
+}
+.alootFalseUser:HOVER {
+	background-color: #fff;
+}
+

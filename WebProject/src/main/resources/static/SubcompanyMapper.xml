@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.SubcompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Subcompany" >
+    <id column="scId" property="scid" jdbcType="INTEGER" />
+    <result column="scName" property="scname" jdbcType="VARCHAR" />
+    <result column="scDepict" property="scdepict" jdbcType="VARCHAR" />
+    <result column="scJobDescription" property="scjobdescription" jdbcType="VARCHAR" />
+    <result column="scState" property="scstate" jdbcType="INTEGER" />
+    <result column="belong" property="belong" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scId, scName, scDepict, scJobDescription, scState, belong
+  </sql>
+  <!--   public List<Subcompany> getAllSubcompany(); -->
+  <select id="getAllSubcompany" resultType="com.aaa.bean.Subcompany">
+  		select * from Subcompany
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subcompany
+    where scId = #{scid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subcompany
+    where scId = #{scid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Subcompany" >
+    insert into subcompany (scId, scName, scDepict, 
+      scJobDescription, scState, belong
+      )
+    values (#{scid,jdbcType=INTEGER}, #{scname,jdbcType=VARCHAR}, #{scdepict,jdbcType=VARCHAR}, 
+      #{scjobdescription,jdbcType=VARCHAR}, #{scstate,jdbcType=INTEGER}, #{belong,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Subcompany" >
+    insert into subcompany
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scid != null" >
+        scId,
+      </if>
+      <if test="scname != null" >
+        scName,
+      </if>
+      <if test="scdepict != null" >
+        scDepict,
+      </if>
+      <if test="scjobdescription != null" >
+        scJobDescription,
+      </if>
+      <if test="scstate != null" >
+        scState,
+      </if>
+      <if test="belong != null" >
+        belong,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scid != null" >
+        #{scid,jdbcType=INTEGER},
+      </if>
+      <if test="scname != null" >
+        #{scname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdepict != null" >
+        #{scdepict,jdbcType=VARCHAR},
+      </if>
+      <if test="scjobdescription != null" >
+        #{scjobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="scstate != null" >
+        #{scstate,jdbcType=INTEGER},
+      </if>
+      <if test="belong != null" >
+        #{belong,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Subcompany" >
+    update subcompany
+    <set >
+      <if test="scname != null" >
+        scName = #{scname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdepict != null" >
+        scDepict = #{scdepict,jdbcType=VARCHAR},
+      </if>
+      <if test="scjobdescription != null" >
+        scJobDescription = #{scjobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="scstate != null" >
+        scState = #{scstate,jdbcType=INTEGER},
+      </if>
+      <if test="belong != null" >
+        belong = #{belong,jdbcType=INTEGER},
+      </if>
+    </set>
+    where scId = #{scid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Subcompany" >
+    update subcompany
+    set scName = #{scname,jdbcType=VARCHAR},
+      scDepict = #{scdepict,jdbcType=VARCHAR},
+      scJobDescription = #{scjobdescription,jdbcType=VARCHAR},
+      scState = #{scstate,jdbcType=INTEGER},
+      belong = #{belong,jdbcType=INTEGER}
+    where scId = #{scid,jdbcType=INTEGER}
+  </update>
+</mapper>

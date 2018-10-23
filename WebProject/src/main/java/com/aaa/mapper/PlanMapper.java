@@ -7,13 +7,15 @@ import org.apache.ibatis.annotations.Param;
 
 import com.aaa.bean.Krar;
 import com.aaa.bean.Userdetail;
-import com.aaa.bean.dept;
+import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.plan;
 
-public interface PlanMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface PlanMapper extends Mapper<plan>{
 /*条件查询*/
-	public List<Map> query();
+	public List<Map> query(String name);
 	/*条件查询所有*/
 	public List<Map> querytwo();
 	public int add(plan plan);
@@ -25,7 +27,7 @@ public interface PlanMapper {
 	/* 查询下拉从属于*/
 	public List<plan> quer();
 	public List<Userdetail> quers();
-	public List<dept> quersa();
+	public List<Dept> quersa();
 	public List<Krar> querst();
 	
 }

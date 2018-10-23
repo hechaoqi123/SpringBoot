@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.bean.Krar;
 import com.aaa.bean.Userdetail;
-import com.aaa.bean.dept;
+import com.aaa.bean.Users;
+import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.performUtil;
 import com.aaa.bean.plan;
@@ -28,8 +31,11 @@ public class PlanController {
   @Autowired
  PlanService  planservice;
      @RequestMapping("/getAll")
-     public @ResponseBody PageInfo<Map> getAll(Integer pageNum){
-		return  planservice.query(pageNum);
+     public @ResponseBody PageInfo<Map> getAll(Integer pageNum,HttpSession session){
+    	 String uname = ((Users)session.getAttribute("CurrentUser")).getUname();
+    	
+    	 PageInfo<Map> query = planservice.query(pageNum,uname);
+		return query;
 	  
 	 }
      @RequestMapping("/getAlltwo")
@@ -41,9 +47,7 @@ public class PlanController {
      @RequestMapping("/addAll")
 	  public  String addAll(plan plan,Krar krar,performUtil per){
     	    	 planservice.adds(plan, krar, per.getList());
-   
-    	
-		return "BackJsp/wsq/task";
+		return "wsq/task";
    }
      @RequestMapping("/selty")
      public @ResponseBody List<plan> selty(){
@@ -58,8 +62,8 @@ public class PlanController {
     	return quers;
  }
      @RequestMapping("/seltys1")
-     public @ResponseBody List<dept> seltys1(){
-     	List<dept> quersa = planservice.quersa();
+     public @ResponseBody List<Dept> seltys1(){
+     	List<Dept> quersa = planservice.quersa();
      	System.out.println(quersa);
     	return quersa;
  }

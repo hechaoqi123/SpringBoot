@@ -2,13 +2,16 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Krar implements Serializable{
-private Integer kid;
-private String kname;//评审人ID
-private String letname;//执行人id
-private Integer pid;//计划ID
-private Integer tid;//任务id
-private Integer rid;//报告id
+	@Id
+	private Integer kid;
+	private String kname;//评审人ID
+	private String letname;//执行人id
+	private Integer pid;//计划ID
+	private Integer tid;//任务id
+	private Integer rid;//报告id
 public Integer getKid() {
 	return kid;
 }

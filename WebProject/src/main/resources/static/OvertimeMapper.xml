@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.OvertimeMapper" >
+
+   <select id="getAll" resultType="Overtime">
+     select * from overtime
+   </select>
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Overtime" >
+    <id column="overtimeId" property="overtimeid" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="dutyPeople" property="dutypeople" jdbcType="VARCHAR" />
+    <result column="applyPeople" property="applypeople" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="applyDate" property="applydate" jdbcType="VARCHAR" />
+    <result column="beginDate" property="begindate" jdbcType="VARCHAR" />
+    <result column="endDate" property="enddate" jdbcType="VARCHAR" />
+    <result column="cause" property="cause" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    overtimeId, theme, status, dutyPeople, applyPeople, dept, applyDate, beginDate, endDate, 
+    cause, field1, field2, field3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from overtime
+    where overtimeId = #{overtimeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from overtime
+    where overtimeId = #{overtimeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Overtime" >
+    insert into overtime (overtimeId, theme, status, 
+      dutyPeople, applyPeople, dept, 
+      applyDate, beginDate, endDate, 
+      cause, field1, field2, 
+      field3)
+    values (#{overtimeid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{dutypeople,jdbcType=VARCHAR}, #{applypeople,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{applydate,jdbcType=VARCHAR}, #{begindate,jdbcType=VARCHAR}, #{enddate,jdbcType=VARCHAR}, 
+      #{cause,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
+      #{field3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Overtime" >
+    insert into overtime
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="overtimeid != null" >
+        overtimeId,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople,
+      </if>
+      <if test="applypeople != null" >
+        applyPeople,
+      </if>
+      <if test="dept != null" >
+        dept,
+      </if>
+      <if test="applydate != null" >
+        applyDate,
+      </if>
+      <if test="begindate != null" >
+        beginDate,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="cause != null" >
+        cause,
+      </if>
+      <if test="field1 != null" >
+        field1,
+      </if>
+      <if test="field2 != null" >
+        field2,
+      </if>
+      <if test="field3 != null" >
+        field3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="overtimeid != null" >
+        #{overtimeid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null" >
+        #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        #{field3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Overtime" >
+    update overtime
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dutypeople != null" >
+        dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="applypeople != null" >
+        applyPeople = #{applypeople,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null" >
+        applyDate = #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        beginDate = #{begindate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null" >
+        cause = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where overtimeId = #{overtimeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Overtime" >
+    update overtime
+    set theme = #{theme,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      dutyPeople = #{dutypeople,jdbcType=VARCHAR},
+      applyPeople = #{applypeople,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      applyDate = #{applydate,jdbcType=VARCHAR},
+      beginDate = #{begindate,jdbcType=VARCHAR},
+      endDate = #{enddate,jdbcType=VARCHAR},
+      cause = #{cause,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR}
+    where overtimeId = #{overtimeid,jdbcType=INTEGER}
+  </update>
+</mapper>

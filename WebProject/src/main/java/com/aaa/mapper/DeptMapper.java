@@ -2,8 +2,10 @@ package com.aaa.mapper;
 
 import java.util.List;
 
-import com.aaa.bean.dept;
+import com.aaa.bean.Dept;
 
-public interface DeptMapper {
-	List<dept> getAll();
+import tk.mybatis.mapper.common.Mapper;
+
+public interface DeptMapper extends Mapper<Dept>{
+
 }

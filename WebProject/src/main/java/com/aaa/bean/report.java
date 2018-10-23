@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class report implements Serializable{
+	@Id
     private Integer rid;
     private String rname;
     private String rlname;

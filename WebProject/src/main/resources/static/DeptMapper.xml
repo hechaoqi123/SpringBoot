@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Dept" >
+    <id column="deptId" property="deptid" jdbcType="INTEGER" />
+    <result column="deptName" property="deptname" jdbcType="VARCHAR" />
+    <result column="deptDepict" property="deptdepict" jdbcType="VARCHAR" />
+    <result column="deptJobDescription" property="deptjobdescription" jdbcType="VARCHAR" />
+    <result column="deptState" property="deptstate" jdbcType="INTEGER" />
+    <result column="belong" property="belong" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    deptId, deptName, deptDepict, deptJobDescription, deptState, belong
+  </sql>
+  <!--   public List<Dept> getAllDept(); -->
+  <select id="getAllDept" resultType="com.aaa.bean.Dept">
+  		select * from Dept
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dept
+    where deptId = #{deptid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dept
+    where deptId = #{deptid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.bean.Dept" >
+    insert into dept (deptId, deptName, deptDepict, 
+      deptJobDescription, deptState, belong
+      )
+    values (#{deptid,jdbcType=INTEGER}, #{deptname,jdbcType=VARCHAR}, #{deptdepict,jdbcType=VARCHAR}, 
+      #{deptjobdescription,jdbcType=VARCHAR}, #{deptstate,jdbcType=INTEGER}, #{belong,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Dept" >
+    insert into dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptid != null" >
+        deptId,
+      </if>
+      <if test="deptname != null" >
+        deptName,
+      </if>
+      <if test="deptdepict != null" >
+        deptDepict,
+      </if>
+      <if test="deptjobdescription != null" >
+        deptJobDescription,
+      </if>
+      <if test="deptstate != null" >
+        deptState,
+      </if>
+      <if test="belong != null" >
+        belong,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptid != null" >
+        #{deptid,jdbcType=INTEGER},
+      </if>
+      <if test="deptname != null" >
+        #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="deptdepict != null" >
+        #{deptdepict,jdbcType=VARCHAR},
+      </if>
+      <if test="deptjobdescription != null" >
+        #{deptjobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="deptstate != null" >
+        #{deptstate,jdbcType=INTEGER},
+      </if>
+      <if test="belong != null" >
+        #{belong,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aaa.bean.Dept" >
+    update dept
+    <set >
+      <if test="deptname != null" >
+        deptName = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="deptdepict != null" >
+        deptDepict = #{deptdepict,jdbcType=VARCHAR},
+      </if>
+      <if test="deptjobdescription != null" >
+        deptJobDescription = #{deptjobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="deptstate != null" >
+        deptState = #{deptstate,jdbcType=INTEGER},
+      </if>
+      <if test="belong != null" >
+        belong = #{belong,jdbcType=INTEGER},
+      </if>
+    </set>
+    where deptId = #{deptid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Dept" >
+    update dept
+    set deptName = #{deptname,jdbcType=VARCHAR},
+      deptDepict = #{deptdepict,jdbcType=VARCHAR},
+      deptJobDescription = #{deptjobdescription,jdbcType=VARCHAR},
+      deptState = #{deptstate,jdbcType=INTEGER},
+      belong = #{belong,jdbcType=INTEGER}
+    where deptId = #{deptid,jdbcType=INTEGER}
+  </update>
+</mapper>
