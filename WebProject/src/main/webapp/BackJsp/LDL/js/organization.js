@@ -97,21 +97,3 @@ var myModalDeptVue = new Vue({
 		}
 	}
 });
-/*Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
-      execute:function(PageNumber){
-                   alert(this.part)
-                   alert(PageNumber)
-                  if(this.part==0){//全部加载
-                    var url = '/userdetail/getAllUserdetail';
-		             this.$http.post(url,{pageNum:PageNumber},{emulateJSON:true}).then(function(res){
-		                page.users=res.body.list
-		                this.pageInfo=res.body
-		             });
-                  }else{//条件加载
-                      var url="userdetail/queryByCriteria";
-		             this.$http.post(url,{pageNum:1,status:this.criteria},{emulateJSON:true}).then(function(res){
-		               page.users=res.body.list;
-		             })
-                  }
-                }
-*/

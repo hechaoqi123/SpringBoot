@@ -32,6 +32,28 @@
 				and us.uname like "%"#{uname}"%"
 			</if>
   </select>
+  <!-- List<Users> postTrueUser(Integer mTowId); -->
+  <select id="postTrueUser" parameterType="map" resultType="com.aaa.bean.Users">
+	SELECT * from users us
+		JOIN userspost up
+		ON us.uid = up.uid
+		WHERE up.pid = #{pid}
+		<if test="uname != ''">
+			and us.uname like "%"#{uname}"%"
+		</if>
+  </select>
+  <!-- List<Users> postFalseUser(Integer mTowId); -->
+  <select id="postFalseUser" parameterType="map" resultType="com.aaa.bean.Users">
+	  	SELECT * from users us
+			where us.uid not in(
+				SELECT us.uid from users us
+				JOIN userspost up
+				ON us.uid = up.uid
+				WHERE up.pid = #{pid})
+			<if test="uname != ''">
+				and us.uname like "%"#{uname}"%"
+			</if>
+  </select>
   <!-- Users getOneUsers(Users record); -->
   <select id="getOneUsers" parameterType="com.aaa.bean.Users" resultType="com.aaa.bean.Users">
   	SELECT * FROM users u WHERE u.unum = #{unum} AND u.upass = #{upass} 

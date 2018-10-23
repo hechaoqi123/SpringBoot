@@ -48,6 +48,7 @@ public class UsersController{
 		Map<String,Object> m = new HashMap<String, Object>();
 		m.put("mTowId",mTowId);
 		m.put("uname",uname);
+		System.out.println(uname);
 		List<Users> alootTrueUser = service.alootTrueUser(m);
 		List<Users> alootFalseUser = service.alootFalseUser(m);
 		Map<String,List> map = new HashMap<String, List>();
@@ -55,5 +56,17 @@ public class UsersController{
 		map.put("alootFalseUser", alootFalseUser);
 		return map;
 	}
-	
+	@RequestMapping("/postUser")
+	@ResponseBody
+	public Map<String,List> postUaer(Integer pid,String uname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("uname",uname);
+		List<Users> postTrueUser = service.postTrueUser(m);
+		List<Users> postFalseUser = service.postFalseUser(m);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("postTrueUser", postTrueUser);
+		map.put("postFalseUser", postFalseUser);
+		return map;
+	}
 }

@@ -34,4 +34,12 @@ public class UsersServiceImpl implements UsersService{
 	public List<Users> alootFalseUser(Map map) {
 		return mapper.alootFalseUser(map);
 	}
+	@Override
+	public List<Users> postTrueUser(Map map) {
+		return mapper.postTrueUser(map);
+	}
+	@Override
+	public List<Users> postFalseUser(Map map) {
+		return mapper.postFalseUser(map);
+	}
 }

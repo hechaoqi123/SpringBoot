@@ -25,6 +25,12 @@ public interface UsersMapper {
     List<Users> alootTrueUser(Map map);
     //查询没有访问权限的用户
     List<Users> alootFalseUser(Map map);
+    
+    //查询当前用户用户
+    List<Users> postTrueUser(Map map);
+    //查询没有角色用户
+    List<Users> postFalseUser(Map map);
+
 
 	
 }
