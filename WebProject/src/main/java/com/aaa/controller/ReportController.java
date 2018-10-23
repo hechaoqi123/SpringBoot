@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import com.aaa.bean.Krar;
 import com.aaa.bean.Task;
 import com.aaa.bean.performUtil;
 import com.aaa.bean.plan;
+import com.aaa.bean.report;
+import com.aaa.bean.reportUtil;
 import com.aaa.service.ReportService;
 import com.aaa.service.TaskService;
 import com.github.pagehelper.PageInfo;
@@ -32,11 +35,22 @@ ReportService  service;
 		return   service.querytwo(pageNum);
 	  
 	 }
-   
+     @RequestMapping("/addAll")
+	  public @ResponseBody String addAll( report report,Krar krar,reportUtil re){
+   	    	 service.adds(report, krar, re.getList());
   
    	
+		return "forward:BackJsp/wsq/task.jsp";
+  }
+  
+     @RequestMapping("/selty")
+     public @ResponseBody List<report> selty(){
+     	List<report> sele = service.sele();
+     
+    	return sele;
+ 
 	
   }
-   
+}
   
 

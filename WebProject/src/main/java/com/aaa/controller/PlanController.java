@@ -39,11 +39,11 @@ public class PlanController {
 	 }
 
      @RequestMapping("/addAll")
-	  public @ResponseBody String addAll(plan plan,Krar krar,performUtil per){
+	  public  String addAll(plan plan,Krar krar,performUtil per){
     	    	 planservice.adds(plan, krar, per.getList());
    
     	
-		return "forward:BackJsp/wsq/task.jsp";
+		return "BackJsp/wsq/task";
    }
      @RequestMapping("/selty")
      public @ResponseBody List<plan> selty(){

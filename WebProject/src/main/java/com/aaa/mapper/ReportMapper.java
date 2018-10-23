@@ -14,7 +14,7 @@ public interface ReportMapper {
 	public List<Map> query();
 	public List<Map> querytwo();
 	public int add(report report);
-
+    public List<report> sele();
 
 	public void addthere(Krar krar);
 	public void addfour(reportser reportser);

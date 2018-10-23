@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class reportser implements Serializable {
 
 	private Integer reid;
-	private String rename;
+	private String renames;
 	private Integer rid;
 	public Integer getReid() {
 		return reid;
@@ -13,11 +13,11 @@ public class reportser implements Serializable {
 	public void setReid(Integer reid) {
 		this.reid = reid;
 	}
-	public String getRename() {
-		return rename;
+	public String getRenames() {
+		return renames;
 	}
-	public void setRename(String rename) {
-		this.rename = rename;
+	public void setRenames(String renames) {
+		this.renames = renames;
 	}
 	public Integer getRid() {
 		return rid;
@@ -27,7 +27,8 @@ public class reportser implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "reportser [reid=" + reid + ", rename=" + rename + ", rid=" + rid + "]";
+		return "reportser [reid=" + reid + ", renames=" + renames + ", rid=" + rid + "]";
 	}
+
 	
 }

@@ -11,11 +11,14 @@ select * from report r  join Krar k on k.rid=r.rid
                     (#{rname},#{deptid},#{rlname},#{creationdate},#{detailld},#{rtype})
        </insert> 
             	  <insert  id="addfour" parameterType="com.aaa.bean.reportser">
-      insert into perform(rid,rename) VALUES ((select MAX(rid) from report),#{rename})
+      insert into reportser(rid,renames) VALUES ((select MAX(rid) from report),#{renames})
       	 </insert>
-      <insert  id="addthere" parameterType="Krar">
+      <insert  id="addthere" parameterType="com.aaa.bean.Krar">
       insert into Krar(rid,kname) VALUES 
                   ((select MAX(rid) from report),#{kname})
        </insert>
+       <select id="sele" resultType="com.aaa.bean.report">
+            select * from report
+       </select>
 
 </mapper>
