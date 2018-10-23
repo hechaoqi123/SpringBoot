@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD class=fieldLable>从属于</TD>
 <TD id=dbf.psid dbf.key="0" dbf.source="select sid,name,psid,stype from userX where statusX=1 and stype=10000 order by sortId,name">
-  <select  id="dept" name="" style="border:0px;font-size:14px;width:300px;height:25px;">
+  <select  id="dept"  name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </TD>
@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD class=fieldLable>性别</TD>
 <TD><INPUT id=dbf.gender CHECKED type=radio value="男" name="usersex" autocomplete="off">男 <INPUT id=dbf.gender type=radio value="女" name="usersex" autocomplete="off">女</TD>
 <TD class=fieldLable>上级主管</TD>
-<TD id=dbf.supervisorX dbf.key="" dbf.source="form.fieldSource.userX0"><IMG onclick="fieldGetValueBySource('dbf.supervisorX',this);" class=fieldGetValueBySource src="img/fieldSource.gif">
-<DIV id=e.dbf.supervisorXSource>&nbsp;</DIV></TD></TR>
+<TD id=dbf.supervisorX dbf.key="" dbf.source="form.fieldSource.userX0">
+</TD></TR>
 <TR>
 <TD class=fieldLable>固定电话</TD>
 <TD id=dbf.phone><INPUT id=e.dbf.phone name="phone" class=fieldEditable></TD>
@@ -136,6 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form></body></html>
 <script>
    $(function(){
+      
       $("#xxx").click(function(){
            $("#Myform").submit();
       })
@@ -148,9 +149,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                depts:null
              },methods:{
                  getAll:function(){
-                   var url="/Dept/getAll";
-                 this.$http.post(url,{emulateJSON:true}).then(function(res){
-                 this.depts=res.body
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
                  })
                  }
              }

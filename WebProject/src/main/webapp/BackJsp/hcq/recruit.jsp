@@ -40,14 +40,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <!-- 数据 -->
 <div id="colloaContent2">
 <span id="app">
-<table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr><th>主题</th><th>申请人</th><th>所属部门</th><th>需求岗位</th><th>需求人数</th><th>希望到岗日期</th></tr></thead>
+<table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
+<th>主题</th>
+<th>申请人</th>
+<th>所属部门</th>
+<th>需求岗位</th>
+<th>需求人数</th>
+<th>希望到岗日期</th></tr></thead>
 <tbody>
 <tr v-for="recruit in recruits">
 <td>
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td><td>{{recruit.principal}}</td><td>{{recruit.department}}&nbsp;</td><td>{{recruit.post}}</td><td>{{recruit.peoplenumber}}</td><td>{{recruit.enddate}}</td></tr>
+<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<td>{{recruit.principal}}</td>
+<td>{{recruit.department}}&nbsp;</td>
+<td>{{recruit.post}}</td>
+<td>{{recruit.peoplenumber}}</td>
+<td>{{recruit.enddate}}</td></tr>
 <tr>
 </table><br/>
 <!-- 分页 -->

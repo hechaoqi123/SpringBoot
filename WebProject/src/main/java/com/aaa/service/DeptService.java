@@ -10,4 +10,6 @@ public interface DeptService {
     int insert(Dept record);
     
     List<Dept> getAll();
+
+	public Dept getDept(String dept);
 }

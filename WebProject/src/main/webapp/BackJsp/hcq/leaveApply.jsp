@@ -40,13 +40,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
-  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="请休假申请-李萌-1002007">
+  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="请休假申请-${CurrentUser.uname}">
 </td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">填单</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">李萌,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource">
+  <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
+  <input type="text" style="border:0px" name="dutypeople" readonly="true" value="${superUser.username}" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 <div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,&#39;&#39;);" id="e.dbf.endTime" class="fieldEditable" contenteditable="true">&nbsp;</div></td></tr></tbody></table>
@@ -69,7 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td id="dbf.division" dbf.type="required!0,required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-   <INPUT id=e.dbf.subject name="dept" class=fieldEditable></td>
+  <select id="dept"  name="dept" style="border:0px;font-size:14px;width:250px;height:25px;">
+    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+  </select></td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请时间</td>
 <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
    <INPUT id="currentDate"  name="begindate"  class=fieldEditable>
@@ -81,7 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="TEXT-ALIGN: center">～</td>
 <td id="dbf.time1" dbf.type="date,required" dbf.source="datetime,editable">
-<div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,&#39;&#39;);" id="e.dbf.time1" class="fieldEditable" contenteditable="true">&nbsp;</div></td>
+   <INPUT id=e.dbf.subject name="field2" class=fieldEditable>
+</td>
 <td style="TEXT-ALIGN: center" dbf.type="date,required" dbf.source="datetime,editable">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>共计时长</td>
 <td dbf.type="date,required" dbf.source="datetime,editable"><input id="dbf.number3" style="WIDTH: 40px" value="0" name="dbf.number3" dbf.type="number,required"> 天 </td></tr>
 <tr>
@@ -129,15 +135,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
-
+ <script src="BackJsp/hcq/js/Vue.js"></script>
+ <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+ <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-     $(function(){
-       $("#currentDate").val(new Date().toLocaleDateString())
-     })
-      $("#sub").click(function(){
+  $(function(){
+   var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                   
+                     var currentDate=new Date().toLocaleDateString();
+                      $("#currentDate").val(currentDate) 
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
+       $("#sub").click(function(){
          $("#subform").submit();
       })
       $("#ret").click(function(){
-        window.location.href="BackJsp/hcq/checking.jsp";
+        window.location.href="BackJsp/hcq/leave.jsp";
+      })
+      $("#currentDate").val(new Date().toLocaleDateString())
       })
 </script>

@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aaa.bean.Dept;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
+import com.aaa.service.DeptService;
 import com.aaa.service.UserdetailService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -23,8 +25,11 @@ import com.github.pagehelper.PageInfo;
 public class UserdetailController {
 	@Autowired
 	UserdetailService service;
+	@Autowired
+	DeptService deptservice;
 	@RequestMapping("/getUserdetail")
    public String selectById(HttpSession session,Model model){
+		   //当前登陆用户信息
 		    Users se=(Users) session.getAttribute("CurrentUser");
 			Userdetail user=service.getOne(se.getUid());
 			model.addAttribute("user",user);
@@ -35,6 +40,10 @@ public class UserdetailController {
     	
     	Userdetail user=service.getOne(id);
 		model.addAttribute("user",user);
+		String dept=user.getDependence();
+		Dept entity=deptservice.getDept(dept);
+		Userdetail superUser=service.getOne(entity.getDeptstate());
+		model.addAttribute("superUserName",superUser.getUsername());
     	return "hcq/DetailInfo";
     }
 	//分页查询

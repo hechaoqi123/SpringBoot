@@ -45,12 +45,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody style="font-size:13px">
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
-<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" name="theme" class="fieldEditable" value="入职申请-李萌-1002006"></td>
+<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" name="theme" class="fieldEditable" value="入职申请-${CurrentUser.uname}"></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">人事填单</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">李萌,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource"><input type="text" style="border:0px" readonly="true" value="人事填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+责任人: <span id="mapping.dbf.responsorSource">
+<input type="text"  style="border:0px" readonly="true" value="${superUser.username}" name="dutypeople"/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 <input id="e.dbf.operatorSource" name="enddate" class="fieldEditable"></td></tr></tbody></table>
@@ -76,7 +79,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职部门</td>
 <td id="dbf.division" dbf.type="required!0,required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-   <input id="e.dbf.operatorSource" name="entrypart" class="fieldEditable">
+      <select  id="dept"  name="entrypart" style="border:0px;font-size:14px;width:292px;height:25px;">
+    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+  </select>
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职岗位</td>
 <td id="dbf.positionX" dbf.type="required">
@@ -137,7 +142,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
+ $(function(){
+   var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                   
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
+  })
       $("#sub").click(function(){
          $("#subform").submit();
       

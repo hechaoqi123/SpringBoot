@@ -31,6 +31,6 @@ public class LeaveController {
 	@RequestMapping("/savePlay")
 	public String savePlay(Leaveapply leave){
 		service.save(leave);
-		return "hcq/official";
+		return "hcq/leave";
 	}
 }

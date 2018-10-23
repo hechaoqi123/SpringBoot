@@ -22,7 +22,7 @@ public class Checking implements Serializable {
 
     private String field1;//状态
 
-    private String field2;
+    private String field2;//责任人
 
     private String field3;
 

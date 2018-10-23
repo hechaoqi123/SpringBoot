@@ -24,5 +24,11 @@ public class DeptServiceImpl implements DeptService {
 	public List<Dept> getAll() {
 		return mapper.selectAll();
 	}
+	@Override
+	public Dept getDept(String dept) {
+		Dept d=new Dept();
+		d.setDeptname(dept);
+		return mapper.selectOne(d);
+	}
 
 }

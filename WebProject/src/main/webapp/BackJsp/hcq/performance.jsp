@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                         </H1></TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
-      <DIV id="colloaMenu2"><A class="textHighlight" href="http://cloud.10oa.com/trial/view/catalogueEx.aspx?sid=703600&amp;name=%u7ee9%u6548%u7ba1%u7406&amp;ex.sid=703650"><IMG 
+      <DIV id="colloaMenu2"><A class="textHighlight" href="BackJsp/hcq/performance.jsp"><IMG 
       src="BackJsp/hcq/img//folder.png" border="0"> 月度绩效考核</A><A href="javascript:"><IMG 
       src="BackJsp/hcq/img//folder.png" border="0"> 季度绩效考核</A><A href="javascript:"><IMG 
       src="BackJsp/hcq/img//folder.png" border="0"> 年度绩效考核</A></DIV>

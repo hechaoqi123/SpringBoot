@@ -26,7 +26,6 @@ public class EvectionController {
 		  PageInfo<Evection> info=new PageInfo<Evection>(list);
     	return info;
     }
-	//新增出差申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Evection evection){
 		service.save(evection);

@@ -39,12 +39,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
-<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" class="fieldEditable" name="theme" value="招聘申请-李萌-1002008"/></td>
+<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" class="fieldEditable" name="theme" value="招聘申请-${CurrentUser.uname}"/></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource"><input type="text" style="border:0px" readonly="true" value="填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">李萌,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource"><input type="text" style="border:0px" readonly="true" value="填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+责任人: <span id="mapping.dbf.responsorSource">
+ <input type="text"  style="border:0px" readonly="true" value="${superUser.username}" />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 <div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,&#39;&#39;);" id="e.dbf.endTime" class="fieldEditable" contenteditable="true">&nbsp;</div></td></tr></tbody></table>
@@ -52,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="TEXT-ALIGN: center">&nbsp;</div>
 <div style="TEXT-ALIGN: center;margin-top:-10px"><span><b style="FONT-SIZE:20px">招聘申请单</b></span></div></div>
 <div>
-<table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<table id="dept" class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="150">
 <col width="300">
@@ -62,18 +65,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN:center"><span style="COLOR:rgb(255,0,0)">*</span>申请人</td>
 <td id="dbf.opera">
-  <input id="e.dbf.subject" class="fieldEditable" name="principal" /></td>
+  <input id="e.dbf.subject" value="${CurrentUser.uname}" class="fieldEditable" name="principal" /></td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-  <input id="e.dbf.subject" class="fieldEditable" name="department" /></td></tr>
+    <select  id="dept"  name="department" style="border:0px;font-size:14px;width:355px;height:25px;">
+    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+  </select> </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>需求岗位</td>
 <td id="dbf.positionX" dbf.type="required">
   <input id="e.dbf.positionX" name="post" class="fieldEditable"/>
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请时间</td>
-<td id="dbf.time2" dbf.type="date,required" dbf.source="date"><img onclick="fieldGetValueBySource(&#39;dbf.time2&#39;,this);" class="fieldGetValueBySource" src="BackJsp/hcq/img/fieldSource.gif"> 
-<div id="e.dbf.time2">2018/10/15</div></td></tr>
+<td id="dbf.time2" dbf.type="date,required" dbf.source="date">
+<div>
+  <input id="currentDate" name="other" class="fieldEditable"/>
+</div></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>需求人数</td>
 <td id="dbf.number0" dbf.type="number,required" dbf.source="">
@@ -98,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center">年龄</td>
 <td id="年龄"><input id="e.年龄" name="age" class="fieldEditable"></td>
 <td style="TEXT-ALIGN: center">性别</td>
-<td>&nbsp;<input id="性别" type="radio" value="男" name="sex">男 <input id="性别" type="radio" value="女" name="sex">女 <input id="性别" checked="" type="radio" value="2" name="性别">不限</td></tr>
+<td>&nbsp;<input id="性别" type="radio" value="男" name="sex">男 <input id="性别" type="radio" value="女" name="sex">女 <input id="性别" checked="" type="radio" value="2" name="sex">不限</td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">学历</td>
 <td id="学历" dbf.type="">
@@ -109,8 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">工作经验</td>
 <td id="工作经验" colspan="3" dbf.type="" dbf.source=""><textarea id="e.工作经验" name="experience" class="fieldEditable" style="HEIGHT: 80px"></textarea></td></tr>
-<td style="TEXT-ALIGN: center">其他要求</td>
-<td id="其他要求" colspan="3" dbf.type="" dbf.source=""><textarea id="e.其他要求" name="other" class="fieldEditable" style="HEIGHT: 80px"></textarea></td></tr></tbody></table></div>
+</tr></tbody></table></div>
 <div>&nbsp;</div>
 <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
@@ -134,8 +140,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
-
+ <script src="BackJsp/hcq/js/Vue.js"></script>
+ <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+ <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
+  $(function(){
+   var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                   
+                     var currentDate=new Date().toLocaleDateString();
+                      $("#currentDate").val(currentDate) 
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
+  })
       $("#sub").click(function(){
          $("#subform").submit();
       

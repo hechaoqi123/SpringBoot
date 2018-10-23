@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						         <input id="uid" value="${CurrentUser.uid}" style="display: none;">
 							 <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
 		                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6" v-bind:title="Visitonemodile.mdescribe">
-		                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>
+		                        <img :src="Visitonemodile.mimageurl" style="margin-right:10px;"/>{{Visitonemodile.mname}}</span>
 							</a>
 							<ul  class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
 								<li  onclick="stop(this)" v-bind:id="Visittwomodile.moneid" class="ww" v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)"  > 

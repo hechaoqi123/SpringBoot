@@ -40,13 +40,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
 <TD id=dbf.subject dbf.type="required">
-  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value=出差申请-李萌-1002006>
+  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="出差申请-${CurrentUser.uname}">
 </TD>
 <TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
 <TD><INPUT id=dbf.priority type=radio value=-1autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0  autocomplete="off">中<INPUT id=dbf.priority type=radio value=1  autocomplete="off">高</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
-<TD colSpan=3><SPAN id=mapping.dbf.procXSource>填单</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>李萌,</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD></TR></TBODY></TABLE>
+<TD colSpan=3><SPAN id=mapping.dbf.procXSource>
+  <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>
+  <input type="text" style="border:0px" readonly="true" value="${superUser.username}"  name="dutypeople"/></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD></TR></TBODY></TABLE>
 <DIV style="TEXT-ALIGN: center">&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center"><SPAN style="FONT-SIZE: 20px"><STRONG>出差申请单</STRONG></SPAN></DIV>
 <DIV>
@@ -66,7 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TD>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
 <TD id=dbf.division>
-   <INPUT id=e.dbf.subject name="dept" class=fieldEditable >
+  <select id="dept"  name="part" style="border:0px;font-size:14px;width:250px;height:25px;">
+    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+  </select>
 </TD>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请时间</TD>
 <TD id=dbf.time2 dbf.type="date,required" dbf.source="date">
@@ -131,14 +136,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </form>
 </body></html>
 
+ <script src="BackJsp/hcq/js/Vue.js"></script>
+ <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+ <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-     $(function(){
+  $(function(){
+   var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                   
+                     var currentDate=new Date().toLocaleDateString();
+                      $("#currentDate").val(currentDate) 
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
        $("#currentDate").val(new Date().toLocaleDateString())
-     })
       $("#sub").click(function(){
          $("#subform").submit();
       })
       $("#ret").click(function(){
         window.location.href="BackJsp/hcq/checking.jsp";
       })
+        })
 </script>

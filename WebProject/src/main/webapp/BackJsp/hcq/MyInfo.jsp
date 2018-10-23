@@ -54,14 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD>在职</TD></TR>
         <TR>
           <TD class="fieldLable">姓名</TD>
-          <TD>李萌</TD>
+          <TD>${user.username}</TD>
           <TD class="fieldLable">工号</TD>
           <TD>${user.usernum}&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">性别</TD>
           <TD>${user.usersex}</TD>
           <TD class="fieldLable">上级主管</TD>
-          <TD>&nbsp;</TD></TR>
+          <TD>${superUser.username}&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">固定电话</TD>
           <TD>${user.phone}&nbsp;</TD>

@@ -36,7 +36,7 @@ public class Recruit implements Serializable {
 
     private String experience;//工作经验
 
-    private String other;//其他要求
+    private String other;//申请日期
 
     private String status;//申请单状态
 

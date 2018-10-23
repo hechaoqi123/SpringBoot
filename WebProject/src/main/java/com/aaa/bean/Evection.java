@@ -8,13 +8,13 @@ public class Evection implements Serializable {
 	@Id
     private Integer evectionid;
 
-    private String theme;
+    private String theme;//主题
 
-    private String status;
+    private String status;//状态
 
-    private String dutypeople;
+    private String dutypeople;//责任人
 
-    private String applypeople;
+    private String applypeople;//申请人
 
     private String dept;
 

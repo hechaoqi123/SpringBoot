@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Visittwomodile implements Serializable {
+	@Id
     private Integer mtowid;
 
     private String mname;

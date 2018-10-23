@@ -1,7 +1,9 @@
 package com.aaa.bean;
 
+import javax.persistence.Id;
 
 public class Visitonemodile {
+	@Id
 	private Integer mOneId;
 	private String mname;
 	private String mdescribe;

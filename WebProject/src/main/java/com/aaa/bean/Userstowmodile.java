@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Userstowmodile implements Serializable {
+	@Id
     private Integer mtowid;
 
     private Integer uid;

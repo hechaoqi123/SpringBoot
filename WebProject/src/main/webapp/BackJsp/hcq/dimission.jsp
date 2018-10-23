@@ -39,12 +39,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 </div>
 <div id="colloaContent2">
 <span id="app">
-<table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr><th>主题</th><th>申请人</th><th>所属部门</th><th>申请岗位</th><th>申请时间</th><th>预计离职日期</th></tr></thead>
-<tbody>
+<table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList">
+<tr>
+<th>主题</th>
+<th>申请人</th>
+<th>所属部门</th>
+<th>申请岗位</th>
+<th>申请时间</th>
+<th>预计离职日期</th></tr>
 <tr v-for="d in dimission">
 <td><img v-if="d.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{d.theme}}</a></td><td>{{d.proposer}}</td><td>{{d.dimissionname}}&nbsp;</td><td>{{d.part}}</td><td>{{d.post}}</td><td>{{d.applydate}}</td><td>{{d.dimissiondate}}</td></tr>
+<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{d.theme}}</a></td>
+<td>{{d.dimissionname}}&nbsp;</td>
+<td>{{d.part}}</td>
+<td>{{d.post}}</td>
+<td>{{d.applydate}}</td>
+<td>{{d.dimissiondate}}</td></tr>
 <tr>
 </table><br/>
 <!-- 分页 -->

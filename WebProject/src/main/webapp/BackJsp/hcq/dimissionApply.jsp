@@ -40,19 +40,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
 <TD id=dbf.subject dbf.type="required">
-  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value=离职申请-李萌-1002042></TD>
+  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="离职申请-${CurrentUser.uname}"></TD>
 <TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
 <TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
-<TD><SPAN id=mapping.dbf.procXSource>填单</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>李萌,</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD>
+<TD><SPAN id=mapping.dbf.procXSource>
+   <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>
+   <input type="text"  style="border:0px" name="dutypeople" readonly="true" value="${superUser.username}" />
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD>
 <TD style="TEXT-ALIGN: right">&nbsp;结束时间:</TD>
 <TD id=dbf.endTime dbf.type="date" dbf.source="date,editable">
 <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR></TBODY></TABLE>
 <DIV>&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center"><SPAN style="FONT-SIZE: 20px"><STRONG>离职申请单</STRONG></SPAN></DIV>
 <DIV>
-<TABLE class=tableListBorder style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
+<TABLE id="dept"  class=tableListBorder style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
 <COLGROUP>
 <COL width=150>
 <COL width=300>
@@ -69,7 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
 <TD id=dbf.division dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-   <INPUT id=e.dbf.subject name="part" class=fieldEditable >
+     <select   name="part" style="border:0px;font-size:14px;width:300px;height:25px;">
+    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+  </select>
 </TD>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>工作岗位</TD>
 <TD id=dbf.positionX dbf.type="required" dbf.source="" dbf.key="">
@@ -130,7 +136,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 </body></html>
 
+ <script src="BackJsp/hcq/js/Vue.js"></script>
+ <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+ <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
+  $(function(){
+   var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                   
+                     var currentDate=new Date().toLocaleDateString();
+                      $("#currentDate").val(currentDate) 
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
+  })
       $("#sub").click(function(){
          $("#subform").submit();
       
@@ -139,3 +167,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         window.location.href="BackJsp/hcq/dimission.jsp";
       })
 </script>
+

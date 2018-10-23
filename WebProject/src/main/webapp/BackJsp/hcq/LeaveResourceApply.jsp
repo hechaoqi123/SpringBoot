@@ -46,12 +46,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
-  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="调休资源20181020-20181027"></td>
+  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="调休资源????-????"></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">信息录入</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">李萌,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource">
+<input type="text" style="border:0px" readonly="true" value="信息录入" name="fiield2"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
+  <input type="text" style="border:0px"  readonly="true" value="${superUser.username}" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 <input id="e.dbf.operatorSource" name="enddate" class="fieldEditable"></td></tr></tbody></table>
@@ -114,6 +116,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       })
       $("#ret").click(function(){
-        window.location.href="BackJsp/hcq/check.jsp";
+        window.location.href="BackJsp/hcq/LeaveResources.jsp";
       })
 </script>

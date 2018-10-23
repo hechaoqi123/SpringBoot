@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              {{apply.theme}}</A></TD>
           <TD>{{apply.applydate}}&nbsp;</TD>
           <TD>{{apply.dept}}&nbsp;</TD>
-          <TD>{{apply.begindate}} ~ {{apply.enddate}}</TD>
+          <TD>{{apply.begindate}} ~ {{apply.field2}}</TD>
           <TD>{{apply.leavetype}}</TD>
          </TR>
 </TBODY></TABLE>

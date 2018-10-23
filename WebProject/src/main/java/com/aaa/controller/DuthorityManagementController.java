@@ -29,7 +29,7 @@ public class DuthorityManagementController {
 		String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 		//获取要输出的真实路
 		String path=session.getServletContext().getRealPath("/upload/"+fileName+suffix);
-		visitonemodile.setMimageurl("../upload/."+fileName+suffix);
+		visitonemodile.setMimageurl("../upload/"+fileName+suffix);
 		File outPath=new File(path);
 		//执行文件上传
 		file.transferTo(outPath);
