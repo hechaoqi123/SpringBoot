@@ -11,9 +11,11 @@ import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.plan;
 
-public interface PlanMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface PlanMapper extends Mapper<plan>{
 /*条件查询*/
-	public List<Map> query();
+	public List<Map> query(String name);
 	/*条件查询所有*/
 	public List<Map> querytwo();
 	public int add(plan plan);

@@ -10,12 +10,12 @@ import com.aaa.bean.plan;
 import com.aaa.bean.report;
 import com.aaa.bean.reportser;
 
-public interface ReportMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface ReportMapper extends Mapper<report> {
 	public List<Map> query();
 	public List<Map> querytwo();
 	public int add(report report);
-
-
 	public void addthere(Krar krar);
 	public void addfour(reportser reportser);
 }

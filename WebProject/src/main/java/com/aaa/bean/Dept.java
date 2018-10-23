@@ -2,13 +2,16 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Dept implements Serializable{
- private Integer deptid;
- private String deptname;
- private String deptdepict;
- private String deptjobdescription;
- private String deptstate;
- private String belong;
+	@Id
+	 private Integer deptid;
+	 private String deptname;
+	 private String deptdepict;
+	 private String deptjobdescription;
+	 private String deptstate;
+	 private String belong;
 public Integer getDeptid() {
 	return deptid;
 }

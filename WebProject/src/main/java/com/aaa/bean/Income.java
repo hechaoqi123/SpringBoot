@@ -3,7 +3,10 @@ package com.aaa.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Id;
+
 public class Income implements Serializable {
+	@Id
     private Integer incomeid;
 
     private String incomedate;//收入日期

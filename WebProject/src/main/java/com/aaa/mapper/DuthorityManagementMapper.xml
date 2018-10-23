@@ -24,11 +24,11 @@
 	<!-- //根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
 	<select id="selectOneMTowModile" parameterType="integer" resultType="java.util.Map">
-		select * from visitonemodile where mOneId in (	SELECT mOneId from  visittwomodile vtm
+		select * from visitonemodile vom where mOneId in (	SELECT mOneId from  visittwomodile vtm
 			JOIN userstowmodile uw 
 			ON uw.mTowId = vtm.mTowId
 			WHERE uw.uid = #{uid}
-)
+  			)ORDER BY vom.msequnce asc
 	</select>
 </mapper>
 

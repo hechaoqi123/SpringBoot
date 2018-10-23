@@ -37,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <span id="app">
  <table cellpadding="0" cellspacing="0" border="0" style="margin-top:30px;">
  <tbody>
  <tr>
@@ -92,70 +93,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
  <td><img src="BackJsp/wsq/img/priority0.gif">任务名称</td><td>创建人</td><td>执行人</td><td>开始时间</td><td>工作量</td>
  </tr>
-  <tbody id="tbody"></tbody>
+  <tbody id="tbody">
+   <tr v-for="a in applys">
+    <td>{{a.tname}}</td>
+    <td>{{a.username}}</td>
+    <td>{{a.kname}}</td>
+    <td>{{a.ksdeta}}</td>
+    <td>{{a.workload}}</td>
+   </tr>
+  </tbody>
  </thead>
  
  
 </table>
 </script>
 <div id="colloaPages">
- <a class="button1 button1L" title="首页"><i class="fa fa-step-backward"></i></a>
- <a class="button1 button1M" title="上页" id="prepage"><i class="fa fa-backward"></i></a>
- <span class="button1M" id="nowPage"></i></span>
- <a class="button1 button1M" title="下页" id="nextpage"><i class="fa fa-forward"></i></a>
- <a class="button1 button1R" title="尾页" ><i class="fa fa-step-forward"></i></a>
+    <span style="margin-left:100px">
+	 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
+	</span>
 </div>
 </td></tr></tbody></table>
 
-
+</span>
 </body></html>
-<script type="text/javascript" src="BackJsp/wsq/js/jquery-1.8.3.min.js"></script>
-<script language="javaScript">
- 
-  
-  
-  $(function(){
-          getAll(1);
-      });
-   function getAll(pageNum){
-      $.ajax({
-        url:"task/getAlltwo",
-        type:"post",
-        data:{"pageNum":pageNum},
-        dataType:"json",
-        success:function(data){
-           $("#tbody").html("");
-           var datalist=data.list;
-              for(var i=0; i<datalist.length;i++){
-              
-                 var tr="<tr>";
-                 tr+="<td>"+datalist[i].tname+"</td>";
-                   tr+="<td>"+datalist[i].username+"</td>";
-                   tr+="<td>"+datalist[i].letname+"</td>";
-                   tr+="<td>"+datalist[i].ksdeta+"</td>";
-                   tr+="<td>"+datalist[i].workload+"</td>";
-                     tr+="</tr>";
-                   $("#tbody").append(tr);
-             }
-              $("#nowPage").html(data.pageNum);
-          
-             
-      
-           
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script>
+     $(function(){
+       var load=new Vue({
+            el:'#app',
+            data:{
+               applys:null,
+               pageInfo:null
+            },methods:{
+               execute:function(pageNum){
+                 var url="task/getAlltwo";
+                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
+                     this.applys=res.body.list
+                     this.pageInfo=res.body
+                 })
+               }
             }
-             
-      })
-   
- }
- $("#prepage").click(function(){
-           var nowpage=parseInt($("#nowPage").html());
-           getAll(nowpage-1);
-      })
- $("#nextpage").click(function(){
-           var nowpage=parseInt($("#nowPage").html());
-           getAll(nowpage+1);
-      });
-      
-      
+       })
+        load.execute(1);
+  })
+</script>
+
     
 </script>

@@ -25,15 +25,14 @@ import com.github.pagehelper.PageInfo;
 @Service
 public class PlanServiceImpl implements PlanService {
     @Autowired
-   private  PlanMapper mapper;
+    private  PlanMapper mapper;
     @Autowired
     private DeptMapper deptMapper;
 
 	@Override
-	public PageInfo<Map> query(Integer pageNum) {
+	public PageInfo<Map> query(Integer pageNum,String name) {
 		PageHelper.startPage(pageNum,17);
-		List<Map> list=mapper.query();
-		
+		List<Map> list=mapper.query(name);
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
 	}
@@ -50,13 +49,11 @@ public class PlanServiceImpl implements PlanService {
 	
 	@Override
 	public List<plan> quer() {
-		// TODO Auto-generated method stub
 		return mapper.quer();
 	}
 
 	@Override
 	public List<Userdetail> quers() {
-		// TODO Auto-generated method stub
 		return mapper.quers();
 	}
 
@@ -68,7 +65,6 @@ public class PlanServiceImpl implements PlanService {
 
 	@Override
 	public List<Krar> querst() {
-		// TODO Auto-generated method stub
 		return mapper.querst();
 	}
     @Transactional

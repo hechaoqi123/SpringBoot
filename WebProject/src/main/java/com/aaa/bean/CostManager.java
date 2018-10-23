@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class CostManager implements Serializable {
+	@Id
     private Integer costid;
 
     private String theme;//主题

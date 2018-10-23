@@ -3,7 +3,10 @@ package com.aaa.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Id;
+
 public class Cost implements Serializable {
+	@Id
     private Integer costid;
 
     private Date begindate;

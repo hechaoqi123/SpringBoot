@@ -15,7 +15,7 @@ import com.github.pagehelper.PageInfo;
 
 
 public interface PlanService {
-	public PageInfo<Map> query(Integer pageNum);
+	public PageInfo<Map> query(Integer pageNum,String name);
 	public PageInfo<Map> querytwo(Integer pageNum);
 	public void adds(plan plan,Krar krar,List<perform> list);
 	public List<plan> quer();

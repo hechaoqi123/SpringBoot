@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Expendmanager implements Serializable {
+	@Id
     private Integer expendid;
 
     private String expenddate;
