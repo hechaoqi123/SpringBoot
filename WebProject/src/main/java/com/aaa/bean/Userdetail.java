@@ -1,5 +1,8 @@
 package com.aaa.bean;
 
+import java.sql.Date;
+
+
 import java.io.Serializable;
 
 import javax.persistence.Id;

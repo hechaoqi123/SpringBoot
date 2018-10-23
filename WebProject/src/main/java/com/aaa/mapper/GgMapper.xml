@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.GgMapper" >
+<select id="getAllGg" resultType="java.util.Map">
+      select * from Gg
+   </select>
+   
+   <insert id="addGg" parameterType="com.aaa.bean.Gg">
+      insert into Gg(ggResponsible,ggPriority,ggClassify,ggKeyword,ggDept,ggAccessory,ggTheme,ggContent,ggDate) VALUES
+       (#{ggResponsible},#{ggPriority},#{ggClassify},#{ggKeyword},#{ggDept},#{ggAccessory},#{ggTheme},#{ggContent},NOW())       
+   </insert>
+   <select id="getAllGgone1" resultType="java.util.Map">
+      select * from Gg <!-- where ggClassify -->
+   </select>
+   <select id="getAllGgone2" resultType="java.util.Map">
+      select * from Gg  where ggClassify='新闻资讯'
+   </select>
+   <select id="getAllGgone3" resultType="java.util.Map">
+      select * from Gg  where ggClassify='通知公告'
+   </select>
+   <select id="getAllGgone4" resultType="java.util.Map">
+      select * from Gg  where ggClassify='规章制度'
+   </select>
+   <select id="getAllGgone5" resultType="java.util.Map">
+      select * from Gg  where ggClassify='行业动态'
+   </select>
+  
+   </mapper>
