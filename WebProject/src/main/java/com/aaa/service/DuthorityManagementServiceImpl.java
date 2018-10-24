@@ -30,7 +30,6 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	}
 	@Override
 	public List<Map> selectVisittwomodile(Integer mOneId) {
-		System.out.println(mOneId+"------------------");
 		return mapper.selectVisittwomodile(mOneId);
 	}
 	@Override
