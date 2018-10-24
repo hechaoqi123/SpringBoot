@@ -2,8 +2,9 @@ package com.aaa.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.aaa.bean.Dept;
-import com.aaa.bean.Groupcompany;
 
 public interface DeptMapper {
     int deleteByPrimaryKey(Integer deptid);
@@ -18,6 +19,6 @@ public interface DeptMapper {
 
     int updateByPrimaryKey(Dept record);
     
-    public List<Dept> getAllDept();
+    public List<Dept> getAllDept(@Param("belong")Integer belong);
     
 }

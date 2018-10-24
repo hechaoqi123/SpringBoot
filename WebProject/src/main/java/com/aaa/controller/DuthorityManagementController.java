@@ -47,8 +47,9 @@ public class DuthorityManagementController {
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/selectVisittwomodile")
-	public List<Map> selectVisittwomodile(Integer uid){
-		List<Map> selectVisitonemodile = service.selectVisittwomodile();
+	public List<Map> selectVisittwomodile(Integer mOneId){
+		System.out.println(mOneId+"==========================");
+		List<Map> selectVisitonemodile = service.selectVisittwomodile(mOneId);
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/selectUserTowModile")

@@ -29,8 +29,9 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 		return mapper.insert(record);
 	}
 	@Override
-	public List<Map> selectVisittwomodile() {
-		return mapper.selectVisittwomodile();
+	public List<Map> selectVisittwomodile(Integer mOneId) {
+		System.out.println(mOneId+"------------------");
+		return mapper.selectVisittwomodile(mOneId);
 	}
 	@Override
 	public List<Map> selectUserTowModile(Integer uid) {

@@ -12,9 +12,14 @@
   <sql id="Base_Column_List" >
     deptId, deptName, deptDepict, deptJobDescription, deptState, belong
   </sql>
-  <!--   public List<Dept> getAllDept(); -->
-  <select id="getAllDept" resultType="com.aaa.bean.Dept">
+  <!--   public List<Dept> getAllDept(Integer belong); -->
+  <select id="getAllDept" parameterType="integer" resultType="com.aaa.bean.Dept">
   		select * from Dept
+  			<where>
+  				<if test="belong != null">
+  					belong = #{belong}
+  				</if>
+  			</where>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

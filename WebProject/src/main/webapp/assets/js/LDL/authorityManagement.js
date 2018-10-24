@@ -1,22 +1,87 @@
-function sund(obj){
-		$(".myTr").remove();
-		
-		var tr = "<tr class='myTr'>"+
-					"<td>&nbsp;&nbsp;&nbsp;222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-					"<td>222</td>"+
-				"</tr>";
-				//通过after在标签后边追加内容
-				$(obj).after(tr);
-		
-	}
+
 function sundTwo(obj){
 	$(".myTr").remove();
-	
 }
 
+$(function(){
+	ve.selectVisitonemodile();
+});
+var ve = new Vue({
+	el:"#authorityVue",
+	data:{
+		Visitonemodiles:'',
+		Visittwomodiles:'',
+		depts:"",
+		data:""
+	},
+	methods:{
+		selectVisitonemodile:function(){
+  			this.$http.post('DuthorityManagementController/selectVisitonemodile',{
+  				//参数
+				},{emulateJSON:true}).then(function(data){
+					this.Visitonemodiles=data.body;
+					myTbodytwo.Visitonemodiles=data.body;
+				}),function(error){
+					alert(error);
+			}
+  		},
+  		selectVisittwomodile:function(mOneId,event){
+  			var el = event.currentTarget;//获取传输对象的元素  通过￥event将元素传输
+  			$(".myTr").remove();
+  			this.$http.post('DuthorityManagementController/selectVisittwomodile',{
+  				mOneId:mOneId
+				},{emulateJSON:true}).then(function(data){
+					myTbody.Visittwomodiles=data.body;
+					var tr = "";
+					for(var Visittwomodile in data.body){
+						tr +=	"<tr class='myTr'>"+ 	
+								"<td style='padding-left:40px'>"+data.body[Visittwomodile].mTowId+"</td>"+
+		  						"<td>"+data.body[Visittwomodile].mname+"</td>"+
+		  						"<td>"+data.body[Visittwomodile].mdescribe+"</td>"+
+		  						"<td>"+data.body[Visittwomodile].mOneId+"</td>"+
+		  						"<td>"+data.body[Visittwomodile].murl+"</td>"+
+		  						"<td>" +
+		  							"<img src='../assets/img/user_add.png' width='15px'  onclick='towModileAllocation("+data.body[Visittwomodile].mTowId+")' data-toggle='modal' data-target='#myModal'> "+
+			  						"<img src='../assets/images/update.png' width='15px' title='修改'> " +
+			  						"<img src='../assets/images/del.png' width='15px' title='删除'>"+
+			  					"</td>"+
+		  					"</tr>";
+					}
+					$(el).after(tr);
+				}),function(error){
+					alert(error);
+			}
+  		},
+  		delDept:function(deptid){
+  			this.$http.post('DeptController/delDept',{
+  				deptid:deptid
+				},{emulateJSON:true}).then(function(data) {
+					location.reload();
+				}, function() {
+					
+				})
+  		},
+  		delSub:function(scid){
+  			this.$http.post('SubcompanyController/delSub',{
+  				scid:scid
+				},{emulateJSON:true}).then(function(data) {
+					location.reload();
+				})
+  		}
+	}
+});
+
+
+/*var getvt = Vue.http.get(
+	  	"/DuthorityManagementController/selectVisittwomodile"
+	  ).then(function(data){
+		  myTbody.Visittwomodiles=data.body;
+		  return data.body;
+	  },function(error){
+	  	alert(1111);
+	  });
+
+*/
 //新增一级菜单
 function submitFunction() {
     //这里唯一需要注意的就是这个form-add的id
@@ -53,7 +118,6 @@ function submitFunctionTwo() {
 		contentType: false,
 		processData: false,
 		success: function (data) {
-			alert(data);
 			$("#formTwo input").val("");
 		},
 		error: function (returndata) {
@@ -80,23 +144,6 @@ var myTbodytwo = new Vue({
 	}
 });
 
-var getvo = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisitonemodile"
-	  ).then(function(data){
-		  myTbody.Visitonemodiles=data.body;
-		  myTbodytwo.Visitonemodiles=data.body;
-		  return data.body;
-	  },function(error){
-	  	alert(1111);
-	  });
-var getvt = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisittwomodile"
-	  ).then(function(data){
-		  myTbody.Visittwomodiles=data.body;
-		  return data.body;
-	  },function(error){
-	  	alert(1111);
-	  });
 
 
 //权限分配

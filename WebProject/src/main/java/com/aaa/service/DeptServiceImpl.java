@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aaa.bean.Dept;
 import com.aaa.mapper.DeptMapper;
@@ -11,11 +12,20 @@ import com.aaa.mapper.DeptMapper;
 public class DeptServiceImpl implements DeptService {
 	@Autowired
 	DeptMapper mapper;
-    public List<Dept> getAllDept(){
-		return mapper.getAllDept();
+    public List<Dept> getAllDept(Integer belong){
+		return mapper.getAllDept(belong);
 	}
+    @Transactional
 	@Override
 	public int insert(Dept record) {
 		return mapper.insert(record);
+	}
+    @Transactional
+	@Override
+	public int deleteByPrimaryKey(Integer deptid) {
+		return mapper.deleteByPrimaryKey(deptid);
 	};
+	
+	
+	
 }

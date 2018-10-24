@@ -5,7 +5,7 @@
 	<insert id="insertVisitonemodile" parameterType="Visitonemodile">
 		INSERT INTO visitonemodile(mname, mdescribe, msequnce, mimageurl) VALUES(#{mname}, #{mdescribe}, #{msequnce}, #{mimageurl})
 	</insert>
-	<!-- public void swlwctVisitonemodile(); -->
+	<!-- public void selectVisitonemodile(); -->
 	<select id="selectVisitonemodile" resultType="java.util.Map">
 		SELECT * FROM visitonemodile
 	</select>
@@ -15,8 +15,13 @@
 	    values (#{mtowid}, #{mname}, #{murl}, #{mdescribe}, #{msequnce}, #{moneid})
   </insert>
 	<!-- public void swlwctVisitteomodile(); -->
-	<select id="selectVisittwomodile" resultType="java.util.Map">
-		SELECT * FROM visittwomodile
+	<select id="selectVisittwomodile" parameterType="integer" resultType="java.util.Map">
+		SELECT * FROM visittwomodile 
+		<where>
+			<if test="mOneId != null">
+				mOneId = #{mOneId}
+			</if>
+		</where>
 	</select>
 	<!-- //根据用户查询二级菜单
 	public List<Map> selectUserTowModile(Integer uid); -->
@@ -29,12 +34,12 @@
 	<!-- //根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
 	<select id="selectOneMTowModile" parameterType="integer" resultType="java.util.Map">
-		SELECT * from visitonemodile vom 
-			JOIN visittwomodile vtm
-			ON vom.moneId = vtm.mTowId
-			JOIN userstowmodile uw 
-			ON uw.mTowId = vtm.mTowId
-			WHERE uw.uid = #{uid}
+		select * from visitonemodile vom where mOneId in (	SELECT mOneId from  visittwomodile vtm
+				JOIN userstowmodile uw 
+				ON uw.mTowId = vtm.mTowId
+				WHERE uw.uid = #{uid}
+	  			)
+	  		ORDER BY vom.msequnce
 	</select>
 </mapper>
 

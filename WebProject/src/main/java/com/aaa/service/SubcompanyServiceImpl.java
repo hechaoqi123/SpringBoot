@@ -20,4 +20,8 @@ public class SubcompanyServiceImpl implements SubcompanyService {
 	public int insert(Subcompany record) {
 		return mapper.insert(record);
 	}
+	@Override
+	public int deleteByPrimaryKey(Integer scid) {
+		return mapper.deleteByPrimaryKey(scid);
+	}
 }
