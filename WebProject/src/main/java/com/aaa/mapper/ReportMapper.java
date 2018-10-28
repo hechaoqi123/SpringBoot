@@ -20,4 +20,6 @@ public interface ReportMapper extends Mapper<report> {
 
 	public void addthere(Krar krar);
 	public void addfour(reportser reportser);
+
+	public List<Map> reporres(String rtype);
 }

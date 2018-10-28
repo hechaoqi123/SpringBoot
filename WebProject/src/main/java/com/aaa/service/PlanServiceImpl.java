@@ -15,6 +15,7 @@ import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.performUtil;
 import com.aaa.bean.plan;
+import com.aaa.bean.report;
 import com.aaa.mapper.DeptMapper;
 import com.aaa.mapper.PlanMapper;
 import com.github.pagehelper.PageHelper;
@@ -26,20 +27,20 @@ import com.github.pagehelper.PageInfo;
 public class PlanServiceImpl implements PlanService {
     @Autowired
     private  PlanMapper mapper;
-    @Autowired
-    private DeptMapper deptMapper;
+  
 
 	@Override
 	public PageInfo<Map> query(Integer pageNum,String name) {
-		PageHelper.startPage(pageNum,17);
+		PageHelper.startPage(pageNum,10);
 		List<Map> list=mapper.query(name);
+		System.out.println(list);
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
 	}
 
 	@Override
 	public PageInfo<Map> querytwo(Integer pageNum) {
-		PageHelper.startPage(pageNum, 17);
+		PageHelper.startPage(pageNum, 10);
 		List<Map> list=mapper.querytwo();
 		
 		PageInfo<Map> info=new PageInfo<Map>(list);
@@ -79,6 +80,29 @@ public class PlanServiceImpl implements PlanService {
 
 		
 	}
+
+	@Override
+	public PageInfo<Map> ty(Integer pageNum, String type) {
+		PageHelper.startPage(pageNum,10);
+		List<Map> list=mapper.ty(type);
+	    PageInfo<Map> info=new PageInfo<Map>(list);
+		return info;
+	}
+
+	@Override
+	public List<plan> reser() {
+		// TODO Auto-generated method stub
+		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Map<String, String>> getOne(int id) {
+
+		return mapper.getOne(id);
+	}
+
+	
+	
 
 	
 

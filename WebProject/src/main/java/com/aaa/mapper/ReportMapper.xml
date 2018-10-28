@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.ReportMapper">
+   <select id="reporres" parameterType="java.lang.String" resultType="com.aaa.bean.report">
+   select * from report r  join dept d on r.deptid=d.deptid 
+                     join userdetail u on r.detailld=u.detailId 
+                     join Krar k on k.rid=r.rid 
+                     where r.rtype=#{rtype}
+          
+   </select>
+
+
 	 <select id="query" resultType="java.util.Map">
 select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid 
 	 </select>
 	 <select id="querytwo" resultType="java.util.Map">
-select * from report r  join Krar k on k.rid=r.rid
+select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid
      </select>
    <insert  id="add" parameterType="com.aaa.bean.report">
       insert into report(rname,deptid,rlname,creationdate,detailld,rtype) VALUES 
@@ -20,5 +29,5 @@ select * from report r  join Krar k on k.rid=r.rid
        <select id="sele" resultType="com.aaa.bean.report">
             select * from report
        </select>
-
+    
 </mapper>

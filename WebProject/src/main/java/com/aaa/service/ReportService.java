@@ -17,6 +17,6 @@ public interface ReportService {
 	public PageInfo<Map> querytwo(Integer pageNum);
 	public void adds(report report,Krar krar,List<reportser> list);
 	public List<report> sele();
-	
-	
+	public List<report> selelis();
+	public PageInfo<Map> reporres(Integer pageNum,String rtype);
 }

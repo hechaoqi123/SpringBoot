@@ -63,14 +63,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <TBODY>
               <TR id="dataCount">
                 <TD style="padding: 10px;">
-                  <DIV class="treeOfNavigation" id="aa"><A @click="flush(1)" href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 所有员工 <SPAN class="tipCount">{{AllCount}}</SPAN></A><A @click="queryByCriteria('在职')"  href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 在职的员工 <SPAN class="tipCount">{{onJob}}</SPAN></A><A @click="queryByCriteria('试用')"  href="javascript:catalogue(10,10,'试用期员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 试用期员工 <SPAN class="tipCount">{{onTrial }}</SPAN></A><A @click="queryByCriteria('临时')"  href="javascript:catalogue(10,5,'临时的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 临时的员工 <SPAN class="tipCount">{{temporary}}</SPAN></A><A @click="queryByCriteria('退休')"  href="javascript:catalogue(10,-1,'退休的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 退休的员工 <SPAN class="tipCount">{{retire}}</SPAN></A><A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 离职的员工 <SPAN 
-              class="tipCount">{{dimission}}</SPAN></A></DIV></TD></TR></TBODY></TABLE></TD>
+                  <DIV class="treeOfNavigation" id="aa">
+                  <A @click="flush(1)" href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 所有员工 <SPAN class="tipCount">{{AllCount}}</SPAN></A>
+                  <A @click="queryByCriteria('在职')"  href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png"  border="0"> 在职的员工 <SPAN class="tipCount">{{onJob}}</SPAN></A>
+                  <A @click="queryByCriteria('试用')"  href="javascript:catalogue(10,10,'试用期员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 试用期员工 <SPAN class="tipCount">{{onTrial }}</SPAN></A>
+                  <A @click="queryByCriteria('临时')"  href="javascript:catalogue(10,5,'临时的员工');"><IMG src="BackJsp/hcq/img/folder.png"  border="0"> 临时的员工 <SPAN class="tipCount">{{temporary}}</SPAN></A>
+                  <A @click="queryByCriteria('退休')"  href="javascript:catalogue(10,-1,'退休的员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 退休的员工 <SPAN class="tipCount">{{retire}}</SPAN></A>
+                  <A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 离职的员工 <SPAN     class="tipCount">{{dimission}}</SPAN></A></DIV></TD></TR></TBODY></TABLE></TD>
           <TD></TD>
           <TD >
             <TABLE id="app" class="tableList" border="0" cellspacing="0" 
@@ -95,7 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TD>{{user.entrydate}}&nbsp;</TD>
                 <TD><a @click="remove(user.detailid)" href="javascript:">删除</a>	&nbsp;</TD></TR>
                 
-               </TBODY></TABLE>
+               </TBODY>
+               </TABLE>
                 <br/>
                 <span id="pageUtil">
                 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a>
@@ -133,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              },methods:{
                 execute:function(PageNumber){
                   if(this.part==0){//全部加载
+                  
                     var url = '/userdetail/getAllUserdetail';
 		              this.$http.post(url,{pageNum:PageNumber},{emulateJSON:true}).then(function(res){
 		                page.users=res.body.list

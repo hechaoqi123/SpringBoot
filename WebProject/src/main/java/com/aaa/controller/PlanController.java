@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,6 @@ public class PlanController {
      @RequestMapping("/getAll")
      public @ResponseBody PageInfo<Map> getAll(Integer pageNum,HttpSession session){
     	 String uname = ((Users)session.getAttribute("CurrentUser")).getUname();
-    	
     	 PageInfo<Map> query = planservice.query(pageNum,uname);
 		return query;
 	  
@@ -50,7 +50,8 @@ public class PlanController {
 		return "wsq/task";
    }
      @RequestMapping("/selty")
-     public @ResponseBody List<plan> selty(){
+     @ResponseBody
+     public List<plan> selty(){
      	List<plan> quer = planservice.quer();
      
     	return quer;
@@ -72,5 +73,25 @@ public class PlanController {
      	List<Krar> quers2 = planservice.querst();
     	return quers2;
  }
+     @RequestMapping("/queryertWSQ")
+     public @ResponseBody PageInfo<Map> getAllget(Integer pageNum ,String type){
+    	
+    	 return  planservice.ty(pageNum, type);
+	  
+	 }
+     @RequestMapping("/classify")	
+ 	@ResponseBody
+ 	  public List<plan> classify(plan plan){
+ 		    return planservice.reser();
+ 	  }
+ 	 @RequestMapping("/planQuerys")
+ 	public String planQuerys(int id,Model model){
+ 		List<Map<String,String>> lert= planservice.getOne(id);
+ 		System.out.println(id);
+ 		System.out.println(lert.toString());
+ 		model.addAttribute("plan", lert);
+ 		System.out.println("完成");
+ 		return "wsq/jihuaxiang";
+ 	}
     
 }

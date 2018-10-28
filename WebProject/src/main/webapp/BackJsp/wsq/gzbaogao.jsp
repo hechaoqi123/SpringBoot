@@ -60,12 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">报告分类</td>
 <td>
-<input onclick="onTypeChange(10);" id="dbf.psid2" type="radio" value="10" name="rtype" autocomplete="off">年度 
-<input onclick="onTypeChange(20);" id="dbf.psid2" type="radio" value="20" name="rtype" autocomplete="off">季度
- <input onclick="onTypeChange(30);" id="dbf.psid2" type="radio" value="30" name="rtype" autocomplete="off">月度
-  <input onclick="onTypeChange(40);" id="dbf.psid2" type="radio" value="40" name="rtype" autocomplete="off">周
-   <input onclick="onTypeChange(100);" id="dbf.psid2" type="radio" value="100" name="rtype" autocomplete="off">项目 
-   <input onclick="onTypeChange(0);" id="dbf.psid2" checked="" type="radio" value="0" name="rtype" autocomplete="off">其他</td>
+<input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="10" name="rtype" autocomplete="off">年度 
+<input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="20" name="rtype" autocomplete="off">季度
+ <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="30" name="rtype" autocomplete="off">月度
+  <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="40" name="rtype" autocomplete="off">周
+   <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="100" name="rtype" autocomplete="off">项目 
+   <input onclick="onTypeChange('其他'));" id="dbf.psid2" checked="" type="radio" value="0" name="rtype" autocomplete="off">其他</td>
 <td style="TEXT-ALIGN: center">从属于</td>
 <td ><select style="width:445px; border: #F4F4F4" class="rlname" id="rlname" name="rlname"></select></td></tr>
 <tr>

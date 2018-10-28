@@ -27,12 +27,12 @@ ReportService  service;
      @RequestMapping("/getAll")
      public @ResponseBody PageInfo<Map> getAll(Integer pageNum){
     	
-		return  service.query(pageNum);
+		return service.query(pageNum);
 	  
 	 }
      @RequestMapping("/getAlltwo")
      public @ResponseBody PageInfo<Map> getAlltwo(Integer pageNum){
-		return   service.querytwo(pageNum);
+		return service.querytwo(pageNum);
 	  
 	 }
      @RequestMapping("/addAll")
@@ -43,11 +43,26 @@ ReportService  service;
 		return "forward:BackJsp/wsq/task.jsp";
   }
   
-     @RequestMapping("/selty")
-     public @ResponseBody List<report> selty(){
+     /*@RequestMapping("/selty")
+     @ResponseBody
+     public List<report> selty(){
      	List<report> sele = service.sele();
+		return sele;
      
-    	return sele;
+    
+ 
+	
+  }*/
+     @RequestMapping("/getAllgetWSQ")
+     public @ResponseBody PageInfo<Map> getAllget(Integer pageNum,String rtype){
+    
+		return service.reporres(pageNum, rtype);
+	  
+	 }
+     @RequestMapping("/selelis")
+     @ResponseBody
+     public List<report> sele(report report){
+     	return service.selelis();
  
 	
   }
