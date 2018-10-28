@@ -32,6 +32,9 @@
     <result column="dependence" property="dependence" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
+    
+    <result column="file" property="portraitUrl" jdbcType="VARCHAR" />
+    <result column="unum" property="unum" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     detailId, UserSex, UserNum, entryDate, phone, telephone, email, birthDate, positiveDate, 
@@ -300,8 +303,11 @@
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
       </if>
+      <if test="file != null" >
+        portraitUrl = #{file,jdbcType=VARCHAR},
+      </if>
     </set>
-    where detailId = #{detailid,jdbcType=INTEGER}
+    where detailId = #{detailid,jdbcType=INTEGER} or unum = #{unum,jdbcType=INTEGER} 
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aaa.bean.Userdetail" >
     update userdetail

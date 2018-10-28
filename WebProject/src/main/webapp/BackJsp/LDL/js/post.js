@@ -11,15 +11,20 @@ $(function(){
   var page = new Vue({
     el :'#myPost',
 	data:{
-	  posts:null,
-	  pageInfo:null,
-	  deptId:null
+		posts:null,
+		pageInfo:null,
+		deptId:null,
+		//权限分配
+		trueVisits:"",
+		falseVisits:"",
+		pid:0,
+		mname:""
 	},
 	methods:{
 	    execute:function(PageNumber){
 	         var url = 'post/getAllpost';
              this.$http.post(url,{pageNum:PageNumber,deptId:this.deptId},{emulateJSON:true}).then(function(res){
-                this.posts=res.body.list
+            	this.posts=res.body.list
                 this.pageInfo=res.body
              });
         },
@@ -29,19 +34,48 @@ $(function(){
 				this.execute(1);
 			});
         },
-        postUpdate:function(pid){
-        	 this.$router.push({
-    		    path:'postUpdate.jsp',
-    		    query:{
-    		    	pid:1
-    		    }
-        	})
-        }
-    }
+       
+        //权限分配
+        getVisit:function(pid){
+        	this.pid = pid;
+			this.$http.post("post/postVisittwomodile",{
+					pid:pid,
+					mname:this.mname
+			},{emulateJSON: true}).then(function(data) {
+				this.trueVisits = data.body.postTrueVisittwomodile;
+				this.falseVisits = data.body.postFalseVisittwomodile;
+			}, function(dataError) {
+				
+			})
+		},
+		delpostVisittwomodile:function(mTowId){
+			this.$http.post("post/delpostVisittwomodile",{
+				pid:this.pid,
+				mTowId:mTowId
+			},{emulateJSON: true}).then(function(data) {
+				this.getVisit(this.pid);
+			}, function(error) {
+				
+			})
+			
+		},
+		insertpostVisittwomodile:function(mTowId){
+			this.$http.post("post/insertpostVisittwomodile",{
+  				pid:this.pid,
+  				mTowId:mTowId
+  			},{emulateJSON: true}).then(function(data) {
+  				this.getVisit(this.pid);
+  			}, function(error) {
+  				
+  			})
+		  	}
+	    }
 })
  
 
-
+function insertpostVisittwomodile(id){
+	  alert(id);
+  }
 
 var ve = new Vue({
 	el:"#organizationVue",
@@ -88,28 +122,5 @@ var ve = new Vue({
 });
 
 
-/*
+//权限分配
 
-var myTbody = new Vue({
-		el:"#oneModel",
-		data:{
-			Visitonemodiles:"",
-			Visittwomodiles:""
-		}
-	});
-	var getvo = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisitonemodile"
-	  ).then(function(data){
-		  myTbody.Visitonemodiles=data.body;
-		  return data.body;
-	  },function(error){
-	  	alert(1111);
-	  });
-	var getvt = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisittwomodile"
-	  ).then(function(data){
-		  myTbody.Visittwomodiles=data.body;
-		  return data.body;
-	  },function(error){
-	  	alert(1111);
-	  });*/

@@ -14,7 +14,7 @@
   </sql>
   <!--   public List<Subcompany> getAllSubcompany(); -->
   <select id="getAllSubcompany" resultType="com.aaa.bean.Subcompany">
-  		select * from Subcompany
+  		select * from Subcompany 
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</table>
 	</div>
 	<div id="bottomDiv">
-		<div id="colloaMenu2"><!--  bottomRightDiv-->
+		<!-- <div id="colloaMenu2"> bottomRightDiv
 			<a class="" href="javascript:getvo();">
 				<img src="../assets/images/key.gif" border="0"> 模块访问权设置
 			</a>
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:getvo();">
 				<img src="../assets/images/share.gif" border="0"> 按用户设置权限
 			</a>
-		</div>
+		</div> -->
 		<div id="bottomRightDiv">
 			<div id="authorityVue">
 				<table cellpadding=0 cellspacing=0 border=0 class="tableList">
@@ -179,9 +179,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td><input type="text" name="mdescribe" v-model="mdescribe"></td>
 						</tr>
 						<tr>
-							<td>模块状态</td>
-							<td><input type="radio" checked="checked" name="msequnce" v-model="msequnce" value="1">启用
-								<input type="radio" name="msequnce"  v-model="msequnce" value="0">禁用</td>
+							<td>模块序号</td>
+							<td>
+								<input type="text" name="msequnce" v-model="msequnce" value="">
+							</td>
 						</tr>
 						<tr>
 							<td>模块标志图</td>

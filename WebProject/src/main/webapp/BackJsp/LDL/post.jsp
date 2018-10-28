@@ -25,6 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
 	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.css">
 	<link rel="stylesheet" href="<%=basePath%>BackJsp/LDL/css/post.css">
+	<link rel="stylesheet" href="<%=basePath%>BackJsp/LDL/css/authorityManagement.css">
+	
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/view.js"></script>
@@ -76,8 +78,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="ww" v-for="dept in depts" v-if="!(dept.belong != subcompany.scid)" @click="getDeptPost(dept.deptid)" > 
 							  	<a style="color:#f7f7f7;font-size:12px;">
 									<span>{{dept.deptname}}</span>
-									
-									
 								</a>
 							</li>
 						</ul>
@@ -100,18 +100,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <TD>有效</TD>
 	                <TD>{{post.describes}}</TD>
 	                <TD>
-	                	<span><a :href="'post/getOnePost?pid=' + post.pid">修改</a></span>
-	                	<span @click="delOnePost(post.pid)">删除</span>
+	                	<img src='../assets/img/user_add.png' width='15px'  @click="getVisit(post.pid)" data-toggle="modal" data-target="#myModal"> 
+	                	<a :href="'post/getOnePost?pid=' + post.pid" style="text-decoration: none;">
+	                		<img src="../assets/images/update.png" width="15px" title="修改">&nbsp;
+	                	</a>
+						<img src="../assets/images/del.png" width="15px" title="删除" @click="delOnePost(post.pid)">
 	                </TD>
 	               </TR>
                </TABLE>
-                <a @click="execute(1)" class="button1 button1L" title="首页" >首页</a>
-           		<a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" >上一页</a>
-                <span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span>
-                <a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页">下一页</a>
-                <a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页">尾页</a>
-		</div>
+			<a @click="execute(1)" class="button1 button1L" title="首页" >首页</a>
+			<a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" >上一页</a>
+			<span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span>
+			<a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页">下一页</a>
+			<a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页">尾页</a>
+		<!-- 权限分配模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" id="usersVue">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							模块分配
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="userSeek">
+							<div class="input-group">
+							<input type="text" class="form-control" v-model="mname">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" @click="getVisit">
+									Go!
+								</button>
+							</span>
+							</div><!-- /input-group -->
+						</div>
+						<div class="alootDiv">
+							<div class="alootTrue">
+								<div class="alootTrueUser">已拥有访问权限</div>
+								<div class="alootTrueUser" v-for="trueVisit in trueVisits" @click="delpostVisittwomodile(trueVisit.mTowId)">{{trueVisit.mname}}</div>
+							</div>
+							<div class="alootFalse">
+								<div class="alootFalseUser">未拥有访问权限</div>
+								<div class="alootFalseUser" v-for="falseVisit in falseVisits" @click="insertpostVisittwomodile(falseVisit.mTowId)" >{{falseVisit.mname}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div>
+		</div><!-- /.modal -->
 	</div>
+</div>
+	
 </body>
 	
 <script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/post.js"></script>

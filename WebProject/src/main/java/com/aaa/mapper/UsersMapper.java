@@ -21,7 +21,7 @@ public interface UsersMapper {
     Users getOneUsers(Users record);
     
     List<Users> getAlluser();
-    //查询有访问权限的用户
+    //查询有访问权限的用
     List<Users> alootTrueUser(Map map);
     //查询没有访问权限的用户
     List<Users> alootFalseUser(Map map);
@@ -30,6 +30,8 @@ public interface UsersMapper {
     List<Users> postTrueUser(Map map);
     //查询没有角色用户
     List<Users> postFalseUser(Map map);
+    //查询一个用户有关详细信息  
+    List<Map> getOneUserDetails(Integer uid);
 
 
 	

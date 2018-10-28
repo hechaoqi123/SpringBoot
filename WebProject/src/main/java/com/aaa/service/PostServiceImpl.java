@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,22 @@ public class PostServiceImpl implements PostService{
 	@Override
 	public List<Post> getAllPost(Integer deptId) {
 		return mapper.getAllPost(deptId);
+	}
+	@Override
+	public List<Map> postTrueVisittwomodile(Map map) {
+		return mapper.postTrueVisittwomodile(map);
+	}
+	@Override
+	public List<Map> postFalseVisittwomodile(Map map) {
+		return mapper.postFalseVisittwomodile(map);
+	}
+	@Override
+	public int delpostVisittwomodile(Map map) {
+		return mapper.delpostVisittwomodile(map);
+	}
+	@Override
+	public int insertpostVisittwomodile(Map map) {
+		return mapper.insertpostVisittwomodile(map);
 	}
 
 }

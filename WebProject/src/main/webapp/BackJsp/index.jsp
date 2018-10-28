@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div style="width: 82%;">
-		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="0" scrolling="auto" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
+		        <iframe src="BackJsp/hcq/recruit.jsp" name="right_main" frameborder="0" scrolling="no" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
 			</div>
 		</div>
   </body>

@@ -62,6 +62,20 @@
   <select id="getAlluser" resultType="com.aaa.bean.Users">
   	SELECT * FROM users
   </select>
+  
+	<!-- 查询一个用户有关详细信息  getOneUserDetails-->
+	<select id="getOneUserDetails" parameterType="integer" resultType="map">
+		select * from dept d
+			JOIN post p
+			ON d.deptid = p.deptid
+			JOIN userspost up
+			ON up.pid = p.pid
+			JOIN users u
+			ON u.uid = up.uid
+			JOIN userdetail ud
+			ON u.unum = ud.unum
+			WHERE u.uid = #{uid}
+	</select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

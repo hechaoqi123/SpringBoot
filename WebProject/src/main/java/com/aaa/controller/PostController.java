@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.bean.Post;
+import com.aaa.bean.Users;
 import com.aaa.service.PostService;
 import com.aaa.service.UsersService;
 import com.github.pagehelper.PageHelper;
@@ -54,6 +56,42 @@ public class PostController {
 		service.insert(post);
 		return "LDL/post";
 	}
+	
+	//查询该职位可以访问的模块和不可以访问的模块
+	@RequestMapping("/postVisittwomodile")
+	@ResponseBody
+	public Map<String,List> postVisittwomodile(Integer pid,String mname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("mname",mname);
+		List<Map> postTrueVisittwomodile = service.postTrueVisittwomodile(m);
+		List<Map> postFalseVisittwomodile = service.postFalseVisittwomodile(m);
+		//System.out.println("postTrueVisittwomodile:======"+postTrueVisittwomodile);
+		//System.out.println("postfalseVisittwomodile:======"+postFalseVisittwomodile);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("postTrueVisittwomodile", postTrueVisittwomodile);
+		map.put("postFalseVisittwomodile", postFalseVisittwomodile);
+		return map;
+	}
 
+	 //增减访问功能
+	@RequestMapping("/delpostVisittwomodile")
+	@ResponseBody
+    public String delpostVisittwomodile(Integer pid, String mTowId){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("mTwoid",mTowId);
+    	service.delpostVisittwomodile(m);
+		return "true";
+	}
+	@RequestMapping("/insertpostVisittwomodile")
+	@ResponseBody
+    public String insertpostVisittwomodile(Integer pid, String mTowId){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("mTwoid",mTowId);
+		service.insertpostVisittwomodile(m);
+		return "true";
+	}
 	
 }

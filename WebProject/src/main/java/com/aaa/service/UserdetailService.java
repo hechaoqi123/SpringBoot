@@ -9,4 +9,6 @@ public interface UserdetailService {
 	public Userdetail getOne(Integer id);
 	//获取所有员工信息
 	public List<Userdetail> getAll();
+	//修改
+	int updateByPrimaryKeySelective(Userdetail record);
 }

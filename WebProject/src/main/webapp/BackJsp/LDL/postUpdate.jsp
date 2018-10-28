@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  
  
- <!-- 权限分配模态框（Modal） -->
+ <!-- 角色分配模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="usersVue">
 		<div class="modal-content">
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					模块分配
+					角色分配
 				</h4>
 			</div>
 			<div class="modal-body">

@@ -42,4 +42,12 @@ public class UsersServiceImpl implements UsersService{
 	public List<Users> postFalseUser(Map map) {
 		return mapper.postFalseUser(map);
 	}
+	@Override
+	public List<Map> getOneUserDetails(Integer uid) {
+		return mapper.getOneUserDetails(uid);
+	}
+	@Override
+	public int updateByPrimaryKeySelective(Users record) {
+		return mapper.updateByPrimaryKeySelective(record);
+	}
 }

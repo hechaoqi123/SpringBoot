@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+.myTransaction > div:HOVER{
+	background-color: #ffffe0;
+}
+
+.myTransaction > div{
+	margin-bottom:0;
+	width: 100%;
+	padding-top:5px;
+	text-align: center;
+	border: 1px solid #e3e3e3;
+}
+.myTransaction > div > a {
+	font-size:19px;
+	line-height:30px;
+	text-decoration: none;
+	color: #000;
+}
+.myTransaction > div >div>div{
+	padding-left: 20px;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+.myTransaction > div >div{
+	line-height: 30px;
+}
+.myTransaction > div >div >div> a{
+	font-size:17px;
+	text-decoration: none;
+}
+.myTransaction > div >div>div:HOVER {
+	background-color: #e3e3e3;
+}
