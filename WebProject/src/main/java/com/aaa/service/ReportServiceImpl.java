@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aaa.bean.Krar;
 import com.aaa.bean.Task;
@@ -41,10 +42,9 @@ public class ReportServiceImpl implements ReportService {
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
 	}
-
+    @Transactional
 	@Override
 	public void adds(report report, Krar krar, List<reportser> list) {
-		// TODO Auto-generated method stub
 		mapper.add(report);
 		mapper.addthere(krar);
 	    for (reportser reportser : list) {
@@ -64,7 +64,7 @@ public class ReportServiceImpl implements ReportService {
 		List<Map> list=mapper.reporres(rtype);
 
 		PageInfo<Map> info=new PageInfo<Map>(list);
-		
+		System.out.println(info.getList());
 		return info;
 	}
 
@@ -72,12 +72,8 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public List<report> selelis() {
-		// TODO Auto-generated method stub
 		return mapper.selectAll();
 	}
-	
-
-	
 	
 	
 

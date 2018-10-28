@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
- <!-- 标题 --><input name="tname" id="tname" value="请输入任务标题" class="pname"  style="height:40px;width:1000px; font-size: 20px; font-weight: bold; text-align: center;"></input>
+ <!-- 标题 --><input  class="fieldEditable" name="tname" id="tname" value="请输入任务标题" class="pname"  style="height:40px;width:1000px; font-size: 20px; font-weight: bold; text-align: center;"></input>
 </td>
 </tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td ><select style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
-<td><select style="width:342px; border: #F4F4F4" class="username" id="username" name="detailld"></select></td>
+<td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
 <td style="TEXT-ALIGN: center">所属部门</td>
 <td><select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid"></select></td></tr>
 <tr>
@@ -76,14 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">任务说明</td>
 <td id="任务说明" style="VERTICAL-ALIGN: top ;height:150px;" colspan="3" dbf.source="" dbf.type="">
-<input style="width:900px; height:150px; border: #F4F4F4" name="rwsm" class="rwsm" id="rwsm">
+<input  class="fieldEditable" style="width:900px; height:150px; border: #F4F4F4" name="rwsm" class="rwsm" id="rwsm">
 </td>
 </tr>
 
 <tr>
 <td style="TEXT-ALIGN: center">执行结果</td>
 <td id="执行结果" style="HEIGHT: 150px; VERTICAL-ALIGN: top" colspan="3" dbf.source="" dbf.type="">
-<input style="width:900px; height:150px; border: #F4F4F4" name="zsjg" class="zsjg" id="zsjg								">
+<input readonly="true" style="width:900px; height:150px; border: #F4F4F4" name="zsjg" class="zsjg" id="zsjg								">
 </td>
 </tr>
 </tbody></table>
@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $("#planname").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].pid+"'>"+data[i].planname+"</option>";
+           option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
        
           }
          $("#planname").append(option);

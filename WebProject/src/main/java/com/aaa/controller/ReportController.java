@@ -36,26 +36,14 @@ ReportService  service;
 	  
 	 }
      @RequestMapping("/addAll")
-	  public @ResponseBody String addAll( report report,Krar krar,reportUtil re){
+	  public  String addAll( report report,Krar krar,reportUtil re){
    	    	 service.adds(report, krar, re.getList());
   
    	
-		return "forward:BackJsp/wsq/task.jsp";
+		return "wsq/report";
   }
-  
-     /*@RequestMapping("/selty")
-     @ResponseBody
-     public List<report> selty(){
-     	List<report> sele = service.sele();
-		return sele;
-     
-    
- 
-	
-  }*/
      @RequestMapping("/getAllgetWSQ")
      public @ResponseBody PageInfo<Map> getAllget(Integer pageNum,String rtype){
-    
 		return service.reporres(pageNum, rtype);
 	  
 	 }
