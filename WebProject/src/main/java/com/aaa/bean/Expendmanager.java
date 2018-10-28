@@ -8,27 +8,27 @@ public class Expendmanager implements Serializable {
 	@Id
     private Integer expendid;
 
-    private String expenddate;
+    private String expenddate;//支出日期
 
-    private String expendtype;
+    private String expendtype;//支出分类	
 
-    private String money;
+    private String money;//支出金额
 
-    private String capitalmoney;
+    private String capitalmoney;//大写金额
 
-    private String model;
+    private String model;//付款方式
 
-    private String registrant;
+    private String registrant;//申请人
 
-    private String dept;
+    private String dept;//部门
 
-    private String opposite;
+    private String opposite;//对方单位
 
-    private String compact;
+    private String compact;//关联合同
 
-    private String remark;
+    private String remark;//备注信息
 
-    private String field1;
+    private String field1;//申请人
 
     private String field2;
 

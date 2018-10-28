@@ -44,15 +44,18 @@ public class UserdetailController {
 			model.addAttribute("user",user);
 	    return "hcq/MyInfo";
    }
-    @RequestMapping("/getDetailInfo")
-    public String selectUserInfo(Integer id,Model model){
-    	
+    //获取员工详细信息：criteria不为空时代表修改操作
+	@RequestMapping("/getDetailInfo")
+    public String selectUserInfo(Integer id,Model model,String criteria){
     	Userdetail user=service.getOne(id);
 		model.addAttribute("user",user);
 		String dept=user.getDependence();
 		Dept entity=deptservice.getDept(dept);
 		Userdetail superUser=service.getOne(Integer.valueOf(entity.getDeptstate()));
 		model.addAttribute("superUserName",superUser.getUsername());
+		if(criteria!=null){
+	    return "hcq/UserdetailUpdate";
+		}
     	return "hcq/DetailInfo";
     }
 	//分页查询
@@ -90,6 +93,12 @@ public class UserdetailController {
 	public String remove(Integer userId){
 		service.remove(userId);
 		return "success";
+	}
+	//修改员工信息
+	@RequestMapping("/udate")
+	public String update(Userdetail user,Model model){
+		service.update(user);
+		return selectUserInfo(user.getDetailid(),model,null);
 	}
 	@RequestMapping("/getAllUser")
 	public @ResponseBody PageInfo getAllUserDetail(Integer pageNum){

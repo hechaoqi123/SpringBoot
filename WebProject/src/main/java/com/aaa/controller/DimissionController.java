@@ -27,10 +27,17 @@ public class DimissionController {
 		  PageInfo<Dimission> info=new PageInfo<Dimission>(list);
     	return info;
     }
-	//新增离职申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Dimission dimission){
 		service.save(dimission);
 		return "hcq/dimission";
 	}
+	@ResponseBody
+	@RequestMapping("/queryBycriteria")
+    public PageInfo<Dimission> queryBycriteria(Integer pageNum,Dimission entry){
+		  PageHelper.startPage(pageNum,13);
+		  List<Dimission> list=service.select(entry);
+		  PageInfo<Dimission> info=new PageInfo<Dimission>(list);
+    	return info;
+    }
 }

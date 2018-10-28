@@ -25,6 +25,10 @@ public class transfer implements Serializable {
     private String oldpost;//原岗位
 
     private String newpost;//新岗位
+    
+    private String field1;//备注
+    
+    private String field2;//备注
 
     private String cause;//调动原因
 
@@ -35,7 +39,6 @@ public class transfer implements Serializable {
     private String newsuperiorremark;//新上级意见
 
     private static final long serialVersionUID = 1L;
-
     public Integer getTransferid() {
         return transferid;
     }
@@ -147,4 +150,21 @@ public class transfer implements Serializable {
     public void setNewsuperiorremark(String newsuperiorremark) {
         this.newsuperiorremark = newsuperiorremark == null ? null : newsuperiorremark.trim();
     }
+
+	public String getField1() {
+		return field1;
+	}
+
+	public void setField1(String field1) {
+		this.field1 = field1;
+	}
+
+	public String getField2() {
+		return field2;
+	}
+
+	public void setField2(String field2) {
+		this.field2 = field2;
+	}
+    
 }

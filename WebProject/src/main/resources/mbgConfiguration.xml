@@ -40,15 +40,11 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         </javaModelGenerator>    
     
     
-       <!--  <table schema="first" tableName="entry" domainObjectName="Entry"    
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
-               enableSelectByExample="false" selectByExampleQueryId="false" >    
-            <property name="useActualColumnNames" value="false"/>    
-        </table>  -->   
-        <table schema="first" tableName="itinfor" domainObjectName="Itinfor"    
+        <table schema="first" tableName="approval" domainObjectName="Approval"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
             <property name="useActualColumnNames" value="false"/>    
         </table> 
+            
     </context>    
 </generatorConfiguration>   

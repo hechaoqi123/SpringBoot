@@ -34,18 +34,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销</a>
 	   <a  class="textHighlight" href="BackJsp/hcq2/disburseApply.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 支出申请</a>
-	   <a href="BackJsp/hcq2/paymentApply.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 付款申请</a>
 	 </div>
 	 <!-- 数据 -->
 <div id="colloaContent2">
 <span id="app">
 <table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
 <th>主题</th>
-<th>出差人</th>
-<th>所属部门</th>
-<th>报销费用</th>
-<th>报销日期</th>
+<th>申请人</th>
+<th>申请部门</th>
+<th>支出金额</th>
+<th>申请日期</th>
 </tr></thead>
 <tbody>
 <tr v-for="recruit in recruits">
@@ -54,10 +52,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
 <a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
-	<td>{{recruit.username}}</td>
+	<td>{{recruit.applypeople}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
-	<td style="color:#E22018">{{recruit.total}}</td>
-	<td>{{recruit.submitdate}}</td>
+	<td style="color:#E22018">{{recruit.field1}}</td>
+	<td>{{recruit.applydate}}</td>
 </tr>
 <tr>
 </table><br/>
@@ -81,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="/CostManager/getAll";
+                 var url="/Disburse/getAll";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.recruits=res.body.list
                      this.pageInfo=res.body

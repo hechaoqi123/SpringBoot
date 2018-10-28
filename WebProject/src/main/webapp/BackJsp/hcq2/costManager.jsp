@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>费用管理</title>
+    <title>差旅费报销</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,10 +32,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 差旅费报销</a>
 	   <a href="BackJsp/hcq2/expense.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销</a>
-	   <a href="BackJsp/hcq2/disburseApply.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 支出申请</a>
-	   <a href="BackJsp/hcq2/paymentApply.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 付款申请</a>
 	 </div>
 	 <!-- 数据 -->
 <div id="colloaContent2">
@@ -72,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
      $(function(){
      $("#save").click(function(){
-        window.location.href="BackJsp/hcq/recruitApply.jsp"
+        window.location.href="BackJsp/hcq2/costManagerApply.jsp"
      })
        var load=new Vue({
             el:'#app',

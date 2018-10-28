@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseService;
 import com.aaa.bean.Income;
 
-public interface IncomeService {
+public interface IncomeService extends BaseService<Income>{
 
-	void save(Income income);
-
-	List<Income> getAll();
+	Integer getTotal();
 
 }

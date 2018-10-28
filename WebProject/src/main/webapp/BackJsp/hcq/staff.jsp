@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <H1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:7px;">员工管理</span></H1></TD>
           <TD align="right">
-          <button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>新增员工</button>
+          <button id="save"  class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>新增员工</button>
 <SCRIPT language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=702000&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==0) workflowListOne("workflow.aspx","新增员工",702010,"<i class='fa fa-plus fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","修改",702020,"<i class='fa fa-eyedropper fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","删除",702030,"<i class='fa fa-remove fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==0) workflowListOne("finder.aspx","查找",702050,"<i class='fa fa-search fa-lg'></i>",702000,sObjects,bPortal,bSelf);}</SCRIPT>
 
 <SCRIPT language="javaScript">workflowList(0);</SCRIPT>
@@ -163,21 +163,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           if(confirm("您确定要删除此员工吗？(该员工的人事基础信息将被删除。)")){
 		                var url="userdetail/remove";
 		               this.$http.post(url,{userId:userId},{emulateJSON:true}).then(function(res){})
-		               flashPage();
-		              /*  var url="userdetail/remove";
-		               this.$http.post(url,{userId:userId},{emulateJSON:true}).then(function(res){
-		                   alert(1);
-		               }) */
+		               flashPage();//刷新页面
 		           }
 		        }
 		    }
 		})
-		//封装条件检索
+		//封装数据量及条件检索
 		var dataCount=new Vue({
 		    el:"#dataCount",
 		    data:{
-		       AllCount:0,
-		       onJob:0,
+		       AllCount:0,//全部数量
+		       onJob:0,//在职员工数量
 		       onTrial:0,
 		       temporary:0,
 		       retire:0,
@@ -190,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       },flush:function(pagenumber){
 		           pageUtil.part=0;//设置为全部加载
 		           page.execute(pagenumber);
-		       },getAll:function(){
+		       },getAll:function(){//条件查询
 		          var url="userdetail/classify";
 		          this.$http.post(url,{emulateJSON:true}).then(function(res){
 		              var array=res.body;

@@ -45,19 +45,25 @@ public class CheckingController {
 	@RequestMapping("/savePlay")
 	public String savePlay(Checking checking,@RequestParam("file") MultipartFile file,
 			   HttpServletRequest request) throws IllegalStateException, IOException{
+		//获取文后缀
 		String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+		//生成唯一标识
 		UUID uuid=UUID.randomUUID();
-        String target=request.getSession().getServletContext().getRealPath("upload/checking/");
+        //获取目录绝对路径
+		String target=request.getSession().getServletContext().getRealPath("upload/checking/");
          File  targetFile=new File(target+uuid+suffix);
-		file.transferTo(targetFile);
-		checking.setType(uuid+suffix);
-		service.save(checking);
+		 //执行上传
+         file.transferTo(targetFile);
+		  //将图片名封装进实体
+         checking.setType(uuid+suffix);
+          //进行持久化操作
+         service.save(checking);
 		return "hcq/check";
 	}
 	//考勤文件下载
 	@RequestMapping("/down/{id}")
 	public void fileDown(@PathVariable("id")Integer id,HttpServletRequest request,HttpServletResponse response) throws IOException{
-		 Checking entity=service.getOne(id);
+		 Checking entity=service.selectByPrimaryKey(id);
 		 //文件路径
 		 String fileURL=entity.getType();
 		 //自定义文件名

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
+import com.aaa.bean.deptJob;
 import com.aaa.mapper.UserdetailMapper;
 import com.aaa.mapper.UsersMapper;
 import com.aaa.mapper.WbMapper;
@@ -21,7 +22,14 @@ public class UserdetailServiceImpl implements UserdetailService {
 	  UserdetailMapper mapper;
 	@Autowired
 	  UsersMapper usermapper;
-
+	//根据主键更改非空字段
+	@Override
+	public void update(Userdetail user) {
+		Users u=new Users();
+		u.setUname(user.getUsername());
+		usermapper.updateByPrimaryKeySelective(u);
+		mapper.updateByPrimaryKeySelective(user);
+	}
 	//查询单个用户信息
 	public Userdetail getOne(Integer id){
 		return mapper.selectByPrimaryKey(id);
@@ -35,25 +43,20 @@ public class UserdetailServiceImpl implements UserdetailService {
 	@Transactional
 	@Override
 	public void save(Userdetail user) {
-		mapper.insert(user);
-		List<Userdetail> list=mapper.selectAll();
-		Integer uid=1;
-		Userdetail detail=null;
-		if(list!=null){
-			for (Userdetail userdetail : list) {
-				if(userdetail.getDetailid()>=uid){
-					detail=userdetail;
-				}
+		//根据部门、用户主键生成工号
+		deptJob[] depts=deptJob.values();
+		for (deptJob dept : depts) {
+			if(dept.getName().equals(user.getDependence())){
+				user.setUsernum(dept.getJob()+"00"+(mapper.getMaxID()+1));
 			}
 		}
-		Users record=new Users();
-		if(detail!=null){
-			uid=detail.getDetailid();
-			record.setUname(detail.getUsername());
-			record.setUnum(detail.getUsername());
+		mapper.insert(user);
+           //生成员工账户
+		   Users record=new Users();
+		    record.setUid(mapper.getMaxID());
+			record.setUname(user.getUsername());
+			record.setUnum(user.getUsername());
 			record.setUpass("123456");
-		}
-		record.setUid(uid);
 		usermapper.insert(record);
 	}
 	@Override
@@ -65,6 +68,7 @@ public class UserdetailServiceImpl implements UserdetailService {
 	@Transactional
 	@Override
 	public void remove(Integer userId) {
+		usermapper.deleteByPrimaryKey(userId);
 		mapper.deleteByPrimaryKey(userId);
 	}
 	

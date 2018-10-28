@@ -11,20 +11,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <title>收入管理 - Colloa</title>
+  <title>收入管理查询 - Colloa</title>
   <link rel="stylesheet" href="BackJsp/hcq2/css/font-awesome.min.css">
   <link rel="stylesheet" href="BackJsp/hcq2/css/view.css">
   <script type="text/javascript" src="BackJsp/hcq2/js/viewCn.js"></script>
   <script type="text/javascript" src="BackJsp/hcq2/js/view.js"></script>
 </head><body id="colloaBody"><table style="min-width:980px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
-<tbody><tr valign="top"><td id="colloaContent"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td><h1>
+<tbody><tr valign="top"><td id="colloaContent">
+<span id="app">
+<table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td><h1>
 <img style="cursor:pointer;" src="BackJsp/hcq2/img/menu.png" > 收入管理</h1></td><td>
-<img src="BackJsp/hcq2/img/coins.gif"> 累计收入 <span class="textBig" style="color:#3cbc3c;">8455319.50</span></td>
+<img src="BackJsp/hcq2/img/coins.gif"> 累计收入 <span class="textBig" style="color:#3cbc3c;">{{total}}</span></td>
 <td id="oWorkflowList" align="right" width="700px">
-          <button id="save" class="btn" style="position:absolute;right:30px;width:150px;margin-left:500px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer ">
+          <button @click="register" class="btn" style="position:absolute;right:30px;width:150px;margin-left:500px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer ">
             <b>+</b>收入登记</button>
 </td></tr></tbody></table><br>
-<span id="app">
 <table cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
       <th>收入日期</th>
       <th style="text-align:right;">收入金额</th>
@@ -56,25 +57,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
      $(function(){
-     $("#save").click(function(){
-        window.location.href="BackJsp/hcq2/incomeRegister.jsp"
-     })
        var load=new Vue({
             el:'#app',
             data:{
                recruits:null,
-               pageInfo:null
+               pageInfo:null,
+               total:0
             },methods:{
                execute:function(pageNum){
                  var url="/Income/getAll";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.recruits=res.body.list
                      this.pageInfo=res.body
+                  
                  })
+               },register:function(){
+                 window.location.href="BackJsp/hcq2/incomeRegister.jsp"
+               },getTotal:function(){
+               var url="Income/getTotal";
+               this.$http.post(url).then(function(res){
+                  this.total=res.body
+               })
                }
             }
        })
-     load.execute(1);
+      load.execute(1);
+      load.getTotal();
      $(".btn").each(function(){
         $(this).hover(function(){
           $(this).css("border","1px solid #5ea6eb")

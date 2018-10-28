@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD class=fieldLable><B style="COLOR: red">*</B>姓名</TD>
 <TD id=dbf.name dbf.type="required,unique(userX)"><INPUT id=e.dbf.name name="username" class=fieldEditable></TD>
 <TD class=fieldLable>工号</TD>
-<TD id=dbf.jobSid><INPUT id=e.dbf.jobSid name="usernum" class=fieldEditable></TD></TR>
+<TD id=dbf.jobSid></TD></TR>
 <TR>
 <TD class=fieldLable>性别</TD>
 <TD><INPUT id=dbf.gender CHECKED type=radio value="男" name="usersex" autocomplete="off">男 <INPUT id=dbf.gender type=radio value="女" name="usersex" autocomplete="off">女</TD>

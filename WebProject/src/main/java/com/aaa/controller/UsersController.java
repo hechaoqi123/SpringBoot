@@ -36,13 +36,15 @@ public class UsersController{
 		//获取当前用户信息
 		Users users = new Users(unum,upass);
 		Users oneUsers = service.getOneUsers(users);
-		request.getSession().setMaxInactiveInterval(-1);//设置session时长
+		request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);//设置session时长
 		if(oneUsers != null){
 			//获取当前部门主管信息
-			String dept=detailservice.getOne(oneUsers.getUid()).getDependence();
+			Userdetail det=detailservice.getOne(oneUsers.getUid());
+			String dept=det.getDependence();
 			Dept entity=deptservice.getDept(dept);
 			Userdetail superUser=detailservice.getOne(Integer.valueOf(entity.getDeptstate()));
 			request.getSession().setAttribute("superUser", superUser);
+			request.getSession().setAttribute("detail", det);
 			request.getSession().setAttribute("CurrentUser", oneUsers);
 			return "index";
 		}else if(request.getSession().getAttribute("CurrentUser")!=null){

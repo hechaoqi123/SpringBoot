@@ -18,6 +18,7 @@ public interface UserdetailService {
 	//删除员工信息
 	public void remove(Integer userId);
 	public PageInfo getAllUserdetails(Integer pageNum);
+	public void update(Userdetail user);
 	//条件查询
 	public PageInfo getAllOne0(Integer pageNum,String dependence);
 	public PageInfo getAllOne1(Integer pageNum,String dependence);
