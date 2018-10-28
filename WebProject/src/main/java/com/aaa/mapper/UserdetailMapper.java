@@ -48,3 +48,4 @@ public interface UserdetailMapper extends  Mapper<Userdetail>{
 
 	
 }
+

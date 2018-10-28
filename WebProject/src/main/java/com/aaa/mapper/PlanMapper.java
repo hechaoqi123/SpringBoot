@@ -10,6 +10,7 @@ import com.aaa.bean.Userdetail;
 import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.plan;
+import com.aaa.bean.report;
 
 import tk.mybatis.mapper.common.Mapper;
 
@@ -29,5 +30,7 @@ public interface PlanMapper extends Mapper<plan>{
 	public List<Userdetail> quers();
 	public List<Dept> quersa();
 	public List<Krar> querst();
-	
+	public List<Map> ty (String type);
+	public List<Map<String, String>> getOne(int id);
+
 }

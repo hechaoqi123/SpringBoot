@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span style="color:#E6E6E6">我的工作报告</span>
 								</li>
 								</a>
-								<a href="wsq/ reporttwo.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="wsq/reporttwo.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">全部工作报告</span>
 								</li>

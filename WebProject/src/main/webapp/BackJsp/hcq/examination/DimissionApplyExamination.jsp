@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable"></td></tr></tbody></table>
 <div>
 <div style="TEXT-ALIGN: center">&nbsp;</div>
-<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>入职申请单</strong></span></div></div>
+<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>离职申请单</strong></span></div></div>
 <div>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
@@ -54,47 +54,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职人</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>离职人</td>
 <td id="dbf.operator" dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where stype=0 and statusX&gt;0 and name like &#39;%[!prompt]%&#39; order by name" dbf.key="1000071">
-  www
+  ${apply.dimissionname}
 </td>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职部门</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>离职部门</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-  department</td></tr>
+  ${apply.applydate}</td></tr>
 <tr>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职岗位</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td id="dbf.positionX" dbf.type="required">
-  post</td>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>入职时间</td>
+  ${apply.part}</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>工作岗位</td>
 <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
-  other</td></tr>
+  ${apply.post}</td></tr>
 <tr>
-<td style="TEXT-ALIGN: center">出生日期</td>
+<td style="TEXT-ALIGN: center">入职日期</td>
 <td id="外语要求">
-  language</td>
-<td style="TEXT-ALIGN: center">性别</td>
+  ${apply.entrydate}</td>
+<td style="TEXT-ALIGN: center">预计离职日期</td>
 <td id="工作地点">
-  apply.workspace</td></tr>
+  ${apply.dimissiondate}</td></tr>
+  <tr>
+<td style="TEXT-ALIGN: center">离职类型</td>
+<td id="外语要求" colspan="3">
+  <c:if test="${apply.type==0}">合同到期，公司要求不续签劳动合同  </c:if>
+  <c:if test="${apply.type==1}">合同期满，个人要求不续签劳动合同  </c:if>
+  <c:if test="${apply.type==2}">合同未到期，公司要求解除劳动关系  </c:if>
+  <c:if test="${apply.type==3}">合同未到期，个人要求解除劳动关系  </c:if>
+  <c:if test="${apply.type==4}">试用期内，公司要求解除劳动关系     </c:if>
+  <c:if test="${apply.type==5}">试用期内，个人要求解除劳动关系  </c:if>
+  </td>
+</tr>
 <tr>
-<td style="TEXT-ALIGN: center">毕业院校</td>
-<td id="年龄">
-  apply.age</td>
-<td style="TEXT-ALIGN: center">最高学历</td>
-<td>&nbsp;
-  apply.sex</td></tr>
-<tr>
-<td style="TEXT-ALIGN: center">专业方向</td>
-<td id="学历" dbf.type="" dbf.source="list:高中及以下,大专,本科,硕士,博士及以上">
-  apply.education</td>
-<td style="TEXT-ALIGN: center">工作年限</td>
-<td id="专业">
-  apply.major</td></tr>
+<td style="TEXT-ALIGN: center">离职原因</td>
+<td id="离职原因说明" style="HEIGHT: 80px" colspan="3" dbf.type="" dbf.source="">
+  ${apply.entrydate}
+</td></tr>
+ <c:if test="${apply.status!='结束'}">
+ <c:if test="${apply.status!='驳回'}">
 <tr>
 <td style="TEXT-ALIGN: center">备注</td>
-<td id="入职原因说明" style="HEIGHT: 80px" colspan="3" dbf.type="" dbf.source="">
-  apply.cause
+<td  style="HEIGHT: 30px" colspan="3" dbf.type="" dbf.source="">
+  <input id="remark" class="fieldEditable" name="theme" />
 </td></tr>
-
+</c:if>
+</c:if>
 </tbody></table></div>
 <div>&nbsp;</div>
 <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
@@ -141,8 +146,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br></div>
 </td></tr></tbody></table>
 </span></td><td>&nbsp;</td></tr></tbody></table>
-<%-- <input id="recruitid" style="display:none" value="${apply.recruitid}"/>
-<input id="uname" style="display:none" value="${detail.username}"/> --%>
+<input id="recruitid" style="display:none" value="${apply.dimissionid}"/>
+<input id="uname" style="display:none" value="${detail.username}"/>
 </body>
 </html>
 <script src="BackJsp/hcq/js/Vue.js"></script>
@@ -160,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  getAll:function(){
                      var itemid=$("#recruitid").val();
                      var url="Approval/queryByCriteria";
-                     this.$http.post(url,{itemname:"入职申请",itemid:itemid},{emulateJSON:true}).then(function(res){
+                     this.$http.post(url,{itemname:"离职申请",itemid:itemid},{emulateJSON:true}).then(function(res){
                         this.approval=res.body
                         for(var i=0;i<this.approval.length;i++){
                           var approvaldate=this.approval[i].approvaldate;
@@ -171,17 +176,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      var itemid=$("#recruitid").val();
                      var remark=$("#remark").val();
                      var principal=$("#uname").val();
-                     var url="Recruit/update";
+                     var url="Dimission/update";
                      if(obj=="领导"){//转领导审核
-                       this.$http.post(url,{principal:principal,recruitid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                   
                        })  
                      }else if(obj=="人事"){//转人事
-                       this.$http.post(url,{principal:principal,recruitid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                
                        })  
                      }else{//驳回
-                       this.$http.post(url,{principal:principal,recruitid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                
                        }) 
                      }

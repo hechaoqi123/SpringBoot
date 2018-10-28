@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        this.$http.post(url,{applypeople:principal,transferid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                
                        })  
-                     }else if(obj=="新主管"){
+                     }else if(obj=="新主管"){//转新主管
                       this.$http.post(url,{applypeople:principal,transferid:itemid,status:"新主管审批",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                
                        }) 

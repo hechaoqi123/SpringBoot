@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -43,6 +44,16 @@ public class TaskController {
    	
 		return "trun";
   }
-   
-  
+     @RequestMapping("/querywsq")
+     public @ResponseBody PageInfo<Map> querywsq(Integer pageNum ,String rwfl){
+    	System.out.println(taskservice.selectall(pageNum, rwfl).toString());
+    	 return taskservice.selectall(pageNum, rwfl);
+	  
+	 }
+     @RequestMapping("/classifty")	
+  	@ResponseBody
+  	  public List<Task> classifty(Task task){
+  		    return taskservice.querylet();
+  	  }
+     
 }

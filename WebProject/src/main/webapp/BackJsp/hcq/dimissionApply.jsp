@@ -23,9 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="BackJsp/hcq/js/view.js"></script>  
     <script src="BackJsp/hcq/js/jquery-2.0.3.min.js"></script>  
     <style>
-       *{
-         font-size:14px;
-       }
     </style>
   </head>
   <body id="colloaBody" style="margin-top:-10px;">
@@ -47,19 +44,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
 <TD><SPAN id=mapping.dbf.procXSource>
    <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
-</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>
-   <input type="text"  style="border:0px" name="dutypeople" readonly="true" value="${superUser.username}" />
-</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;结束时间:</TD>
-<TD id=dbf.endTime dbf.type="date" dbf.source="date,editable">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR></TBODY></TABLE>
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN id=mapping.dbf.responsorSource>
+   <input type="text"  style="border:0px" name="dutypeople" readonly="true" value="" />
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN id=mapping.dbf.participantsSource></SPAN></TD>
+<TD style="TEXT-ALIGN: right">&nbsp;</TD>
+<TD >
+<DIV </DIV></TD></TR></TBODY></TABLE>
 <DIV>&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center"><SPAN style="FONT-SIZE: 20px"><STRONG>离职申请单</STRONG></SPAN></DIV>
 <DIV>
 <TABLE id="dept"  class=tableListBorder style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
 <COLGROUP>
 <COL width=150>
-<COL width=300>
+<COL width=200>
 <COL width=150>
 <COL></COLGROUP>
 <TBODY>
@@ -73,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
 <TD id=dbf.division dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-     <select   name="part" style="border:0px;font-size:14px;width:300px;height:25px;">
+     <select   name="part" style="border:0px;font-size:14px;width:480px;height:25px;">
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </TD>
@@ -84,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>入职日期</TD>
 <TD id=入职日期 dbf.type="date,required" dbf.source="date">
-  <INPUT id=e.dbf.subject  class=fieldEditable >
+  <INPUT id=e.dbf.subject name="entrydate"  class=fieldEditable >
 </TD>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>预计离职日期</TD>
 <TD id=dbf.time0 dbf.type="date,required" dbf.source="date">
@@ -92,19 +89,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="HEIGHT: 80px; TEXT-ALIGN: center" dbf.type="" dbf.source=""><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职类型</TD>
 <TD style="HEIGHT: 80px" colSpan=3 dbf.type="" dbf.source="">
-  <INPUT id=离职类型 type=radio value=0 name="type">合同到期，公司要求不续签劳动合同&nbsp; 
+  <div>
+  <INPUT id=离职类型 type=radio value=0 name="type">合同到期，公司要求不续签劳动合同&nbsp;
+  </div> 
+    <div>
   <INPUT id=离职类型 type=radio value=1 name="type">合同期满，个人要求不续签劳动合同<BR>
+  </div>
+    <div>
   <INPUT id=离职类型 type=radio value=2 name="type">合同未到期，公司要求解除劳动关系&nbsp; 
+      </div>
+    <div>
   <INPUT id=离职类型 type=radio value=3 name="type">合同未到期，个人要求解除劳动关系<BR>
+     </div>
+    <div>
   <INPUT id=离职类型 type=radio value=4 name="type">试用期内，公司要求解除劳动关系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <INPUT id=离职类型 type=radio value=5 name="type">试用期内，个人要求解除劳动关系</TD></TR>
+     </div>
+    <div>
+  <INPUT id=离职类型 type=radio value=5 name="type">试用期内，个人要求解除劳动关系
+     </div>
+  </TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职原因</TD>
 <TD id=离职原因 colSpan=3 dbf.type="required" >
-  <TEXTAREA id=e.离职原因 class=fieldEditable name="entrydate" style="HEIGHT: 80px"></TEXTAREA></TD></TR>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主管意见</TD>
-<TD id=主管意见 style="HEIGHT: 80px" colSpan=3 dbf.type="required" dbf.source="">
- <TEXTAREA  class=fieldEditable name="supperremark" style="HEIGHT: 80px"></TEXTAREA></TD></TR>
+  <TEXTAREA id=e.离职原因 class=fieldEditable name="supperremark" style="HEIGHT: 80px"></TEXTAREA></TD></TR>
+</TR>
 <TD style="TEXT-ALIGN: center">离职处理</TD>
 <TD colSpan=3 dbf.type="" dbf.source=""><INPUT disabled id=离职处理 type=checkbox name=离职处理>人事手续已经办理 <INPUT disabled id=离职处理 type=checkbox name=离职处理>信息系统已经变更（请人事专员或系统管理员在本系统的【员工管理】模块中变更员工信息）</TD></TR></TBODY></TABLE></DIV>
 <DIV>&nbsp;</DIV>

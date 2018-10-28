@@ -102,8 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table v-show="tactics==3" style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr><th>主题</th><th>申请人</th><th>现部门/岗位</th><th>新部门/岗位</th><th>调动类型</th></tr></thead>
 <tbody>
 <tr v-for="t in datas">
-<td> <img v-if="t.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
-     <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
+<td>
+	<img v-if="t.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
+	<img v-else-if="t.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
+	<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
 <a :href="'Transfer/detail/'+t.transferid">{{t.theme}}</a></td><td>{{t.applypeople}}</td><td>{{t.oldpart}}/{{t.oldpost}}&nbsp;</td><td>{{t.newpart}}/{{t.newpost}}</td><td>{{t.genre}}</td></tr>
 <tr>
 </table>
@@ -119,10 +121,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
 	<tr v-for="d in datas">
 		<td>
-		<img v-if="d.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 		<img v-if="d.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
+		<img v-else-if="d.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 		<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-		<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{d.theme}}</a></td>
+		<a :href="'Dimission/detail/'+d.dimissionid">{{d.theme}}</a></td>
 		<td>{{d.dimissionname}}&nbsp;</td>
 		<td>{{d.part}}</td>
 		<td>{{d.post}}</td>
@@ -184,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		               this.pageInfo=res.body
 		               this.datas=res.body.list;
 	                })};
-		           if(this.tactics==4){status="填单";url="Dimission/queryBycriteria"
+		           if(this.tactics==4){url="Dimission/queryBycriteria"
 		              this.$http.post(url,{oldpart:dept,pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
 		              this.pageInfo=res.body
 		              this.datas=res.body.list;

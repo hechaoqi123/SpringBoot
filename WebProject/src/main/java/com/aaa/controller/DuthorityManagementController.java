@@ -44,6 +44,7 @@ public class DuthorityManagementController {
 	@RequestMapping("/selectVisitonemodile")
 	public List<Map> selectVisitonemodile(Integer uid){
 		List<Map> selectVisitonemodile = service.selectVisitonemodile();
+		System.out.println(selectVisitonemodile.toString()+"-------------------------------------------");
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/selectVisittwomodile")
@@ -57,12 +58,10 @@ public class DuthorityManagementController {
 	}
 	@RequestMapping("/selectOneMTowModile")
 	public List<Map> selectOneMTowModile(Integer uid) {
-		System.out.println(service.selectOneMTowModile(uid));
 		return service.selectOneMTowModile(uid);
 	}
 	@RequestMapping("/towModileAllocation")
 	public String towModileAllocation(Integer mTowId) {
-		System.out.println(mTowId+"-------------------------------");
 		return "true";
 	}
 

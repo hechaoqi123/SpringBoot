@@ -49,12 +49,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">任务分类</td>
 <td>
-<input id="dbf.psid2" checked="" type="radio" value="0" name="rwfl" autocomplete="off">常规 
-<input id="dbf.psid2" type="radio" value="10" name="rwfl" autocomplete="off">行政
- <input id="dbf.psid2" type="radio" value="20" name="rwfl" autocomplete="off">人事
-  <input id="dbf.psid2" type="radio" value="30" name="rwfl" autocomplete="off">财务 
-  <input id="dbf.psid2" type="radio" value="40" name="rwfl" autocomplete="off">业务 
-  <input id="dbf.psid2" type="radio" value="100" name="rwfl	" autocomplete="off">项目</td>
+<input  id="dbf.psid2" checked="" type="radio" value="常规" name="rwfl" autocomplete="off">常规 
+<input  id="dbf.psid2" type="radio" value="行政" name="rwfl" autocomplete="off">行政
+ <input id="dbf.psid2" type="radio" value="人事" name="rwfl" autocomplete="off">人事
+  <input id="dbf.psid2" type="radio" value="财务" name="rwfl" autocomplete="off">财务 
+  <input id="dbf.psid2" type="radio" value="业务" name="rwfl" autocomplete="off">业务 
+  <input id="dbf.psid2" type="radio" value="项目" name="rwfl	" autocomplete="off">项目</td>
 <td style="TEXT-ALIGN: center">从属于</td>
 <td ><select style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname"></select></td></tr>
 <tr>
@@ -187,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $("deptName").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].deptid+"'>"+data[i]. deptName+"</option>";
+           option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";
        
           }
          $("#deptName").append(option);

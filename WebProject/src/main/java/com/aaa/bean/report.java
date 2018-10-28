@@ -13,7 +13,6 @@ public class report implements Serializable{
     private Integer detailld;
     private Integer deptid;
     private String creationdate;
-    private Integer reid;
 	public Integer getRid() {
 		return rid;
 	}
@@ -56,17 +55,12 @@ public class report implements Serializable{
 	public void setCreationdate(String creationdate) {
 		this.creationdate = creationdate;
 	}
-	public Integer getReid() {
-		return reid;
-	}
-	public void setReid(Integer reid) {
-		this.reid = reid;
-	}
 	@Override
 	public String toString() {
 		return "report [rid=" + rid + ", rname=" + rname + ", rlname=" + rlname + ", rtype=" + rtype + ", detailld="
-				+ detailld + ", deptid=" + deptid + ", creationdate=" + creationdate + ", reid=" + reid + "]";
+				+ detailld + ", deptid=" + deptid + ", creationdate=" + creationdate + "]";
 	}
-    
+	
+	
     
 }

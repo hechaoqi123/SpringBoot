@@ -11,6 +11,7 @@ import com.aaa.bean.Dept;
 import com.aaa.bean.perform;
 import com.aaa.bean.performUtil;
 import com.aaa.bean.plan;
+import com.aaa.bean.report;
 import com.github.pagehelper.PageInfo;
 
 
@@ -22,4 +23,8 @@ public interface PlanService {
 	public List<Userdetail> quers();
 	public List<Dept> quersa();
 	public List<Krar> querst();
+	public PageInfo<Map> ty(Integer pageNum,String type);
+	public List<plan> reser();
+	public List<Map<String, String>> getOne(int id);
+
 }
