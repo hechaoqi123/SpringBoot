@@ -50,9 +50,10 @@ public class UsersController{
 		}else if(request.getSession().getAttribute("CurrentUser")!=null){
 			return "index";
 		}else{
-			return "../BackJsp/login";
+			return "login";
 		}
 	}
+	//注销
 	@RequestMapping("/logoutUser")
 	@ResponseBody
 	public String logoutUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -61,6 +62,7 @@ public class UsersController{
 		return "true";
 		
 	}
+	//用户访问模块可以访问和不可以访问
 	@RequestMapping("/aootUser")
 	@ResponseBody
 	public Map<String,List> alootUaer(Integer mTowId,String uname){
@@ -73,6 +75,39 @@ public class UsersController{
 		map.put("alootTrueUser", alootTrueUser);
 		map.put("alootFalseUser", alootFalseUser);
 		return map;
+	}
+	//查询该角色访问的用户和不能访问的用户
+	@RequestMapping("/postUser")
+	@ResponseBody
+	public Map<String,List> postUaer(Integer pid,String uname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("uname",uname);
+		List<Users> postTrueUser = service.postTrueUser(m);
+		List<Users> postFalseUser = service.postFalseUser(m);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("postTrueUser", postTrueUser);
+		map.put("postFalseUser", postFalseUser);
+		return map;
+	}
+	//查询一个用户有关详细信息  
+	@RequestMapping("/getOneUserDetails")
+	@ResponseBody
+	public List<Map> getOneUserDetails(Integer uid){
+		List<Map> oneUserDetails = service.getOneUserDetails(uid);
+		for (Map map : oneUserDetails) {
+			String portraiturl = (String) map.get("portraitUrl");
+			map.put("portraitUrl", "../upload/portrait/"+portraiturl);
+		}
+		return oneUserDetails;
+	}
+	//修改口令
+	@RequestMapping("/updatePass")
+	@ResponseBody
+	public String updatePass(Users users){
+		System.out.println(users.toString());
+		service.updateByPrimaryKeySelective(users);
+		return "true";
 	}
 	
 }

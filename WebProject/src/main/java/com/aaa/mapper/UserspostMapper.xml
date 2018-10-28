@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.UserspostMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.bean.Userspost">
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.aaa.bean.Userspost">
+    insert into userspost (pid, uid)
+    values (#{pid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
+  </insert>
+  <!-- delUsersPost(Userspost record); -->
+  <delete id="delUsersPost" parameterType="com.aaa.bean.Userspost">
+  	DELETE FROM userspost WHERE uid = #{uid} AND pid = #{pid};
+  </delete>
+  <insert id="insertSelective" parameterType="com.aaa.bean.Userspost">
+    insert into userspost
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+ 
+</mapper>

@@ -8,5 +8,7 @@ public interface SubcompanyService {
     public List<Subcompany> getAllSubcompany();
     
     int insert(Subcompany record);
+    
+    int deleteByPrimaryKey(Integer scid);
 
 }

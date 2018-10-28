@@ -40,7 +40,15 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         </javaModelGenerator>    
     
     
-        <table schema="first" tableName="approval" domainObjectName="Approval"    
+        <!-- 对应的Mapper接口类文件 -->    
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aaa.mapper" targetProject="./src/main/java">    
+            <property name="enableSubPackages" value="true"/>    
+        </javaClientGenerator>    
+    
+    
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
+         
+         <table schema="first" tableName="userspost" domainObjectName="Userspost"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
             <property name="useActualColumnNames" value="false"/>    

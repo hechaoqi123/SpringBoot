@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+#topDiv{margin: 20;}
+.bottomDiv > div{float: left;height: 90%;}
+.bottomDivLeft{width: 20%;padding-left: 30px;}
+.bottomDivRight{width: 80%; border: 1px solid #e3e3e3;}
+/* 小菜单 */
+.sidebar{
+width: 200px;
+}
+li{
+  list-style:none;
+  height: auto;
+}
+.ww{
+  height:35px;
+  padding-left:90px;
+  line-height:35px;
+  margin-top:1px;
+}
+.ww:hover{
+  background:#ffFF;
+}
+.nav-list .w{
+   margin-top:1px;
+   opacity:0.8;
+   padding-left:-10;
+   background-color: #e3e3e3;
+}
+.nav-list .w a > span{
+	color:#000;
+	background-color: #f84fa;
+}
+.nav-list .w:hover{
+  background:#09300;
+}
+.nav-list .w > a > span{
+	margin: 0 50px;
+}

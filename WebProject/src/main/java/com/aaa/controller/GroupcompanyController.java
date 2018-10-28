@@ -20,21 +20,5 @@ public class GroupcompanyController {
 		List<Groupcompany> listGroupcompany = service.getAllGroupcompany();
 		return listGroupcompany;
 	}
-	/*
-	@RequestMapping("/insertVisittwomodile")
-	public String insertVisittwomodile(Visittwomodile visittwomodile) throws Exception {
-		service.insert(visittwomodile);
-		return "成功插入";
-		
-	}
-	@RequestMapping("/selectVisitonemodile")
-	public List<Map> selectVisitonemodile(){
-		List<Map> selectVisitonemodile = service.selectVisitonemodile();
-		return selectVisitonemodile;
-	}
-	@RequestMapping("/selectVisittwomodile")
-	public List<Map> selectVisittwomodile(){
-		List<Map> selectVisitonemodile = service.selectVisittwomodile();
-		return selectVisitonemodile;
-	}*/
+	
 }
