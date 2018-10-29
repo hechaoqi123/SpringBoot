@@ -192,6 +192,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<b class="arrow"></b>
 						</ul>
 						</a></li>
+						
+						<!-- 行政管理 -->
+						<li  class="w">
+                        <a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							
+                        <span class="menu-text" style="margin-top:-10px;color:#E6E6E6">
+                        <img src="../assets/img/persons.png" style="margin-right:10px;"/>行政管理  </span>
+						</a>
+						<ul class="submenu" style="background-image:url(../assets/img/bg1.jpg);background-position: -200px -100px;display:none;padding:0px;margin:0px;">
+							  <a href="gm/metting.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+							<li class="ww" >
+									<span style="color:#E6E6E6">会议室管理 </span>
+								<b class="arrow"></b>
+							</li></a>
+								<a href="gm/car.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">车辆管理</span>
+								</li>
+								</a>
+									<a href="hcq/recruit.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">资产管理</span>
+								</li>
+								</a>
+									<a href="hcq/check.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">用品管理</span>
+								</li>
+								</a>
+								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">证照管理</span>
+								</li>
+								</a>
+								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<li class="ww">
+									<span style="color:#E6E6E6">印章管理</span>
+								</li>
+								</a>
+								<b class="arrow"></b>
+						</ul>
+					</li>
 					<!-- 信息中心 -->
 					<li class="w">
 						<a href="#" class="dropdown-toggle" style="line-height:13px;height:35px;font-size:13px;">							

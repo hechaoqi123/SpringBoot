@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.CarMapper" >
+
+   <select id="getAll" resultType="Car">
+      select car.cname,car.cmarkname,car.casdate,car.cinsurancedate,car.cmaintaindate,car.cstate from car
+   </select>
+          
+  <!-- <select id="selectByPrimaryKey" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where cId = #{cid,jdbcType=INTEGER}
+  </select> -->
+  <insert id="insertCar" parameterType="com.aaa.bean.Car" >
+    insert into car(cname,cmarkname,cspecification,coliconsumption,cprice,ccolour,cmanufacturer,cmanudate,
+                    csupplier,cpurchasing,cengine,cframe,cdepositary,ccustodian,cstate,caddition,crelevant,
+                    casdate,cinsurancedate,cmaintaindate)  
+     values(#{cname},#{cmarkname},#{cspecification},#{coliconsumption},#{cprice},#{ccolour},#{cmanufacturer},
+            #{cmanudate},#{csupplier},#{cpurchasing},#{cengine},#{cframe},#{cdepositary},#{ccustodian},#{cstate},
+            #{caddition},#{crelevant},#{casdate},#{cinsurancedate},#{cmaintaindate})
+  </insert>
+</mapper>

@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=src/main/webapp/BackJsp/hcq/js/utility.js,src/main/webapp/BackJsp/gm/js/view.js,src/main/webapp/BackJsp/gm/js/utility.js,src/main/webapp/BackJsp/gm/js/ckeditor.js,src/main/webapp/BackJsp/gm/js/viewCn.js,src/main/webapp/BackJsp/hcq/js/viewCn.js
+validator.Unchecked=
