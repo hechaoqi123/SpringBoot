@@ -1,8 +1,10 @@
 package com.aaa.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.aaa.bean.Userdetail;
+import com.github.pagehelper.PageInfo;
 
 public interface UserdetailService {
 	//获取单个员工信息
@@ -15,4 +17,8 @@ public interface UserdetailService {
 	public List<Userdetail> queryByCriteria(String status);
 	//删除员工信息
 	public void remove(Integer userId);
+	public PageInfo getAllUserdetails(Integer pageNum);
+	public void update(Userdetail user);
+	//修改
+	int updateByPrimaryKeySelective(Userdetail record);
 }

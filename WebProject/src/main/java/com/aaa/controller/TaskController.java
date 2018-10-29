@@ -36,13 +36,11 @@ public class TaskController {
 	  
 	 }
      @RequestMapping("/addAll")
-	  public @ResponseBody String addAll(Task task,Krar krar){
-    	 System.out.println(task);
-    	 System.out.println(krar);
+	  public  String addAll(Task task,Krar krar){
     	 taskservice.adds(task, krar);
   
    	
-		return "trun";
+		return "wsq/schedule";
   }
      @RequestMapping("/querywsq")
      public @ResponseBody PageInfo<Map> querywsq(Integer pageNum ,String rwfl){

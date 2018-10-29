@@ -29,16 +29,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body style="padding-top:15px;padding-left:30px;">
+  <form action="/userdetail/getDetailInfo" method="post">
+    <input name="id" style="display:none" value="${user.detailid}"/>
+    <input name="criteria" style="display:none" value="update"/>
    <TABLE border="0" cellspacing="0" cellpadding="0">
         <TBODY>
         <TR>
           <TD>
             <H1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">员工人事</span></H1></TD>
+                        <span style="margin-left:7px;">员工人事</span>   
+                        <span id="oWorkflowList1">
+          <input type="submit" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;margin-left:700px;background:#FCFCFC;border-radius:3px;cursor: pointer; " value="+修改信息"/>
+  </span></H1></TD>
           <TD align="right">
-	<SCRIPT language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=1000071&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){}</SCRIPT>
-	<SCRIPT language="javaScript">workflowList(0);</SCRIPT>
-          </TD></TR></TBODY></TABLE><BR>
+          </TD></TR></TBODY></TABLE>
+          </form>  
+          <BR>
       <TABLE class="tableForm" style="table-layout: fixed;" border="0" 
       cellspacing="0" cellpadding="0" summary="">
         <COLGROUP>
@@ -139,3 +145,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   //var colloaInterval=setInterval("if(ajax('command.aspx?notify.count&uid=1000071')!='0'){var v=document.getElementById('treeOfMenu').firstChild;if(v.getAttribute('sid')=='100000') v.innerHTML+=' <img src=../images/dotNotify.gif border=0>';clearInterval(colloaInterval);}", 11000);
 </SCRIPT>
 </BODY></HTML>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script>
+/*    $("#save").click(function(){
+     $("#www").click();
+     }) */
+     $(".btn").each(function(){
+        $(this).hover(function(){
+          $(this).css("border","1px solid #5ea6eb")
+        },function(){
+          $(this).css("border","1px solid #E0E0E0")
+        })
+     })
+</script>

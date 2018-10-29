@@ -15,10 +15,10 @@ public class reportser implements Serializable {
 	public void setReid(Integer reid) {
 		this.reid = reid;
 	}
-	public String getRenames() {
+	public String getrenames() {
 		return renames;
 	}
-	public void setRenames(String renames) {
+	public void setrenames(String renames) {
 		this.renames = renames;
 	}
 	public Integer getRid() {

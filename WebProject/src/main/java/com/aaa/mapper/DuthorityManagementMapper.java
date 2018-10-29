@@ -3,6 +3,8 @@ package com.aaa.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.aaa.bean.Visitonemodile;
 import com.aaa.bean.Visittwomodile;
 
@@ -14,7 +16,7 @@ public interface DuthorityManagementMapper extends Mapper<Visittwomodile>{
 	public List<Map> selectVisitonemodile();
 	//插入二级
 	public int insert(Visittwomodile record);
-	public List<Map> selectVisittwomodile();
+	public List<Map> selectVisittwomodile(@Param("mOneId") Integer mOneId);
 	
 	//根据用户查询二级菜单
 	public List<Map> selectUserTowModile(Integer uid);

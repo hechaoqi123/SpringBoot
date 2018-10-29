@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- #section:basics/sidebar -->
 				<div id="sidebar"  class="sidebar responsive" style="font-size:17px;">
 					<div id="tx" style="height:128px;border-bottom:1px solid #999">
-						   <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url(../assets/img/img1.jpg);background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
+						 <div class="tx1" style="margin-top:32px;margin-left:20px;background-image:url('upload/portrait/${detail.file}');background-size:68px 68px;width:68px;height:68px; border-radius:68px;border:0px solid #fff"></div>
 						   <div class="tx1" style="color:#f7f7f7;width:120px;font-size:14px;height:80px;margin-left:15px;padding-top:36px;">
 						         <img src="../assets/img/userXStatus0.png"/>${CurrentUser.uname }<br/>
 						        <p style="">探索协同运营管理之道</p>

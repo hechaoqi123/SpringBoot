@@ -1,5 +1,8 @@
 package com.aaa.bean;
 
+import java.sql.Date;
+
+
 import java.io.Serializable;
 
 import javax.persistence.Id;
@@ -56,7 +59,27 @@ public class Userdetail implements Serializable {
 
     private String username;
 
-    private static final long serialVersionUID = 1L;
+    private String file;
+    
+    private String unum;
+    
+    public String getUnum() {
+		return unum;
+	}
+
+	public void setUnum(String unum) {
+		this.unum = unum;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public Integer getDetailid() {
         return detailid;

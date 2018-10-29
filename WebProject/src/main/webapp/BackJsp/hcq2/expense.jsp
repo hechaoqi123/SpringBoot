@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,26 +25,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:7px;">费用管理</span></h1></td><td id="oWorkflowList" align="right">
-  <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>差旅费报销</button></span></td></tr></tbody></table><br>
+  <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>费用报销</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">
 	   <a  href="BackJsp/hcq2/costManager.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 差旅费报销</a>
 	   <a  class="textHighlight" href="BackJsp/hcq2/expense.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销</a>
-	   <a href="BackJsp/hcq2/disburseApply.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 支出申请</a>
-	   <a href="BackJsp/hcq2/paymentApply.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 付款申请</a>
-	 </div>
+		 </div>
 	 <!-- 数据 -->
 <div id="colloaContent2">
 <span id="app">
 <table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
-<th>主题</th>
-<th>出差人</th>
+<th width="270">主题</th>
+<th>报销人</th>
 <th>所属部门</th>
-<th>报销费用</th>
+<th width="130">报销费用</th>
 <th>报销日期</th>
 </tr></thead>
 <tbody>
@@ -57,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td>{{recruit.username}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
 	<td style="color:#E22018">{{recruit.total}}</td>
-	<td>{{recruit.submitdate}}</td>
+	<td>{{recruit.baoxiaodate}}</td>
 </tr>
 <tr>
 </table><br/>
@@ -72,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
      $(function(){
      $("#save").click(function(){
-        window.location.href="BackJsp/hcq/recruitApply.jsp"
+        window.location.href="BackJsp/hcq2/expenseManagerRegister.jsp"
      })
        var load=new Vue({
             el:'#app',
@@ -81,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="/CostManager/getAll";
+                 var url="/Baoxiao/getAll";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.recruits=res.body.list
                      this.pageInfo=res.body

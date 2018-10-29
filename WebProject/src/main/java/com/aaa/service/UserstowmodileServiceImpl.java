@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aaa.bean.Users;
 import com.aaa.bean.Userstowmodile;
@@ -12,11 +13,12 @@ import com.aaa.mapper.UserstowmodileMapper;
 public class UserstowmodileServiceImpl implements UserstowmodileService {
 	@Autowired
 	UserstowmodileMapper mapper;
+	@Transactional
 	@Override
 	public int insert(Userstowmodile record) {
 		return mapper.insert(record);
 	}
-
+	@Transactional
 	@Override
 	public int insertSelective(Userstowmodile record) {
 		int insertSelective = mapper.insertSelective(record);
@@ -28,7 +30,7 @@ public class UserstowmodileServiceImpl implements UserstowmodileService {
 		List<Users> twoUsers = mapper.getTwoUsers(mTowId);
 		return twoUsers;
 	}
-
+	@Transactional
 	@Override
 	public int delUserstowmodile(Userstowmodile record) {
 		return mapper.delete(record);

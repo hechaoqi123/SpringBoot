@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.PostMapper" >
+  <!--  //查询职位对应的功能 List<map> postTrueVisittwomodile(Map map);-->
+	<select id="postTrueVisittwomodile" parameterType="map" resultType="map">
+		SELECT * FROM visittwomodile vt
+			JOIN posttwomodile pt
+			ON pt.mTwoid = vt.mTowid
+			WHERE pt.pid = #{pid}
+			<if test="mname != ''">
+				AND vt.mname LIKE "%"#{mname}"%"
+			</if>
+  </select>
+  <!--  //查询职位没有的功能  List<map> postFalseVisittwomodile(Map map); -->
+	<select id="postFalseVisittwomodile" parameterType="map" resultType="map">
+		SELECT * FROM visittwomodile vtm
+			WHERE vtm.mTowid NOT IN(
+				SELECT vt.mTowid FROM visittwomodile vt
+				JOIN posttwomodile pt
+				ON pt.mTwoid = vt.mTowid
+				WHERE pt.pid = #{pid}
+				)
+			<if test="mname != ''">
+				AND vtm.mname LIKE "%"#{mname}"%"
+			</if>
+  </select>
+   <!--int InsertpostVisittwomodile(Map map);  -->
+  <insert id="insertpostVisittwomodile" parameterType="map">
+  	INSERT INTO posttwomodile VALUES(#{pid}, #{mTwoid})
+  </insert>
+  
+  <!--int delpostVisittwomodile(Map map);  -->
+  <delete id="delpostVisittwomodile" parameterType="map">
+	DELETE FROM posttwomodile WHERE pid = #{pid} AND mTwoid = #{mTwoid}
+  </delete>
+ 
+  <!-- List<Post> getAllPost(Integer deptId); -->
+  <select id="getAllPost" resultType="Post" parameterType="integer">
+  	SELECT * FROM post
+		<where>
+			<if test="deptId != null">
+			   deptid=#{deptId}
+			</if>
+		</where>
+  </select>
+</mapper>

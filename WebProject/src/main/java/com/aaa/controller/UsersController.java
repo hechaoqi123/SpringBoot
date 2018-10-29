@@ -19,6 +19,7 @@ import com.aaa.bean.Dept;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
 import com.aaa.service.DeptService;
+import com.aaa.service.PostService;
 import com.aaa.service.UserdetailService;
 import com.aaa.service.UsersService;
 @Controller
@@ -30,27 +31,32 @@ public class UsersController{
 	UserdetailService detailservice;
 	@Autowired
 	DeptService deptservice;
+	@Autowired
+	PostService post;
 	@RequestMapping("/getOne")
 	public String selectDept(String unum, String upass,HttpServletRequest request) throws IOException{
 		
 		//获取当前用户信息
 		Users users = new Users(unum,upass);
 		Users oneUsers = service.getOneUsers(users);
-		request.getSession().setMaxInactiveInterval(-1);//设置session时长
+		request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);//设置session时长
 		if(oneUsers != null){
 			//获取当前部门主管信息
-			String dept=detailservice.getOne(oneUsers.getUid()).getDependence();
+			Userdetail det=detailservice.getOne(oneUsers.getUid());
+			String dept=det.getDependence();
 			Dept entity=deptservice.getDept(dept);
 			Userdetail superUser=detailservice.getOne(Integer.valueOf(entity.getDeptstate()));
 			request.getSession().setAttribute("superUser", superUser);
+			request.getSession().setAttribute("detail", det);
 			request.getSession().setAttribute("CurrentUser", oneUsers);
 			return "index";
 		}else if(request.getSession().getAttribute("CurrentUser")!=null){
 			return "index";
 		}else{
-			return "../BackJsp/login";
+			return "login";
 		}
 	}
+	//注销
 	@RequestMapping("/logoutUser")
 	@ResponseBody
 	public String logoutUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -59,6 +65,7 @@ public class UsersController{
 		return "true";
 		
 	}
+	//用户访问模块可以访问和不可以访问
 	@RequestMapping("/aootUser")
 	@ResponseBody
 	public Map<String,List> alootUaer(Integer mTowId,String uname){
@@ -71,6 +78,38 @@ public class UsersController{
 		map.put("alootTrueUser", alootTrueUser);
 		map.put("alootFalseUser", alootFalseUser);
 		return map;
+	}
+	//查询该角色访问的用户和不能访问的用户
+	@RequestMapping("/postUser")
+	@ResponseBody
+	public Map<String,List> postUaer(Integer pid,String uname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("pid",pid);
+		m.put("uname",uname);
+		List<Users> postTrueUser = service.postTrueUser(m);
+		List<Users> postFalseUser = service.postFalseUser(m);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("postTrueUser", postTrueUser);
+		map.put("postFalseUser", postFalseUser);
+		return map;
+	}
+	//查询一个用户有关详细信息  
+	@RequestMapping("/getOneUserDetails")
+	@ResponseBody
+	public List<Map> getOneUserDetails(Integer uid){
+		List<Map> oneUserDetails = service.getOneUserDetails(uid);
+		for (Map map : oneUserDetails) {
+			String portraiturl = (String) map.get("file");
+			map.put("file", "../upload/portrait/"+portraiturl);
+		}
+		return oneUserDetails;
+	}
+	//修改口令
+	@RequestMapping("/updatePass")
+	@ResponseBody
+	public String updatePass(Users users){
+		service.updateByPrimaryKeySelective(users);
+		return "true";
 	}
 	
 }

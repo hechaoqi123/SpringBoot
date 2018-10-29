@@ -6,26 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseServiceImpl;
 import com.aaa.bean.Expendmanager;
 import com.aaa.mapper.ExpendmanagerMapper;
 
 @Service
-public class ExpendManagerServiceImpl implements ExpendManagerService {
-   @Autowired
-   ExpendmanagerMapper mapper;
-   /* (non-Javadoc)
- * @see com.aaa.service.ExpendManagerService#save(com.aaa.bean.Expendmanager)
- */
-@Override
-@Transactional
-   public void save(Expendmanager entity){
-	   mapper.insert(entity);
-   }
-   /* (non-Javadoc)
- * @see com.aaa.service.ExpendManagerService#getAll()
- */
-@Override
-public List<Expendmanager> getAll(){
-	   return mapper.selectAll();
-   }
+public class ExpendManagerServiceImpl extends BaseServiceImpl<Expendmanager> implements ExpendManagerService {
+    @Autowired
+    ExpendmanagerMapper expendMapper;
+	@Override
+	public Integer getTotal() {
+		return expendMapper.getTotal();
+	}
+
 }

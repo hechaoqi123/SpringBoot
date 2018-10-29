@@ -16,7 +16,7 @@ public class Dimission implements Serializable {
 
     private String post;//岗位
 
-    private String entrydate;//离职原因
+    private String entrydate;//入职日期
 
     private String dimissiondate;//预计离职日期
 

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -42,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<tr>
 	   			<td width="20%">
 	   				<h1>
-	   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 权限管理
+	   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 组织机构
 	   				</h1>
 				</td>
 				<td class="textGray" align="center">
@@ -70,56 +71,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div id="bottomDiv"><!-- ttt -->
 		<div id="bottomRightDiv">
-			<ul class="bottomRightDivUl">
-				<li>编号</li>
-				<li>名称</li>
-				<li>描述</li>
-				<li>信息</li>
-				<li>状态</li>
-				<li>操作</li>
-			</ul>
 			<div id="organizationVue">
-				<ul class="nav nav-list">
-						<li class="w www" v-for="groupcompany in groupcompanys">
-							 <a class="dropdown-toggle" style="color: #000;font-weight:bold;  ">	
-		                        <span>{{groupcompany.gcid}}</span>
-		                        <span>{{groupcompany.gcname}}</span>
-								<span>{{groupcompany.gcdepict}}</span>
-								<span>{{groupcompany.gcjobdescription}}</span>
-								<span v-if="groupcompany.gcstate=1">启用</span>
-								<span v-if="groupcompany.gcstate=0">禁用</span>
-								<span>修改  删除</span>
-							</a>
-						</li>
-					</ul>
-				<div id="sidebar" class="sidebar" style="padding-left: 20px;">
-					<ul class="nav nav-list">
-						<li class="w" v-for="subcompany in subcompanys">
-							 <a href="#" class="dropdown-toggle">	
-		                        <span>{{subcompany.scid}}</span>
-								<span>{{subcompany.scname}}</span>
-								<span>{{subcompany.scdepict}}</span>
-								<span>{{subcompany.scjobdescription}}</span>
-								<span v-if="subcompany.scstate=1">启用</span>
-								<span v-if="subcompany.scstate=0">禁用</span>
-								<span>修改  删除</span>
-							</a>
-							<ul class="submenu" style="display:none;padding:0px;">
-								<li class="ww" v-for="dept in depts" v-if="!(dept.belong != subcompany.scid)"  > 
-								  	<a style="color:#f7f7f7;font-size:12px;">
-										<span>{{dept.deptid}}</span>
-										<span>{{dept.deptname}}</span>
-										<span>{{dept.deptdepict}}</span>
-										<span>{{dept.deptjobdescription}}</span>
-										<span v-if="dept.deptstate=1">启用</span>
-										<span v-if="dept.deptstate=0">禁用</span>
-										<span>修改  删除</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+				<table cellpadding=0 cellspacing=0 border=0 class="tableList">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>描述</th>
+							<th>工作内容</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="groupcompany in groupcompanys">
+							<td style='padding-left:10px'><img src="../assets/images/userX10000.gif"> {{groupcompany.gcname}}</td>
+							<td>{{groupcompany.gcdepict}}</td>
+							<td>{{groupcompany.gcjobdescription}}</td>
+							<td>有效&nbsp;</td>
+							<td></td>
+						</tr>
+						<tr v-for="subcompany in subcompanys" v-on:click="getDeptVue(subcompany.scid,$event)">
+							<td style='padding-left:25px'><img src="../assets/images/userX10000.gif">{{subcompany.scname}}</td>
+							<td>{{subcompany.scdepict}}</td>
+							<td>{{subcompany.scjobdescription}}</td>
+							<td>有效&nbsp;</td>
+							<td>
+								<img src="../assets/images/update.png" width="15px" title="修改">&nbsp;
+								<img src="../assets/images/del.png" width="15px" title="删除" @click="delSub(subcompany.scid)">
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+				
 			</div>
 		</div>
 	</div><!-- ddd -->

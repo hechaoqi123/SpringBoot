@@ -4,7 +4,11 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+<<<<<<< HEAD
+encoding//src/main/webapp/BackJsp/mh/projectManager.jsp=UTF-8
+=======
 encoding//src/main/resources/application.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
 encoding//src/main/webapp/BackJsp/hcq/PersonnelApply.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/hechaoqi123/SpringBoot.git
 encoding/<project>=UTF-8

@@ -2,11 +2,12 @@ package com.aaa.service;
 
 import java.util.List;
 
+import com.aaa.base.BaseService;
 import com.aaa.bean.Entryapply;
 
-public interface EntryapplyService {
+public interface EntryapplyService extends BaseService<Entryapply> {
 
-    int save(Entryapply record);
+	void saveAndApproval(Entryapply entryapply);
 
-    List<Entryapply> getAll();
+	void UpdateAndRemark(Entryapply apply, String remark);
 }
