@@ -61,32 +61,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">计划分类</td>
 <td>
-  <input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="10" name="type" autocomplete="off">年度
-  <input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="20" name="type" autocomplete="off">季度
-  <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="30" name="type" autocomplete="off">月度 
-  <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="40" name="type" autocomplete="off">周
-  <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="100" name="type" autocomplete="off">项目
-   <input onclick="onTypeChange('其他');" id="dbf.psid2" checked="" type="radio" value="0" name="type" autocomplete="off">其他</td>
+  <input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">年度
+  <input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">季度
+  <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">月度 
+  <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">周
+  <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">项目
+   <input onclick="onTypeChange('其他');" id="dbf.psid2" checked="" type="radio" value="${plan[0].type}" name="type" autocomplete="off">其他</td>
 <td style="TEXT-ALIGN: center">从属于</td>
 <td>  <input style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname">${plan[0].planname}</td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
-<td><input style="width:342px; border: #F4F4F4" class="username" id="username" name="detailld">${plan[0].username}</td>
+<td>${plan[0].username}</td>
 <td style="TEXT-ALIGN: center">所属部门</td>
-<td><input style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid">${plan[0].deptName}</td>
+<td>${plan[0].deptName}</td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>开始时间</td>
-<td ><input style="width:338px; border: #F4F4F4" name="ksdate" class="ksdate" id="ksdate">${plan[0].ksdate}</td>
+<td >${plan[0].ksdate}</td>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>结束时间</td>
-<td ><input style="width:445px; border: #F4F4F4" name="jsdate" class="jsdate" id="jsdate">${plan[0].jsdate}</td>
+<td >${plan[0].jsdate}</td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center">评审人</td>
-<td ><input style="width:342px; border: #F4F4F4" class="knmae" id="kname" name="kname">${plan[0].kname}</td>
+<td>${plan[0].kname}</td>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>执行人</td>
-<td><input style="width:445px; border: #F4F4F4" class="letname" id="letname" name="letname">${plan[0].letname}</td>
+<td>${plan[0].letname}</td>
 </tr>
 <tr>
 <td id="tableDetail" class="lllll" style="VERTICAL-ALIGN: top;height:200px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px" colspan="4" dbf.source="" dbf.type="">
@@ -99,21 +99,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
          <tr>
              <td>1</td>
-              <td><input style="border: #F4F4F4"  name="list[0].plname">${plan[0].plname}</td>
-              <td><input style="border: #F4F4F4 " name="list[0].plperform">${plan[0].plperform}</td>
-              <td><input style="border: #F4F4F4"  name="list[0].performdate">${plan[0].performdate}</td>
+              <td>${plan[0].plname}</td>
+              <td>${plan[0].plperform}</td>
+              <td>${plan[0].performdate}</td>
          </tr>
          <tr>
               <td>2</td>
-              <td><input style="border: #F4F4F4"  name="list[1].plname">${plan[0].plname}</td>
-              <td><input style="border: #F4F4F4 " name="list[1].plperform">${plan[0].plperform}</td>
-              <td><input style="border: #F4F4F4"  name="list[1].performdate">${plan[0].performdate}</td>
+              <td>${plan[0].plname}</td>
+              <td>${plan[0].plperform}</td>
+              <td>${plan[0].performdate}</td>
          </tr>
          <tr>
               <td>3</td>
-              <td><input style="border: #F4F4F4"  name="list[2].plname">${plan[0].plname}</td>
-              <td><input style="border: #F4F4F4 " name="list[2].plperform">${plan[0].plperform}</td>
-              <td><input style="border: #F4F4F4"  name="list[2].performdate">${plan[0].performdate}</td>
+              <td>${plan[0].plname}</td>
+              <td>${plan[0].plperform}</td>
+              <td>${plan[0].performdate}</td>
          </tr>
          
    </table>
