@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   indent="2" sid="1000124" psid="1000119"><IMG src="BackJsp/hcq/img/userX10000.gif" 
                   border="0"> 税务部</A><A style="padding-left: 24px;" href="javascript:catalogue(10000,1000121,'咨询部');" 
                   indent="2" sid="1000121" psid="1000119"><IMG src="BackJsp/hcq/img/userX10000.gif" 
-                  border="0"> 咨询部</A></DIV>
+                  border=- "0"> 咨询部</A></DIV>
 <SCRIPT type="text/javascript">treeBuild("treeOfNavigation", "");</SCRIPT>
                    </TD></TR>
               <TR>
