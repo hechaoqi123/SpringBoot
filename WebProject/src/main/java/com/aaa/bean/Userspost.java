@@ -2,6 +2,8 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Userspost implements Serializable {
     private Integer pid;
 

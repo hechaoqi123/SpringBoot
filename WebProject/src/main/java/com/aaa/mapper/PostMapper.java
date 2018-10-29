@@ -10,18 +10,9 @@ import com.aaa.bean.Post;
 import com.aaa.bean.Users;
 import com.aaa.bean.Visittwomodile;
 
-public interface PostMapper {
-    int deleteByPrimaryKey(Integer pid);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insert(Post record);
-
-    int insertSelective(Post record);
-
-    Post selectByPrimaryKey(Integer pid);
-
-    int updateByPrimaryKeySelective(Post record);
-
-    int updateByPrimaryKey(Post record);
+public interface PostMapper extends Mapper<Post>{
     
     List<Post> getAllPost(@Param("deptId") Integer deptId);
     

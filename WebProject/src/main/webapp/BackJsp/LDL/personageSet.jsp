@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+d<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
@@ -71,11 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div id="bottomdiv"><!-- ttt -->
 		<div class="boxBorder" id="personageSet" style="padding: 30px;" >
-		<input value="${user.uid }"id="uidInput" style="display: none;">
-		<input value="${user.upass }"id="upassInput" style="display: none;">
+		<input value="${CurrentUser.uid }"id="uidInput" style="display: none;">
+		<input value="${CurrentUser.upass }"id="upassInput" style="display: none;">
 		<span v-for="(detail,index) in userDetail.slice(0, 1)"><!-- {{index}} -->
 			<div style="margin: 0px 20px 20px 0px; vertical-align: top; display: inline-block;">
-				<IMG :src="userDetail[0].portraitUrl" width="100px" border="0">
+				<IMG :src="userDetail[0].file" width="100px" border="0">
 			</div>
 			<div style="vertical-align: top; display: inline-block;" >
 				<span class="textBig">{{userDetail[0].username}}</span><br><br>

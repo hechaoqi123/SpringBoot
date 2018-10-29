@@ -121,11 +121,10 @@ public class UserdetailController {
 		//执行文件上传
 		file.transferTo(outPath);
 		
-		Users user = (Users) session.getAttribute("user");
-		Userdetail ud = new Userdetail();
-		ud.setFile(fileName+suffix);
-		ud.setUnum(user.getUnum());
-		service.updateByPrimaryKeySelective(ud);
+		Userdetail user = (Userdetail) session.getAttribute("detail");
+		user.setPosition(null);
+		user.setFile(fileName+suffix);
+		service.updateByPrimaryKeySelective(user);
 		return "成功修改";
 	}
 }

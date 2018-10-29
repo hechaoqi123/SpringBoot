@@ -21,7 +21,7 @@ public class UserspostServiceImpl implements UserspostService {
 
 	@Override
 	public int delUsersPost(Userspost record) {
-		return mapper.delUsersPost(record);
+		return mapper.delete(record);
 	}
 
 }

@@ -19,6 +19,7 @@ import com.aaa.bean.Dept;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
 import com.aaa.service.DeptService;
+import com.aaa.service.PostService;
 import com.aaa.service.UserdetailService;
 import com.aaa.service.UsersService;
 @Controller
@@ -30,6 +31,8 @@ public class UsersController{
 	UserdetailService detailservice;
 	@Autowired
 	DeptService deptservice;
+	@Autowired
+	PostService post;
 	@RequestMapping("/getOne")
 	public String selectDept(String unum, String upass,HttpServletRequest request) throws IOException{
 		
@@ -96,8 +99,8 @@ public class UsersController{
 	public List<Map> getOneUserDetails(Integer uid){
 		List<Map> oneUserDetails = service.getOneUserDetails(uid);
 		for (Map map : oneUserDetails) {
-			String portraiturl = (String) map.get("portraitUrl");
-			map.put("portraitUrl", "../upload/portrait/"+portraiturl);
+			String portraiturl = (String) map.get("file");
+			map.put("file", "../upload/portrait/"+portraiturl);
 		}
 		return oneUserDetails;
 	}
@@ -105,7 +108,6 @@ public class UsersController{
 	@RequestMapping("/updatePass")
 	@ResponseBody
 	public String updatePass(Users users){
-		System.out.println(users.toString());
 		service.updateByPrimaryKeySelective(users);
 		return "true";
 	}

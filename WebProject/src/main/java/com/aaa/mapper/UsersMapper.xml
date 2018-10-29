@@ -64,7 +64,7 @@
 			JOIN users u
 			ON u.uid = up.uid
 			JOIN userdetail ud
-			ON u.unum = ud.unum
+			ON u.uid = ud.detailid
 			WHERE u.uid = #{uid}
 	</select>
 

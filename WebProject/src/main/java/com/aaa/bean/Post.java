@@ -2,7 +2,10 @@ package com.aaa.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Post implements Serializable {
+	@Id
     private Integer pid;
 
     private String pname;

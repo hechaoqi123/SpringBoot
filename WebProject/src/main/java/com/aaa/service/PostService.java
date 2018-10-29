@@ -5,20 +5,10 @@ import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseService;
 import com.aaa.bean.Post;
 
-public interface PostService {
-    int deleteByPrimaryKey(Integer pid);
-
-    int insert(Post record);
-
-    int insertSelective(Post record);
-
-    Post selectByPrimaryKey(Integer pid);
-
-    int updateByPrimaryKeySelective(Post record);
-
-    int updateByPrimaryKey(Post record);
+public interface PostService extends BaseService<Post>{
     
     List<Post> getAllPost(Integer deptId);
     

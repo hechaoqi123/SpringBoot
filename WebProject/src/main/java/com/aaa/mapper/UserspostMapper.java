@@ -2,10 +2,8 @@ package com.aaa.mapper;
 
 import com.aaa.bean.Userspost;
 
-public interface UserspostMapper {
-    int insert(Userspost record);
+import tk.mybatis.mapper.common.Mapper;
 
-    int insertSelective(Userspost record);
+public interface UserspostMapper extends Mapper<Userspost>{
     
-    int delUsersPost(Userspost record);
 }

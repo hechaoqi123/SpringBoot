@@ -53,7 +53,7 @@ public class PostController {
 	}
 	@RequestMapping("/addOnePost")
 	public String addOnePost(Post post){
-		service.insert(post);
+		service.save(post);
 		return "LDL/post";
 	}
 	

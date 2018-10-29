@@ -60,7 +60,9 @@ public class Userdetail implements Serializable {
     private String username;
 
     private String file;
+    
     private String unum;
+    
     public String getUnum() {
 		return unum;
 	}

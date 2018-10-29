@@ -148,6 +148,9 @@ $('#uploadSubmit').click(function() {
 		processData : false,
 		success : function(data) {
 			location.reload();
+			location.reload();
+			location.reload();
+			location.reload();
 		},
 		error : function(data) {
 			console.log(data.status);
