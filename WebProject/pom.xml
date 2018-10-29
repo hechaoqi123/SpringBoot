@@ -18,6 +18,7 @@
         <relativePath />
     </parent>
     <dependencies>
+    
         <!-- 添加springMVC支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
