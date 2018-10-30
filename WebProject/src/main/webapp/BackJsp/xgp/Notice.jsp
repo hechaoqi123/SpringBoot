@@ -150,12 +150,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
+     <!--  分页按钮 -->
      <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">首页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"id="prepage"><i style="color:#000">上一页</i></button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"id="nextpage"><i style="color:#000">下一页</i></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">尾页</button>
+	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default" id="startRow"><i style="color:#000">首页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"  id="prepage"><i style="color:#000">上一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="endRow">尾页</button>
      </div>
       
   </body>
@@ -188,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="</tr>";
                    $("#tbody").append(tr);
                }
@@ -297,6 +298,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+               MaxPage=data.pageSize;
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -462,7 +464,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         })
     }) 
     
-
+     $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+       $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      })
+     $("#startRow").click(function(){
+         getAll(1);
+      })
+      $("#endRow").click(function(){
+         getAll(MaxPage);
+      })
 
  
 </script>

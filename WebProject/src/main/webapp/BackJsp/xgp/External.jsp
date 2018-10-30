@@ -148,11 +148,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </table>
     <!--  分页按钮 -->
      <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
-	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default"><i style="color:#000">首页</i></button>
+	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default" id="startRow"><i style="color:#000">首页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"  id="prepage"><i style="color:#000">上一页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
-	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default">尾页</button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="endRow">尾页</button>
      </div>
       
     
@@ -196,6 +196,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+               // alert(data.pageSize);
+               MaxPage=data.pageSize;
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -304,6 +306,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         })
     }) 
+      var MaxPage;
      //条件查询4
       $("#one4").click(function(){
         $.ajax({
@@ -325,6 +328,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+             
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -348,7 +352,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            var nowpage=parseInt($("#nowPage").html());
            getAll(nowpage+1);
       })
-     
+      $("#startRow").click(function(){
+         getAll(1);
+      })
+      $("#endRow").click(function(){
+         getAll(MaxPage);
+      })
       
     
 

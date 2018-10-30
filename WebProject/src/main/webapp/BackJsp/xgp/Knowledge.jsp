@@ -128,27 +128,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </br>
      <table id="zero">
        <tr>
+       
            <td id="zero1">
               <div class="zero11"><i style="display:block;margin-top:10px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
                  <div class="zero12">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">(显示所有)</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">合理化建议</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">技术交流</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">企业文化</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">生活娱乐</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">(显示所有)</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">合理化建议</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">技术交流</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">企业文化</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">生活娱乐</span></div>
                  </div>
                  <div class="zero13">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本周新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本月新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">本季度新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one3">本周新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one4">本月新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one5">本季度新增</span></div>
                  </div>
-                 <div class="zero14">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">我发布的</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">我关注的</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">热门帖子</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;">精华帖子</span></div>
-                   
-                 </div>
+                 
            </td>
            <td id="zero2">
               <div id="colloaContent2">
@@ -164,102 +159,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<tr>
 								<th style="height:40px">主题</th>
 								<th>作者</th>
-								<th>点击</th>
+								
 								<th>回复</th>
 								<th>最后回复</th>
 							</tr>
 						</thead>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>						
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
-						<tr  onclick="sund(this)">
-							<td style="height:30px;border:1px solid #999;border-right:0px;border-left:0px;">12</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-							<td style="border:1px solid #999;border-right:0px;border-left:0px;">1</td>
-						</tr>
+						<tbody id="tbody">
+						</tbody>
+						
 					</table>
 				</div>
               
@@ -267,12 +174,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
-     <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">首页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">上页</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">当前页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">下页</button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">尾页</button>
+     <div class="btn-group" style="margin-left:300px;margin-top:-40px;color:#000">
+	    <button type="button" class="btn btn-default" id="startRow"><i style="color:#000">首页</i></button>
+	    <button type="button" class="btn btn-default" id="prepage"><i style="color:#000">上一页</i></button>
+	    <button type="button" class="btn btn-default"><i style="color:#000">当前是第<i id="nowPage"></i>页</i></button>
+	    <button type="button" class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
+	    <button type="button" class="btn btn-default" id="endRow"><i style="color:#000">尾页</i></button>
      </div>
      
 
@@ -282,3 +189,130 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </body>
 </html>
+
+<script>
+     //查询
+		$(function(){
+          getAll(1);
+      });
+      var datas;
+ function getAll(pagenum){
+         $.ajax({
+            url:"Zs/getAllZs",
+            type:"post",
+            data:{"pageNum":pagenum},
+            dataType:"json",
+            success:function(data){
+            datas = data;
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+                   
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            },error:function(){
+              alert(33)
+            }
+         
+         })
+      }
+     
+     //点击查询
+      $(".one1").click(function(){
+        $.ajax({
+            url:"Zs/getAllZs",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+                   
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    })
+     //条件查询
+     //条件查询
+      $(".one2").click(function(){
+        $.ajax({
+            url:"Zs/getAllone2",
+            type:"post",
+            data:{"pageNum":1,"zsclassify":$(this).html()},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+                   
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+     
+     
+     
+     
+     $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+       $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      })
+     $("#startRow").click(function(){
+         getAll(1);
+      })
+      $("#endRow").click(function(){
+         getAll(MaxPage);
+      })
+
+
+</script>
+

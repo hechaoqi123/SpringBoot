@@ -12,13 +12,13 @@
       select * from Wb 
    </select>
    <select id="getAllWbone2" resultType="java.util.Map">
-      select * from Wb where wbfl='1'
+      select * from Wb where wbfl='快递服务'
    </select>
    <select id="getAllWbone3" resultType="java.util.Map">
-      select * from Wb where wbfl='外卖'
+      select * from Wb where wbfl='外卖订餐服务'
    </select>
    <select id="getAllWbone4" resultType="java.util.Map">
-      select * from Wb where wbfl='银行'
+      select * from Wb where wbfl='银行客服服务'
    </select>
 </mapper>   
    

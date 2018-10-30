@@ -20,12 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<script src="<%=basePath%>assets/js/jquery.min.js"></script>
+	
 	<script src="<%=basePath%>assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-1.10.2.min.js"></script>
-	
 	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css">
-	
 	 <script type="text/javascript" src="<%=basePath%>assets/js/jquery-2.0.3.min.js"></script>
 	 <LINK href="../images/colloa.ico" rel="shortcut icon">  
      <LINK href="<%=basePath%>assets/css/font-awesome.min.css" rel="stylesheet">   
@@ -76,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <TD align="right">&nbsp;步骤:</TD>
              <TD><SPAN id="mapping.dbf.procXSource">起草</SPAN>
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: 
-                 <SPAN id="mapping.dbf.responsorSource"><input type="text"style="border:0px;"name=ggResponsible>
+                 <SPAN id="mapping.dbf.responsorSource"><input type="text"style="border:0px;"name=ggResponsible readonly="readonly" value="${CurrentUser.uname }">
                  </SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: 
                  <SPAN id="mapping.dbf.participantsSource"></SPAN>
             </TD>
@@ -114,9 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </DIV> -->
                 <select style="height:20px;width:300px;margin:0;padding:0;border:0px" 
                   name="ggClassify" id="e.dbf.psid2Source">
-                  <option>aaa</option>
-                  <option>aaa</option> 
-                  <option>aaa</option>   
+                  <option>新闻资讯</option>
+                  <option>通知公告</option> 
+                  <option>规章制度</option>
+                  <option>行业动态</option>   
                </select>
                 
                 
@@ -139,10 +138,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </DIV> -->
                 <select style="height:20px;width:300px;margin:0;padding:0;border:0px" 
                   name="ggDept" id="e.dbf.divisionSource">
-                  <option value="1">aa</option>
-                  <option value="2">v</option> 
-                  <option value="3">ee</option>   
-               </select>
+                  <option>阿尔法集团</option>
+                  <option>总经办</option> 
+                  <option>人事部</option>
+                  <option>财务部</option>
+                  <option>科技公司</option>
+                  <option>采购部</option>
+                  <option>技术部</option>
+                  <option>生产部</option>
+                  <option>营销部</option>
+                  <option>工程公司</option>
+                  <option>工程部</option>
+                  <option>售后部</option>
+                  <option>网络部</option>
+                  <option>销售部</option>
+                  <option>现代事务所</option>
+                  <option>产权部</option>
+                  <option>法务部</option>
+                  <option>税务部</option>
+                  <option>咨询部</option>
+                  <option>北京机构</option>
+                  <option>上海机构</option>
+                  <option>杭州机构</option>
+
+                </select>
                 
             </TD>
           <TD class="fieldLable">附件
@@ -151,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- <IMG class="fieldGetValueBySource"onclick="fieldGetValueBySource('dbf.links',this);" 
                 src="BackJsp/img/fieldSource.gif">  -->
                <DIV id="e.dbf.keyInfo">
-                  <input type="file" id="e.dbf.positionX" name="file" class="fieldEditable">
+                  <input type="file" id="e.dbf.positionX" name="file" class="fieldEditable" >
           </TD>
        </TR>
        </TBODY>
@@ -163,19 +182,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <TBODY>
         <tr>
           <td><input type="text" name="ggTheme"
-           style="width:900px;text-align:center;font-size:20px;border:1px solid #000;"></td>
+           style="width:900px;text-align:center;font-size:20px;BACKGROUND-COLOR:#F5F5F5;"></td>
         </tr><br>
      
-        <!--     <TR>
-           <TD id="dbf.subject" style="text-align: center; color: rgb(204, 0, 0);
-             line-height: 1; font-size: 30px; font-weight: bold;" dbf.type="required" 
-             dbf.source="">
-                <TEXTAREA class="fieldEditable" id="e.dbf.subject" style="height: 60px;">
-                </TEXTAREA>
-            </TD>
-          </TR> -->
-          
-           
           <TR>
              <TD id="content" style="vertical-align: top;" dbf.type="html" dbf.source="">
                 <TEXTAREA class="fieldEditable" id="e.content" style="height: 200px;" dbf.type="htm"name="ggContent">
@@ -187,11 +196,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </TBODY>
        </TABLE>
 
-            <!--   生日 (日期和时间): <input type="datetime-local" name="ggDate"> -->
                
-         <button type="submit" style="margin-top:100px;"class="btn btn-primary btn-lg btn-block" id="add" onclick="sub()">添加</button>
-        <!-- <input type="submit" value="添加"  id="add" onclick="sub()"/> -->
-      
+        <button type="submit" class="btn btn-primary btn-lg active" style="margin-left:400px;" id="add" onclick="sub()">添加</button>
      </FORM>
      </DIV>
      

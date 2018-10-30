@@ -5,8 +5,8 @@
    </select>
    
    <insert id="addGg" parameterType="com.aaa.bean.Gg">
-      insert into Gg(ggResponsible,ggPriority,ggClassify,ggKeyword,ggDept,ggAccessory,ggTheme,ggContent,ggDate) VALUES
-       (#{ggResponsible},#{ggPriority},#{ggClassify},#{ggKeyword},#{ggDept},#{ggAccessory},#{ggTheme},#{ggContent},NOW())       
+      insert into Gg(ggResponsible,ggPriority,ggClassify,ggKeyword,ggDept,ggAccessory,ggTheme,ggContent,ggDate,ggNewdate) VALUES
+       (#{ggResponsible},#{ggPriority},#{ggClassify},#{ggKeyword},#{ggDept},#{ggAccessory},#{ggTheme},#{ggContent},NOW(),#{ggNewdate})       
    </insert>
    <select id="getAllGgone1" resultType="java.util.Map">
       select * from Gg <!-- where ggClassify -->

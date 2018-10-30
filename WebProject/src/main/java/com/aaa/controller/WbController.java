@@ -20,7 +20,9 @@ public class WbController {
      
      @RequestMapping("/getAllWb")
      public @ResponseBody PageInfo getAllWb(Integer pageNum){
-      return wbservice.getAllWb(pageNum);
+    	 PageInfo p= wbservice.getAllWb(pageNum);
+    	 System.out.println(p);
+      return p;
      
      }
      

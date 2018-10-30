@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.WdMapper" >
+   <insert id="addWd" parameterType="com.aaa.bean.Wd">
+      insert into Wd(wdresponsible,wbpriority,wdname,wdversions,wdauthor,wdclassify,wdkeyword,wddept,wdaccessory,wdintro,wddate) values
+      (#{wdresponsible},#{wbpriority},#{wdname},#{wdversions},#{wdauthor},#{wdclassify},#{wdkeyword},#{wddept},#{wdaccessory},#{wdintro},NOW())
+   
+   </insert>
+   
+   <select id="getAllone2" resultType="java.util.Map">
+     select * from Wd  where date_sub(curdate(),INTERVAL 7 DAY) &lt;= date(wddate) 
+   </select>
+   <select id="getAllone3" resultType="java.util.Map">
+       select * from Wd where date_sub(curdate(), INTERVAL 30 DAY) &lt;= date(wddate)
+   </select>
+   <select id="getAllone4" resultType="java.util.Map">
+      select * from Wd where QUARTER(wddate)=QUARTER(now())
+   </select>
+
+</mapper>

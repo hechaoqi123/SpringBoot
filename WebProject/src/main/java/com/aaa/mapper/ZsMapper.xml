@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.ZsMapper">
+      <insert id="getAddzs" parameterType="com.aaa.bean.Zs">
+       insert into Zs(zsclassify,zslabel,zstheme,zsaccessory,zsauthor,zscontext,zsdate) 
+       values(#{zsclassify},#{zslabel},#{zstheme},#{zsaccessory},#{zsauthor},#{zscontext},NOW())
+      
+      </insert>
+      <select id="getAllZs" resultType="java.util.Map">
+         select z.zsid,z.zstheme,z.zsauthor,z.zsdate from zs z
+      </select>
+     <!--  <select id="getAllone2" resultType="java.util.Map">
+         select z.zstheme,z.zsauthor,z.zsdate from zs z
+      </select>-->
+      <select id="getAllhf" resultType="java.util.Map">
+      select max(h.hfdate) zd,count(zsid) zh from  hf h where h.zsid=#{name}
+      </select> 
+      
+</mapper>
