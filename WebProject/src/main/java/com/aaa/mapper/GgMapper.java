@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.aaa.bean.Gg;
+import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 
 import tk.mybatis.mapper.common.Mapper;
 
@@ -16,5 +17,10 @@ public interface GgMapper extends  Mapper<Gg>{
 	public List<Map> getAllGgone3(String ggClassify);
 	public List<Map> getAllGgone4(String ggClassify);
 	public List<Map> getAllGgone5(String ggClassify);
+	public List<Map> getAllGgone6(String ggClassify);
+	public List<Map> getAllGgone7(String ggClassify);
+	public List<Map> getAllGgone8(String ggClassify);
+	
+	public List<Map> getAll(int id);
 
 }

@@ -1,0 +1,51 @@
+<TD align="right">&nbsp;步骤:</TD>
+          <TD><SPAN 
+            id="mapping.dbf.procXSource">起草</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: 
+            <SPAN 
+            id="mapping.dbf.responsorSource">李萌,</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: 
+            <SPAN id="mapping.dbf.participantsSource"></SPAN></TD>
+
+
+
+
+
+
+
+
+
+
+<SCRIPT language="javaScript">workflowActionsShow("直接发布,提交审核,");workflowActionShow(translate['saveDraft'],150,1,1);try{;
+/*//*/
+var e= document.getElementById('e.dbf.subject');
+if(e.value.length==0) e.value = '[在这里输入主题]';
+var es=e.style;
+var eps=document.getElementById('dbf.subject').style;
+es.fontSize=eps.fontSize;
+es.fontWeight=eps.fontWeight;
+es.color=eps.color;
+es.textAlign=eps.textAlign;;
+/*//*/
+}catch(e){alert('[ '+translate['eventHandle']+' ] '+(typeof e=='object'?e.message:e));}function onActionBefore(nActionId,sName,bPostForm){try{;
+/*//*/
+;
+/*//*/
+return 1;}catch(e){alert('[ '+translate['eventHandle']+' ] '+(typeof e=='object'?e.message:e));return 0;}}function onActionAfter(nActionId,sName,bPostForm){try{;
+/*//*/
+if(nActionId>0) {
+  return $form2record('thumbnail:='+encodeURIComponent($getElementValue('content','thumb','src')));
+};
+/*//*/
+return 1;}catch(e){alert('[ '+translate['eventHandle']+' ] '+(typeof e=='object'?e.message:e));return 0;}}formOnLoad();</SCRIPT>
+
+
+
+
+
+
+
+
+<select style="height:20px;width:300px;margin:0;padding:0;" name="ggClassify" id="e.dbf.divisionSource">
+                  <option>aaa</option>
+                  <option>aaa</option> 
+                  <option>aaa</option>   
+               </select>

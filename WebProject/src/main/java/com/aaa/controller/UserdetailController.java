@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -105,7 +106,8 @@ public class UserdetailController {
 	}
 	@RequestMapping("/getAllUser")
 	public @ResponseBody PageInfo getAllUserDetail(Integer pageNum){
-		return service.getAllUserdetails(pageNum);
+		PageInfo p=service.getAllUserdetails(pageNum);
+ 		return p;
 	}	 
 	
 	//修改头像
@@ -127,4 +129,16 @@ public class UserdetailController {
 		service.updateByPrimaryKeySelective(user);
 		return "成功修改";
 	}
+	
+	
+	@RequestMapping("/getAllOne0")
+    public @ResponseBody PageInfo getAllOne0(Integer pageNum,String dependence){
+     return service.getAllOne(pageNum, dependence);
+    }
+	
+	 @RequestMapping("/getAllOne1")
+     public @ResponseBody PageInfo getAllOne1(Integer pageNum,String dependence){
+		 return service.getAllOne(pageNum, dependence);
+     }
+	 
 }

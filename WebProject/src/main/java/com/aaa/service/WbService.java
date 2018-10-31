@@ -20,5 +20,9 @@ import com.github.pagehelper.PageInfo;
 		public PageInfo getAllWbone3(Integer pageNum,String wbfl);
 		//条件查询4
 		public PageInfo getAllWbone4(Integer pageNum,String wbfl);
+        
+		//显示详情
+		public List<Map> getAll(int id);
+       
 
  }
