@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <INPUT id=e.dbf.subject name="field2" class=fieldEditable>
 </td>
 <td style="TEXT-ALIGN: center" dbf.type="date,required" dbf.source="datetime,editable">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>共计时长</td>
-<td dbf.type="date,required" dbf.source="datetime,editable"><input id="dbf.number3" style="WIDTH: 40px" value="0" name="dbf.number3" dbf.type="number,required"> 天 </td></tr>
+<td dbf.type="date,required" dbf.source="datetime,editable"><input id="dbf.number3" style="WIDTH: 40px" value="0" name="field3" dbf.type="number,required"> 天 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>请假类别</td>
 <td colspan="5" style="height:30px;">

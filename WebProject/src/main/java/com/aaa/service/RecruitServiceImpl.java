@@ -98,6 +98,12 @@ public class RecruitServiceImpl extends BaseServiceImpl<Recruit> implements Recr
 		 if(recruit.getStatus().equals("领导审批")){
 			 appro.setSequence(1);
 		 }
+		 if(recruit.getStatus().equals("人事处理")){
+			 appro.setSequence(3);
+		 }
+		 if(recruit.getStatus().equals("填单人知悉")){
+			 appro.setSequence(4);
+		 }
 		 if(recruit.getStatus().equals("结束")){
 		 appro.setSequence(2);
 		 }
@@ -107,6 +113,25 @@ public class RecruitServiceImpl extends BaseServiceImpl<Recruit> implements Recr
 		 appro.setRemark(remark);
 		 appro.setApprovaldate(new Date());
 		 approval.insert(appro);
+	}
+	@Override
+	public Integer[] getCountPeople(String status) {
+		  Recruit record=new Recruit();
+		  Entryapply entryapply=new Entryapply();
+		  Official off=new Official();
+		  Dimission dim=new Dimission();
+		  transfer entity=new transfer();
+		  record.setStatus(status);
+		  entryapply.setStatus(status);
+		  off.setStatus(status);
+		  dim.setStatus(status);
+    	  entity.setStatus(status);
+		return new Integer[]{mapper.selectCount(record),
+		           entry.selectCount(entryapply),
+		           office.selectCount(off),
+		           transfer.selectCount(entity),
+		           Dimission.selectCount(dim)};
+		
 	}
 
 }

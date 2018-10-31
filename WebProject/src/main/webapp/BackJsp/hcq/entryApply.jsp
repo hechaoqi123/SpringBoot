@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody style="font-size:13px">
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
-<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" name="theme" class="fieldEditable" value="入职申请-${CurrentUser.uname}"></td>
+<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" name="theme" class="fieldEditable" value="入职申请-${CurrentUser.uname}   <%= new Date().toLocaleString()%>"></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
@@ -54,9 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 责任人: <span id="mapping.dbf.responsorSource">
 <input type="text"  style="border:0px" readonly="true" value="${superUser.username}" name="dutypeople"/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
-<input id="e.dbf.operatorSource" name="enddate" class="fieldEditable"></td></tr></tbody></table>
+</td></tr></tbody></table>
 <div>
 <div style="TEXT-ALIGN: center">&nbsp;</div>
 <div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>入职申请单</strong></span></div></div>

@@ -8,4 +8,6 @@ import com.aaa.bean.Baoxiaoitem;
 
 public interface EBaoxiaoService extends BaseService<Baoxiao>{
   public void saveManager(Baoxiao cost, List<Baoxiaoitem> items);
+
+  public void UpdateAndRemark(Baoxiao recruit, String remark);
 }

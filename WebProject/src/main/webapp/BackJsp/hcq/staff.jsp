@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TD>{{user.dependence}}&nbsp;</TD>
                 <TD>{{user.position}}&nbsp;</TD>
                 <TD>{{user.entrydate}}&nbsp;</TD>
-                <TD><a @click="remove(user.detailid)" href="javascript:">删除</a>	&nbsp;</TD></TR>
+                <TD><a @click="remove(user.detailid)" href="javascript:">删除</a>&nbsp;</TD></TR>
                 
                </TBODY>
                </TABLE>

@@ -16,23 +16,23 @@ public class Evection implements Serializable {
 
     private String applypeople;//申请人
 
-    private String dept;
+    private String dept;//部门
 
-    private String applydate;
+    private String applydate;//申请时间
 
-    private String evectiondate;
+    private String evectiondate;//出差时间
 
     private String evectionenddate;
 
-    private String destination;
+    private String destination;//目的地
 
-    private String cause;
+    private String cause;//原因
 
-    private String traffic;
+    private String traffic;//交通工具
 
-    private String report;
+    private String report;//出差报告
 
-    private String result;
+    private String result;//出差结果
 
     private String field1;
 

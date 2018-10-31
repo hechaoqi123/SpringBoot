@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
-  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="岗位调动申请-${CurrentUser.uname}"></td>
+  <input id="e.dbf.subject" name="theme" class="fieldEditable" value="岗位调动申请-${CurrentUser.uname}--<%=new Date().toLocaleString() %>"></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
@@ -55,6 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div>&nbsp;</div>
 <div style="TEXT-ALIGN: center"><strong><span style="FONT-SIZE: 20px">岗位调动申请单</span></strong></div>
 <div>
+
 <table class="tableListBorder" style="border-layout: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="150">
@@ -76,10 +77,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center; BACKGROUND-COLOR: lightyellow" dbf.type="" dbf.source="">部门</td>
 <td style="TEXT-ALIGN: center; BACKGROUND-COLOR: lightyellow" dbf.type="" dbf.source="">岗位</td>
 <td style="TEXT-ALIGN: center; BACKGROUND-COLOR: lightyellow" dbf.type="" dbf.source="">备注</td></tr>
+</span>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>由（现）</td>
 <td id="dbf.text3" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034" dbf.value="销售部"> 
-  <input id="e.dbf.text4" name="oldpart" class="fieldEditable">
+    <select id="dept1"   name="oldpart" style="border:0px;font-size:14px;width:300px;height:25px;">
+	    <option  v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
+	</select>
 </td>
 <td id="dbf.text4" dbf.type="required" dbf.source="">
   <input id="e.dbf.text4" name="oldpost" class="fieldEditable">
@@ -89,7 +93,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>至（新）</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-  <input id="e.dbf.text4" name="newpart" class="fieldEditable">
+    <select  id="dept2"  name="newpart" style="border:0px;font-size:14px;width:300px;height:25px;">
+	    <option v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
+	</select>
 </td>
 <td id="dbf.positionX" dbf.type="required" dbf.source="">
   <input id="e.dbf.positionX" name="newpost" class="fieldEditable"></td>
@@ -137,9 +143,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
-
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-
+  var deptVue=new Vue({
+             el:'#dept1',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                 })
+                 }
+             }
+       })
+         var deptVue2=new Vue({
+             el:'#dept2',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
+       deptVue2.getAll();
       $("#sub").click(function(){
          $("#subform").submit();
       

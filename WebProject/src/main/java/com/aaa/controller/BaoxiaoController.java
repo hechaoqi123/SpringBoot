@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,4 +43,31 @@ public class BaoxiaoController {
 		service.saveManager(cost,util.getItems());
 		return "hcq2/expense";
 	}
+	//条件查询
+		@ResponseBody
+		@RequestMapping("/queryBycriteria")
+	    public PageInfo<Baoxiao> queryBycriteria(Integer pageNum,Baoxiao off){
+			  PageHelper.startPage(pageNum,13);
+			  List<Baoxiao> list=null;
+			  if(off.getStatus().equals("")||off.getStatus()==null){
+				  list=service.getAll();
+			  }else{
+				  list=service.select(off);
+			  }
+			  PageInfo<Baoxiao> info=new PageInfo<Baoxiao>(list);
+	    	return info;
+	    }
+		//申请详情
+		@RequestMapping("/detail/{id}")
+	    public String queryByCriteria(@PathVariable("id")Integer pageNum,Model model){
+			Baoxiao Apply=service.selectByPrimaryKey(pageNum);
+			  model.addAttribute("apply", Apply);
+		    	return "hcq2/examination/costManager";
+	    }
+		//申请状态变更
+		@RequestMapping("/update")
+	    public @ResponseBody String update(Baoxiao recruit,String remark){
+			  service.UpdateAndRemark(recruit,remark);
+		    	return "success";
+	    }
 }

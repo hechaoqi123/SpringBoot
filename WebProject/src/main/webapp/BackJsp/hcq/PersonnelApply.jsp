@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
 
-<textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-??</textarea></td></tr></tbody></table>
+<textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-${superUser.username}</textarea></td></tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="100">
@@ -65,7 +65,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="TEXT-ALIGN: center">考核类型</td>
 <td id="考核类型" dbf.source="" dbf.type="">
-  <input name="type" class="fieldEditable"></td></tr></tbody></table>
+  <input type="radio" name="type" value="月度" >月度
+  <input type="radio" name="type" value="季度" >季度
+  <input type="radio" name="type" value="年度" >年度
+  <input type="radio" name="type" value="其他" >其他
+  </td></tr></tbody></table>
 <div>&nbsp;</div>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
@@ -148,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>发现和解决问题 (10)</td>
 <td>是否能胜任职责范围内规定的工作，工作中是否具有前瞻性，是否能发现问题，是否能提出解决问题的方案，或者合理化建议</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
-<td style="TEXT-ALIGN: right" colspan="3" dbf.source="" dbf.type="">合计 <input onclick="$(&#39;dbf.budget&#39;).value($amountSum(&#39;自评分&#39;,0));$(&#39;dbf.expense&#39;).value($amountSum(&#39;主管评分&#39;,0));" id="calculate" type="button" value=" ＝ " name="calculate"></td>
+<td style="TEXT-ALIGN: right" colspan="3" dbf.source="" dbf.type="">合计 </td>
 <td id="dbf.budget" dbf.source="" dbf.type="number">
   </td>
 </tr>
@@ -175,18 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tbody></table></form></div><form method="post"><input type="hidden" id="viewState" name="viewState"></form><br><div id="_vWorkflowActionsShow" align="right">
   <a id="sub" class="button" href="javascript:">提交主管考核</a>
   <a id="ret"class="button" href="javascript:">取消</a>
-</div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703650&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
-
-</td><td></td><td>
-<div class="boxBorder"><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
-
-</div>
-<div class="boxBorder">
-<div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【子事务】</div>
-
-<br></div>
-</td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
+</div><br></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
  <script src="BackJsp/hcq/js/Vue.js"></script>

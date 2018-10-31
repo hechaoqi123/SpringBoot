@@ -42,10 +42,12 @@ public class RecruitController {
 	@RequestMapping("/getCount")
 	public  @ResponseBody Integer[] getCount(HttpSession session){
 		     Userdetail user=(Userdetail) session.getAttribute("detail");
-		     if(user.getPosition().equals("超级管理员")){
+		     if(user.getPosition().equals("超级管理员")){//超级管理员
 		    	 return service.getCount(null,null);
-		     }else if(user.getDependence().equals("总经办")){
+		     }else if(user.getDependence().equals("总经办")){//总经办
 		    	 return service.getCount("领导审批","总经办");
+		     }else if(user.getDependence().equals("人事部")&&(!user.getPosition().equals("人事主管"))){//人事专员
+		    	 return service.getCountPeople("人事处理");
 		     }else{
 		    	 return service.getCount("填单",user.getDependence());
 		     }

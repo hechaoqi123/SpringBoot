@@ -8,17 +8,17 @@ public class Performance implements Serializable {
 	@Id
     private Integer performanceid;
 
-    private String status;
+    private String status;//状态
 
-    private String dutypeople;
+    private String dutypeople;//责任人
 
-    private String applypeople;
+    private String applypeople;//申请人
 
-    private String dept;
+    private String dept;//部门
 
-    private String post;
+    private String post;//岗位
 
-    private String type;
+    private String type;//类型
 
     private String field1;
 
@@ -56,19 +56,19 @@ public class Performance implements Serializable {
 
     private String field18;
 
-    private String field19;
+    private String field19;//主管评分
 
     private String field20;//主题
 
-    private String myremark;
+    private String myremark;//员工自评
 
-    private String superremark;
+    private String superremark;//主管评价
 
     private String personnelremark;
 
     private String superresult;
 
-    private String personnelresult;
+    private String personnelresult;//考核结果
 
     private static final long serialVersionUID = 1L;
 

@@ -40,16 +40,23 @@ public class TransferController {
     public PageInfo<transfer> queryBycriteria(Integer pageNum,transfer entry){
 		  PageHelper.startPage(pageNum,13);
 		  List<transfer> list=null;
-		  if(entry.getStatus().equals("")||entry.getStatus()==null){
-			  list=service.getAll();//超级管理员
-		  }else{
-			  if(entry.getOldpart().equals("")){entry.setOldpart(null);}
+		  if(entry.getStatus().equals("")||entry.getStatus()==null){//超级管理员
+			  list=service.getAll();
+		  }else if(entry.getStatus().equals("领导审批")&&entry.getOldpart().equals("总经办")){//总经办
+	          entry.setOldpart(null);
 			  list=service.select(entry);//status:领导审批
-			  //查询新部门为总经办的调动申请
+			  entry.setNewpart("总经办");
+			  entry.setStatus("新主管审批");
+			  list.addAll(service.select(entry));
+		  }else if(entry.getStatus().equals("人事处理")){//人事专员
+	          entry.setOldpart(null);
+			  list=service.select(entry);
+		  }else{//非超级管理员 非总经管办
+			  list=service.select(entry);//本部门调动申请
 			  entry.setNewpart(entry.getOldpart());
 			  entry.setOldpart(null);
 			  entry.setStatus("新主管审批");
-			  list.addAll(service.select(entry));
+			  list.addAll(service.select(entry));//新部门调动申请
 		  }
 		  PageInfo<transfer> info=new PageInfo<transfer>(list);
     	return info;
