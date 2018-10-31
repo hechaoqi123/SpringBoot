@@ -2,18 +2,20 @@
  * 
  */
 $(function(){
+	ve.uid = $("#uid").val();
 	ve.selectVisitonemodile();
 });
 var ve = new Vue({
 	el:"#authorityVue",
 	data:{
 		Visittwomodiles:"",
-		Visitonemodiles:""
+		Visitonemodiles:"",
+		uid:0
 	},
 	methods:{
 		selectVisitonemodile:function(){
   			this.$http.post('DuthorityManagementController/selectVisitonemodile',{
-  					uid:-1
+  					uid:this.uid
 				},{emulateJSON:true}).then(function(data){
 					this.Visitonemodiles=data.body;
 				}),function(error){
@@ -24,6 +26,7 @@ var ve = new Vue({
 	  			var el = event.currentTarget;//获取传输对象的元素  通过$event将元素传输
 	  			$(".myTr").remove();
 	  			this.$http.post('DuthorityManagementController/getMytransaction',{
+	  				uid:this.uid,
 	  				mOneId:mOneId
 					},{emulateJSON:true}).then(function(data){
 						var tr = "";

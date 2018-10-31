@@ -99,7 +99,7 @@
 			<div class="modal-body">
 				<div class="userSeek">
 					<div class="input-group">
-					<input type="text" class="form-control" v-model="uname">
+					<input type="text" class="form-control" v-model="pname">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button" @click="getUsers">
 							Go!
@@ -109,12 +109,12 @@
 				</div>
 				<div class="alootDiv">
 					<div class="alootTrue">
-						<div class="alootTrueUser">已拥有员工</div>
-						<div class="alootTrueUser" v-for="trueUser in trueUsers" @click="shiftTrueUser(trueUser.uid)">{{trueUser.uname}}</div>
+						<div class="alootTrueUser">可以访问角色</div>
+						<div class="alootTrueUser" v-for="trueTran in trueTrans" @click="shiftTrueUser(trueTran.pid)">{{trueTran.pname}}</div>
 					</div>
 					<div class="alootFalse">
-						<div class="alootFalseUser">未拥有员工</div>
-						<div class="alootFalseUser" v-for="falseUser in falseUsers"  @click="shiftFalseUser(falseUser.uid)">{{falseUser.uname}}</div>
+						<div class="alootFalseUser">不可以访问角色</div>
+						<div class="alootFalseUser" v-for="falseTran in falseTrans"  @click="shiftFalseTran(falseTran.pid)">{{falseTran.pname}}</div>
 					</div>
 				</div>
 			</div>
@@ -128,5 +128,5 @@
 	
 	
 </body>
-<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/MytransManage.js?ver=1.1"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/MytransManage.js?ver=1.13"></script>
 </html>
