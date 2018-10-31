@@ -121,8 +121,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 
 </tbody></table>
+   <input style=" margin-left:900px;height:30px;width:50px" type="submit" value="保存" id="add" />
 
-   <input style="margin-left:960px;height:30px;width:50px" type="submit" value="保存" id="add"/>
+ <input  id="tast"  type="button" value="取消" style=" height:30px;width:50px" >
 
 
 </form></div>
@@ -171,9 +172,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $("#username").html();
          var option="<option value='0'>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
+           option+="<option value='"+data[i].username+"'>"+data[i].username+"</option>";
           }
-         $("#username").append(option);
+        
          $("#kname").append(option);
          $("#letname").append(option);
          }
@@ -213,6 +214,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
        });
        //begin
+          $("#tast").click(function(){
+        window.location.href="BackJsp/wsq/task.jsp";
+      }) 
      });
      
 

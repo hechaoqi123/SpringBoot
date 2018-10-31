@@ -33,7 +33,7 @@ public class PlanServiceImpl implements PlanService {
 	public PageInfo<Map> query(Integer pageNum,String name) {
 		PageHelper.startPage(pageNum,10);
 		List<Map> list=mapper.query(name);
-		System.out.println(list);
+	
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
 	}

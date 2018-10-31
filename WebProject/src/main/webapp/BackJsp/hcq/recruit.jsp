@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="padding-top:15px;padding-left:10px;">
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">招聘和配置</span></h1></td><td id="oWorkflowList" align="right">
+   <span style="margin-left:7px;">招聘和配置</span></h1></td><td id="oWorkflowList" align="right">
   <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>招聘申请</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">

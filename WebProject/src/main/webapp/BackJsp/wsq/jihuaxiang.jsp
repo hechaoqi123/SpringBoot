@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -61,14 +62,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">计划分类</td>
 <td>
-  <input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">年度
+  <%-- <input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">年度
   <input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">季度
   <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">月度 
   <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">周
   <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="${plan[0].type}" name="type" autocomplete="off">项目
-   <input onclick="onTypeChange('其他');" id="dbf.psid2" checked="" type="radio" value="${plan[0].type}" name="type" autocomplete="off">其他</td>
+   <input onclick="onTypeChange('其他');" id="dbf.psid2" checked="" type="radio" value="${plan[0].type}" name="type" autocomplete="off">其他 --%>
+   
+      <c:if test="${plan[0].type=='年度'}">年度</c:if>
+   <c:if test="${plan[0].type=='季度'}">季度</c:if>
+   <c:if test="${plan[0].type=='月度'}">月度</c:if>
+   <c:if test="${plan[0].type=='周'}">周</c:if>
+   <c:if test="${plan[0].type=='项目'}">项目</c:if>
+   <c:if test="${plan[0].type=='其他'}">其他</c:if>
+   
+   
+   </td>
 <td style="TEXT-ALIGN: center">从属于</td>
-<td>  <input style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname">${plan[0].planname}</td>
+<td>  <input style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname">${plan[0].pname}</td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
@@ -105,15 +116,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
          <tr>
               <td>2</td>
-              <td>${plan[0].plname}</td>
-              <td>${plan[0].plperform}</td>
-              <td>${plan[0].performdate}</td>
+              <td>${plan[1].plname}</td>
+              <td>${plan[1].plperform}</td>
+              <td>${plan[1].performdate}</td>
          </tr>
          <tr>
               <td>3</td>
-              <td>${plan[0].plname}</td>
-              <td>${plan[0].plperform}</td>
-              <td>${plan[0].performdate}</td>
+              <td>${plan[2].plname}</td>
+              <td>${plan[2].plperform}</td>
+              <td>${plan[2].performdate}</td>
          </tr>
          
    </table>
@@ -124,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    <!-- <input style="margin-left:960px;height:30px;width:50px" type="submit" value="保存" id="add"/> -->
 
-
+<input style="margin-left:960px;height:30px;width:50px" type="button" value="取消" id="rser"/>
 </form></div>
 <br>
 
@@ -152,68 +163,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body></html>
 <script type="text/javascript" src="BackJsp/wsq/js/jquery-1.8.3.min.js"></script>
 <script language="javaScript">
-
-
-/*      $(function(){
-       //清空默认标题
-         $("#pname").click(function(){
-             if($(this).val()=="请输入计划标题"){
-                $(this).val("")
-             }
-           }
-         )
-         //begin
-        $.ajax({
-        url:"plan/seltys",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("#username").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
-          }
-         $("#username").append(option);
-         $("#kname").append(option);
-         $("#letname").append(option);
-         }
-       }); 
-       //begin
-         $.ajax({
-        url:"plan/selty",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("#planname").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].pid+"'>"+data[i].planname+"</option>";
-       
-          }
-         $("#planname").append(option);
-       
-         }
- 
-       });
-     //begin
-      $.ajax({
-        url:"plan/seltys1",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("#deptName").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].deptid+"'>"+data[i]. deptname+"</option>";
-       
-          }
-         $("#deptName").append(option);
-       
-         }
- 
-       });
-       //begin
-     });
-      */
-
-</script>
+  $(function(){
+   $("#rser").click(function(){
+        window.location.href="BackJsp/wsq/task.jsp";
+      })	
+} )
+  </script> 

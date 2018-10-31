@@ -26,9 +26,9 @@ public class ReportServiceImpl implements ReportService {
    private  ReportMapper mapper;
 
 	@Override
-	public PageInfo<Map> query(Integer pageNum) {
+	public PageInfo<Map> query(Integer pageNum,String name) {
 		PageHelper.startPage(pageNum,10);
-		List<Map> list=mapper.query();
+		List<Map> list=mapper.query(name);
 		
 		PageInfo<Map> info=new PageInfo<Map>(list);
 		return info;
@@ -48,7 +48,9 @@ public class ReportServiceImpl implements ReportService {
 		mapper.add(report);
 		mapper.addthere(krar);
 	    for (reportser reportser : list) {
-		mapper.addfour(reportser);
+	    	    
+	    		mapper.addfour(reportser);
+	    	
 	    }
 	}
 
@@ -62,9 +64,8 @@ public class ReportServiceImpl implements ReportService {
 	public PageInfo<Map> reporres(Integer pageNum,String rtype) {
 		PageHelper.startPage(pageNum,10);		
 		List<Map> list=mapper.reporres(rtype);
-
+	
 		PageInfo<Map> info=new PageInfo<Map>(list);
-		System.out.println(info.getList());
 		return info;
 	}
 
@@ -73,6 +74,12 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public List<report> selelis() {
 		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Map<String, String>> getOne(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getOne(id);
 	}
 	
 	

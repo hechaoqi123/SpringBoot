@@ -58,6 +58,12 @@ public class TaskServiceImpl implements TaskService {
 		// TODO Auto-generated method stub
 		return mapper.selectAll();
 	}
+
+	@Override
+	public List<Map<String, String>> getOne(int id) {
+		
+		return mapper.getOne(id);
+	}
 	
 	
 

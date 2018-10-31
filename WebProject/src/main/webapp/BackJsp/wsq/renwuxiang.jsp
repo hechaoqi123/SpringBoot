@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -36,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
- <!-- 标题 --><input  class="fieldEditable" name="tname" id="tname" value="请输入任务标题" class="pname"  style="height:40px;width:1000px; font-size: 20px; font-weight: bold; text-align: center;"></input>
+ <!-- 标题 --><input readonly="true" class="fieldEditable" name="tname" id="tname" value="${task[0].tname}" class="pname"  style="height:40px;width:1000px; font-size: 20px; font-weight: bold; text-align: center;"></input>
 </td>
 </tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
@@ -49,46 +50,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">任务分类</td>
 <td>
-<input  id="dbf.psid2" checked="" type="radio" value="常规" name="rwfl" autocomplete="off">常规 
+<!-- <input  id="dbf.psid2" checked="" type="radio" value="常规" name="rwfl" autocomplete="off">常规 
 <input  id="dbf.psid2" type="radio" value="行政" name="rwfl" autocomplete="off">行政
  <input id="dbf.psid2" type="radio" value="人事" name="rwfl" autocomplete="off">人事
   <input id="dbf.psid2" type="radio" value="财务" name="rwfl" autocomplete="off">财务 
   <input id="dbf.psid2" type="radio" value="业务" name="rwfl" autocomplete="off">业务 
-  <input id="dbf.psid2" type="radio" value="项目" name="rwfl	" autocomplete="off">项目</td>
+  <input id="dbf.psid2" type="radio" value="项目" name="rwfl	" autocomplete="off">项目 -->
+   <c:if test="${task[0].rwfl=='常规'}">常规</c:if>
+   <c:if test="${task[0].rwfl=='行政'}">行政</c:if>
+   <c:if test="${task[0].rwfl=='人事'}">人事</c:if>
+   <c:if test="${task[0].rwfl=='财务'}">财务</c:if>
+   <c:if test="${task[0].rwfl=='项目'}">项目</c:if>
+   <c:if test="${task[0].rwfl=='业务'}">业务</c:if>
+  
+  
+  </td>
 <td style="TEXT-ALIGN: center">从属于</td>
-<td ><select style="width:445px; border: #F4F4F4" class="pid" id="pid" name="pid"></select></td></tr>
+<td ><input style="width:445px; border: #F4F4F4" class="planname" id="planname" readonly="true" name="planname" value="${task[0].pname}"></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
-<td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
+<td><input name="detailid" value="${task[0].username}" readonly="true" style="border:0px;"/></td>
 <td style="TEXT-ALIGN: center">所属部门</td>
-<td><select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid"></select></td></tr>
+<td><input style="width:445px; border: #F4F4F4" value="${task[0].deptName}"class="deptname" id="deptName" name="deptid" readonly="true" ></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>开始时间</td>
-<td><input style="width:338px; border: #F4F4F4" name="ksdeta" class="ksdeta" id="ksdeta"></td>
+<td><input style="width:338px; border: #F4F4F4" name="ksdeta" class="ksdeta" value="${task[0].ksdeta}"id="ksdeta" readonly="true" ></td>
 <td style="TEXT-ALIGN: center">结束时间</td>
-<td><input style="width:445px; border: #F4F4F4" name="jsdeta" class="jsdeta" id="jsdeta"></td></tr>
+<td><input style="width:445px; border: #F4F4F4" name="jsdeta" class="jsdeta" value="${task[0].jsdeta}" id="jsdeta" readonly="true" ></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>执行人</td>
-<td ><select style="width:342px; border: #F4F4F4" class="Kname" id="Kname" name="Kname"></select></td>
+<td ><input style="width:342px; border: #F4F4F4" value="${task[0].kname}"  class="Kname" id="Kname" name="Kname" readonly="true" ></td>
 <td style="TEXT-ALIGN: center">工作量</td>
-<td><input style="width:338px; border: #F4F4F4" name="workload" class="workload" id="workload"></td>
+<td><input style="width:338px; border: #F4F4F4" value="${task[0].workload}"  name="workload" class="workload" id="workload" readonly="true" ></td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center">任务说明</td>
 <td id="任务说明" style="VERTICAL-ALIGN: top ;height:150px;" colspan="3" dbf.source="" dbf.type="">
-<input  class="fieldEditable" style="width:900px; height:150px; border: #F4F4F4" name="rwsm" class="rwsm" id="rwsm">
+<input  value="${task[0].rwsm}" class="fieldEditable" style="width:900px; height:150px; border: #F4F4F4" name="rwsm" class="rwsm" id="rwsm" readonly="true" >
 </td>
 </tr>
 
 <tr>
 <td style="TEXT-ALIGN: center">执行结果</td>
 <td id="执行结果" style="HEIGHT: 150px; VERTICAL-ALIGN: top" colspan="3" dbf.source="" dbf.type="">
-<input readonly="true" style="width:900px; height:150px; border: #F4F4F4" name="zsjg" class="zsjg" id="zsjg								">
+<input readonly="true" style="width:900px; height:150px; border: #F4F4F4" name="zsjg" class="zsjg" id="zsjg	">
 </td>
 </tr>
 </tbody></table>
-   <input style="margin-left:900px;height:30px;width:50px" type="submit" value="保存" id="add">
-   <input  id="tast" type="button" value="取消" style="margin-left:950px; margin-top:-30px; height:30px;width:50px" >
+<input style="margin-left:960px;height:30px;width:50px" type="button" value="取消" id="rser"/>
 </form></div>
 <form method="post"><input type="hidden" id="viewState" name="viewState"></form>
  
@@ -142,63 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="BackJsp/wsq/js/jquery-1.8.3.min.js"></script>
 <script language="javaScript">
   $(function(){
-   $("#tname").click(function(){
-             if($(this).val()=="请输入任务标题"){
-                $(this).val("")
-             }
-           }
-         )
-  //begin
-     $.ajax({
-        url:"plan/seltys",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("#username").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
-          }
-            
-         $("#Kname").append(option);
-         }
-       });
-       //begin
-         $.ajax({
-        url:"plan/selty",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("#planname").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
-       
-          }
-         $("#pid").append(option);
-       
-         }
- 
-       });//begin
-        $.ajax({
-        url:"plan/seltys1",
-        type:"post",
-        dataType:"json",
-        success:function(data){
-         $("deptName").html();
-         var option="<option>--请选择--</option>";
-          for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";
-       
-          }
-         $("#deptName").append(option);
-       
-         }
- 
-       });
-       $("#tast").click(function(){
-        window.location.href="BackJsp/wsq/schedule.jsp";
-      })
-  
-  });
-  </script>
+   $("#rser").click(function(){
+        window.location.href="BackJsp/wsq/gz.jsp";
+      })	
+} )
+  </script> 

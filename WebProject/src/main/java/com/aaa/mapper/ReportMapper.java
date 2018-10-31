@@ -13,7 +13,7 @@ import com.aaa.bean.reportser;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface ReportMapper extends Mapper<report> {
-	public List<Map> query();
+	public List<Map> query(String name);
 	public List<Map> querytwo();
 	public int add(report report);
     public List<report> sele();
@@ -22,4 +22,5 @@ public interface ReportMapper extends Mapper<report> {
 	public void addfour(reportser reportser);
 
 	public List<Map> reporres(String rtype);
+	public List<Map<String, String>> getOne(int id);
 }
