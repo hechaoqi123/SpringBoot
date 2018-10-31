@@ -43,14 +43,18 @@ public class DuthorityManagementController {
 	}
 	@RequestMapping("/selectVisitonemodile")
 	public List<Map> selectVisitonemodile(Integer uid){
-		List<Map> selectVisitonemodile = service.selectVisitonemodile();
-		System.out.println(selectVisitonemodile.toString()+"-------------------------------------------");
+		List<Map> selectVisitonemodile = service.selectVisitonemodile(uid);
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/selectVisittwomodile")
 	public List<Map> selectVisittwomodile(Integer mOneId){
 		List<Map> selectVisitonemodile = service.selectVisittwomodile(mOneId);
 		return selectVisitonemodile;
+	}
+	@RequestMapping("/getMytransaction")
+	public List<Map> getMytransaction(Integer mOneId){
+		List<Map> getMytransaction = service.getMytransaction(mOneId);
+		return getMytransaction;
 	}
 	@RequestMapping("/selectUserTowModile")
 	public List<Map> selectUserTowModile(Integer uid) {

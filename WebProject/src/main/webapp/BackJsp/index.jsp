@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div style="width: 82%;">
-		        <iframe src="BackJsp/wsq/look.jsp" name="right_main" frameborder="0" scrolling="no" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
+		        <iframe src="BackJsp/wsq/look.jsp" id="myIframe" name="right_main" frameborder="0" scrolling="no" width="100%" height="1000px"  style="background-color: #fff;"></iframe> 
 			</div>
 		</div>
  </body>
@@ -129,6 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 <script type="text/javascript">
+
 	 function cancel (){
 	   if(confirm("是否退出？")){
 	   		 $.ajax({
@@ -151,9 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        return false;
 	      }
 	 }
-	function quit_login(){
-		if(confirm('是否要退出系統？'))window.top.location='login.jsp';
-	};
+
 	function Myli_none(){
 		var myli_html = $(".Myli ul").html();
 		if(myli_html == ""){

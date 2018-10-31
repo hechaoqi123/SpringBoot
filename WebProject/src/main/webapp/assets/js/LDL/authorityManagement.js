@@ -11,6 +11,7 @@ var ve = new Vue({
 	data:{
 		Visitonemodiles:'',
 		Visittwomodiles:'',
+		number:0,
 		depts:"",
 		data:""
 	},
@@ -33,9 +34,10 @@ var ve = new Vue({
 				},{emulateJSON:true}).then(function(data){
 					myTbody.Visittwomodiles=data.body;
 					var tr = "";
+					var i=0;
 					for(var Visittwomodile in data.body){
 						tr +=	"<tr class='myTr'>"+ 	
-								"<td style='padding-left:40px'>"+data.body[Visittwomodile].mTowId+"</td>"+
+								"<td style='padding-left:40px'>"+ ++i+"</td>"+
 		  						"<td>"+data.body[Visittwomodile].mname+"</td>"+
 		  						"<td>"+data.body[Visittwomodile].mdescribe+"</td>"+
 		  						"<td>"+data.body[Visittwomodile].mOneId+"</td>"+
@@ -72,16 +74,7 @@ var ve = new Vue({
 });
 
 
-/*var getvt = Vue.http.get(
-	  	"/DuthorityManagementController/selectVisittwomodile"
-	  ).then(function(data){
-		  myTbody.Visittwomodiles=data.body;
-		  return data.body;
-	  },function(error){
-	  	alert(1111);
-	  });
 
-*/
 //新增一级菜单
 function submitFunction() {
     //这里唯一需要注意的就是这个form-add的id

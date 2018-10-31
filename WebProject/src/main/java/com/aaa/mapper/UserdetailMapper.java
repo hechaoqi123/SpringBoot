@@ -15,7 +15,7 @@ import com.github.pagehelper.PageInfo;
 
 import tk.mybatis.mapper.common.Mapper;
 //使用redis作为二级缓存
-@CacheNamespace(implementation=MybatisRedisCache.class)
+//@CacheNamespace(implementation=MybatisRedisCache.class)
 public interface UserdetailMapper extends  Mapper<Userdetail>{
 	@Select("select max(detailid) from Userdetail")
 	public Integer getMaxID();

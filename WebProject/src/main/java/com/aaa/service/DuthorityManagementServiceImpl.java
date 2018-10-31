@@ -20,8 +20,8 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 		mapper.insertVisitonemodile(visitonemodile);
 	}
 	@Override
-	public List<Map> selectVisitonemodile() {
-		return mapper.selectVisitonemodile();
+	public List<Map> selectVisitonemodile(Integer uid) {
+		return mapper.selectVisitonemodile(uid);
 	}
 	@Transactional
 	@Override
@@ -39,6 +39,11 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	@Override
 	public List<Map> selectOneMTowModile(Integer uid) {
 		return mapper.selectOneMTowModile(uid);
+	}
+	//根据父级菜单查询对应的事务
+	@Override
+	public List<Map> getMytransaction(Integer mOneId) {
+		return mapper.getMytransaction(mOneId);
 	}
 
 }

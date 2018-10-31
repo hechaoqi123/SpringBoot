@@ -7,8 +7,17 @@
 		INSERT INTO visitonemodile(mname, mdescribe, msequnce, mimageurl) VALUES(#{mname}, #{mdescribe}, #{msequnce}, #{mimageurl})
 	</insert>
 	<!-- public void selectVisitonemodile(); -->
-	<select id="selectVisitonemodile" resultType="java.util.Map">
-		SELECT * FROM visitonemodile
+	<select id="selectVisitonemodile" parameterType="integer" resultType="java.util.Map">
+		SELECT * FROM visitonemodile vo
+			<if test="uid == -1 ">
+				JOIN mytransaction tr
+				ON tr.mOneId = vo.mOneId
+				GROUP BY vo.mname
+			</if>
+	</select>
+	<!-- //根据父级菜单查询对应的事务public List<Map> getMytransaction(@Param("mOneId") Integer mOneId); -->
+	<select id="getMytransaction" parameterType="integer" resultType="map">
+		SELECT * FROM mytransaction WHERE mOneId = #{mOneId}
 	</select>
 	<!-- public void swlwctVisitteomodile(); -->
 	<select id="selectVisittwomodile" parameterType="integer" resultType="java.util.Map">

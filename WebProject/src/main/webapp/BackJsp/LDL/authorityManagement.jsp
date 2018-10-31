@@ -69,23 +69,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</table>
 	</div>
 	<div id="bottomDiv">
-		<!-- <div id="colloaMenu2"> bottomRightDiv
-			<a class="" href="javascript:getvo();">
-				<img src="../assets/images/key.gif" border="0"> 模块访问权设置
-			</a>
-			<a href="javascript:getvo();">
-				<img src="../assets/images/key2.gif" border="0"> 模块操作权设置
-			</a>
-			<a href="javascript:getvo();">
-				<img src="../assets/images/share.gif" border="0"> 按用户设置权限
-			</a>
-		</div> -->
+		
 		<div id="bottomRightDiv">
 			<div id="authorityVue">
 				<table cellpadding=0 cellspacing=0 border=0 class="tableList">
 					<thead>
-						<tr>
-							<th>编号</th>
+						<tr style="background-color: #e3e3e3;">
+							<th style="width: 15px;">编号</th>
 							<th>名称</th>
 							<th>描述</th>
 							<th>所属</th>
@@ -94,8 +84,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="Visitonemodile in Visitonemodiles" v-on:click="selectVisittwomodile(Visitonemodile.mOneId,$event)"> 
-								<td style='padding-left:25px'>{{Visitonemodile.mOneId}}</td>
+						<tr v-for="(Visitonemodile,index) in Visitonemodiles" @click="selectVisittwomodile(Visitonemodile.mOneId,$event)"> 
+								<td style='width: 15px; '><img :src="Visitonemodile.mimageurl" style="margin-right:10px;"/></td>
 								<td>{{Visitonemodile.mname}}</td>
 								<td>{{Visitonemodile.mdescribe}}</td>
 								<td>阿尔法集团</td>
@@ -256,5 +246,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </body>
 	
-<script type="text/javascript" src="<%=basePath%>assets/js/LDL/authorityManagement.js"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/authorityManagement.js"></script>
 </html>

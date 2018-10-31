@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.mapper.UsersandmytransactionMapper" >
+	<!-- //查询当前事务拥有访问权限的角色 List<Map> TrueTran(Map map); -->
+	<select id="TrueTran" parameterType="map" resultType="map">
+	
+	</select>
+	<!-- //!(查询当前事务拥有访问权限的角色)List<Map> FalseTran(Map map); -->
+	<select id="FalseTran" parameterType="map" resultType="map">
+	
+	</select>
+</mapper>

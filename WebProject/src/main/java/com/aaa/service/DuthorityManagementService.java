@@ -9,7 +9,7 @@ import com.aaa.bean.Visittwomodile;
 public interface DuthorityManagementService {
 	//插入一级
 	public void insertVisitonemodile(Visitonemodile visitonemodile);
-	public List<Map> selectVisitonemodile();
+	public List<Map> selectVisitonemodile(Integer uid);
 	//插入二级
 	public int insert(Visittwomodile record);
 	
@@ -19,5 +19,7 @@ public interface DuthorityManagementService {
 	public List<Map> selectUserTowModile(Integer uid);
 	//根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer uid);
+	//根据父级菜单查询对应的事务
+	public List<Map> getMytransaction(Integer mOneId);
 		
 }

@@ -46,7 +46,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</td>
             </tr>
             <tr height=5px><td colspan=2></td></tr>
-            <tr><td colspan=2 class=button align=center style="color: #cee2fc;"><input type="submit" value="登录系统"></td></tr>
+            <tr>
+            	<td colspan=2 class=button align=center style="color: #cee2fc;">
+            		<input type="submit" value="登录系统" style="width:100%;background:#cccccc;opacity:0.1;color:#000; border: 0;">
+            	</td>
+            </tr>
             <tr height=5px><td colspan=2></td></tr>
             <tr><td colspan=2 id=oInform align=center>&nbsp;</td></tr>
         </table>
