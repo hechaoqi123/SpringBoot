@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	
 	#zero1{
@@ -100,10 +100,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
       <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>外部通讯录</i></h2>
         
-     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
+     <div class="btn-group" style="margin-left:890px;margin-top:-70px;">
        
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddExternal.jsp">登记记录</a></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><i onclick="replaceDoc()">刷新</i></button>
+	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">
+	    
+	    <span onclick="replaceDoc()">刷新</span>
+	    </button>
      </div>
      </br>
      <table id="zero">
@@ -145,11 +148,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </table>
     <!--  分页按钮 -->
      <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
-	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default"><i style="color:#000">首页</i></button>
+	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default" id="startRow"><i style="color:#000">首页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"  id="prepage"><i style="color:#000">上一页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
 	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
-	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default">尾页</button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="endRow">尾页</button>
      </div>
       
     
@@ -157,15 +160,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 </html>
 <script>
+  //刷新
+  	 function replaceDoc()
+{
+    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
+}
+
    function goBack()
   {
   /* window.history.back(-1) */
   window.history.go(-1)
   }
-function replaceDoc()
-{
-    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
-}
+
 
       $(function(){
           getAll(1);
@@ -180,8 +186,9 @@ function replaceDoc()
             $("#tbody").html("");
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
-                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wbname+"</td>";
+                   var tr="<tr>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</a></td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -190,6 +197,8 @@ function replaceDoc()
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+               // alert(data.pageSize);
+               MaxPage=data.pageSize;
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -215,7 +224,8 @@ function replaceDoc()
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -248,7 +258,8 @@ function replaceDoc()
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -279,7 +290,8 @@ function replaceDoc()
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -298,6 +310,7 @@ function replaceDoc()
             }
         })
     }) 
+      var MaxPage;
      //条件查询4
       $("#one4").click(function(){
         $.ajax({
@@ -310,7 +323,8 @@ function replaceDoc()
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -319,6 +333,7 @@ function replaceDoc()
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+             
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -342,7 +357,12 @@ function replaceDoc()
            var nowpage=parseInt($("#nowPage").html());
            getAll(nowpage+1);
       })
-     
+      $("#startRow").click(function(){
+         getAll(1);
+      })
+      $("#endRow").click(function(){
+         getAll(MaxPage);
+      })
       
     
 

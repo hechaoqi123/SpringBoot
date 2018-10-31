@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,6 +54,18 @@ public class GgController {
 	public @ResponseBody PageInfo getAllGgone5(Integer pageNum,String ggClassify){
 		return ggservice.getAllGgone5(pageNum, ggClassify);
 	}
+	@RequestMapping("/getAllGgone6")
+	public @ResponseBody PageInfo getAllGgone6(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone6(pageNum, ggClassify);
+	}
+	@RequestMapping("/getAllGgone7")
+	public @ResponseBody PageInfo getAllGgone7(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone7(pageNum, ggClassify);
+	}
+	@RequestMapping("/getAllGgone8")
+	public @ResponseBody PageInfo getAllGgone8(Integer pageNum,String ggClassify){
+		return ggservice.getAllGgone8(pageNum, ggClassify);
+	}
 	
 	/*@RequestMapping("/AddGg")
 	public  String  AddGg(Gg gg) throws ServletException, IOException{
@@ -76,5 +91,13 @@ public class GgController {
 			return "xgp/AddNotice";
 		}
 	
+		@RequestMapping("getxq")
+		public String getAll(int id,Model m){
+			List<Map> list=ggservice.getAll(id);
+			m.addAttribute("list",list);
+			
+			return "xgp/SelectNotice";
+		}
+		
 
 }

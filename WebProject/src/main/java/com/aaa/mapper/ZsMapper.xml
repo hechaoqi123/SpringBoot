@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.ZsMapper">
+     
+     <!--  <select id="getAllone2" resultType="java.util.Map">
+         select z.zstheme,z.zsauthor,z.zsdate from zs z
+      </select>-->
+      <select id="getAllone0" resultType="java.util.Map">
+        select * from zs
+      </select>
+      <select id="getAllone1" resultType="java.util.Map" parameterType="java.lang.String">
+        select * from zs where zsclassify=#{zsclassify}
+      </select>
+      
+      <select id="getAllone2" resultType="java.util.Map">
+     select * from zs  where date_sub(curdate(),INTERVAL 7 DAY) &lt;= date(zsdate) 
+   </select>
+   <select id="getAllone3" resultType="java.util.Map">
+       select * from zs where date_sub(curdate(), INTERVAL 30 DAY) &lt;= date(zsdate)
+   </select>
+   <select id="getAllone4" resultType="java.util.Map">
+      select * from zs where QUARTER(zsdate)=QUARTER(now())
+   </select>
+   <select id="getAll" resultType="java.util.Map" >
+      select * from Zs where zsid=#{id}
+    </select>
+      
+</mapper>

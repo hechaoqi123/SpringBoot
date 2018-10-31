@@ -47,6 +47,8 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
     
     
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
+        <table schema="first" tableName="hf" domainObjectName="Hf"></table>
          
          <table schema="first" tableName="userspost" domainObjectName="Userspost"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    

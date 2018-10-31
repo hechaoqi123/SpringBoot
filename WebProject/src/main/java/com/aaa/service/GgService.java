@@ -16,6 +16,14 @@ public interface GgService {
 	public PageInfo getAllGgone3(Integer pageNum,String ggClassify);
 	public PageInfo getAllGgone4(Integer pageNum,String ggClassify);
 	public PageInfo getAllGgone5(Integer pageNum,String ggClassify);
+	public PageInfo getAllGgone6(Integer pageNum,String ggClassify);
+	public PageInfo getAllGgone7(Integer pageNum,String ggClassify);
+	public PageInfo getAllGgone8(Integer pageNum,String ggClassify);
+	
+	public List<Map> getAll(int id);
+	
+	
+	
 	
 
 }

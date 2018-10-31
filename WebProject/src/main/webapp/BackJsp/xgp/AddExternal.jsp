@@ -49,18 +49,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="background-image:url(../assets/img/bg1.jpg)">
   <div id="zero">
     <form id="adds">
-		       分类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbfl"style="width:600px;border-right:none;"><br>
-		      姓名&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbname"style="width:600px;border-right:none;"/><br>
+		       分类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		       <select name="wbfl"style="width:600px;border-right:none;">
+		         <option></option>
+		         <option>快递服务</option>
+		         <option>外卖订餐服务</option>
+		         <option>银行客服服务</option>
+		         <option>其他服务</option>
+		       </select>
+		       <br>
+		      姓名<i style="color:red">*</i>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbname"style="width:600px;border-right:none;"/><br>
 		       头衔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbtx"style="width:600px;border-right:none;"/><br>
-		       性别&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio" value="男" name="wbxb">1
-		     <input type="radio" value="女" name="wbxb">2<br>
+		       性别&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio" value="男" name="wbxb">男
+		     <input type="radio" value="女" name="wbxb">女<br>
 		       所属单位<input type="text" name="wbssdw"style="width:600px;border-right:none;"/><br>
-		       固定电话<input type="text" name="wbphone"style="width:600px;border-right:none;"/><br>
+		       电话<i style="color:red">*</i>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbphone"style="width:600px;border-right:none;"/><br>
 		       移动电话<input type="text" name="wbphonenum"style="width:600px;border-right:none;"/><br>
 		       电子邮件<input type="text" name="wbyj"style="width:600px;border-right:none;"/><br>
 		       即时通讯<input type="text" name="wbjstx"style="width:600px;border-right:none;"/><br>
 		       备注&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="wbbz"style="width:600px;border-right:none;"/><br>
-       		<input type="submit" value="添加" id="add">
+       		<p>
+   	         <button type="button" class="btn btn-primary btn-lg active" id="add">添加</button>
+            </p>
+       		
        </form>
        </div>
   </body>
@@ -70,7 +81,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
 
     $("#add").click(function(){
-    alert(1);
         $.ajax({
             url:"Wb/addWb",
             //contentType:"application/json",
@@ -78,8 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             data:$("#adds").serialize(),//将数组转成json字符串
             dataType:"json",
             success:function(data){
-            alert(1);
-            alert(data);
                window.location.href="BackJsp/xgp/External.jsp";
             }
         })
