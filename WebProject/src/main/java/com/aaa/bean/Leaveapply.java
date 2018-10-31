@@ -18,9 +18,9 @@ public class Leaveapply implements Serializable {
 
     private String dept;//部门
 
-    private String begindate;//开始时间
+    private String begindate;//申请时间
 
-    private String enddate;//结束时间		
+    private String enddate;//开始时间		
 
     private String leavetype;//类型
 
@@ -28,8 +28,10 @@ public class Leaveapply implements Serializable {
 
     private String field1;//所用调休资源
 
-    private String field2;
-
+    private String field2;//结束时间
+    
+    private String field3;//共计时长
+    
     private static final long serialVersionUID = 1L;
 
     public Integer getLeaveid() {
@@ -127,4 +129,13 @@ public class Leaveapply implements Serializable {
     public void setField2(String field2) {
         this.field2 = field2 == null ? null : field2.trim();
     }
+
+	public String getField3() {
+		return field3;
+	}
+
+	public void setField3(String field3) {
+		this.field3 = field3;
+	}
+    
 }

@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseService;
 import com.aaa.bean.Performance;
 
-public interface PerformanceService {
+public interface PerformanceService extends BaseService<Performance>{
 
-	List<Performance> getAll();
+	void UpdateAndRemark(Performance recruit, String remark);
 
-	void save(Performance per);
+	void saveAndApproval(Performance performance);
 
 }

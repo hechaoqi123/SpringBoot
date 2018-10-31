@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD>
             <H1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:10px;">绩效管理</span>
-   <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>绩效考核</button>
+                        <span style="margin-left:10px;">绩效考核</span>
+
                         </H1></TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
      <!-- 分类检索 -->
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH>考核结果</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in datas">
-          <TD><A :href="'Evection/detail/'+apply.evectionid">
+          <TD><A :href="'Performance/detail/'+apply.performanceid">
                 <img v-if="apply.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
 				<img v-else-if="apply.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 				<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
@@ -83,20 +83,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </span>
      
      </DIV></TD></TR></TBODY></TABLE>
+<input id="aa" style="display:none" value="${detail.dependence}"/>
+<input id="bb"  style="display:none" value="${detail.position}"/>
 </BODY></HTML>
 <script src="BackJsp/hcq/js/Vue.js"></script>
 <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
      $(function(){
-      $("#save").click(function(){
-        window.location.href="BackJsp/hcq/PersonnelApply.jsp"
-     })
-      $("#save").hover(function(){
-        $(this).css("border","1px solid #5ea6eb")
-     },function(){
-       $(this).css("border","1px solid #E0E0E0")
-     })
    //封装全部检索                       
      var dept=$("#aa").val(); 
      var post=$("#bb").val();   
@@ -109,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(PageNumber){ 
-		           var status="";//默认查询员工自评状态的申请
+		           var status="员工自评";//默认查询员工自评状态的申请
 	               if(dept=="总经办"){status="领导审批"};//查询状态为领导审批状态的申请
 	               if(post=="超级管理员"){status=null}//查询所有申请
 		           var url="Performance/queryBycriteria";

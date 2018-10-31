@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="padding-top:15px;padding-left:10px;">
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">招聘申请</span></h1></td><td id="oWorkflowList" align="right">
+                        <span style="margin-left:7px;">招聘和配置</span></h1></td><td id="oWorkflowList" align="right">
    </td></tr></tbody></table><br>
     <!-- 分类 -->
       
@@ -145,9 +145,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
      $(function(){
-   //封装全部检索                       
-     var dept=$("#aa").val(); 
-     var post=$("#bb").val();                                                                             
+   //封装全部检索                
+    var dept=$("#aa").val(); 
+    var post=$("#bb").val();  
+        var dept=$("#aa").val(); 
+                    var post=$("#bb").val();            
 		  var page=new Vue({
 		    el :'#app',
 		    data:{
@@ -157,9 +159,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(PageNumber){
+		            var dept=$("#aa").val(); 
+                    var post=$("#bb").val();       
 		          var status="填单";
-	               if(dept=="总经办"){status="领导审批"};
-	               if(post=="超级管理员"){status=null}
+		           if(dept=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
+	               if(dept=="总经办"){status="领导审批"}
+	               if(post=="超级管理员"){status=null};
 		           var url="";
 		           //招聘申请审批
 		           if(this.tactics==0){url="Recruit/queryByCriteria"
@@ -181,11 +186,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                })};
 	                //岗位调动
 		           if(this.tactics==3){url="Transfer/queryBycriteria"
-		           if(post=="超级管理员"||dept=="总经办"){dept=null};
+		               if(post=="超级管理员"){dept=null};
 		               this.$http.post(url,{oldpart:dept,pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
 		               this.pageInfo=res.body
 		               this.datas=res.body.list;
-	                })};
+	                  }
+	                 )};
 		           if(this.tactics==4){url="Dimission/queryBycriteria"
 		              this.$http.post(url,{oldpart:dept,pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
 		              this.pageInfo=res.body

@@ -32,6 +32,12 @@ public class transferServiceImpl extends BaseServiceImpl<transfer> implements Tr
 		 if(transfer.getStatus().equals("领导审批")){
 			 appro.setSequence(2);
 		 }
+		 if(transfer.getStatus().equals("填单人知悉")){
+			 appro.setSequence(6);
+		 }
+		 if(transfer.getStatus().equals("人事处理")){
+			 appro.setSequence(4);
+		 }
 		 if(transfer.getStatus().equals("结束")){
 		 appro.setSequence(3);
 		 }

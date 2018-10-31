@@ -53,9 +53,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TBODY id="tb"style="font-size:14px;">
         <TR>
           <TD class="fieldLable">从属于</TD>
-          <TD>${user.dependence}&nbsp;</TD>
+          <TD>
+	          <select  id="dept"   name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
+	             <option :selected="dept.deptname=='${user.dependence}'" v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
+	          </select>&nbsp;</TD>
           <TD class="fieldLable">在职状态</TD>
-          <TD>${user.status}</TD></TR>
+          <TD>
+              <c:if test="${user.status=='在职'}">
+                <INPUT id=dbf.jobStatus CHECKED type=radio value="在职" name="status" autocomplete="off">在职 
+                <INPUT id=dbf.jobStatus type=radio value="试用" name="status" autocomplete="off">试用 
+	            <INPUT id=dbf.jobStatus type=radio value="临时" name="status" autocomplete="off">临时 
+	            <INPUT id=dbf.jobStatus type=radio value="退休" name="status" autocomplete="off">退休 
+	            <INPUT id=dbf.jobStatus type=radio value="离职" name="status" autocomplete="off">离职
+              </c:if>
+              <c:if test="${user.status=='试用'}">
+                <INPUT id=dbf.jobStatus type=radio value="在职" name="status" autocomplete="off">在职 
+                <INPUT id=dbf.jobStatus  CHECKED  type=radio value="试用" name="status" autocomplete="off">试用 
+	            <INPUT id=dbf.jobStatus type=radio value="临时" name="status" autocomplete="off">临时 
+	            <INPUT id=dbf.jobStatus type=radio value="退休" name="status" autocomplete="off">退休 
+	            <INPUT id=dbf.jobStatus type=radio value="离职" name="status" autocomplete="off">离职
+              </c:if>
+              <c:if test="${user.status=='临时'}">
+                <INPUT id=dbf.jobStatus type=radio value="在职" name="status" autocomplete="off">在职 
+                <INPUT id=dbf.jobStatus type=radio value="试用" name="status" autocomplete="off">试用 
+	            <INPUT id=dbf.jobStatus CHECKED type=radio value="临时" name="status" autocomplete="off">临时 
+	            <INPUT id=dbf.jobStatus type=radio value="退休" name="status" autocomplete="off">退休 
+	            <INPUT id=dbf.jobStatus type=radio value="离职" name="status" autocomplete="off">离职
+              </c:if>
+              <c:if test="${user.status=='退休'}">
+                <INPUT id=dbf.jobStatus type=radio value="在职" name="status" autocomplete="off">在职 
+                <INPUT id=dbf.jobStatus type=radio value="试用" name="status" autocomplete="off">试用 
+	            <INPUT id=dbf.jobStatus type=radio value="临时" name="status" autocomplete="off">临时 
+	            <INPUT id=dbf.jobStatus CHECKED type=radio value="退休" name="status" autocomplete="off">退休 
+	            <INPUT id=dbf.jobStatus type=radio value="离职" name="status" autocomplete="off">离职
+              </c:if>
+             <c:if test="${user.status=='离职'}">
+                <INPUT id=dbf.jobStatus type=radio value="在职" name="status" autocomplete="off">在职 
+                <INPUT id=dbf.jobStatus type=radio value="试用" name="status" autocomplete="off">试用 
+	            <INPUT id=dbf.jobStatus type=radio value="临时" name="status" autocomplete="off">临时 
+	            <INPUT id=dbf.jobStatus type=radio value="退休" name="status" autocomplete="off">退休 
+	            <INPUT id=dbf.jobStatus CHECKED type=radio value="离职" name="status" autocomplete="off">离职
+              </c:if>
+          </TD></TR>
         <TR>
           <TD class="fieldLable">姓名</TD>
           <TD><INPUT id=e.dbf.name name="username" class=fieldEditable value="${user.username}"></TD>
@@ -72,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <INPUT id=dbf.gender  type=radio value="男" name="usersex" autocomplete="off">男
                <INPUT id=dbf.gender CHECKED type=radio value="女" name="usersex" autocomplete="off">女</TD>
               </c:if>
-          <TD class="fieldLable">上级主管</TD>
+          <TD class="fieldLable">部门主管</TD>
           <TD>${superUserName}&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">固定电话</TD>
@@ -149,9 +188,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <a class="button" id="ret" href="javascript:">取消</a>
 </form>
 </BODY></HTML>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-    
+     var deptVue=new Vue({
+             el:'#dept',
+             data:{
+               depts:null
+             },methods:{
+                 getAll:function(){
+                   var url="/DeptController/getAll";
+                   this.$http.post(url,{emulateJSON:true}).then(function(res){
+                   this.depts=res.body
+                 })
+                 }
+             }
+       })
+       deptVue.getAll();
       $("#sub").click(function(){
            $("#Myform").submit();
       })

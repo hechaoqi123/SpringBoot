@@ -15,6 +15,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css"/>
 	<script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/view.js"></script>
+	<script type="text/javascript" src="<%=basePath%>assets/js/jquery-2.0.3.min.js"></script>
+	<style>
+	  input:focus { outline: none; }
+	  input:-webkit-autofill { -webkit-text-fill-color: #cee2fc !important;
+	  　-webkit-text-fill-color: #cee2fc;
+		transition: background-color 5000s ease-in-out 0s; 
+		}
+	</style>
 </head>
 
 <body id=colloaBody>
@@ -31,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <tr>
             	<td class=left align=center><img src="/assets/img/person.png"></td>
             	<td class=right>
-            		<input  placeholder="请输入用户名" type=text name="unum" maxLength=20 value="">
+            		<input  placeholder="请输入用户名" style="-webkit-text-fill-color: #ffffff;caret-color: #fff;" type=text name="unum" maxLength=20 value="">
             	</td>
             </tr>
             <tr height=5px>
@@ -46,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</td>
             </tr>
             <tr height=5px><td colspan=2></td></tr>
-            <tr><td colspan=2 class=button align=center style="color: #cee2fc;"><input type="submit" value="登录系统"></td></tr>
+            <tr><td id="sub" colspan=2 class=button align=center style="color: #cee2fc;padding:7px 0px">登陆系统</td></tr>
             <tr height=5px><td colspan=2></td></tr>
             <tr><td colspan=2 id=oInform align=center>&nbsp;</td></tr>
         </table>
@@ -61,9 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 <script>
- /* function SendForm(){
-	$("login").submit();
-   } */
+     $("#sub").click(function(){
+        $("#login").submit();
+     })
 
   
 </script>

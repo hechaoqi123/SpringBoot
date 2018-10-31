@@ -31,6 +31,12 @@ public class OfficialServiceImpl extends BaseServiceImpl<Official> implements Of
 		 if(recruit.getStatus().equals("领导审批")){
 			 appro.setSequence(1);
 		 }
+		 if(recruit.getStatus().equals("人事处理")){
+			 appro.setSequence(3);
+		 }
+		 if(recruit.getStatus().equals("填单人知悉")){
+			 appro.setSequence(4);
+		 }
 		 if(recruit.getStatus().equals("结束")){
 		 appro.setSequence(2);
 		 }

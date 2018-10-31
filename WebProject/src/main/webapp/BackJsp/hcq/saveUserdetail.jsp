@@ -129,9 +129,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD class=fieldLable>指定用户名</TD>
 <TD id=dbf.nameLogin dbf.type="unique(userX)"></TD>
 </TR>
-  <tr><td style="border-bottom:0px" colspan="4"><div id="_vWorkflowActionsShow" align="right"><br/>
+  <tr><td style="border-bottom:0px" colspan="4"><div  id="_vWorkflowActionsShow" align="right"><br/>
+           
     <a class="button" id="xxx" href="javascript:" >确定</a>
-    <a class="button" href="javascript:" id="xxxx"  >取消</a></div></td></tr>
+    <a class="button" href="javascript:" id="xxxx"  >取消</a>
+    </div></td></tr>
 </TBODY></TABLE>
 </form></body></html>
 <script>

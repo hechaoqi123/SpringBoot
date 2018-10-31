@@ -13,4 +13,6 @@ public interface  RecruitService extends BaseService<Recruit> {
 
 	void UpdateAndRemark(Recruit recruit, String remark);
 
+	Integer[] getCountPeople(String status);
+
 }
