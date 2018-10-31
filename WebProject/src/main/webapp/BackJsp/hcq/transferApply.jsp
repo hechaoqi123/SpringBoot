@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input id="e.dbf.text4" name="oldpost" class="fieldEditable">
 </td>
 <td id="现备注" dbf.type="" dbf.source="">
-  <input id="e.现备注" class="fieldEditable"></td></tr>
+  <input id="e.现备注" name="field1" class="fieldEditable"></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>至（新）</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.positionX" dbf.type="required" dbf.source="">
   <input id="e.dbf.positionX" name="newpost" class="fieldEditable"></td>
 <td id="新备注" dbf.type="" dbf.source="">
-  <input id="e.新备注" class="fieldEditable"></td></tr>
+  <input id="e.新备注" name="field2" class="fieldEditable"></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>调动原因</td>
 <td id="调动原因" colspan="3" dbf.type="required" dbf.source="">

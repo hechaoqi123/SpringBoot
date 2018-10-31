@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.ContractMapper">
+
+  <select id="selectAllByKey" parameterType="java.lang.String" resultType="java.util.Map">
+  	select * from contract ct left join client c on ct.clientid=c.clientid left join userdetail u on u.detailid=ct.detailid
+  
+  	<if test="key!=null and key!=''">
+  		where ct.contracname like '%${key}%'
+  	</if>
+  
+  </select>
+  <!--List<Map> getOne(Integer contractid); -->
+  <select id="getOne" parameterType="integer" resultType="map">
+
+      select o.*,u.username from (
+           select ct.*,c.clientname from contract ct 
+             left join client c on ct.clientid=c.clientid   where ct.contractid = #{id}) o
+      left join userdetail u on u.detailid=o.detailid
+  </select>
+  <!--执行中的合同  -->
+  <update id="updateid" parameterType="java.lang.Integer" >
+  
+  	update contract set contracstate =1 where contractid=#{contractid,jdbcType=INTEGER}
+  
+  </update>
+  <!--关闭的合同  -->
+  <update id="updateidOne" parameterType="com.aaa.bean.Contract" >
+  
+  	update contract set contracstate =2 where contractid=#{contractid,jdbcType=INTEGER}
+  
+  </update>
+  <!--搁置中的合同  -->
+  <update id="updateidTwo" parameterType="com.aaa.bean.Contract">
+  
+  	update contract set contracstate =3 where contractid=#{contractid,jdbcType=INTEGER}
+  
+  </update>
+  <!--撤销中的合同  -->
+  <update id="updateidThree" parameterType="com.aaa.bean.Contract">
+  
+  	update contract set contracstate =4 where contractid=#{contractid,jdbcType=INTEGER}
+  
+  </update>
+  
+</mapper>

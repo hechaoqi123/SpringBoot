@@ -27,7 +27,6 @@ public class UserstowmodileController{
 	@RequestMapping("/addUserstowmodile")
 	@ResponseBody
 	public String addUserstowmodile(Userstowmodile record){
-		System.out.println(record);
 		service.insert(record);
 		return "true";
 	}

@@ -80,11 +80,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </TD>
             <TD style="text-align: right;">&nbsp;优先级:</TD>
             <TD>
-                 <INPUT name="ggPriority" id="dbf.priority" type="radio" value="-1" 
+                 <INPUT name="ggPriority" id="dbf.priority" type="radio" value="低" 
                  autocomplete="off">低
                  <INPUT name="ggPriority" id="dbf.priority" 
-                 type="radio" checked="" value="0" autocomplete="off">中
-                 <INPUT name="ggPriority" id="dbf.priority" type="radio" value="1" 
+                 type="radio" checked="" value="中" autocomplete="off">中
+                 <INPUT name="ggPriority" id="dbf.priority" type="radio" value="高" 
                  autocomplete="off">高
             </TD>
         </TR>
@@ -167,8 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD class="fieldLable">附件
           </TD>
           <TD id="dbf.links" dbf.type="" dbf.source="files">
-                <!-- <IMG class="fieldGetValueBySource"onclick="fieldGetValueBySource('dbf.links',this);" 
-                src="BackJsp/img/fieldSource.gif">  -->
+                
                <DIV id="e.dbf.keyInfo">
                   <input type="file" id="e.dbf.positionX" name="file" class="fieldEditable" >
           </TD>

@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:1000px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	#zero1{
 	  height:1000px;
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>内部通讯录</i></h2>
     
-     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
+     <div class="btn-group" style="margin-left:900px;margin-top:-70px;">
 	   
 	   <button type="button" style="color:#000;background:#fff" class="btn btn-default"><span onclick="replaceDoc()">刷新</span></button>
      </div>
@@ -238,8 +238,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    var div="<div style='width:360px;height:200px;border:8px solid #E8E8E8;float:left';>";
                   div+="<div style='width:70px;height:200px;border:0px solid red;float:left'>"+"<img src='<%=basePath%>BackJsp/img/h9.png'style='margin-top:10px;margin-left:5px;'>";
                   div+="</div>"
-                  div+="<div style='width:270px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].dependence+"<br><br>"
-                  +"从属机构:"+datalist[i].entryDate+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
+                  div+="<div style='width:270px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].entryDate+"<br><br>"
+                  +"从属机构:"+datalist[i].dependence+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
                   datalist[i].telephone+"<br>"+"电子邮箱:"+datalist[i].email+"<br>"+"即时通讯:"+datalist[i].message ;
                   div+="</div>";
                    div+="</div>";
@@ -289,8 +289,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    var div="<div style='width:360px;height:200px;border:5px solid #E8E8E8;float:left';>";
                   div+="<div style='width:70px;height:200px;border:0px solid red;float:left'>"+"<img src='<%=basePath%>BackJsp/img/h9.png'style='margin-top:10px;margin-left:5px;'>";
                   div+="</div>"
-                  div+="<div style='width:278px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].dependence+"<br><br>"
-                  +"从属机构:"+datalist[i].entryDate+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
+                  div+="<div style='width:278px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].entryDate+"<br><br>"
+                  +"从属机构:"+datalist[i].dependence+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
                   datalist[i].telephone+"<br>"+"电子邮箱:"+datalist[i].email+"<br>"+"即时通讯:"+datalist[i].message ;
                   div+="</div>";
                    div+="</div>";
@@ -325,8 +325,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    var div="<div style='width:360px;height:200px;border:5px solid #E8E8E8;float:left';>";
                   div+="<div style='width:70px;height:200px;border:0px solid red;float:left'>"+"<img src='<%=basePath%>BackJsp/img/h9.png'style='margin-top:10px;margin-left:5px;'>";
                   div+="</div>"
-                  div+="<div style='width:278px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].dependence+"<br><br>"
-                  +"从属机构:"+datalist[i].entryDate+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
+                  div+="<div style='width:278px;height:200px;border:0px solid red;float:left'>"+"<br>"+"<img src='<%=basePath%>BackJsp/img/six.png'>"+"姓名:"+datalist[i].username+"<br>"+"名言:"+datalist[i].entryDate+"<br><br>"
+                  +"从属机构:"+datalist[i].dependence+"<br>"+"固定电话:"+datalist[i].phone+"<br>"+"移动电话:"+
                   datalist[i].telephone+"<br>"+"电子邮箱:"+datalist[i].email+"<br>"+"即时通讯:"+datalist[i].message ;
                   div+="</div>";
                    div+="</div>";

@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource"><input type="text" style="border:0px" readonly="true" value="人事填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><span id="mapping.dbf.procXSource"><input type="text" style="border:0px" readonly="true" value="填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 责任人: <span id="mapping.dbf.responsorSource">
 <input type="text"  style="border:0px" readonly="true" value="${superUser.username}" name="dutypeople"/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>

@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.persistence.Temporal;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +37,7 @@ public class WdController {
 	  WdService wdservice; 
 	//文件上传
 	@RequestMapping("/AddWd")
-	public String savePlay(Wd  wd,@RequestParam("file") MultipartFile file,
+	public String savePlay(Wd  wd,BindingResult bindingResult ,@RequestParam("file") MultipartFile file,
 			   HttpServletRequest request) throws IllegalStateException, IOException{
 		if(!file.getOriginalFilename().equals("")){
 			//OriginalFilename:原文件名
@@ -106,5 +109,12 @@ public class WdController {
 			}
 		}
 	
+		@RequestMapping("getxq")
+		public String getAll(int id,Model m){
+			List<Map> list=wdservice.getAll(id);
+			m.addAttribute("list",list);
+			
+			return "xgp/SelectDocument";
+		}
 
 }

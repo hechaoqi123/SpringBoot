@@ -21,5 +21,7 @@ public interface WbMapper extends Mapper<Wb> {
 	//条件查询4
 	public List<Map> getAllWbone4(String wbfl); 
 	
+	public List<Map> getAll(int id);
+	
 
 }

@@ -142,7 +142,6 @@ cellspacing="0" cellpadding="0">
       </TABLE>
         <button type="submit" style="margin-top:100px;"class="btn btn-primary btn-lg btn-block" id="add" onclick="sub()">添加</button>
        
-        <button type="submit" style="margin-top:100px;"class="btn btn-primary btn-lg btn-block" >添加</button>
       
       </FORM>
       </DIV>

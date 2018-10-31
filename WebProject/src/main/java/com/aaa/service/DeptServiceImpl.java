@@ -14,11 +14,19 @@ public class DeptServiceImpl implements DeptService {
 	DeptMapper mapper;
     public List<Dept> getAllDept(){
 		return mapper.selectAll();
+    }
+    public List<Dept> getAllDept(Integer belong){
+		return mapper.getAllDept(belong);
 	}
     @Transactional
 	@Override
 	public int insert(Dept record) {
 		return mapper.insert(record);
+	}
+    @Transactional
+	@Override
+	public int deleteByPrimaryKey(Integer deptid) {
+		return mapper.deleteByPrimaryKey(deptid);
 	};
 	@Override
 	public List<Dept> getAll() {
@@ -31,4 +39,6 @@ public class DeptServiceImpl implements DeptService {
 		return mapper.selectOne(d);
 	}
 
+	
+	
 }

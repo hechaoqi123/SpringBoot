@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	
 	#zero1{
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
        <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>文档管理</i></h2>
      
-     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
+     <div class="btn-group" style="margin-left:880px;margin-top:-70px;">
 	    <button type="button" class="btn btn-default" style="background:#fff;color:#000"><a href="<%=basePath%>BackJsp/xgp/AddDocument.jsp">+新增文档</a></button>
 	    <button type="button" class="btn btn-default" style="background:#fff;color:#000"><span onclick="replaceDoc()">刷新</span></button>
      </div>
@@ -227,7 +227,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";
@@ -264,7 +265,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                 for(var i=0;i<datalist.length;i++){
                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";
@@ -300,7 +302,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                 for(var i=0;i<datalist.length;i++){
                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";
@@ -332,7 +335,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                 for(var i=0;i<datalist.length;i++){
                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";
@@ -364,7 +368,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                 for(var i=0;i<datalist.length;i++){
                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";
@@ -396,7 +401,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                 for(var i=0;i<datalist.length;i++){
                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wdname+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wd/getxq?id="+datalist[i].wdid+"'>"+datalist[i].wdname+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdversions+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'><a href='Wd/down?id="+parseInt(datalist[i].wdid)+"'><img src='BackJsp/hcq/img/uploadico2.png' width='19px'/></a></td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wdauthor+"</td>";

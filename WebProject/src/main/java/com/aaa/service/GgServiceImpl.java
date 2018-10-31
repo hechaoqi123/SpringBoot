@@ -90,5 +90,11 @@ public class GgServiceImpl implements GgService{
 		return info;
 	}
 
+	@Override
+	public List<Map> getAll(int id) {
+
+		return mapper.getAll(id);
+	}
+
 
 }

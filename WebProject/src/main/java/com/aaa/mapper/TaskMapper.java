@@ -13,4 +13,5 @@ public interface TaskMapper extends Mapper<Task> {
 	public List<Map> querytwo();
 	public void add(Task task);
 	public void addone(Krar krar);
+	public List<Map> selectall(String rwfl);
 }

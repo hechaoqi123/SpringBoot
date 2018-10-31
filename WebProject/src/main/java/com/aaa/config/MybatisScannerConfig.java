@@ -15,5 +15,5 @@ public class MybatisScannerConfig {
 		mapperScannerConfigurer.setBasePackage("com.aaa.mapper");		
 		mapperScannerConfigurer.setMarkerInterface(Mapper.class);
 		return mapperScannerConfigurer;	
-		}
+   }
 }

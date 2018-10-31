@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -35,14 +36,22 @@ public class TaskController {
 	  
 	 }
      @RequestMapping("/addAll")
-	  public @ResponseBody String addAll(Task task,Krar krar){
-    	 System.out.println(task);
-    	 System.out.println(krar);
+	  public  String addAll(Task task,Krar krar){
     	 taskservice.adds(task, krar);
   
    	
-		return "trun";
+		return "wsq/schedule";
   }
-   
-  
+     @RequestMapping("/querywsq")
+     public @ResponseBody PageInfo<Map> querywsq(Integer pageNum ,String rwfl){
+    	System.out.println(taskservice.selectall(pageNum, rwfl).toString());
+    	 return taskservice.selectall(pageNum, rwfl);
+	  
+	 }
+     @RequestMapping("/classifty")	
+  	@ResponseBody
+  	  public List<Task> classifty(Task task){
+  		    return taskservice.querylet();
+  	  }
+     
 }

@@ -62,4 +62,13 @@ public class WbServiceImpl implements WbService{
 		return info;
 	}
 
+	@Override
+	public List<Map> getAll(int id) {
+		// TODO Auto-generated method stub
+		  
+		return wbmapper.getAll(id);
+	}
+
+	
+
 }

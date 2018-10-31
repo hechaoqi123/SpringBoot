@@ -14,7 +14,7 @@ public class CostManager implements Serializable {
 
     private String dutypeople;//责任人
 
-    private String username;//申请人
+    private String username;//出差人
 
     private String dept;//部门
 
@@ -24,7 +24,7 @@ public class CostManager implements Serializable {
 
     private String total;//报销费用
 
-    private String field1;
+    private String field1;//大写金额
 
     private String field2;
 

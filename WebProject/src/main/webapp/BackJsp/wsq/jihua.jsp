@@ -61,18 +61,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">计划分类</td>
 <td>
-  <input onclick="onTypeChange(10);" id="dbf.psid2" type="radio" value="10" name="type" autocomplete="off">年度
-  <input onclick="onTypeChange(20);" id="dbf.psid2" type="radio" value="20" name="type" autocomplete="off">季度
-  <input onclick="onTypeChange(30);" id="dbf.psid2" type="radio" value="30" name="type" autocomplete="off">月度 
-  <input onclick="onTypeChange(40);" id="dbf.psid2" type="radio" value="40" name="type" autocomplete="off">周
-  <input onclick="onTypeChange(100);" id="dbf.psid2" type="radio" value="100" name="type" autocomplete="off">项目
-   <input onclick="onTypeChange(0);" id="dbf.psid2" checked="" type="radio" value="0" name="type" autocomplete="off">其他</td>
+  <input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="年度" name="type" autocomplete="off">年度
+  <input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="季度" name="type" autocomplete="off">季度
+  <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="月度" name="type" autocomplete="off">月度 
+  <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="周" name="type" autocomplete="off">周
+  <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="项目" name="type" autocomplete="off">项目
+   <input onclick="onTypeChange('其他');" id="dbf.psid2" checked="" type="radio" value="其他" name="type" autocomplete="off">其他</td>
 <td style="TEXT-ALIGN: center">从属于</td>
 <td ><select style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname"></select></td>
 </tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
-<td><select style="width:342px; border: #F4F4F4" class="username" id="username" name="detailld"></select></td>
+<td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
 <td style="TEXT-ALIGN: center">所属部门</td>
 <td><select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid"></select></td>
 </tr>
@@ -169,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         dataType:"json",
         success:function(data){
          $("#username").html();
-         var option="<option>--请选择--</option>";
+         var option="<option value='0'>--请选择--</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
           }
@@ -185,9 +185,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         dataType:"json",
         success:function(data){
          $("#planname").html();
-         var option="<option>--请选择--</option>";
+         var option="<option value='0'>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].pid+"'>"+data[i].planname+"</option>";
+           option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
        
           }
          $("#planname").append(option);
@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         dataType:"json",
         success:function(data){
          $("#deptName").html();
-         var option="<option>--请选择--</option>";
+         var option="<option value='0'>--请选择--</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].deptid+"'>"+data[i]. deptname+"</option>";
        

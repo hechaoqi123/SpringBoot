@@ -1,7 +1,6 @@
 package com.aaa.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Id;
 
@@ -9,9 +8,9 @@ public class Cost implements Serializable {
 	@Id
     private Integer costid;
 
-    private Date begindate;
+    private String begindate;
 
-    private Date beginaddress;
+    private String beginaddress;
 
     private String remark;
 
@@ -37,19 +36,19 @@ public class Cost implements Serializable {
         this.costid = costid;
     }
 
-    public Date getBegindate() {
+    public String getBegindate() {
         return begindate;
     }
 
-    public void setBegindate(Date begindate) {
-        this.begindate = begindate;
+    public void setBegindate(String beginString) {
+        this.begindate = beginString;
     }
 
-    public Date getBeginaddress() {
+    public String getBeginaddress() {
         return beginaddress;
     }
 
-    public void setBeginaddress(Date beginaddress) {
+    public void setBeginaddress(String beginaddress) {
         this.beginaddress = beginaddress;
     }
 

@@ -32,4 +32,8 @@ public class IncomeController {
 		service.save(income);
 		return "hcq2/Income";
 	}
+	@RequestMapping("/getTotal")
+	public @ResponseBody Integer getTotal(){
+		return service.getTotal();
+	}
 }

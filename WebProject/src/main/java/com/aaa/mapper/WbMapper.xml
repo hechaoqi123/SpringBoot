@@ -20,5 +20,9 @@
    <select id="getAllWbone4" resultType="java.util.Map">
       select * from Wb where wbfl='银行客服服务'
    </select>
+   
+   <select id="getAll" resultType="java.util.Map">
+     select * from Wb where wbid=#{id}
+   </select>
 </mapper>   
    

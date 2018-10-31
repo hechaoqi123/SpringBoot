@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>&nbsp;</td>
 <td id="colloaForm">
 <div class="formTaskflowContainer">
-<form class="formTaskflow">
+<form action="/report/addAll";method="post" class="formTaskflow" id="refrom">
 <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col>
@@ -44,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table cellspacing="0" cellpadding="0" border="0">
 <tbody>
 <tr>
-<td  style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required"> </td>
- <td><input name="rname" id="rname" value="请输入报告标题" class="pname" style="height: 40px; width:1000px; font-size: 20px; font-weight: bold; text-align: center;">
+<td style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required"> </td>
+ <td><input name="rname" id="rname" value="请输入报告标题" class="rname" style="height: 40px; width:1000px; font-size: 20px; font-weight: bold; text-align: center;">
 </td>
 </tr>
 </tbody>
@@ -60,22 +60,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">报告分类</td>
 <td>
-<input onclick="onTypeChange(10);" id="dbf.psid2" type="radio" value="10" name="rtype" autocomplete="off">年度 
-<input onclick="onTypeChange(20);" id="dbf.psid2" type="radio" value="20" name="rtype" autocomplete="off">季度
- <input onclick="onTypeChange(30);" id="dbf.psid2" type="radio" value="30" name="rtype" autocomplete="off">月度
-  <input onclick="onTypeChange(40);" id="dbf.psid2" type="radio" value="40" name="rtype" autocomplete="off">周
-   <input onclick="onTypeChange(100);" id="dbf.psid2" type="radio" value="100" name="rtype" autocomplete="off">项目 
-   <input onclick="onTypeChange(0);" id="dbf.psid2" checked="" type="radio" value="0" name="rtype" autocomplete="off">其他</td>
+<input onclick="onTypeChange('年度');" id="dbf.psid2" type="radio" value="年度" name="rtype" autocomplete="off">年度 
+<input onclick="onTypeChange('季度');" id="dbf.psid2" type="radio" value="季度" name="rtype" autocomplete="off">季度
+ <input onclick="onTypeChange('月度');" id="dbf.psid2" type="radio" value="月度" name="rtype" autocomplete="off">月度
+  <input onclick="onTypeChange('周');" id="dbf.psid2" type="radio" value="周" name="rtype" autocomplete="off">周
+   <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="项目" name="rtype" autocomplete="off">项目 
+   <input onclick="onTypeChange('其他'));" id="dbf.psid2" checked="" type="radio" value="其他" name="rtype" autocomplete="off">其他</td>
 <td style="TEXT-ALIGN: center">从属于</td>
-<td ><select style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname"></select></td></tr>
+<td ><select style="width:445px; border: #F4F4F4" class="rlname" id="rlname" name="rlname"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
-<td><select style="width:342px; border: #F4F4F4" class="username" id="username" name="detailld"></select></td>
+<td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
 <td style="TEXT-ALIGN: center">所属部门</td>
 <td><select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建时间</td>
-<td><input style="width:338px; border: #F4F4F4" name="ksdate" class="ksdate" id="ksdate"></td>
+<td><input style="width:338px; border: #F4F4F4" name="creationdate" class="creationdate" id="creationdate"></td>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>评审人</td>
 <td ><select style="width:445px; border: #F4F4F4" class="knmae" id="kname" name="kname"></select></td></tr>
 <tr>
@@ -88,17 +88,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
          <tr>
              <td>1</td>
-              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[0].rename"></td>
+              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[0].renames"></td>
               
          </tr>
          <tr>
               <td>2</td>
-              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[1].rename"></td>
+              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[1].renames"></td>
             
          </tr>
          <tr>
               <td>3</td>
-              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[2].rename"></td>
+              <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[2].renames"></td>
              
          </tr>
          
@@ -118,11 +118,12 @@ function onTypeChange(n){
 	else $("dbf.subject").value("某某工作报告");
 }
 </script>
- <div id="_vWorkflowActionsShow" align="right">
+ <input style="margin-left:960px;height:30px;width:50px" type="submit" value="保存" id="add"/>
+<!--  <div id="_vWorkflowActionsShow" align="right">
 <a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;保存&#39;,150,1);return false;">保存</a>
 <a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;转评审&#39;,1,1);return false;">转评审</a>
 <a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;取消&#39;,0,0);return false;">取消</a>
-</div>
+</div> -->
 </form></div>
  
 <form method="post"><input type="hidden" id="viewState" name="viewState"></form>
@@ -176,6 +177,21 @@ function onTypeChange(n){
          $("#kname").append(option);
          
          }
+       }); //
+        $.ajax({
+        url:"plan/seltys",
+        type:"post",
+        dataType:"json",
+        success:function(data){
+         $("#username").html();
+         var option="<option>--请选择--</option>";
+          for(var i=0;i<data.length;i++){
+           option+="<option value='"+data[i].username+"'>"+data[i].username+"</option>";
+          }
+     
+         $("#kname").append(option);
+         
+         }
        }); 
        //begin
          $.ajax({
@@ -186,11 +202,10 @@ function onTypeChange(n){
          $("#planname").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].pid+"'>"+data[i].planname+"</option>";
+           option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
        
           }
-         $("#planname").append(option);
-       
+         $("#rlname").append(option);
          }
  
        });
@@ -203,7 +218,7 @@ function onTypeChange(n){
          $("deptName").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
-           option+="<option value='"+data[i].deptid+"'>"+data[i]. deptName+"</option>";
+           option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";
        
           }
          $("#deptName").append(option);

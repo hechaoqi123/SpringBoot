@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	
 	#zero1{
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  border:1px solid #bbf;
 	  font-size:14;
 	  background-color:#F4F4F4;
-	  margin-top:-40px;
+	  margin-top:-190px;
 	}
 	.zero12{
 	  height:170px;
@@ -118,11 +118,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
         <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>知识社区</i></h2>
      
-     <div class="btn-group" style="margin-left:700px;margin-top:-70px;">
-	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">后退</button>
-	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">+社区发帖</button>
-	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">查找</button>
-	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">设置关注</button>
+     <div class="btn-group" style="margin-left:880px;margin-top:-70px;">
+	    <button type="button" class="btn btn-default" style="background:#fff;color:#000"><a href="<%=basePath%>BackJsp/xgp/AddKnowledge.jsp">+社区发帖</a></button>
 	    <button type="button" class="btn btn-default" style="background:#fff;color:#000">刷新</button>
      </div>
      </br>
@@ -132,16 +129,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <td id="zero1">
               <div class="zero11"><i style="display:block;margin-top:10px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分类</i></div>
                  <div class="zero12">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">(显示所有)</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">合理化建议</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">技术交流</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">企业文化</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">生活娱乐</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one0">(显示所有)</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">合理化建议</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">技术交流</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">企业文化</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one1">生活娱乐</span></div>
                  </div>
                  <div class="zero13">
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one3">本周新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one4">本月新增</span></div>
-                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one5">本季度新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one2">本周新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one3">本月新增</span></div>
+                   <div><img src="<%=basePath%>BackJsp/img/five.png"><span style="position:absolute;" class="one4">本季度新增</span></div>
                  </div>
                  
            </td>
@@ -149,19 +146,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div id="colloaContent2">
 					<table class="tableList" style="table-layout:fixed;" cellspacing="0" cellpadding="0" border="0">
 						<colgroup>
-							<col width="300px">
+							<col width="450px">
 							<col width="120px">
 							<col width="120px">
 							<col width="120px">
-							<col width="120px">
-						</colgroup>
+						
+						 </colgroup>
 						<thead>
 							<tr>
 								<th style="height:40px">主题</th>
 								<th>作者</th>
 								
-								<th>回复</th>
-								<th>最后回复</th>
+								<th>标签</th>
+								<th>时间</th>
 							</tr>
 						</thead>
 						<tbody id="tbody">
@@ -208,10 +205,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
                    tr+="</tr>";
                    $("#tbody").append(tr);
                    
@@ -231,72 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          })
       }
      
-     //点击查询
-      $(".one1").click(function(){
-        $.ajax({
-            url:"Zs/getAllZs",
-            type:"post",
-            data:{"pageNum":1},//将数组转成json字符串
-            dataType:"json",
-            success:function(data){
-            $("#tbody").html("");
-               var datalist=data.list;
-                for(var i=0;i<datalist.length;i++){
-                  var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
-                   tr+="</tr>";
-                   $("#tbody").append(tr);
-                   
-               }
-               $("#nowPage").html(data.pageNum);
-               //alert(data.isFirstPage)
-               if(data.isFirstPage){$("#prepage").hide()}else{
-                 $("#prepage").show()
-               }
-                if(data.isLastPage){$("#nextpage").hide()}else{
-                  $("#nextpage").show()
-                }
-            }
-        })
-    })
-     //条件查询
-     //条件查询
-      $(".one2").click(function(){
-        $.ajax({
-            url:"Zs/getAllone2",
-            type:"post",
-            data:{"pageNum":1,"zsclassify":$(this).html()},//将数组转成json字符串
-            dataType:"json",
-            success:function(data){
-            $("#tbody").html("");
-               var datalist=data.list;
-                for(var i=0;i<datalist.length;i++){
-                  var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].zstheme+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"("+datalist[i].zsdate+")"+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zh+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zd+"</td>";
-                   tr+="</tr>";
-                   $("#tbody").append(tr);
-                   
-               }
-               $("#nowPage").html(data.pageNum);
-               //alert(data.isFirstPage)
-               if(data.isFirstPage){$("#prepage").hide()}else{
-                 $("#prepage").show()
-               }
-                if(data.isLastPage){$("#nextpage").hide()}else{
-                  $("#nextpage").show()
-                }
-            }
-        })
-    }) 
-     
-     
-     
+    
      
      $("#prepage").click(function(){
            var nowpage=parseInt($("#nowPage").html());
@@ -312,7 +245,171 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       $("#endRow").click(function(){
          getAll(MaxPage);
       })
-
+   
+   $(".one0").click(function(){
+        $.ajax({
+            url:"Zs/getAllone0",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                 var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+     
+     
+     
+      
+     //条件查询
+      $(".one1").click(function(){
+        $.ajax({
+            url:"Zs/getAllone1",
+            type:"post",
+            data:{"pageNum":1,"zsclassify":$(this).html()},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+     //条件查询
+      $(".one2").click(function(){
+        $.ajax({
+            url:"Zs/getAllone2",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+     //条件查询
+      $(".one3").click(function(){
+        $.ajax({
+            url:"Zs/getAllone3",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+     //条件查询
+      $(".one4").click(function(){
+        $.ajax({
+            url:"Zs/getAllone4",
+            type:"post",
+            data:{"pageNum":1},//将数组转成json字符串
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+               var datalist=data.list;
+                for(var i=0;i<datalist.length;i++){
+                  var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Zs/getxq?id="+datalist[i].zsid+"'>"+datalist[i].zstheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsauthor+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zslable+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].zsdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+   
+   
 
 </script>
 

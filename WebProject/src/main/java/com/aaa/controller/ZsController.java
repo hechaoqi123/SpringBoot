@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -55,10 +57,47 @@ public class ZsController {
 		   
 		  return p1;
 	}
-	@RequestMapping("/getAllZs")
-		public @ResponseBody PageInfo<Map> getAllhf(Integer pageNum,String name){
-			  return zsservice.getAllhf(pageNum, name);
+	 
+	//chaxun
+		 @Temporal(TemporalType.TIMESTAMP)  
+		 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+		@RequestMapping("/getAllone0")
+		public @ResponseBody PageInfo<Map> getAllone0(Integer pageNum){
+			    System.out.println(zsservice.getAllone0(pageNum));
+			  return zsservice.getAllone0(pageNum);
 		}
+		//chaxun
+		 @Temporal(TemporalType.TIMESTAMP)  
+		 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+		@RequestMapping("/getAllone1")
+		public @ResponseBody PageInfo<Map> getAllone1(Integer pageNum,String zsclassify){
+			   PageInfo p1=zsservice.getAllone1(pageNum, zsclassify);
+			   System.out.println(p1);
+			   
+			  return p1;
+		}
+		 
+		 @RequestMapping("/getAllone2")
+			public @ResponseBody PageInfo<Map> getAllone2(Integer pageNum){
+				    System.out.println(zsservice.getAllone2(pageNum));
+				  return zsservice.getAllone0(pageNum);
+			}
+		 @RequestMapping("/getAllone3")
+			public @ResponseBody PageInfo<Map> getAllone3(Integer pageNum){
+				    System.out.println(zsservice.getAllone3(pageNum));
+				  return zsservice.getAllone0(pageNum);
+			}
+		 @RequestMapping("/getAllone4")
+			public @ResponseBody PageInfo<Map> getAllone4(Integer pageNum){
+				    System.out.println(zsservice.getAllone4(pageNum));
+				  return zsservice.getAllone0(pageNum);
+			}
 	
-
+		 @RequestMapping("getxq")
+		 public String getAll(int id,Model m){
+				List<Map> list=zsservice.getAll(id);
+				m.addAttribute("list",list);
+				
+				return "xgp/SelectKnowledge";
+			}
 }

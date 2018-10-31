@@ -3,11 +3,15 @@ package com.aaa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aaa.bean.Cost;
 import com.aaa.bean.CostManager;
+import com.aaa.bean.CostUtil;
 import com.aaa.bean.Dimission;
 import com.aaa.service.CostManagerService;
 import com.aaa.service.DeptService;
@@ -19,12 +23,11 @@ import com.github.pagehelper.PageInfo;
 public class CostManagerController {
 	@Autowired
 	CostManagerService service;
-	/*
 	@RequestMapping("/save")
-	public String save(CostManager dept){
-		service.save(dept);
-		return "true";
-	}*/
+	public String save(CostManager cost,CostUtil util){
+		service.saveCostManager(cost,util.getCosts());
+		return "hcq2/costManager";
+	}
 	 @RequestMapping("/getAll")
 	 @ResponseBody	
 	  public PageInfo<CostManager> getAll(Integer pageNum){

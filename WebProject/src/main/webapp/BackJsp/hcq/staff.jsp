@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <H1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:7px;">员工管理</span></H1></TD>
           <TD align="right">
-          <button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>新增员工</button>
+          <button id="save"  class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>新增员工</button>
 <SCRIPT language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=702000&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==0) workflowListOne("workflow.aspx","新增员工",702010,"<i class='fa fa-plus fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","修改",702020,"<i class='fa fa-eyedropper fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","删除",702030,"<i class='fa fa-remove fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==0) workflowListOne("finder.aspx","查找",702050,"<i class='fa fa-search fa-lg'></i>",702000,sObjects,bPortal,bSelf);}</SCRIPT>
 
 <SCRIPT language="javaScript">workflowList(0);</SCRIPT>
@@ -63,14 +63,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <TBODY>
               <TR id="dataCount">
                 <TD style="padding: 10px;">
-                  <DIV class="treeOfNavigation" id="aa"><A @click="flush(1)" href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 所有员工 <SPAN class="tipCount">{{AllCount}}</SPAN></A><A @click="queryByCriteria('在职')"  href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 在职的员工 <SPAN class="tipCount">{{onJob}}</SPAN></A><A @click="queryByCriteria('试用')"  href="javascript:catalogue(10,10,'试用期员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 试用期员工 <SPAN class="tipCount">{{onTrial }}</SPAN></A><A @click="queryByCriteria('临时')"  href="javascript:catalogue(10,5,'临时的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 临时的员工 <SPAN class="tipCount">{{temporary}}</SPAN></A><A @click="queryByCriteria('退休')"  href="javascript:catalogue(10,-1,'退休的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 退休的员工 <SPAN class="tipCount">{{retire}}</SPAN></A><A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" 
-                  border="0"> 离职的员工 <SPAN 
-              class="tipCount">{{dimission}}</SPAN></A></DIV></TD></TR></TBODY></TABLE></TD>
+                  <DIV class="treeOfNavigation" id="aa">
+                  <A @click="flush(1)" href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 所有员工 <SPAN class="tipCount">{{AllCount}}</SPAN></A>
+                  <A @click="queryByCriteria('在职')"  href="javascript:catalogue(10,0,'在职的员工');"><IMG src="BackJsp/hcq/img/folder.png"  border="0"> 在职的员工 <SPAN class="tipCount">{{onJob}}</SPAN></A>
+                  <A @click="queryByCriteria('试用')"  href="javascript:catalogue(10,10,'试用期员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 试用期员工 <SPAN class="tipCount">{{onTrial }}</SPAN></A>
+                  <A @click="queryByCriteria('临时')"  href="javascript:catalogue(10,5,'临时的员工');"><IMG src="BackJsp/hcq/img/folder.png"  border="0"> 临时的员工 <SPAN class="tipCount">{{temporary}}</SPAN></A>
+                  <A @click="queryByCriteria('退休')"  href="javascript:catalogue(10,-1,'退休的员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 退休的员工 <SPAN class="tipCount">{{retire}}</SPAN></A>
+                  <A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 离职的员工 <SPAN     class="tipCount">{{dimission}}</SPAN></A></DIV></TD></TR></TBODY></TABLE></TD>
           <TD></TD>
           <TD >
             <TABLE id="app" class="tableList" border="0" cellspacing="0" 
@@ -95,7 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TD>{{user.entrydate}}&nbsp;</TD>
                 <TD><a @click="remove(user.detailid)" href="javascript:">删除</a>	&nbsp;</TD></TR>
                 
-               </TBODY></TABLE>
+               </TBODY>
+               </TABLE>
                 <br/>
                 <span id="pageUtil">
                 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a>
@@ -133,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              },methods:{
                 execute:function(PageNumber){
                   if(this.part==0){//全部加载
+                  
                     var url = '/userdetail/getAllUserdetail';
 		              this.$http.post(url,{pageNum:PageNumber},{emulateJSON:true}).then(function(res){
 		                page.users=res.body.list
@@ -163,21 +164,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           if(confirm("您确定要删除此员工吗？(该员工的人事基础信息将被删除。)")){
 		                var url="userdetail/remove";
 		               this.$http.post(url,{userId:userId},{emulateJSON:true}).then(function(res){})
-		               flashPage();
-		              /*  var url="userdetail/remove";
-		               this.$http.post(url,{userId:userId},{emulateJSON:true}).then(function(res){
-		                   alert(1);
-		               }) */
+		               flashPage();//刷新页面
 		           }
 		        }
 		    }
 		})
-		//封装条件检索
+		//封装数据量及条件检索
 		var dataCount=new Vue({
 		    el:"#dataCount",
 		    data:{
-		       AllCount:0,
-		       onJob:0,
+		       AllCount:0,//全部数量
+		       onJob:0,//在职员工数量
 		       onTrial:0,
 		       temporary:0,
 		       retire:0,
@@ -190,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       },flush:function(pagenumber){
 		           pageUtil.part=0;//设置为全部加载
 		           page.execute(pagenumber);
-		       },getAll:function(){
+		       },getAll:function(){//条件查询
 		          var url="userdetail/classify";
 		          this.$http.post(url,{emulateJSON:true}).then(function(res){
 		              var array=res.body;

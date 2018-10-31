@@ -21,5 +21,7 @@ public interface UserdetailService {
 	//条件查询
 	public PageInfo getAllOne(Integer pageNum,String dependence);
 	
-	
+	public void update(Userdetail user);
+	//修改
+	int updateByPrimaryKeySelective(Userdetail record);
 }

@@ -50,7 +50,7 @@ cellspacing="0" cellpadding="0">
     <TD>&nbsp;</TD>
     <TD id="colloaForm">
       <DIV class="formTaskflowContainer">
-         <FORM class="formTaskflow" action="Zs/AddZs" method="post" enctype="multipart/form-data">
+         <FORM class="formTaskflow" action="Wd/AddWd" method="post" enctype="multipart/form-data">
          
         <!--第一部分   -->
            <TABLE class="tableForm" style="margin-bottom: 20px; table-layout: fixed;" 
@@ -71,11 +71,11 @@ cellspacing="0" cellpadding="0">
             </TD>
             <TD style="text-align: right;">&nbsp;优先级:</TD>
             <TD>
-                 <INPUT name="wdpriority" id="dbf.priority" type="radio" value="-1" 
+                 <INPUT name="wdpriority" id="dbf.priority" type="radio" value="低" 
                  autocomplete="off">低
                  <INPUT name="wdpriority" id="dbf.priority" 
-                 type="radio" checked="" value="0" autocomplete="off">中
-                 <INPUT name="wdpriority" id="dbf.priority" type="radio" value="1" 
+                 type="radio" checked="" value="中" autocomplete="off">中
+                 <INPUT name="wdpriority" id="dbf.priority" type="radio" value="高" 
                  autocomplete="off">高
             </TD>
         </TR>

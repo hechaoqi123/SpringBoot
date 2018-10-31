@@ -8,7 +8,7 @@ public class Recruit implements Serializable {
 	@Id
     private Integer recruitid;
 
-    private String principal;//责任人
+    private String principal;//申请人
 
     private String enddate;//到岗日期
 

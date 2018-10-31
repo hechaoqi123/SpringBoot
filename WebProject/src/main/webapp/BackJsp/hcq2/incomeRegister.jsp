@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            font-size:17px;
         }
  </style>
-</head><body style="background-image:url(../assets/img/bg1.jpg);" id="colloaBody">
+</head><body style="background-color:#ECF5FF"  id="colloaBody">
   <form id="subform" action="Income/savePlay" method="post">
 <table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0"><tbody><tr valign="top"><td>&nbsp;</td><td id="colloaForm"><div class="textBig">收入登记</div><br>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" summary="" border="0">
@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $("#subform").submit();
       })
       $("#ret").click(function(){
-        window.location.href="BackJsp/hcq/checking.jsp";
+        window.location.href="BackJsp/hcq2/Income.jsp";
       })
         })
 </script>

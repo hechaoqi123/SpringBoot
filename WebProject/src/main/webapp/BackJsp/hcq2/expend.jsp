@@ -8,21 +8,87 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>My JSP 'expend.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
-  </head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+  <title>支出管理查询 - Colloa</title>
+  <link rel="stylesheet" href="BackJsp/hcq2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="BackJsp/hcq2/css/view.css">
+  <script type="text/javascript" src="BackJsp/hcq2/js/viewCn.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq2/js/view.js"></script>
+</head><body id="colloaBody"><table style="min-width:980px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr valign="top"><td id="colloaContent">
+<span id="app">
+<table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td><h1>
+<img style="cursor:pointer;" src="BackJsp/hcq2/img/menu.png" > 支出管理</h1></td><td>
+<img src="BackJsp/hcq2/img/coins.gif"> 累计支出 <span class="textBig" style="color:#E22018;">{{total}}</span></td>
+<td id="oWorkflowList" align="right" width="700px">
+          <button @click="tiao"  class="btn" style="position:absolute;right:30px;width:150px;margin-left:500px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer ">
+            <b>+</b>支出登记</button>
+</td></tr></tbody></table><br>
+
+<table cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
+      <th>支出日期</th>
+      <th style="text-align:right;">支出金额</th>
+      <th>支出分类</th>
+      <th>申请人</th>
+      <th>关联部门</th>
+      <th>对方单位</th>
+      <th>来源</th></tr></thead>
+<tbody><tr v-for="income in recruits">
+    <td><img src="BackJsp/hcq2/img/time.gif">{{income.expenddate}}</td>
+    <td style="color:#E22018;text-align:right;">{{income.money}}</td>
+    <td>{{income.expendtype}}</td>
+    <td>{{income.registrant}}&nbsp;</td>
+    <td>{{income.dept}}&nbsp;</td>
+    <td>{{income.opposite}}&nbsp;</td>
+    <td><a href="javascript:"><img src="BackJsp/hcq2/img/detail.png" width="17" title="来源"></a></td>
+    </tr>
+</table>
+<!-- 分页 -->
+<br/>
+<span style="margin-left:100px">
+ <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
+</span>
+</span>
+</td></tr></tbody></table>
+</body></html>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script>
+     $(function(){
+       var load=new Vue({
+            el:'#app',
+            data:{
+               recruits:null,
+               pageInfo:null,
+               total:0
+            },methods:{
+               execute:function(pageNum){
+                 var url="/Expend/getAll";
+                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
+                     this.recruits=res.body.list
+                     this.pageInfo=res.body
+                 })
+               },tiao:function(){
+                 window.location.href="BackJsp/hcq2/expendManager.jsp"
+               },getTotal:function(){
+                   var url="Expend/getTotal";
+                   this.$http.post(url).then(function(res){
+                      this.total=res.body
+                   })
+               }
+            }
+       })
+     load.execute(1);
+     load.getTotal();
+     $(".btn").each(function(){
+        $(this).hover(function(){
+          $(this).css("border","1px solid #5ea6eb")
+        },function(){
+          $(this).css("border","1px solid #E0E0E0")
+        })
+     })
+  })
+</script>

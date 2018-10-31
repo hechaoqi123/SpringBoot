@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.TaskMapper">
+ <select id="selectall" parameterType="java.lang.String" resultType="java.util.Map">
+    select * from task t  join dept d on t.deptid=d.deptid join userdetail u on t.detailld=u.detailId join Krar k on k.tid=t.tid where t.rwfl=#{rwfl}
+	 </select>
 	 <select id="query" parameterType="java.lang.String" resultType="java.util.Map">
-select * from task t  join dept d on t.deptid=d.deptid join userdetail u on t.detailld=u.detailId join Krar k on k.tid=t.tid where u.username =#{name}
+    select * from task t  join dept d on t.deptid=d.deptid join userdetail u on t.detailld=u.detailId join Krar k on k.tid=t.tid where u.username =#{name}
 	 </select>
 	 <select id="querytwo" resultType="java.util.Map">
 	 select * from task t  join dept d on t.deptid=d.deptid join userdetail u on t.detailld=u.detailId join Krar k on k.tid=t.tid 
 	 </select>
      <insert id="add" parameterType="com.aaa.bean.Task">
      insert into task(tname,ksdeta,jsdeta,deptid,detailld,rwsm,zxjg,rwfl,workload) VALUES
-     (#{tname},#{ksdeta},#{jsdeta},#{deptid},#{detailld},#{rwsm},#{zxjg},#{rwfl},#{#{rwfl}})
+     (#{tname},#{ksdeta},#{jsdeta},#{deptid},#{detailld},#{rwsm},#{zxjg},#{rwfl},#{workload})
      </insert>
      <insert id="addone" parameterType="com.aaa.bean.Krar">
         insert into Krar(tid,kname)VALUES((select MAX(tid) from task),#{kname})

@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	
 	#zero1{
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
       <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>外部通讯录</i></h2>
         
-     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
+     <div class="btn-group" style="margin-left:890px;margin-top:-70px;">
        
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddExternal.jsp">登记记录</a></button>
 	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">
@@ -186,8 +186,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#tbody").html("");
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
-                   var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].wbname+"</td>";
+                   var tr="<tr>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</a></td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:120px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -223,7 +224,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -256,7 +258,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -287,7 +290,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";
@@ -319,7 +323,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbname+"</td>";
+                   tr+="<td style='height:30px;width:300px;border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+
+                   "<a href='Wb/getxq?id="+datalist[i].wbid+"'>"+datalist[i].wbname+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbtx+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbssdw+"</td>";
                    tr+="<td style='border:1px solid #999;width:150px;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].wbphone+"</td>";

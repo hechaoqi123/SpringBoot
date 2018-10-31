@@ -16,6 +16,10 @@ public interface ReportMapper extends Mapper<report> {
 	public List<Map> query();
 	public List<Map> querytwo();
 	public int add(report report);
+    public List<report> sele();
+
 	public void addthere(Krar krar);
 	public void addfour(reportser reportser);
+
+	public List<Map> reporres(String rtype);
 }

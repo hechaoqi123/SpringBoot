@@ -32,4 +32,8 @@ public class ExpendController {
 		service.save(expend);
 		return "hcq2/expend";
    }
+	@RequestMapping("/getTotal")
+	public @ResponseBody Integer getTotal(){
+		return service.getTotal();
+	}
 }

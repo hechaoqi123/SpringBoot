@@ -15,5 +15,8 @@
    <select id="getAllone4" resultType="java.util.Map">
       select * from Wd where QUARTER(wddate)=QUARTER(now())
    </select>
+   <select id="getAll" resultType="java.util.Map" >
+      select * from Wd where wdid=#{id}
+    </select>
 
 </mapper>

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class reportser implements Serializable {
 	@Id
 	private Integer reid;
-	private String rename;
+	private String renames;
 	private Integer rid;
 	public Integer getReid() {
 		return reid;
@@ -15,11 +15,11 @@ public class reportser implements Serializable {
 	public void setReid(Integer reid) {
 		this.reid = reid;
 	}
-	public String getRename() {
-		return rename;
+	public String getrenames() {
+		return renames;
 	}
-	public void setRename(String rename) {
-		this.rename = rename;
+	public void setrenames(String renames) {
+		this.renames = renames;
 	}
 	public Integer getRid() {
 		return rid;
@@ -29,7 +29,8 @@ public class reportser implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "reportser [reid=" + reid + ", rename=" + rename + ", rid=" + rid + "]";
+		return "reportser [reid=" + reid + ", renames=" + renames + ", rid=" + rid + "]";
 	}
+
 	
 }

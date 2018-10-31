@@ -22,7 +22,7 @@ public class Zs implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date zsdate;//时间
 
-    private Integer hfid;//评论外检
+    
 
     private String zsauthor;//作者
 
@@ -78,13 +78,7 @@ public class Zs implements Serializable {
         this.zsdate = zsdate;
     }
 
-    public Integer getHfid() {
-        return hfid;
-    }
-
-    public void setHfid(Integer hfid) {
-        this.hfid = hfid;
-    }
+   
 
     public String getZsauthor() {
         return zsauthor;

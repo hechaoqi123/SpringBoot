@@ -20,6 +20,8 @@ public interface GgService {
 	public PageInfo getAllGgone7(Integer pageNum,String ggClassify);
 	public PageInfo getAllGgone8(Integer pageNum,String ggClassify);
 	
+	public List<Map> getAll(int id);
+	
 	
 	
 	

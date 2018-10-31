@@ -66,4 +66,10 @@ public class WdServiceImpl implements WdService{
 		return info;
 	}
 
+	@Override
+	public List<Map> getAll(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getAll(id);
+	}
+
 }

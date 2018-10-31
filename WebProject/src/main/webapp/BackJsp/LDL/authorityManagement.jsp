@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</table>
 	</div>
 	<div id="bottomDiv">
-		<div id="colloaMenu2"><!--  bottomRightDiv-->
+		<!-- <div id="colloaMenu2"> bottomRightDiv
 			<a class="" href="javascript:getvo();">
 				<img src="../assets/images/key.gif" border="0"> 模块访问权设置
 			</a>
@@ -79,48 +79,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:getvo();">
 				<img src="../assets/images/share.gif" border="0"> 按用户设置权限
 			</a>
-		</div>
+		</div> -->
 		<div id="bottomRightDiv">
-				<ul class="bottomRightDivUl">
-					<li>编号</li>
-					<li>名称</li>
-					<li>描述</li>
-					<li>状态</li>
-					<li>信息</li>
-					<li>操作</li>
-				</ul>
-				
-				<div id="myTbody">
-					<div id="sidebar" class="sidebar">
-						<ul class="nav nav-list">
-							<li class="w" v-for="Visitonemodile in Visitonemodiles">
-								 <a href="#" class="dropdown-toggle">							
-			                        <span>{{Visitonemodile.mOneId}}</span>
-			                        <span>{{Visitonemodile.mname}}</span>
-									<span>{{Visitonemodile.mdescribe}}</span>
-									<span v-if="Visitonemodile.msequnce=1">启用</span>
-									<span v-if="Visitonemodile.msequnce=0">禁用</span>
-									<span><img v-bind:src="Visitonemodile.mimageurl"/></span>
-									<span><img v-bind:src="Visitonemodile.mimageurl"/></span>
-								</a>
-								<ul class="submenu" style="display:none;padding:0px;">
-									<li class="ww" v-for="Visittwomodile in Visittwomodiles" v-if="!(Visittwomodile.mOneId != Visitonemodile.mOneId)"  > 
-									  	<a style="color:#f7f7f7;font-size:12px;">
-											<span>{{Visittwomodile.mTowId}}</span>
-											<span>{{Visittwomodile.mname}}</span>
-											<span>{{Visittwomodile.mdescribe}}</span>
-											<span style="margin:0 10;">{{Visittwomodile.msequnce}}</span>
-											<span style="margin:0 10;">{{Visittwomodile.murl}}</span>
-											<span style="margin: 0 20;" @click="towModileAllocation(Visittwomodile.mTowId)" data-toggle="modal" data-target="#myModal">
-												<img src="../assets/img/user_add.png"height="25px">
-											</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
+			<div id="authorityVue">
+				<table cellpadding=0 cellspacing=0 border=0 class="tableList">
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>名称</th>
+							<th>描述</th>
+							<th>所属</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="Visitonemodile in Visitonemodiles" v-on:click="selectVisittwomodile(Visitonemodile.mOneId,$event)"> 
+								<td style='padding-left:25px'>{{Visitonemodile.mOneId}}</td>
+								<td>{{Visitonemodile.mname}}</td>
+								<td>{{Visitonemodile.mdescribe}}</td>
+								<td>阿尔法集团</td>
+								<td>启用</td>
+								<td>
+									<img src="../assets/images/update.png" width="15px" title="修改">&nbsp;
+									<img src="../assets/images/del.png" width="15px" title="删除">
+								</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
@@ -151,18 +138,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="alootDiv">
 					<div class="alootTrue">
+						<div class="alootTrueUser">已拥有员工</div>
 						<div class="alootTrueUser" v-for="trueUser in trueUsers" @click="shiftTrueUser(trueUser.uid)">{{trueUser.uname}}</div>
 					</div>
 					<div class="alootFalse">
+						<div class="alootFalseUser">未拥有员工</div>
 						<div class="alootFalseUser" v-for="falseUser in falseUsers"  @click="shiftFalseUser(falseUser.uid)">{{falseUser.uname}}</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -193,9 +179,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td><input type="text" name="mdescribe" v-model="mdescribe"></td>
 						</tr>
 						<tr>
-							<td>模块状态</td>
-							<td><input type="radio" checked="checked" name="msequnce" v-model="msequnce" value="1">启用
-								<input type="radio" name="msequnce"  v-model="msequnce" value="0">禁用</td>
+							<td>模块序号</td>
+							<td>
+								<input type="text" name="msequnce" v-model="msequnce" value="">
+							</td>
 						</tr>
 						<tr>
 							<td>模块标志图</td>
@@ -223,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					增加一级导航
+					增加二级导航
 				</h4>
 			</div>
 			<div class="modal-body">

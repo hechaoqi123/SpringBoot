@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 责任人: <span id="mapping.dbf.responsorSource">
  <input type="text"  style="border:0px" readonly="true" value="${superUser.username}" />
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
-<div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,&#39;&#39;);" id="e.dbf.endTime" class="fieldEditable" contenteditable="true">&nbsp;</div></td></tr></tbody></table>
+</td></tr></tbody></table>
 <div>
 <div style="TEXT-ALIGN: center">&nbsp;</div>
 <div style="TEXT-ALIGN: center;margin-top:-10px"><span><b style="FONT-SIZE:20px">招聘申请单</b></span></div></div>

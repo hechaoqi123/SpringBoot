@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.DuthorityManagementMapper">
+
 	<!-- public void insertVisitonemodile(Visitonemodile visitonemodile) -->
 	<insert id="insertVisitonemodile" parameterType="Visitonemodile">
 		INSERT INTO visitonemodile(mname, mdescribe, msequnce, mimageurl) VALUES(#{mname}, #{mdescribe}, #{msequnce}, #{mimageurl})
 	</insert>
-	<!-- public void swlwctVisitonemodile(); -->
+	<!-- public void selectVisitonemodile(); -->
 	<select id="selectVisitonemodile" resultType="java.util.Map">
 		SELECT * FROM visitonemodile
 	</select>
 	<!-- public void swlwctVisitteomodile(); -->
-	<select id="selectVisittwomodile" resultType="java.util.Map">
-		SELECT * FROM visittwomodile
+	<select id="selectVisittwomodile" parameterType="integer" resultType="java.util.Map">
+		SELECT * FROM visittwomodile 
+		<where>
+			<if test="mOneId != null">
+				mOneId = #{mOneId}
+			</if>
+		</where>
 	</select>
 	<!-- //根据用户查询二级菜单
 	public List<Map> selectUserTowModile(Integer uid); -->
 	<select id="selectUserTowModile" parameterType="integer" resultType="java.util.Map">
-		SELECT * from visittwomodile vtm 
+		<!-- SELECT * from visittwomodile vtm 
 			JOIN userstowmodile uw 
 			ON uw.mTowId = vtm.mTowId
-			WHERE uw.uid = #{uid}
+			WHERE uw.uid = #{uid} -->
+			SELECT * from visittwomodile vtms
+				WHERE vtms.mTowId IN (
+						SELECT uw.mTowId FROM userstowmodile uw  WHERE uw.uid = #{uid}) 
+					OR vtms.mTowId IN (
+						SELECT  pt.mTwoId from posttwomodile pt
+						JOIN userdetail ud
+						ON ud.position = pt.pid
+						JOIN users u
+						ON u.unum = ud.unum
+						WHERE u.uid = #{uid})
 	</select>
 	<!-- //根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
 	<select id="selectOneMTowModile" parameterType="integer" resultType="java.util.Map">
-		select * from visitonemodile vom where mOneId in (	SELECT mOneId from  visittwomodile vtm
-			JOIN userstowmodile uw 
-			ON uw.mTowId = vtm.mTowId
-			WHERE uw.uid = #{uid}
-  			)ORDER BY vom.msequnce asc
+		select * from visitonemodile vom where mOneId in (
+			SELECT mOneId from  visittwomodile vtms
+				WHERE vtms.mTowId IN (
+						SELECT uw.mTowId FROM userstowmodile uw  WHERE uw.uid = #{uid}) 
+					OR vtms.mTowId IN (
+						SELECT  pt.mTwoId from posttwomodile pt
+						JOIN userdetail ud
+						ON ud.position = pt.pid
+						JOIN users u
+						ON u.unum = ud.unum
+						WHERE u.uid = #{uid})
+	  			)
+	  		ORDER BY vom.msequnce
 	</select>
 </mapper>
 

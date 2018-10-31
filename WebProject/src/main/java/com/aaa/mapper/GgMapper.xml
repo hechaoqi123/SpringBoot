@@ -32,5 +32,7 @@
    <select id="getAllGgone8" resultType="java.util.Map">
       select * from Gg where QUARTER(ggDate)=QUARTER(now())
    </select>
-  
+    <select id="getAll" resultType="java.util.Map" >
+      select * from Gg where ggid=#{id}
+    </select>
    </mapper>
