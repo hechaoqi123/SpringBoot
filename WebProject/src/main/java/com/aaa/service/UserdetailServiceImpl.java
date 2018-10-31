@@ -32,6 +32,7 @@ public class UserdetailServiceImpl implements UserdetailService {
 	}
 	//查询单个用户信息
 	public Userdetail getOne(Integer id){
+		
 		return mapper.selectByPrimaryKey(id);
 	}
 	//查询所有用户信息
@@ -80,7 +81,18 @@ public class UserdetailServiceImpl implements UserdetailService {
 		   return info;
 	}
 	
-
+	@Override
+	public PageInfo<Userdetail> getAllOne(Integer pageNum, String dependence) {
+		PageHelper.startPage(pageNum,8);
+		Userdetail u=new Userdetail();
+		u.setDependence(dependence);
+		mapper.select(u);
+		List<Userdetail> list=mapper.select(u);
+		PageInfo<Userdetail> info=new PageInfo<Userdetail>(list);
+		return info;
+	}
+	
+	
 	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(Userdetail record) {

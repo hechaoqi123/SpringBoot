@@ -95,10 +95,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr></thead>
    <tbody id="tbody">
        <tr v-for="a in list">
-         <td>{{a.rname}}</td>
+         <td><a :href="'report/reportQuerys?id='+a.rid"><img src="BackJsp/wsq/img/userX0.gif" border="0">{{a.rname}}
+         </a></td>
          <td>{{a.username}}</td>
          <td>{{a.deptName}}</td>
-         <td>{{a.letname}}</td>
+         <td>{{a.kname}}</td>
          <td>{{a.creationdate}}</td>
        </tr>
    

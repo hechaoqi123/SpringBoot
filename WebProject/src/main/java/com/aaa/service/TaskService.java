@@ -16,4 +16,5 @@ public interface TaskService {
 	public void adds(Task task,Krar krar);
 	public PageInfo<Map> selectall(Integer pageNum,String rwfl);
 	public List<Task> querylet();
+	public List<Map<String, String>> getOne(int id);
 }

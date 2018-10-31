@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  height:500px;
 	  width:100%;
 	  float:left;
-	  margin-left:50px;
+	  margin-left:30px;
 	}
 	
 	#zero1{
@@ -102,11 +102,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
          <i id="i"><img src="<%=basePath%>BackJsp/img/menu.png"/></i> <h2 style="margin-left:60px;"><i>公告管理</i></h2>
      
-     <div class="btn-group" style="margin-left:800px;margin-top:-70px;">
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">后退</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">发布新公告</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">查找</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default">刷新</button>
+     <div class="btn-group" style="margin-left:865px;margin-top:-70px;">
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><a href="<%=basePath%>BackJsp/xgp/AddNotice.jsp">发布新公告</a></button>
+	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><span onclick="replaceDoc()">刷新</span></button>
      </div>
      </br>
      <table id="zero">
@@ -152,18 +150,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
      </table>
     <!--  分页按钮 -->
+     <!--  分页按钮 -->
      <div class="btn-group" style="margin-left:300px;margin-top:-40px;">
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">首页</button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"id="prepage"><i style="color:#000">上一页</i></button>
-	    <button type="button"  style="background:#fff;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default"id="nextpage"><i style="color:#000">下一页</i></button>
-	    <button type="button" style="background:#fff;color:#000" class="btn btn-default">尾页</button>
+	    <button type="button" style="background:#E3E3E3;color:#000" class="btn btn-default" id="startRow"><i style="color:#000">首页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"  id="prepage"><i style="color:#000">上一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default"><i style="color:#000">当前是第<span id="nowPage"></span>页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="nextpage"><i style="color:#000">下一页</i></button>
+	    <button type="button"  style="background:#E3E3E3;color:#000"class="btn btn-default" id="endRow">尾页</button>
      </div>
       
   </body>
 </html>
 
 <script type="text/javascript">
+ //刷新
+  	 function replaceDoc()
+{
+    window.location.replace("http://localhost:8080/BackJsp/xgp/External.jsp")
+}
+
+
+
 
  $(function(){
           getAll(1);
@@ -178,11 +185,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#tbody").html("");
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
+                 
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
-                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="</tr>";
                    $("#tbody").append(tr);
                }
@@ -221,7 +230,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
@@ -252,7 +262,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
@@ -283,7 +294,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
@@ -291,6 +303,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    $("#tbody").append(tr);
                }
                $("#nowPage").html(data.pageNum);
+               MaxPage=data.pageSize;
                //alert(data.isFirstPage)
                if(data.isFirstPage){$("#prepage").hide()}else{
                  $("#prepage").show()
@@ -314,7 +327,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
@@ -345,7 +359,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var datalist=data.list;
                for(var i=0;i<datalist.length;i++){
                    var tr="<tr  onclick='sund(this)'>";
-                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
                    tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
@@ -363,7 +378,116 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         })
     }) 
-
+    //条件查询
+      $("#one6").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone6",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+    //条件查询
+      $("#one7").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone7",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+    //条件查询
+      $("#one8").click(function(){
+        $.ajax({
+            url:"Gg/getAllGgone8",
+            type:"post",
+            data:{"pageNum":1},
+            dataType:"json",
+            success:function(data){
+            $("#tbody").html("");
+            var datalist=data.list;
+               for(var i=0;i<datalist.length;i++){
+                   var tr="<tr  onclick='sund(this)'>";
+                   tr+="<td style='height:30px;border:1px solid #999;border-right:0px;border-left:0px;color:#004F9D;'>"+
+                   "<a href='Gg/getxq?id="+datalist[i].ggId+"'>"+datalist[i].ggTheme+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDept+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggDate+"</td>";
+                   tr+="<td style='border:1px solid #999;border-right:0px;border-left:0px;color:#6F6F6F;'>"+datalist[i].ggNewdate+"</td>";
+                   tr+="</tr>";
+                   $("#tbody").append(tr);
+               }
+               $("#nowPage").html(data.pageNum);
+               //alert(data.isFirstPage)
+               if(data.isFirstPage){$("#prepage").hide()}else{
+                 $("#prepage").show()
+               }
+                if(data.isLastPage){$("#nextpage").hide()}else{
+                  $("#nextpage").show()
+                }
+            }
+        })
+    }) 
+    
+     $("#prepage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage-1);
+      })
+       $("#nextpage").click(function(){
+           var nowpage=parseInt($("#nowPage").html());
+           getAll(nowpage+1);
+      })
+     $("#startRow").click(function(){
+         getAll(1);
+      })
+      $("#endRow").click(function(){
+         getAll(MaxPage);
+      })
 
  
 </script>

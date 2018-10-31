@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required"> </td>
- <td><input name="rname" id="rname" value="请输入报告标题" class="rname" style="height: 40px; width:1000px; font-size: 20px; font-weight: bold; text-align: center;">
+ <td><input name="rname" id="rname" value="请输入报告标题" class="rname"   style="height: 40px; width:1000px; font-size: 20px; font-weight: bold; text-align: center;">
 </td>
 </tr>
 </tbody>
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <input onclick="onTypeChange('项目');" id="dbf.psid2" type="radio" value="项目" name="rtype" autocomplete="off">项目 
    <input onclick="onTypeChange('其他'));" id="dbf.psid2" checked="" type="radio" value="其他" name="rtype" autocomplete="off">其他</td>
 <td style="TEXT-ALIGN: center">从属于</td>
-<td ><select style="width:445px; border: #F4F4F4" class="rlname" id="rlname" name="rlname"></select></td></tr>
+<td ><select style="width:445px; border: #F4F4F4" class="pid" id="pid" name="pid"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
 <td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="deptid"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建时间</td>
-<td><input style="width:338px; border: #F4F4F4" name="creationdate" class="creationdate" id="creationdate"></td>
+<td><input style="width:338px; border: #F4F4F4"    name="creationdate" class="creationdate" id="creationdate"></td>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>评审人</td>
 <td ><select style="width:445px; border: #F4F4F4" class="knmae" id="kname" name="kname"></select></td></tr>
 <tr>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
          </tr>
          <tr>
-             <td>1</td>
+              <td>1</td>
               <td><input style="border: #F4F4F4; height:50px;width:800px;"  name="list[0].renames"></td>
               
          </tr>
@@ -107,18 +107,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 
 </tbody></table>
-<script language="javascript">
-function onTypeChange(n){
-	var d=new Date();
-	if(n==10) $("dbf.subject").value(d.getFullYear()+"年度工作报告");
-	else if(n==20) {var m=d.getMonth(); $("dbf.subject").value(d.getFullYear()+"年"+(m<3?1:(m<6?2:(m<9?3:4)))+"季度工作报告");}
-	else if(n==30) $("dbf.subject").value(d.getFullYear()+"年"+(d.getMonth()+1)+"月份工作报告");
-	else if(n==40) $("dbf.subject").value(d.getFullYear()+"年"+(d.getMonth()+1)+"月份第?周工作报告");
-	else if(n==100) $("dbf.subject").value("某某项目报告");
-	else $("dbf.subject").value("某某工作报告");
-}
-</script>
- <input style="margin-left:960px;height:30px;width:50px" type="submit" value="保存" id="add"/>
+
+ <input style="margin-left:900px;height:30px;width:50px" type="submit" value="保存" id="add" />
+
+ <input  id="tast"  type="button" value="取消" style="margin-left:950px; margin-top:-30px;  height:30px;width:50px" >
+ 
 <!--  <div id="_vWorkflowActionsShow" align="right">
 <a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;保存&#39;,150,1);return false;">保存</a>
 <a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;转评审&#39;,1,1);return false;">转评审</a>
@@ -162,29 +155,30 @@ function onTypeChange(n){
              }
            }
          )
+  
          //begin
-        $.ajax({
+   /*      $.ajax({
         url:"plan/seltys",
         type:"post",
         dataType:"json",
         success:function(data){
          $("#username").html();
-         var option="<option>--请选择--</option>";
+         var option="<option>admin</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
           }
-         $("#username").append(option);
+
          $("#kname").append(option);
          
          }
-       }); //
+       }); */ //
         $.ajax({
         url:"plan/seltys",
         type:"post",
         dataType:"json",
         success:function(data){
          $("#username").html();
-         var option="<option>--请选择--</option>";
+         var option="<option>admin</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].username+"'>"+data[i].username+"</option>";
           }
@@ -200,12 +194,12 @@ function onTypeChange(n){
         dataType:"json",
         success:function(data){
          $("#planname").html();
-         var option="<option>--请选择--</option>";
+         var option="<option>admin</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
        
           }
-         $("#rlname").append(option);
+         $("#pid").append(option);
          }
  
        });
@@ -216,7 +210,7 @@ function onTypeChange(n){
         dataType:"json",
         success:function(data){
          $("deptName").html();
-         var option="<option>--请选择--</option>";
+         var option="<option>admin</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";
        
@@ -226,7 +220,11 @@ function onTypeChange(n){
          }
  
        });
-       //begin
+           //begin
+        $("#tast").click(function(){
+        window.location.href="BackJsp/wsq/report.jsp";
+      })
+    
      });
 	
      

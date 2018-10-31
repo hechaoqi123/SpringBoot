@@ -16,6 +16,7 @@ public class Task implements Serializable{
   private String rwsm;
   private String zxjg;
   private String rwfl;
+  private Integer pid;
 public Integer getTid() {
 	return tid;
 }
@@ -76,13 +77,18 @@ public String getRwfl() {
 public void setRwfl(String rwfl) {
 	this.rwfl = rwfl;
 }
+public Integer getPid() {
+	return pid;
+}
+public void setPid(Integer pid) {
+	this.pid = pid;
+}
 @Override
 public String toString() {
 	return "Task [tid=" + tid + ", tname=" + tname + ", ksdeta=" + ksdeta + ", jsdeta=" + jsdeta + ", workload="
 			+ workload + ", deptid=" + deptid + ", detailld=" + detailld + ", rwsm=" + rwsm + ", zxjg=" + zxjg
-			+ ", rwfl=" + rwfl + "]";
+			+ ", rwfl=" + rwfl + ", pid=" + pid + "]";
 }
 
- 
 
 }

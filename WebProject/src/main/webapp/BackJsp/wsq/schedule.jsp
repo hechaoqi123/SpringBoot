@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </tr>
   <tbody id="tbody">
    <tr v-for="a in list">
-    <td>{{a.tname}}</td>
+    <td> <a :href="'task/taskQuerys?id='+a.tid"><img src="BackJsp/wsq/img/userX0.gif" border="0">{{a.tname}}</a></td>
     <td>{{a.username}}</td>
     <td>{{a.kname}}</td>
     <td>{{a.ksdeta}}</td>

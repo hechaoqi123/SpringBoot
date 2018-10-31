@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input id="dbf.psid2" type="radio" value="业务" name="rwfl" autocomplete="off">业务 
   <input id="dbf.psid2" type="radio" value="项目" name="rwfl	" autocomplete="off">项目</td>
 <td style="TEXT-ALIGN: center">从属于</td>
-<td ><select style="width:445px; border: #F4F4F4" class="planname" id="planname" name="planname"></select></td></tr>
+<td ><select style="width:445px; border: #F4F4F4" class="pid" id="pid" name="pid"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">创建人</td>
 <td>${detail.username}<input name="detailld" value="${detail.detailid}" readonly="true" style="display:none;border:0px;"/></td>
@@ -87,7 +87,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 </tr>
 </tbody></table>
-<input style="margin-left:60px;height:30px;width:50px" type="submit" value="保存" id="add"/>
+   <input style="margin-left:900px;height:30px;width:50px" type="submit" value="保存" id="add">
+   <input  id="tast" type="button" value="取消" style="margin-left:950px; margin-top:-30px; height:30px;width:50px" >
 </form></div>
 <form method="post"><input type="hidden" id="viewState" name="viewState"></form>
  
@@ -158,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].detailid+"'>"+data[i].username+"</option>";
           }
-         $("#username").append(option);       
+            
          $("#Kname").append(option);
          }
        });
@@ -174,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            option+="<option value='"+data[i].pid+"'>"+data[i].pname+"</option>";
        
           }
-         $("#planname").append(option);
+         $("#pid").append(option);
        
          }
  
@@ -195,6 +196,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          }
  
        });
+       $("#tast").click(function(){
+        window.location.href="BackJsp/wsq/schedule.jsp";
+      })
   
   });
   </script>

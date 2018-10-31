@@ -64,13 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 </thead>
 <tbody>
-  <tr>
-   <td style="padding:16px;" class="treeOfNavigation">
- 
- <a href="javascript:catalogue(10,1,&#39;评审中的报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0"> 我创建的计划 </a>
- <a href="javascript:catalogue(30,1,&#39;已关闭的报告&#39;);"><img src="BackJsp/wsq/img/folder.png" border="0">我执行的计划   </a>
- </td>
-</tr>
+  
 <tr id="dataCount">
 <td style="padding:16px" class="treeOfNavigation">
  <a class="textHighlight" @click="flush(1)"><img src="BackJsp/wsq/img/folder.png" border="0"> (显示所有) <span class="tipCount">{{AllCountker}}</span> </a>

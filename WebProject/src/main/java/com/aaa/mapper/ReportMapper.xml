@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.ReportMapper">
-   <select id="reporres" parameterType="java.lang.String" resultType="com.aaa.bean.report">
-   select r.*,u.detailId,u.username,d.deptId,d.deptName,k.* from report r join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid where r.rtype=#{rtype}
+   <select id="reporres" parameterType="java.lang.String" resultType="java.util.Map">
+	   
+	   select * from report r
+	   	join dept d 
+	   	on r.deptid=d.deptid 
+	   	join userdetail u 
+	   	on r.detailld=u.detailId 
+	   	join Krar k 
+	   	on k.rid=r.rid 
+	   
+	   	where r.rtype=#{rtype}
    </select>
 
 
-	 <select id="query" resultType="java.util.Map">
-select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid 
+	 <select id="query" parameterType="java.lang.String" resultType="java.util.Map">
+select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid where u.username=#{name}
 	 </select>
 	 <select id="querytwo" resultType="java.util.Map">
 select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.detailld=u.detailId join Krar k on k.rid=r.rid
      </select>
    <insert  id="add" parameterType="com.aaa.bean.report">
-      insert into report(rname,deptid,rlname,creationdate,detailld,rtype) VALUES 
-                    (#{rname},#{deptid},#{rlname},#{creationdate},#{detailld},#{rtype})
+      insert into report(rname,deptid,rlname,creationdate,detailld,rtype,pid) VALUES 
+                    (#{rname},#{deptid},#{rlname},#{creationdate},#{detailld},#{rtype},#{pid})
        </insert> 
             	  <insert  id="addfour" parameterType="com.aaa.bean.reportser">
       insert into reportser(rid,renames) VALUES ((select MAX(rid) from report),#{renames})
@@ -24,6 +33,20 @@ select * from report r  join dept d on r.deptid=d.deptid join userdetail u on r.
        </insert>
        <select id="sele" resultType="com.aaa.bean.report">
             select * from report
+       </select>
+       <select id="getOne" parameterType="int" resultType="java.util.Map">
+       select * from report r 
+       join dept d 
+       on r.deptid=d.deptid 
+       join userdetail u 
+       on r.detailld=u.detailId 
+       join Krar k 
+       on k.rid=r.rid 
+       join  reportser re 
+       on re.rid=r.rid 
+       join plan p
+       on p.pid =r.pid
+       where r.rid=#{id}
        </select>
     
 </mapper>
