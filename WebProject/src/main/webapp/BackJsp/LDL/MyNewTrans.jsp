@@ -63,6 +63,8 @@
 		
 		<div id="bottomRightDiv">
 			<div id="authorityVue">
+			
+			<input id="uid" value="${CurrentUser.uid }" style="display: none;">
 				<table cellpadding=0 cellspacing=0 border=0 class="tableList">
 					<thead>
 						<tr>

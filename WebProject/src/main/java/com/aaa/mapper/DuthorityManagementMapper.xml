@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.DuthorityManagementMapper">
-
+	<!--   //增加删除事务访问角色int addTran(Usersandmytransaction uat)-->
+	<insert id="addTran" parameterType="com.aaa.bean.Usersandmytransaction">
+		INSERT INTO usersandmytransaction(pid, trid) VALUES (#{pid}, #{trid})
+	</insert>
+	<!-- int delTran(Usersandmytransaction uat);  -->
+	<delete id="delTran" parameterType="com.aaa.bean.Usersandmytransaction">
+		DELETE FROM usersandmytransaction WHERE pid = #{pid} AND trid = #{trid}
+	</delete>
+	<!-- //查询当前事务拥有访问权限的角色 List<Map> TrueTran(Map map); -->
+	<select id="TrueTran" parameterType="map" resultType="map">
+		SELECT * FROM post p 
+			JOIN usersandmytransaction uat
+			ON uat.pid = p.pid
+			JOIN mytransaction mt
+			ON mt.trid = uat.trid
+			WHERE mt.trid = #{trid}
+			<if test="pname != null">
+				AND p.pname LIKE "%"#{pname}"%"
+			</if>
+	</select>
+	<!-- //!(查询当前事务拥有访问权限的角色)List<Map> FalseTran(Map map); -->
+	<select id="FalseTran" parameterType="map" resultType="map">
+		SELECT * FROM post p
+			WHERE p.pid NOT IN(
+			SELECT p1.pid FROM post p1 
+			JOIN usersandmytransaction uat
+			ON uat.pid = p1.pid
+			JOIN mytransaction mt
+			ON mt.trid = uat.trid
+			WHERE mt.trid = #{trid}
+			)
+		<if test="pname != null">
+			AND p.pname LIKE "%"#{pname}"%"
+		</if>
+	</select>
 	<!-- public void insertVisitonemodile(Visitonemodile visitonemodile) -->
 	<insert id="insertVisitonemodile" parameterType="Visitonemodile">
 		INSERT INTO visitonemodile(mname, mdescribe, msequnce, mimageurl) VALUES(#{mname}, #{mdescribe}, #{msequnce}, #{mimageurl})
@@ -9,15 +43,31 @@
 	<!-- public void selectVisitonemodile(); -->
 	<select id="selectVisitonemodile" parameterType="integer" resultType="java.util.Map">
 		SELECT * FROM visitonemodile vo
-			<if test="uid == -1 ">
-				JOIN mytransaction tr
-				ON tr.mOneId = vo.mOneId
+			<if test="uid > 0">
+				JOIN mytransaction mt
+				ON mt.mOneId = vo.mOneId
+				JOIN usersandmytransaction uat
+				ON uat.trid = mt.trid
+				JOIN userspost up
+				ON up.pid = uat.pid
+				WHERE up.uid = #{uid}
 				GROUP BY vo.mname
 			</if>
 	</select>
-	<!-- //根据父级菜单查询对应的事务public List<Map> getMytransaction(@Param("mOneId") Integer mOneId); -->
-	<select id="getMytransaction" parameterType="integer" resultType="map">
-		SELECT * FROM mytransaction WHERE mOneId = #{mOneId}
+	<!-- //根据父级菜单查询对应可以访问的事务public List<Map> getMytransaction(Map map); -->
+	<select id="getMytransaction" parameterType="map" resultType="map">
+		SELECT * FROM mytransaction mt 
+		<if test="uid == null">
+			WHERE mt.mOneId = #{mOneId}
+		</if>
+		<if test="uid != null">
+			JOIN usersandmytransaction uat
+			ON uat.trid = mt.trid
+			JOIN userspost up
+			ON up.pid = uat.pid
+			WHERE up.uid = #{uid} AND mt.mOneId = #{mOneId}
+		</if>
+			
 	</select>
 	<!-- public void swlwctVisitteomodile(); -->
 	<select id="selectVisittwomodile" parameterType="integer" resultType="java.util.Map">
@@ -31,10 +81,6 @@
 	<!-- //根据用户查询二级菜单
 	public List<Map> selectUserTowModile(Integer uid); -->
 	<select id="selectUserTowModile" parameterType="integer" resultType="java.util.Map">
-		<!-- SELECT * from visittwomodile vtm 
-			JOIN userstowmodile uw 
-			ON uw.mTowId = vtm.mTowId
-			WHERE uw.uid = #{uid} -->
 			SELECT * from visittwomodile vtms
 				WHERE vtms.mTowId IN (
 						SELECT uw.mTowId FROM userstowmodile uw  WHERE uw.uid = #{uid}) 

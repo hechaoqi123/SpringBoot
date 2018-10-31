@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aaa.bean.Usersandmytransaction;
 import com.aaa.bean.Visitonemodile;
 import com.aaa.bean.Visittwomodile;
 import com.aaa.service.DuthorityManagementService;
@@ -52,8 +54,12 @@ public class DuthorityManagementController {
 		return selectVisitonemodile;
 	}
 	@RequestMapping("/getMytransaction")
-	public List<Map> getMytransaction(Integer mOneId){
-		List<Map> getMytransaction = service.getMytransaction(mOneId);
+	public List<Map> getMytransaction(Integer mOneId, Integer uid){
+		Map m = new HashMap();
+		m.put("uid", uid);
+		m.put("mOneId", mOneId);
+		System.out.println(m.toString());
+		List<Map> getMytransaction = service.getMytransaction(m);
 		return getMytransaction;
 	}
 	@RequestMapping("/selectUserTowModile")
@@ -68,6 +74,31 @@ public class DuthorityManagementController {
 	public String towModileAllocation(Integer mTowId) {
 		return "true";
 	}
-
+	//查询当前事务拥有访问权限的角色和!(查询当前事务拥有访问权限的角色)
+	@RequestMapping("/getTran")
+	public Map<String,List> getTran(Integer trid,String pname){
+		Map<String,Object> m = new HashMap<String, Object>();
+		m.put("trid",trid);
+		m.put("pname",pname);
+		List<Map> trueTrans = service.TrueTran(m);
+		List<Map> falseTrans = service.FalseTran(m);
+		Map<String,List> map = new HashMap<String, List>();
+		map.put("trueTrans", trueTrans);
+		map.put("falseTrans", falseTrans);
+		return map;
+	}
+	//增加删除访问角色
+	@RequestMapping("addTran")
+	public String addTran(Usersandmytransaction uat){
+		System.out.println(uat);
+		service.addTran(uat);
+		return "true";
+	}
+	@RequestMapping("delTran")
+	public String delTran(Usersandmytransaction uat){
+		System.out.println(uat);
+		service.delTran(uat);
+		return "true";
+	}
 	
 }

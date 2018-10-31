@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.bean.Usersandmytransaction;
 import com.aaa.bean.Visitonemodile;
 import com.aaa.bean.Visittwomodile;
 import com.aaa.mapper.DuthorityManagementMapper;
@@ -42,8 +43,25 @@ public class DuthorityManagementServiceImpl implements DuthorityManagementServic
 	}
 	//根据父级菜单查询对应的事务
 	@Override
-	public List<Map> getMytransaction(Integer mOneId) {
-		return mapper.getMytransaction(mOneId);
+	public List<Map> getMytransaction(Map map) {
+		return mapper.getMytransaction(map);
+	}
+	
+	@Override
+	public List<Map> TrueTran(Map map) {
+		return mapper.TrueTran(map);
+	}
+	@Override
+	public List<Map> FalseTran(Map map) {
+		return mapper.FalseTran(map);
+	}
+	@Override
+	public int addTran(Usersandmytransaction uat) {
+		return mapper.addTran(uat);
+	}
+	@Override
+	public int delTran(Usersandmytransaction uat) {
+		return mapper.delTran(uat);
 	}
 
 }
