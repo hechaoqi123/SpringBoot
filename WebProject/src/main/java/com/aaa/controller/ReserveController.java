@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aaa.bean.Carapply;
 import com.aaa.bean.Metting;
 import com.aaa.bean.Reserve;
 import com.aaa.service.ReserveService;
@@ -28,4 +29,9 @@ public class ReserveController {
 	   PageInfo<Reserve> pageInfo=new PageInfo<Reserve>(reserve);
        return pageInfo;
   }
+	@RequestMapping("/reserveAdd")
+	public String insertReserve(Reserve reserve){
+		service.insertReserve(reserve);
+		return "gm/reserve";
+	}
 }

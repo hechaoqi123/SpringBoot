@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,12 +24,14 @@ import com.github.pagehelper.PageInfo;
 public class MettingController {
 	@Autowired
 	MettingService service;	
-	@RequestMapping("/getMetting")
-	@ResponseBody
+	@RequestMapping(value="/getMetting",method=RequestMethod.GET)//value="/addMetting",method=RequestMethod.POST
+/*	@ResponseBody*/
 	   public String selectById(Integer id,Model model){
+		
 			Metting metting=service.selectMetting(id);
 			model.addAttribute("metting",metting);
-		    return "gm/metting";
+			System.out.println("aaa"+metting);
+		    return "gm/mettingupdate";
 	   }
 		@RequestMapping("/getAllMetting")
 		@ResponseBody
@@ -44,19 +48,15 @@ public class MettingController {
 		   return ".jsp";
 		}
 		@RequestMapping(value="/updateMetting",method=RequestMethod.POST)
-		@ResponseBody
+		/*@ResponseBody*/
 		public String updateMetting(Model model,Metting metting){
-		   if(service.updateMetting(metting)){  
-			   metting = service.selectMetting(metting.getMid());  
-                model.addAttribute("metting", metting);  
-                return ".jsp";  
-            } 
-           return "/error";  
+			service.updateMetting(metting);
+//			return selectById(metting.getMid(),model);  
+			return "gm/metting";
         }
-		@RequestMapping(value="/deleteMetting",method=RequestMethod.POST)
-		@ResponseBody
-		public String deleteMetting(Model model,Integer id){
-		   service.deleteMetting(id); 
-           return ".jsp";    
+		@RequestMapping(value="/deleteMetting/{id}")
+		public String deleteMetting(@PathVariable("id") Integer id){
+		   service.deleteMetting(id); 		  
+           return "gm/metting";    
         }
 }

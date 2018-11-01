@@ -1,7 +1,10 @@
 package com.aaa.bean;
 
+import javax.persistence.Id;
+
 public class Metting {
 	private String mname;
+	@Id
 	private Integer mid;
 	private String mcapacity;
 	private String mlocation;

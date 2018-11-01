@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.aaa.bean.Car;
 
-public interface CarService {
-	public Car getOne(Integer id);
-	public List<Car> getAll();
-    int insertCar(Car car);
-    int updateCar(Car car);
+
+public interface CarService{
+	public Car selectCar(Integer id);
+	public List<Car> getAll(); 
+	public int inserCar(Car car);
+	public boolean updateCar(Car car);
+	public int deleteCar(Integer id);
+
 }

@@ -1,8 +1,9 @@
 package com.aaa.bean;
 
-
+import javax.persistence.Id;
 
 public class Car {
+	@Id
 	private Integer cid;
 	private String cname;
 	private String cmarkname;

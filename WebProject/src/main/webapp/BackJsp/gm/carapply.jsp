@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <SCRIPT src="../../assets/js/jquery-2.0.3.min.js"></SCRIPT>
     <style>
        #tt td{
-          height:20px; 
+          height:30px; 
        }
     </style>
   </head>
@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD>
             <H1><img src="BackJsp/gm/img/menu.png"/><span style="margin-left:7px;">会议室管理</span></H1>
-          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>登记</button>
+          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>会议室预定</button>
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
@@ -52,23 +52,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">
         <THEAD>
         <TR>
-          <TH width="400px">名称：</TH>
-          <TH>牌号：</TH>
-          <TH>下次年检日期：</TH>
-          <TH>保险截止日期：</TH>
-          <TH>上次保养日期：</TH>
-          <TH>状态</TH>
-          <TH>操作</TH></TR></THEAD>
-        <TBODY id="tt" style="font-size:14px;">
-        <TR v-for="car in applys">
-          <TD><A :href="'car/getCar?id='+car.cid">{{car.cname}}</A></TD>
-          <TD>{{car.cmarkname}}</TD>
-          <TD>{{car.casdate}}</TD>
-          <TD>{{car.cinsurancedate}}</TD>
-          <TD>{{car.cmaintaindate}}</TD>
-          <TD>{{car.cstate}}</TD>
-          <TD><button @click="del(car.cid)">删除</button></TD>
-         </TR>
+        <TR>
+          <TH width="400px">主题</TH>
+          <TH>申请人</TH>
+          <TH>所属部门</TH>
+          <TH>指定车辆</TH>
+          <TH>出发时间</TH>
+          <TH>返回时间</TH></TR></THEAD>
+        <TR style="font-size:14px;line-height:25px;height:20px;" v-for="carapply in applys" valign="top">
+          <TD><A :href="'carapply"><IMG src="BackJsp/gm/img/userX0.gif" border="0">
+              {{carapply.atheme}}</A></TD>
+          <TD>{{carapply.aproposer}}</TD>
+          <TD>{{carapply.adept}}</TD>
+          <TD>{{carapply.acar}}</TD>
+          <TD>{{carapply.astartdate}}</TD>
+          <TD>{{carapply.areturndate}}</TD>
+          </TR>
 </TBODY></TABLE>
 <br/><span style="margin-left:100px">
  <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a>
@@ -82,7 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TABLE>
 <!-- 分页 -->
 </span>
-</BODY></HTML>
+</BODY>
+</HTML>
 <script>
      $(function(){
        var load=new Vue({
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="/car/getAllCar";
+                 var url="/carapply/getAll";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.applys=res.body.list
                      this.pageInfo=res.body
@@ -101,14 +101,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 saved:function(){
                  window.location.href="BackJsp/gm/carAdd.jsp ";
                }
-               ,
-        del:function(id){
-           var url="/car/deleteCar/"+id;
-           this.$http.post(url).then(function(data){
-                 alert(data);
-                 window.location.reload();
-            })
-        }
             }
        })
      load.execute(1);

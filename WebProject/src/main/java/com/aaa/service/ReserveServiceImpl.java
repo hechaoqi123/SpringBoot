@@ -13,7 +13,11 @@ public class ReserveServiceImpl implements ReserveService {
 	@Autowired
 	ReserveMapper mapper;
 	public List<Reserve> getAll() {
-		return mapper.getAll();
+		return mapper.selectAll();
+	}
+	
+	public int insertReserve(Reserve reserve) {
+		return mapper.insert(reserve);
 	}
 
 }

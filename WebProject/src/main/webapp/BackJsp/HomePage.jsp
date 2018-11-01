@@ -210,22 +210,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span style="color:#E6E6E6">车辆管理</span>
 								</li>
 								</a>
-									<a href="hcq/recruit.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">资产管理</span>
 								</li>
 								</a>
-									<a href="hcq/check.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+									<a href="" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">用品管理</span>
 								</li>
 								</a>
-								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">证照管理</span>
 								</li>
 								</a>
-								<a href="hcq/performance.jsp" style="color:#f7f7f7;font-size:12px;" target="right_main">
+								<a href="" style="color:#f7f7f7;font-size:12px;" target="right_main">
 								<li class="ww">
 									<span style="color:#E6E6E6">印章管理</span>
 								</li>

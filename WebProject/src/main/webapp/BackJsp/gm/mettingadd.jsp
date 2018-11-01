@@ -82,7 +82,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TR></TBODY>
 </TABLE>
 </DIV></DIV>
-</form>
 </td>
 <td>&nbsp;</td></tr></table>
 
@@ -102,6 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   alert("success");
                   window.location.href = "BackJsp/gm/metting"+data;
             }   
-        })})
+        })
+        })
     
 </script>

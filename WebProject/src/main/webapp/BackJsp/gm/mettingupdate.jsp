@@ -27,8 +27,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body id=colloaBody>
+  <form id="form" action="metting/updateMetting" method="post">
+  <input name="mid" value="${metting.mid}"style="display:none;"/>
   <table style="min-width:950px;width:100%;height:100%;" cellPadding=0 cellSpacing=0 border=0>
-  <tr valign=top><td>&nbsp;</td><td id=colloaForm><form id="form"><DIV class=textBig>登记会议室</DIV><BR>
+  <tr valign=top><td>&nbsp;</td><td id=colloaForm><DIV class=textBig>登记会议室</DIV><BR>
 <DIV class=boxBorder style="PADDING-BOTTOM: 30px; PADDING-TOP: 30px; PADDING-LEFT: 30px; PADDING-RIGHT: 30px">
 <DIV style="VERTICAL-ALIGN: top; DISPLAY: inline-block; WIDTH: 330px">
 <TABLE cellSpacing=0 cellPadding=0 summary="" border=0>
@@ -49,22 +51,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD><INPUT name="mname" value="${metting.mname}"></TD></TR>
 <TR>
 <TD>编号</TD>
-<TD><%-- <INPUT name="mid" value="${metting.mid}"> --%></TD></TR>
+<TD><%-- <INPUT name="mid" :value="${metting.mid}"> --%></TD></TR>
 <TR>
 <TD>容量</TD>
-<TD><INPUT name="mcapacity" value="${metting.mcapacity}"></TD></TR>
+<TD><INPUT name="mcapacity" :value="${metting.mcapacity}"></TD></TR>
 <TR>
 <TD>位置</TD>
-<TD><INPUT name="mlocation" value="${metting.mlocation}"></TD></TR>
+<TD><INPUT name="mlocation" :value="${metting.mlocation}"></TD></TR>
 <TR>
 <TD>内部设备</TD>
-<TD><INPUT name="mfacility" value="${metting.mfacility}"></TD></TR>
+<TD><INPUT name="mfacility" :value="${metting.mfacility}"></TD></TR>
 <TR>
 <TD>管理人</TD>
-<TD><INPUT name="mcustodian" value="${metting.mcustodian}"></TD></TR>
+<TD><INPUT name="mcustodian" :value="${metting.mcustodian}"></TD></TR>
 <TR>
 <TD>状态</TD>
-<TD>
+<TD>	
  <INPUT name="mstate" CHECKED type=radio value="正常">
  <IMG src="BackJsp/gm/img/userXStatus0.png">正常
  <INPUT type=radio value="维修" name="mstate">
@@ -78,10 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD>相关附件</TD>
 <TD><INPUT name="mdescribe" value="${metting.madjunct}"></TD></TR>
 <tr>
-<td><input type="button" value="确定" id="update"></td>
+
 </TR></TBODY>
 </TABLE>
+
 </DIV></DIV>
+<a class="button" id="sub" href="javascript:" >确认</a>
+<a class="button" id="ret" href="javascript:">取消</a>
 </form>
 </td>
 <td>&nbsp;</td></tr></table>
@@ -89,18 +94,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 </html>
 <script>
-            //表单异步提交
-        $("#update").on("click",function(){
-            $.ajax({ 
-             url: 'metting/updateMetting',
-               type: 'post', 
-               data: $('#form').serialize(), 
-               dataType:'text', 
-               success: function (data) {
-                  alert("success");
-                  window.location.href = "BackJsp/gm/metting"+data;
-            }   
-        })})
-    
+      $("#sub").click(function(){
+           $("#form").submit();
+      })
+      $("#ret").click(function(){
+        window.location.href="BackJsp/gm/metting.jsp";
+      })  
 </script>
 

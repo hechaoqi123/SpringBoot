@@ -14,21 +14,22 @@ public class MettingServiceImpl implements MettingService {
 	@Autowired   
 	MettingMapper mapper;
 	public List<Metting> getAll() {
-		return mapper.getAll();
+		return mapper.selectAll();
 	}
 	public Metting selectMetting(Integer id) {
-		return mapper.selectMetting(id);
+		return mapper.selectByPrimaryKey(id);
 	}
 	public int insertMetting(Metting metting) {
-		return mapper.insertMetting(metting);
+		return mapper.insert(metting);
 	}
 	
 	public boolean updateMetting(Metting metting) {
-		return mapper.updateMetting(metting);
+		mapper.updateByPrimaryKeySelective(metting);
+		return true;
 	}
 	
 	public int deleteMetting(Integer id) {
-		return mapper.deleteMetting(id);
+		return mapper.deleteByPrimaryKey(id);
 	}
 	
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD>
             <H1><img src="BackJsp/gm/img/menu.png"/><span style="margin-left:7px;">会议室管理</span></H1>
-          <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>登记</button>
+          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>会议室预定</button>
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
@@ -87,9 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </BODY></HTML>
 <script>  
      $(function(){
-       $("#save").click(function(){
-         window.location.href="BackJsp/gm/mettingadd.jsp"
-       }) 
        var load=new Vue({
             el:'#pageUtil',
             data:{
@@ -102,7 +99,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      this.applys=res.body.list
                      this.pageInfo=res.body
                  })
-               }
+               },
+                saved:function(){
+                 window.location.href="BackJsp/gm/reserveadd.jsp ";
+              }
             }
        })
         load.execute(1);
