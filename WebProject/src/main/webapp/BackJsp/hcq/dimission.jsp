@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr v-for="d in dimission">
 <td><img v-if="d.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{d.theme}}</a></td>
+<a :href="'Official/detailInfo/'+d.dimissionid">{{d.theme}}</a></td>
 <td>{{d.dimissionname}}&nbsp;</td>
 <td>{{d.part}}</td>
 <td>{{d.post}}</td>

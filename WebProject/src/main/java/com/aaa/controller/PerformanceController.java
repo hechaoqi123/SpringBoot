@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aaa.bean.Entryapply;
 import com.aaa.bean.Overtime;
 import com.aaa.bean.Performance;
 import com.aaa.service.PerformanceService;
@@ -33,6 +34,12 @@ public class PerformanceController {
 		service.saveAndApproval(performance);
 		return "hcq/performance";
 	}
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Performance Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/PerformanceDetail";
+    }
 	//条件查询
 	@ResponseBody
 	@RequestMapping("/queryBycriteria")

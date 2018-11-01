@@ -32,6 +32,13 @@ public class RecruitController {
 		  PageInfo<Recruit> info=new PageInfo<Recruit>(list);
 	    	return info;
     }
+	//信息查询
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		  Recruit Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/recruitDetail";
+    }
 	//提交申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Recruit recruit){

@@ -31,18 +31,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD>
             <H1><img src="BackJsp/hcq/img/log.png"/><span style="margin-left:7px;">考勤管理</span></H1>
-          <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>考勤记录</button>
+          <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>上传考勤</button>
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
-      <A href="BackJsp/hcq/check.jsp" class="textHighlight"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 考勤记录</A>
       <A href="BackJsp/hcq/checking.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
       <A href="BackJsp/hcq/overtime.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
       <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
+      <A href="BackJsp/hcq/check.jsp" class="textHighlight"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 考勤记录</A>
       <A href="BackJsp/hcq/LeaveResources.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 调休资源查询</A></DIV>
       <DIV id="colloaContent2">
@@ -60,10 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH>上传时间</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in applys">
-          <TD><A href="javascript:showItem('事务','1000539');">
-                 <img v-if="apply.status=='结束'" width="18" src="BackJsp/hcq/img/ico2.png"/>
-                 <img v-else width="18" src="BackJsp/hcq/img/ico1.png"/>
-             {{apply.theme}}</A></TD>
+          <TD>
+                 <img  width="15" src="BackJsp/hcq/img/search.png"/>
+             {{apply.theme}}</TD>
           <TD>{{apply.dept}}&nbsp;</TD>
           <TD>{{apply.username}}&nbsp;</TD>
           <TD><a :href="'Checking/down/'+apply.checkingid"><img src="BackJsp/hcq/img/uploadico2.png" width="19" :title="apply.duration"/></a></TD>

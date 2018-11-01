@@ -30,6 +30,12 @@ public class LeaveController {
 		  PageInfo<Leaveapply> info=new PageInfo<Leaveapply>(list);
     	return info;
     }
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Leaveapply Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/LeaveapplyDetail";
+    }
 	//休假申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Leaveapply leave){

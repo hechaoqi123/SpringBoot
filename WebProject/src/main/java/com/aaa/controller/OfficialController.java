@@ -30,6 +30,13 @@ public class OfficialController {
 		  PageInfo<Official> info=new PageInfo<Official>(list);
     	return info;
     }
+	//申请详情
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Official Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/officialDetail";
+    }
 	@RequestMapping("/savePlay")
 	public String savePlay(Official official){
 		service.saveAndApproval(official);

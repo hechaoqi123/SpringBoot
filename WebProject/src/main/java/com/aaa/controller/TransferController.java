@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.bean.Official;
+import com.aaa.bean.Recruit;
 import com.aaa.bean.transfer;
 import com.aaa.service.OfficialService;
 import com.aaa.service.TransferService;
@@ -28,6 +29,12 @@ public class TransferController {
 		  List<transfer> list=service.getAll();
 		  PageInfo<transfer> info=new PageInfo<transfer>(list);
     	return info;
+    }
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		transfer Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/transferDetail";
     }
 	//新增招聘申请
 	@RequestMapping("/savePlay")

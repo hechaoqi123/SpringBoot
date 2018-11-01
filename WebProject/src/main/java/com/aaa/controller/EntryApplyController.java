@@ -29,6 +29,13 @@ public class EntryApplyController {
 		  PageInfo<Entryapply> info=new PageInfo<Entryapply>(list);
     	return info;
     }
+	//申请详情
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		  Entryapply Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/entryDetail";
+    }
 	@RequestMapping("/savePlay")
 	public String savePlay(Entryapply entryapply){
 		service.saveAndApproval(entryapply);

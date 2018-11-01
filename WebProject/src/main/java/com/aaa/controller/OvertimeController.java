@@ -29,6 +29,12 @@ public class OvertimeController {
 		  PageInfo<Overtime> info=new PageInfo<Overtime>(list);
 	    	return info;
     }
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Overtime Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/OvertimeDetail";
+    }
 	//新增招聘申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Overtime overtime){

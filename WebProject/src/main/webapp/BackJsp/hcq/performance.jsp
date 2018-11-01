@@ -63,18 +63,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH>所属部门</TH>
           <TH>被考核人</TH>
           <TH>主管评分</TH>
-          <TH>考核结果</TH></TR></THEAD>
+          </TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in datas">
-          <TD><A :href="'Evection/detail/'+apply.evectionid">
+          <TD><A :href="'Performance/detail/'+apply.performanceid">
                 <img v-if="apply.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
 				<img v-else-if="apply.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 				<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
               {{apply.field20}}</A></TD>
           <TD>{{apply.dept}}&nbsp;</TD>
           <TD>{{apply.applypeople}}&nbsp;</TD>
-          <TD>{{apply.superremark}}</TD>
-          <TD>{{apply.personnelresult}}</TD>
+          <TD>{{apply.field19}}</TD>
          </TR>
 </TBODY></TABLE><br/>
      <center>

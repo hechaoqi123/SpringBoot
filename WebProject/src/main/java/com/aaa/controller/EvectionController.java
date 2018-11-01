@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aaa.bean.Entryapply;
 import com.aaa.bean.Evection;
 import com.aaa.bean.Official;
 import com.aaa.service.evectionService;
@@ -46,6 +47,12 @@ public class EvectionController {
 		  }
 		  PageInfo<Evection> info=new PageInfo<Evection>(list);
     	return info;
+    }
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		  Evection Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/EvectionDetail";
     }
 	//申请详情
 	@RequestMapping("/detail/{id}")

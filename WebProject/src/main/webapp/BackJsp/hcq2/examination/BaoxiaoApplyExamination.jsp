@@ -5,11 +5,13 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!DOCTYPE html>
+<!-- saved from url=(0093)http://cloud.10oa.com/trial/view/item.aspx?catalogue=110300&name=%u4E8B%u52A1&objects=1001554 -->
 <html>
-  <head>
-    <base href="<%=basePath%>">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+  <base href="<%=basePath%>">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>事务 - Colloa</title>
   <link rel="shortcut icon" href="http://cloud.10oa.com/trial/images/colloa.ico">
@@ -19,12 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript" src="BackJsp/hcq2/js/view.js"></script>
   <script type="text/javascript" src="BackJsp/hcq2/js/utility.js"></script>
   <script type="text/javascript" src="BackJsp/hcq2/js/ckeditor.js"></script>
-  <style>
-  .cke{visibility:hidden;}
-   *{
-   font-size:15px
-   }
-  </style>
+  <style>.cke{visibility:hidden;}</style>
 </head><body id="colloaBody"><table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0"><tbody><tr valign="top"><td>&nbsp;</td><td id="colloaForm"><table style="TABLE-LAYOUT: fixed" class="tableForm" border="0" cellspacing="0" cellpadding="0" align="center">
 <colgroup>
 <col width="60">
@@ -43,107 +40,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">&nbsp;</td></tr></tbody></table>
 <div>&nbsp;</div>
-   <div class="formTaskflowContainer">
-<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong style="font-size:18px">差旅费报销单</strong></span></div>
-<table class="tableListBorder" id="aa" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>费用报销单</strong></span></div>
+<table style="TABLE-LAYOUT: fixed" class="tableListBorder" border="0" cellspacing="0" cellpadding="0" align="center">
 <colgroup>
 <col width="120">
 <col width="180">
 <col width="100">
-<col width="280">
+<col width="283">
 <col width="100">
 <col></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: center;height:30px;" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>出差人姓名</td>
-<td>
-  ${apply.username}
-</td>
+<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>报销人姓名</td>
+<td id="dbf.operator" dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where statusX&gt;0 and stype=0 and name like &#39;%[!prompt]%&#39; order by name" dbf.value="李萌" dbf.key="1000071">
+${apply.username}</td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
-<td>
-   ${apply.dept}
-</td>
+<td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
+${apply.dept}</td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>报销日期</td>
 <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
-   ${apply.submitdate}
-</td></tr>
-<tr>
-<td style="TEXT-ALIGN: center;height:50px" dbf.type="" dbf.source="">出差事由</td>
-<td colspan="5" style="padding:0px;margin:0px;">
-  ${apply.cause}
-</td></tr></tbody>
-  </table>
-<table id="tableData" class="tableListBorder2" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+${apply.baoxiaodate}</td></tr></tbody></table>
+<table style="TABLE-LAYOUT: fixed" id="tableData" class="tableListBorder2" border="0" cellspacing="0" cellpadding="0" align="center">
 <colgroup>
 <col width="120">
-<col width="120">
 <col>
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="60"></colgroup>
-<tbody id="tb">
-<tr>
-<td style="height:30px;TEXT-ALIGN: center">起止时间</td>
-<td style="TEXT-ALIGN: center">起止地点</td>
-<td style="TEXT-ALIGN: center">描述</td>
-<td style="TEXT-ALIGN: center">长途交通费</td>
-<td style="TEXT-ALIGN: center">市内交通费</td>
-<td style="TEXT-ALIGN: center">住宿费</td>
-<td style="TEXT-ALIGN: center">出差补贴</td>
-<td style="TEXT-ALIGN: center">其他费用</td>
-<td style="TEXT-ALIGN: right">
-</td></tr>
-<c:forEach items="${items}" var="item">
-<tr>
-	<td style="height:30px;text-align:center">${item.begindate}</td>
-	<td style="text-align:center">${item.beginaddress}</td>
-	<td style="text-align:center">${item.remark}</td>
-	<td style="text-align:center">${item.field1}</td>
-	<td style="text-align:center">${item.field2}</td>
-	<td style="text-align:center">${item.field3}</td>
-	<td style="text-align:center">${item.field4}</td>
-	<td style="text-align:center">${item.field5}</td>
-	<td style="text-align:center"><input disabled="false" style="margin-left:7px;;WIDTH:30px" type="button" value="-"></td>
-</tr>
-</c:forEach>
-
-</tbody></table>
-<table id="tableData" class="tableListBorder2" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
-<colgroup>
-<col>
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="90">
-<col width="60"></colgroup>
+<col width="100">
+<col width="140">
+<col width="80">
+<col width="50"></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: right" dbf.type="" dbf.source="">小计</td>
-  <c:forEach items="${numbers}" var="num">
-     <td id="money1" style="text-align:center;">${num}&nbsp;</td> 
-  </c:forEach>
-
-<td>&nbsp;</td></tr></tbody></table>
-<table id="tableData" class="tableListBorder2" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<td style="TEXT-ALIGN: center">支出分类</td>
+<td style="TEXT-ALIGN: center">用途说明</td>
+<td style="TEXT-ALIGN: center">费用金额</td>
+<td style="TEXT-ALIGN: center">对方单位</td>
+<td style="TEXT-ALIGN: center">经手人</td>
+<td style="TEXT-ALIGN: right" dbf.type="" dbf.source=""><input style="WIDTH: 30px" id="增加行" onclick="$addRow(&#39;tableData&#39;,1)" name="增加行" value="+" type="button" disabled=""></td></tr>
+<c:forEach items="${items}" var="item">
+<tr>
+<td id="支出分类" style="text-align:center;" dbf.type="" dbf.source="select sid,name,psid,stype from categoryX where modello=&#39;categoryX.financeX.outgoing&#39; and statusX&gt;0 order by sortId,name" dbf.key="1000026">
+${item.type}</td>
+<td id="用途说明">
+${item.remark}
+&nbsp;</td>
+<td style="TEXT-ALIGN: right" id="费用金额" dbf.type="amount" dbf.source="">
+${item.money}
+</td>
+<td id="对方单位" dbf.type="" dbf.source="">
+${item.opposite}
+&nbsp;</td>
+<td id="经手人" dbf.type="" dbf.source="">
+${item.dutypeople}
+&nbsp;</td>
+<td style="TEXT-ALIGN: right" dbf.type="" dbf.source=""><input style="WIDTH: 30px" id="删除行" onclick="$delRow(this);" name="删除行" value="-" type="button" disabled=""></td></tr>
+</c:forEach>
+</tbody></table>
+<table style="TABLE-LAYOUT: fixed" id="tableData" class="tableListBorder2" border="0" cellspacing="0" cellpadding="0" align="center">
 <colgroup>
 <col width="120">
 <col>
-<col width="80">
+<col width="140">
 <col width="130"></colgroup>
 <tbody>
 <tr>
 <td style="TEXT-ALIGN: right" dbf.type="" dbf.source="">合计（大写）</td>
-<td id="合计大写" dbf.type=""  dbf.source="">
- <div style="padding-left:50px">${apply.field1}&nbsp;</div></td>
-<td style="TEXT-ALIGN: right" dbf.type="" dbf.source="">合计 <input disabled="false" onclick="calculate();"  type="button" value="=" name="合计按钮"></td>
-<td id="dbf.budget" style="COLOR: rgb(204,0,0);text-align:center;" dbf.type="amount,required" dbf.source="">
-    ${apply.total}
- </td></tr>
-  <c:if test="${apply.status!='结束'}">
+<td id="daxie" dbf.type="" dbf.source=""></td>
+<td style="TEXT-ALIGN: right" dbf.type="" dbf.source="">合计<input id="合计按钮" onclick="calculate();" name="合计按钮" value="=" type="button" disabled=""></td>
+<td style="TEXT-ALIGN: right; COLOR: rgb(204,0,0)" id="dbf.budget" dbf.type="amount,required" dbf.source="">
+  ${apply.total}</td></tr>
+ <c:if test="${apply.status!='结束'}">
  <c:if test="${apply.status!='驳回'}">
 <tr>
 <td style="TEXT-ALIGN: center">备注</td>
@@ -151,12 +116,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input id="remark" class="fieldEditable" name="theme" />
 </td></tr>
 </c:if>
-</c:if>
- </tbody></table><br/>
+</c:if>  
+</tbody></table>
 <div style="TEXT-ALIGN: left">* 填单人根据规定，提交给主管审批。在主管审批或上级审批通过后，请打印本电子单据并且粘贴上原始票据，传递给财务处理。</div>
-</div>
-
-<br/>
 <table style="TABLE-LAYOUT: fixed" class="tableForm" border="0" cellspacing="0" cellpadding="0" align="center">
 <colgroup>
 <col width="60">
@@ -175,16 +137,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
 		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[填单人]</a>
 		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		    <a class="button" @click="submit('驳回')" href="javascript:">驳回</a>
 		 </span>
 	 </div>
   </c:if>
   </c:if>
-  <!-- 流程 -->
-<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody>
-<tr valign="top"><td class="boxBorder">
+<!-- 处理过程 -->
+<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:">› 显示流程图</a></div>【处理过程】</div>
-  <span v-for="app in approval">
+ <span v-for="app in approval">
 	<div  style="padding:5px 10px 0px 10px;border-top:1px dotted #ddd;">
 	  <img src="BackJsp/hcq/img/userX0.gif"> {{app.userid}}<span class="textGray">(  {{app.approvaldate}} )
 	</div>
@@ -200,15 +161,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </div>
 <div class="boxBorder">
-<div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【子事务】
-</div>
+<div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【子事务】</div>
 
 <br></div>
-</td></tr></tbody></table></span>
+</td></tr></tbody></table>
+</span>
 <!-- END VUE -->
-
 </td><td>&nbsp;</td></tr></tbody></table>
-<input id="recruitid" style="display:none" value="${apply.costid}"/>
+<input id="recruitid" style="display:none" value="${apply.baoxiaoid}"/>
 <input id="uname" style="display:none" value="${detail.username}"/>
 </body></html>
 <script src="BackJsp/hcq/js/Vue.js"></script>
@@ -226,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  getAll:function(){
                      var itemid=$("#recruitid").val();
                      var url="Approval/queryByCriteria";
-                     this.$http.post(url,{itemname:"差旅费报销申请",itemid:itemid},{emulateJSON:true}).then(function(res){
+                     this.$http.post(url,{itemname:"费用报销申请",itemid:itemid},{emulateJSON:true}).then(function(res){
                         this.approval=res.body
                         for(var i=0;i<this.approval.length;i++){
                           var approvaldate=this.approval[i].approvaldate;
@@ -237,25 +197,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      var itemid=$("#recruitid").val();
                      var remark=$("#remark").val();
                      var principal=$("#uname").val();
-                     var url="CostManager/update";
+                     var url="Baoxiao/update";
                      if(obj=="领导"){//转领导审核
-                       this.$http.post(url,{username:principal,costid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{username:principal,baoxiaoid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/costManager.jsp";                   
                        })  
                      }else if(obj=="财务"){//转人事
-                       this.$http.post(url,{username:principal,costid:itemid,status:"财务处理",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{username:principal,baoxiaoid:itemid,status:"财务处理",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/costManager.jsp";                
                        })  
                      }else if(obj=="填单人"){//转填单人
-                       this.$http.post(url,{username:principal,costid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{username:principal,baoxiaoid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/costManager.jsp";                
                        })  
                      }else if(obj=="结束"){//结束
-                       this.$http.post(url,{username:principal,costid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{username:principal,baoxiaoid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/costManager.jsp";                
                        })  
                      }else{//驳回
-                       this.$http.post(url,{username:principal,costid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{username:principal,baoxiaoid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/costManager.jsp";                
                        }) 
                      }
@@ -263,6 +223,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               }
           })
        })
+       $("#daxie").html(DX(${apply.total}))
+       //大写转换
+  function DX(n) {
+ 
+        if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(n))
+            return "数据非法";
+        var unit = "千百拾亿千百拾万千百拾元角分", str = "";
+            n += "00";
+        var p = n.indexOf('.');
+        if (p >= 0)
+            n = n.substring(0, p) + n.substr(p+1, 2);
+            unit = unit.substr(unit.length - n.length);
+        for (var i=0; i < n.length; i++)
+            str += '零壹贰叁肆伍陆柒捌玖'.charAt(n.charAt(i)) + unit.charAt(i);
+        return str.replace(/零(千|百|拾|角)/g, "零").replace(/(零)+/g, "零").replace(/零(万|亿|元)/g, "$1").replace(/(亿)万|壹(拾)/g, "$1$2").replace(/^元零?|零分/g, "").replace(/元$/g, "元整");
+}
      function datetimeFormat(longTypeDate){ 
 	  var datetimeType = ""; 
 	  var date = new Date(); 

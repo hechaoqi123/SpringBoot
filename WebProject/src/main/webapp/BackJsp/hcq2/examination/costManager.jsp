@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<a :href="'Baoxiao/detail/'+recruit.baoxiaoid">{{recruit.theme}}</a></td>
 	<td>{{recruit.username}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
 	<td style="color:#E22018">{{recruit.total}}</td>
@@ -112,10 +112,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(PageNumber){
-		            var dept=$("#aa").val(); 
-                    var post=$("#bb").val();       
 		          var status="填单";
 		           var url="";
+		           if(post=="超级管理员"){status=null}
 		           //差旅费报销
 		           if(this.tactics==0){url="CostManager/queryBycriteria"
 			           this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){

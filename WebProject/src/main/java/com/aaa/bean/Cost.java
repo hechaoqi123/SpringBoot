@@ -8,11 +8,11 @@ public class Cost implements Serializable {
 	@Id
     private Integer costid;
 
-    private String begindate;
+    private String begindate;//开始时间
 
-    private String beginaddress;
+    private String beginaddress;//起止地点
 
-    private String remark;
+    private String remark;//描述
 
     private String field1;
 

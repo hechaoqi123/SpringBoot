@@ -26,6 +26,13 @@ public class EBaoxiaoServiceImpl extends BaseServiceImpl<Baoxiao> implements EBa
 	public void saveManager(Baoxiao cost, List<Baoxiaoitem> items) {
 		//添加申请单
 		baoxiao.insert(cost);
+		 Approval appro=new Approval();
+		 appro.setUserid(cost.getUsername());
+		 appro.setItemid(baoxiao.getMaxId().toString());
+		 appro.setItemname("费用报销申请");
+		 appro.setSequence(0);
+		 appro.setApprovaldate(new Date());
+		approval.insert(appro);
 		//获取最大ID
 		Integer id=baoxiao.getMaxId();
 		for (Baoxiaoitem item : items) {

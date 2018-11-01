@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>
 <img v-if="entry.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{entry.theme}}</a></td><td>{{entry.applypeople}}</td><td>{{entry.entrydate}}</td><td>{{entry.entrypart}}&nbsp;</td><td>{{entry.entrypost}}</td></tr>
+<a :href="'entry/detailInfo/'+entry.applyid">{{entry.theme}}</a></td><td>{{entry.applypeople}}</td><td>{{entry.entrydate}}</td><td>{{entry.entrypart}}&nbsp;</td><td>{{entry.entrypost}}</td></tr>
 <tr>
 </table><br/>
 <!-- 分页 -->
