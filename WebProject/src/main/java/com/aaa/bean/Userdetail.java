@@ -62,8 +62,17 @@ public class Userdetail implements Serializable {
     
     private String unum;
     
+    private String dimissdate;
+    
     public String getUnum() {
 		return unum;
+	}
+	public String getDimissdate() {
+		return dimissdate;
+	}
+
+	public void setDimissdate(String dimissdate) {
+		this.dimissdate = dimissdate;
 	}
 
 	public void setUnum(String unum) {
@@ -127,7 +136,7 @@ public class Userdetail implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone == null ? null : telephone.trim();
     }
-
+    
     public String getEmail() {
         return email;
     }

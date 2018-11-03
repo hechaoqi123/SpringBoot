@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr v-for="t in transfer">
 <td> <img v-if="t.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
      <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{t.theme}}</a></td><td>{{t.applypeople}}</td><td>{{t.oldpart}}/{{t.oldpost}}&nbsp;</td><td>{{t.newpart}}/{{t.newpost}}</td><td>{{t.genre}}</td></tr>
+<a :href="'Transfer/detailInfo/'+t.transferid">{{t.theme}}</a></td><td>{{t.applypeople}}</td><td>{{t.oldpart}}/{{t.oldpost}}&nbsp;</td><td>{{t.newpart}}/{{t.newpost}}</td><td>{{t.genre}}</td></tr>
 <tr>
 </table><br/>
 <!-- 分页 -->

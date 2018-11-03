@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>来票申请* - Colloa</title>
+  <title>来票登记* - Colloa</title>
   <link rel="shortcut icon" href="http://cloud.10oa.com/trial/images/colloa.ico">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/view.css">
@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
-   <input name="theme" class="fieldEditable" value="来票申请-李萌-1002033"></td>
+   <input name="theme" class="fieldEditable" value="来票登记-<%=new Date().toLocaleString() %>"></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 </td></tr></tbody></table>
 <div>&nbsp;</div>
-<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>来票申请单</strong></span></div>
+<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>来票登记单</strong></span></div>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="120">
@@ -55,9 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>申请人姓名</td>
+<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>登记人姓名</td>
 <td>
-  <input name="registerpeople" class="fieldEditable"/>
+  <input style="border:0px;" name="registerpeople" readonly="true" value="${detail.username}"/>
 </td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td>
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </td>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>申请日期</td>
+<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>登记日期</td>
 <td >
    <input id="CurrentDate" name="registerdate" class="fieldEditable"/>
 </td></tr>

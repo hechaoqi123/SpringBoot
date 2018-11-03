@@ -7,4 +7,8 @@ import com.aaa.bean.Evection;
 import com.aaa.bean.Official;
 
 public interface evectionService extends BaseService<Evection>{
+
+	void UpdateAndRemark(Evection recruit, String remark);
+
+	void saveAndApproval(Evection evection);
 }

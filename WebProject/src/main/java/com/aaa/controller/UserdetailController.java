@@ -2,6 +2,10 @@ package com.aaa.controller;
 
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +14,14 @@ import com.aaa.bean.Userdetail;
 import com.aaa.service.UserdetailService;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +55,17 @@ public class UserdetailController {
 			model.addAttribute("user",user);
 	    return "hcq/MyInfo";
    }
+	//生成绩效考勤表
+	@RequestMapping("/generate")
+	public void generate(HttpServletResponse response) throws Exception{
+		//设置编码格式
+		 response.setCharacterEncoding("UTF-8");
+		 response.setContentType("text/html;charset=utf-8"); 
+		 response.addHeader("Content-type", "appllication/octet-stream");
+		 response.addHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode("绩效考勤表.xls", "UTF-8"));
+		 HSSFWorkbook workbook=service.generate();
+		 workbook.write(response.getOutputStream());
+	}
     //获取员工详细信息：criteria不为空时代表修改操作
 	@RequestMapping("/getDetailInfo")
     public String selectUserInfo(Integer id,Model model,String criteria){

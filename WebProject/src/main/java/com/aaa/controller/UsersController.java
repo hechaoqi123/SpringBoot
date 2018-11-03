@@ -39,7 +39,7 @@ public class UsersController{
 		//获取当前用户信息
 		Users users = new Users(unum,upass);
 		Users oneUsers = service.getOneUsers(users);
-		request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);//设置session时长
+		request.getSession().setMaxInactiveInterval(60*60*24);//设置session时长
 		if(oneUsers != null){
 			//获取当前部门主管信息
 			Userdetail det=detailservice.getOne(oneUsers.getUid());

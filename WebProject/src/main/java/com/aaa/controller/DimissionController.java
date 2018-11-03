@@ -30,6 +30,12 @@ public class DimissionController {
 		  PageInfo<Dimission> info=new PageInfo<Dimission>(list);
     	return info;
     }
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Dimission Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/dimissionDetail";
+    }
 	@RequestMapping("/savePlay")
 	public String savePlay(Dimission dimission){
 		service.saveAndApproval(dimission);

@@ -36,14 +36,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>出差申请</button>
                         </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
-      <DIV id="colloaMenu2"><A href="BackJsp/hcq/check.jsp"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 考勤记录</A>
+      <DIV id="colloaMenu2">
       <A class="textHighlight" href="BackJsp/hcq/checking.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
       <A href="BackJsp/hcq/overtime.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
       <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
+      <A href="BackJsp/hcq/check.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 考勤记录</A>
       <A href="BackJsp/hcq/LeaveResources.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 调休资源查询</A></DIV>
       <DIV id="colloaContent2">
@@ -61,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH>时间段</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in applys">
-          <TD><A href="javascript:showItem('事务','1000539');">
+          <TD><A :href="'Evection/detailInfo/'+apply.evectionid">
                  <img v-if="apply.status=='结束'" width="18" src="BackJsp/hcq/img/ico2.png"/>
                  <img v-else width="18" src="BackJsp/hcq/img/ico1.png"/>
              {{apply.theme}}</A></TD>

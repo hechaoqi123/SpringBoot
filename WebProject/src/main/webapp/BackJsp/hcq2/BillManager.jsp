@@ -24,7 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="padding-top:15px;padding-left:10px;">
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">票据管理</span></h1></td><td id="oWorkflowList" align="right">
+                        <span style="margin-left:7px;">票据管理</span></h1>
+    <img style="margin-left:200px;" src="BackJsp/hcq2/img/coins.gif"> 累计开票额 <span id="TotalMoney" class="textBig" style="color:#E22018;">{{total}}</span>
+                        </td><td id="oWorkflowList" align="right">
   <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>开票申请</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">
@@ -50,11 +52,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<a :href="'Chequeapply/detailInfo/'+recruit.chequeid">{{recruit.theme}}</a></td>
 	<td>{{recruit.applyname}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
-	<td style="color:#E22018">{{recruit.applydate}}</td>
-	<td>{{recruit.money}}</td>
+	<td>{{recruit.applydate}}</td>
+	<td style="color:#E22018">{{recruit.money}}</td>
 	<td>{{recruit.opposite}}</td>
 </tr>
 <tr>
@@ -71,6 +73,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      $(function(){
      $("#save").click(function(){
         window.location.href="BackJsp/hcq2/BillManagerApply.jsp"
+     })
+     new Vue({
+        el:"#TotalMoney",
+        data:{
+          total:0
+        },created:function(){
+          this.getTotalMoney();
+        },methods:{
+           getTotalMoney:function(){
+           var url="Chequeapply/getTotalMoney";
+             this.$http.post(url,{emulateJSON:true}).then(function(res){
+                this.total=res.body;
+             })
+           }
+        }
      })
        var load=new Vue({
             el:'#app',

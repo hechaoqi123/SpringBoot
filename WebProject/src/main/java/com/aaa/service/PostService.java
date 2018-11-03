@@ -21,4 +21,6 @@ public interface PostService extends BaseService<Post>{
     int delpostVisittwomodile(Map map);
     @Transactional
     int insertpostVisittwomodile(Map map);
+
+	List<Post> getPost(String dept);
 }

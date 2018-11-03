@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<a :href="'Recruit/detailInfo/'+recruit.recruitid">{{recruit.theme}}</a></td>
 <td>{{recruit.principal}}</td>
 <td>{{recruit.department}}&nbsp;</td>
 <td>{{recruit.post}}</td>

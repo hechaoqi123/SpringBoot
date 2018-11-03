@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD class=fieldLable>从属于</TD>
 <TD id=dbf.psid dbf.key="0" dbf.source="select sid,name,psid,stype from userX where statusX=1 and stype=10000 order by sortId,name">
-  <select  id="dept"  name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
+  <select  id="dept" v-model="dept" name="dependence" @change="getPost()" style="border:0px;font-size:14px;width:300px;height:25px;">
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </TD>
@@ -62,7 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD id=dbf.imAddress><INPUT id=e.dbf.imAddress class=fieldEditable></TD></TR>
 <TR>
 <TD class=fieldLable>职务</TD>
-<TD id=dbf.jobTitle><INPUT id=e.dbf.jobTitle name="position" class=fieldEditable></TD>
+<TD id=dbf.jobTitle>
+  <select  id="post" name="position" style="border:0px;font-size:14px;width:300px;height:25px;">
+    <option v-for="p in post" v-bind:value="p.pname">{{p.pname}}</option>
+  </select>
 <TD class=fieldLable>职务级别</TD>
 <TD id=dbf.jobLevel dbf.type="required,number"><INPUT id=e.dbf.jobLevel class=fieldEditable value=0></TD></TR>
 <TR>
@@ -81,10 +84,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TD>
 <TD class=fieldLable>离职日期</TD>
 <TD id=dbf.jobEndTime dbf.source="date,editable" dbf.type="date">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.jobEndTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR>
+<INPUT  name="dimissdate" class=fieldEditable>
+</TD></TR>
 <TR>
 <TD class=fieldLable>职责说明</TD>
-<TD id=dbf.jobDesc colSpan=3><TEXTAREA id=e.dbf.jobDesc name="discription" class=fieldEditable style="HEIGHT: 70px"></TEXTAREA></TD></TR>
+<TD id=dbf.jobDesc colSpan=3>
+  <TEXTAREA  name="description" class=fieldEditable style="HEIGHT: 70px">
+  </TEXTAREA> 
+</TD></TR>
 <TR>
 <TD class=fieldLable>附加描述</TD>
 <TD id=dbf.description colSpan=3><INPUT id=e.dbf.description name="message" class=fieldEditable></TD></TR>
@@ -129,30 +136,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD class=fieldLable>指定用户名</TD>
 <TD id=dbf.nameLogin dbf.type="unique(userX)"></TD>
 </TR>
-  <tr><td style="border-bottom:0px" colspan="4"><div id="_vWorkflowActionsShow" align="right"><br/>
+  <tr><td style="border-bottom:0px" colspan="4"><div  id="_vWorkflowActionsShow" align="right"><br/>
+           
     <a class="button" id="xxx" href="javascript:" >确定</a>
-    <a class="button" href="javascript:" id="xxxx"  >取消</a></div></td></tr>
+    <a class="button" href="javascript:" id="xxxx"  >取消</a>
+    </div></td></tr>
 </TBODY></TABLE>
 </form></body></html>
 <script>
    $(function(){
-      
       $("#xxx").click(function(){
            $("#Myform").submit();
       })
       $("#xxxx").click(function(){
         window.location.href="staff.jsp"
       })
+      var postVue=new Vue({
+         el:'#post',
+         data:{
+           post:null
+         },created:function(){
+            this.get("人事部")
+         },methods:{
+           get:function(dept){
+           var url="/post/getPost";
+                this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
+                 this.post=res.body
+               })
+           }
+         }
+      })
        var deptVue=new Vue({
              el:'#dept',
              data:{
-               depts:null
+               depts:null,
+               dept:'人事部'
              },methods:{
                  getAll:function(){
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body
                  })
+                 },getPost:function(){
+                   postVue.get(this.dept);
                  }
              }
        })

@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr v-for="off in officials">
 <td><img v-if="off.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{off.theme}}</a></td><td>{{off.proposer}}</td><td>{{off.department}}&nbsp;</td><td>{{off.post}}</td><td>{{off.filingdate}}</td><td>{{off.officialdate}}</td></tr>
+<a :href="'Official/detailInfo/'+off.officialid">{{off.theme}}</a></td><td>{{off.proposer}}</td><td>{{off.department}}&nbsp;</td><td>{{off.post}}</td><td>{{off.filingdate}}</td><td>{{off.officialdate}}</td></tr>
 <tr>
 </table><br/>
 <!-- 分页 -->

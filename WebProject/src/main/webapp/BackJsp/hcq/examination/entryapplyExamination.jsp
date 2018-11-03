@@ -37,6 +37,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><span id="mapping.dbf.procXSource"> 
 <c:if test="${apply.status=='填单'}">提交主管审批</c:if>
 <c:if test="${apply.status=='领导审批'}">领导审批</c:if>
+<c:if test="${apply.status=='人事处理'}">人事处理</c:if>
+<c:if test="${apply.status=='填单人知悉'}">填单人知悉</c:if>
 <c:if test="${apply.status=='驳回'}">驳回</c:if>
 <c:if test="${apply.status=='结束'}">结束</c:if>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
@@ -122,6 +124,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    </c:if>
 		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
 		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		 </span>
 	 </div>
@@ -137,6 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div v-show="app.sequence==0" style="padding:0px 10px 5px 30px;">[<b>提交主管审批</b>]{{app.remark}} </div>
     <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>通过并转领导审批</b>] {{app.remark}}</div>
     <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>通过转人事处理</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==4" style="padding:0px 10px 5px 30px;">[<b>填单人知悉</b>] {{app.remark}}</div>
     <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>结束流程</b>] {{app.remark}}</div>
     <div v-show="app.sequence==5" style="padding:0px 10px 5px 30px;">[<b>驳回</b>] {{app.remark}}</div>
  </span>
@@ -186,6 +191,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                   
                        })  
                      }else if(obj=="人事"){//转人事
+                       this.$http.post(url,{applypeople:principal,applyid:itemid,status:"人事处理",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       })  
+                     }else if(obj=="填单人"){//转填单人
+                       this.$http.post(url,{applypeople:principal,applyid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       })  
+                     }else if(obj=="结束"){
                        this.$http.post(url,{applypeople:principal,applyid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/recruit.jsp";                
                        })  

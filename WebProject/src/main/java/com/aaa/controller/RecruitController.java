@@ -32,6 +32,13 @@ public class RecruitController {
 		  PageInfo<Recruit> info=new PageInfo<Recruit>(list);
 	    	return info;
     }
+	//信息查询
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		  Recruit Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+	    	return "hcq/detailInfo/recruitDetail";
+    }
 	//提交申请
 	@RequestMapping("/savePlay")
 	public String savePlay(Recruit recruit){
@@ -42,10 +49,12 @@ public class RecruitController {
 	@RequestMapping("/getCount")
 	public  @ResponseBody Integer[] getCount(HttpSession session){
 		     Userdetail user=(Userdetail) session.getAttribute("detail");
-		     if(user.getPosition().equals("超级管理员")){
+		     if(user.getPosition().equals("超级管理员")){//超级管理员
 		    	 return service.getCount(null,null);
-		     }else if(user.getDependence().equals("总经办")){
+		     }else if(user.getDependence().equals("总经办")){//总经办
 		    	 return service.getCount("领导审批","总经办");
+		     }else if(user.getDependence().equals("人事部")&&(!user.getPosition().equals("人事主管"))){//人事专员
+		    	 return service.getCountPeople("人事处理");
 		     }else{
 		    	 return service.getCount("填单",user.getDependence());
 		     }
