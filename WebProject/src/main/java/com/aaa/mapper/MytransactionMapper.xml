@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.MytransactionMapper">
+	<!-- //查询我发起的事务根据库名字和用户 List<Map> getRightData(Map map); -->
+	<select id="getRightData" parameterType="map" resultType="map">
+		SELECT * FROM ${tableName} r WHERE r.principal = #{principal}
+	</select>
+</mapper>

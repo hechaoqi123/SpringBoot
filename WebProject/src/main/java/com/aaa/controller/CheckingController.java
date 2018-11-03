@@ -36,7 +36,7 @@ public class CheckingController {
 	@ResponseBody
 	@RequestMapping("/getAll")
     public PageInfo<Checking> getAll(Integer pageNum){
-		  PageHelper.startPage(pageNum,13);
+		  PageHelper.startPage(pageNum,7);
 		  List<Checking> list=service.getAll();
 		  PageInfo<Checking> info=new PageInfo<Checking>(list);
     	return info;

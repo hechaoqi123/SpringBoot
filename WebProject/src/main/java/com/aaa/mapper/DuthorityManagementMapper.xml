@@ -56,11 +56,18 @@
 	</select>
 	<!-- //根据父级菜单查询对应可以访问的事务public List<Map> getMytransaction(Map map); -->
 	<select id="getMytransaction" parameterType="map" resultType="map">
-		SELECT * FROM mytransaction mt 
-		<if test="uid == null">
+		SELECT * FROM mytransaction mt
+		<if test="uid != null and mOneId == -1">
+			JOIN usersandmytransaction uat
+			ON uat.trid = mt.trid
+			JOIN userspost up
+			ON up.pid = uat.pid
+			WHERE up.uid = #{uid}
+		</if>
+		<if test="uid == null and mOneId != -1">
 			WHERE mt.mOneId = #{mOneId}
 		</if>
-		<if test="uid != null">
+		<if test="uid != null and mOneId != -1">
 			JOIN usersandmytransaction uat
 			ON uat.trid = mt.trid
 			JOIN userspost up

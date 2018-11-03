@@ -51,7 +51,7 @@ var ve = new Vue({
 						tr +=	"<tr class='myTr'>"+ 	
 								"<td style='padding-left:40px'><img src='../assets/images/userX10000.gif'>"+data.body[dept].deptname+"</td>"+
 		  						"<td>"+data.body[dept].deptdepict+"</td>"+
-		  						"<td>"+data.body[dept].deptjobdescription+"</td>"+
+		  						"<td>&nbsp</td>"+
 		  						"<td>有效&nbsp;</td>"+
 		  						"<td>" +
 			  						"<img src='../assets/images/update.png' width='15px' title='修改' v-on:click='updateDept("+data.body[dept].deptid+")'> " +
