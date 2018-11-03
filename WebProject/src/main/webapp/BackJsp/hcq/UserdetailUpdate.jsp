@@ -1,3 +1,4 @@
+<%@page import="com.aaa.bean.Userdetail"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -54,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD class="fieldLable">从属于</TD>
           <TD>
-	          <select  id="dept"   name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
+	          <select  id="dept"  @change="getPost"   name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
 	             <option :selected="dept.deptname=='${user.dependence}'" v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
 	          </select>&nbsp;</TD>
           <TD class="fieldLable">在职状态</TD>
@@ -125,19 +126,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD>&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">职务</TD>
-          <TD>${user.position}&nbsp;</TD>
+          <TD>
+             <select  id="posts" name="position" style="border:0px;font-size:14px;width:300px;height:25px;">
+	             <option :selected="p.pname=='${user.position}'" :value="p.pname" v-for="p in post" >{{p.pname}}</option>
+	          </select>&nbsp;</TD>
           <TD class="fieldLable">职务级别</TD>
           <TD>0&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">出生日期</TD>
           <TD><INPUT  name="birthdate" class=fieldEditable value="${user.birthdate}"/>&nbsp;</TD>
           <TD class="fieldLable">入职日期</TD>
-          <TD>${user.entrydate}&nbsp;</TD></TR>
+          <TD><INPUT  name="entrydate" class=fieldEditable value="${user.entrydate}"/>&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">转正日期</TD>
-          <TD>${user.positivedate}&nbsp;</TD>
+          <TD><INPUT  name="positivedate" class=fieldEditable value="${user.positivedate}"/>&nbsp;</TD>
           <TD class="fieldLable">离职日期</TD>
-          <TD>&nbsp;</TD></TR>
+          <TD><INPUT  name="dimissdate" class=fieldEditable value="${user.dimissdate}"/>&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">职责说明</TD>
           <TD colspan="3">${user.description}&nbsp;</TD></TR>
@@ -186,22 +190,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD>&nbsp;</TD></TR></TBODY></TABLE><BR>
 <a class="button" id="sub" href="javascript:" >确认</a>
 <a class="button" id="ret" href="javascript:">取消</a>
+<input id="de" value="${user.dependence}" style="display:none;background:#000"/>
+<input id="pa" value="${user.position}" style="display:none;background:#000"/>
 </form>
 </BODY></HTML>
 <script src="BackJsp/hcq/js/Vue.js"></script>
 <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
+var de=$("#de").val();
+var pa=$("#pa").val();
+     var postVue=new Vue({
+         el:'#posts',
+         data:{
+           post:null
+         },created:function(){
+            this.get(de)
+         },methods:{
+           get:function(dept){
+           var url="/post/getPost";
+                this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
+                 this.post=res.body
+               })
+           }
+         }
+      })
      var deptVue=new Vue({
              el:'#dept',
              data:{
-               depts:null
+               depts:null,
+               dept:null
+             },created:function(){
+               getAll();
              },methods:{
                  getAll:function(){
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body
                  })
+                 },getPost:function(dept){
+                   postVue.get(this.dept);
                  }
              }
        })

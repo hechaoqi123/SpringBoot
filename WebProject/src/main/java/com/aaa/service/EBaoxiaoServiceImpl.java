@@ -37,11 +37,10 @@ public class EBaoxiaoServiceImpl extends BaseServiceImpl<Baoxiao> implements EBa
 		Integer id=baoxiao.getMaxId();
 		for (Baoxiaoitem item : items) {
 			item.setBaoxiaoid(id);
-			if(item.getMoney()==null||item.getMoney().equals("0")){
-				continue;
-			}
 		    itemMapper.insert(item);
 		}
+		
+	
 	}
     @Transactional
 	@Override

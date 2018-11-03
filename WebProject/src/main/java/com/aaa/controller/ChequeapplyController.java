@@ -51,11 +51,30 @@ public class ChequeapplyController {
 	    	return info;
 	    }
 		//申请详情
+		@RequestMapping("/detailInfo/{id}")
+	    public String detailInfo(@PathVariable("id")Integer pageNum,Model model){
+			Chequeapply Apply=service.selectByPrimaryKey(pageNum);
+			  model.addAttribute("apply", Apply);
+		    	return "hcq2/detailInfo/BillManagerDetail";
+	    }
+		//申请详情
 		@RequestMapping("/detail/{id}")
 	    public String queryByCriteria(@PathVariable("id")Integer pageNum,Model model){
 			Chequeapply Apply=service.selectByPrimaryKey(pageNum);
 			  model.addAttribute("apply", Apply);
 		    	return "hcq2/examination/BillManagerApply";
+	    }
+		//获取开票总金额
+		@RequestMapping("/getTotalMoney")
+	    public @ResponseBody Integer getTotalMoney(){
+			Chequeapply che=new Chequeapply();
+			che.setStatus("结束");
+			 List<Chequeapply> list=service.select(che);
+			 Integer total=0;
+			 for (Chequeapply chequeapply : list) {
+				total+=Integer.valueOf(chequeapply.getMoney());
+			}
+		    	return total;
 	    }
 		//申请状态变更
 		@RequestMapping("/update")

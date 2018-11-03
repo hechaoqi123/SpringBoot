@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
-<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" class="fieldEditable" name="theme" value="招聘申请-${CurrentUser.uname}"/></td>
+<td id="dbf.subject" dbf.type="required"><input id="e.dbf.subject" class="fieldEditable" name="theme" value="招聘申请-${CurrentUser.uname} <%= new Date().toLocaleString()%>"/></td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>

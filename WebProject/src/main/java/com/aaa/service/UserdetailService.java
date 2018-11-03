@@ -3,6 +3,8 @@ package com.aaa.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import com.aaa.bean.Userdetail;
 import com.github.pagehelper.PageInfo;
 
@@ -24,4 +26,6 @@ public interface UserdetailService {
 	public void update(Userdetail user);
 	//修改
 	int updateByPrimaryKeySelective(Userdetail record);
+	//生成绩效考勤表
+	public HSSFWorkbook generate();
 }

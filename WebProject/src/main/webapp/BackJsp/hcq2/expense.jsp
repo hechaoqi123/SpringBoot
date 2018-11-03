@@ -32,6 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 差旅费报销</a>
 	   <a  class="textHighlight" href="BackJsp/hcq2/expense.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销</a>
+       <a href="BackJsp/hcq2/PayManager.jsp">
+       <img border="0" src="BackJsp/hcq/img/folder.png"> 薪资发放</a>
 		 </div>
 	 <!-- 数据 -->
 <div id="colloaContent2">
@@ -49,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<a :href="'Baoxiao/detailInfo/'+recruit.baoxiaoid">{{recruit.theme}}</a></td>
 	<td>{{recruit.username}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
 	<td style="color:#E22018">{{recruit.total}}</td>

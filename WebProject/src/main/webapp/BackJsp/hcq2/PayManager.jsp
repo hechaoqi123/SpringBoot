@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>费用管理</title>
+    <title>费用报销</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,27 +24,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="padding-top:15px;padding-left:10px;">
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">票据管理</span></h1>
-    <img style="margin-left:200px;" src="BackJsp/hcq2/img/coins.gif"> 累计开票额 <span id="TotalMoney" class="textBig" style="color:#E22018;">{{total}}</span>
-                        </td><td id="oWorkflowList" align="right">
-  <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>开票申请</button></span></td></tr></tbody></table><br>
+                        <span style="margin-left:7px;">费用管理</span></h1></td><td id="oWorkflowList" align="right">
+  <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>薪资发放</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">
-	   <a class="textHighlight" href="BackJsp/hcq2/BillManager.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png">开票申请</a>
-	   <a href="BackJsp/hcq2/ChequeRegister.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png">来票登记</a>
-	 </div>
+	   <a  href="BackJsp/hcq2/costManager.jsp">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 差旅费报销</a>
+	   <a href="BackJsp/hcq2/expense.jsp">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销</a>
+	   <a class="textHighlight" href="BackJsp/hcq2/PayManager.jsp">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 薪资发放</a>
+		 </div>
 	 <!-- 数据 -->
 <div id="colloaContent2">
 <span id="app">
 <table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
-<th>主题</th>
+<th width="270">主题</th>
 <th>申请人</th>
-<th>所属部门</th>
-<th>申请日期</th>
-<th>开票金额</th>
-<th>对方单位</th>
+<th width="130">薪资月份</th>
+<th>社保月份</th>
+<th>申请时间</th>
 </tr></thead>
 <tbody>
 <tr v-for="recruit in recruits">
@@ -52,12 +51,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a :href="'Chequeapply/detailInfo/'+recruit.chequeid">{{recruit.theme}}</a></td>
-	<td>{{recruit.applyname}}</td>
+<a :href="'Baoxiao/detailInfo/'+recruit.baoxiaoid">{{recruit.theme}}</a></td>
+	<td>{{recruit.username}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
-	<td>{{recruit.applydate}}</td>
-	<td style="color:#E22018">{{recruit.money}}</td>
-	<td>{{recruit.opposite}}</td>
+	<td style="color:#E22018">{{recruit.total}}</td>
+	<td>{{recruit.baoxiaodate}}</td>
 </tr>
 <tr>
 </table><br/>
@@ -72,22 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
      $(function(){
      $("#save").click(function(){
-        window.location.href="BackJsp/hcq2/BillManagerApply.jsp"
-     })
-     new Vue({
-        el:"#TotalMoney",
-        data:{
-          total:0
-        },created:function(){
-          this.getTotalMoney();
-        },methods:{
-           getTotalMoney:function(){
-           var url="Chequeapply/getTotalMoney";
-             this.$http.post(url,{emulateJSON:true}).then(function(res){
-                this.total=res.body;
-             })
-           }
-        }
+        window.location.href="BackJsp/hcq2/expenseManagerRegister.jsp"
      })
        var load=new Vue({
             el:'#app',
@@ -96,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="/Chequeapply/getAll";
+                 var url="/Baoxiao/getAll";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.recruits=res.body.list
                      this.pageInfo=res.body

@@ -21,6 +21,7 @@ import com.aaa.bean.CostManager;
 import com.aaa.bean.CostUtil;
 import com.aaa.bean.Dimission;
 import com.aaa.bean.Evection;
+import com.aaa.bean.Official;
 import com.aaa.service.CostManagerService;
 import com.aaa.service.CostService;
 import com.aaa.service.DeptService;
@@ -46,6 +47,37 @@ public class CostManagerController {
 		  List<CostManager> list=service.getAll();
 		  PageInfo<CostManager> info=new PageInfo<CostManager>(list);
     	return info;
+    }
+	//申请详情
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		CostManager Apply=service.selectByPrimaryKey(pageNum);
+		  model.addAttribute("apply", Apply);
+		  Cost cost=new Cost();
+		  cost.setManagerid(pageNum);
+		  List<Cost> list=costService.select(cost);
+		  Integer[] numbers={0,0,0,0,0};
+		  for(int i=0;i<list.size();i++){
+			  Cost c=list.get(i);
+			  if(c.getField1()!=null&&!c.getField1().equals("")){
+				  numbers[0]=numbers[0]+Integer.valueOf(c.getField1());
+			  }
+			  if(c.getField2()!=null&&!c.getField2().equals("")){
+				  numbers[1]=numbers[1]+Integer.valueOf(c.getField2());
+			  }
+			  if(c.getField3()!=null&&!c.getField3().equals("")){
+				  numbers[2]=numbers[2]+Integer.valueOf(c.getField3());
+			  }
+			  if(c.getField4()!=null&&!c.getField4().equals("")){
+				  numbers[3]=numbers[3]+Integer.valueOf(c.getField4());
+			  }
+			  if(c.getField5()!=null&&!c.getField5().equals("")){
+				  numbers[4]=numbers[4]+Integer.valueOf(c.getField5());
+			  }
+		  }
+		  model.addAttribute("items", list);
+		  model.addAttribute("numbers", numbers);
+	    	return "hcq2/detailInfo/CostManagerDetail";
     }
 	//条件查询
 	@ResponseBody

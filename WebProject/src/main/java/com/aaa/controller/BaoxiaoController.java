@@ -15,6 +15,7 @@ import com.aaa.bean.Baoxiaoitem;
 import com.aaa.bean.CostManager;
 import com.aaa.bean.CostUtil;
 import com.aaa.bean.Disburse;
+import com.aaa.bean.Official;
 import com.aaa.mapper.BaoxiaoitemMapper;
 import com.aaa.service.EBaoxiaoService;
 import com.aaa.service.EBaoxiaoServiceImpl;
@@ -38,11 +39,24 @@ public class BaoxiaoController {
 		  PageInfo<Baoxiao> info=new PageInfo<Baoxiao>(list);
     	return info;
     }
+	
+	//申请详情
+	@RequestMapping("/detailInfo/{id}")
+    public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
+		Baoxiao Apply=service.selectByPrimaryKey(pageNum);
+		Baoxiaoitem record=new Baoxiaoitem();
+		record.setBaoxiaoid(pageNum);
+		List<Baoxiaoitem> items = itemService.select(record);
+		  model.addAttribute("items",items);
+		  model.addAttribute("apply", Apply);
+	      return "hcq2/detailInfo/BaoxiaoDetail";
+    }
 /*	@RequestMapping("/savePlay")
 	public String savePlay(Baoxiao disburse){
 		service.save(disburse);
 		return "hcq2/expense";
 	}*/
+	
 	@RequestMapping("/save")
 	public String save(Baoxiao cost,BaoxiaoUtil util){
 		service.saveManager(cost,util.getItems());

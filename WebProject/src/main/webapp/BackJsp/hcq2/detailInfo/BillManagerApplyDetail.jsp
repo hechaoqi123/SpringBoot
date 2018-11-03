@@ -6,17 +6,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html><head>
+  <base href="<%=basePath%>">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>来票登记* - Colloa</title>
   <link rel="shortcut icon" href="http://cloud.10oa.com/trial/images/colloa.ico">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/view.css">
-  <script type="text/javascript" src="js/viewCn.js"></script>
-  <script type="text/javascript" src="js/view.js"></script>
-  <script type="text/javascript" src="js/utility.js"></script>
-  <script type="text/javascript" src="js/ckeditor.js"></script>
+  <link rel="stylesheet" href="BackJsp/hcq/css/font-awesome.min.css">
+  <link rel="stylesheet" href="BackJsp/hcq/css/view.css">
+  <script type="text/javascript" src="BackJsp/hcq/js/viewCn.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/view.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/utility.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/ckeditor.js"></script>
   <style>.cke{visibility:hidden;}</style>
 </head><body id="colloaBody">
   <form id="myform" action="/Chequeregister/savePlay" method="post">
@@ -30,16 +31,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
-   <input name="theme" class="fieldEditable" value="来票登记-<%=new Date().toLocaleString() %>"></td>
+ ${apply.theme}  </td>
 <td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
 <td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
 <td><span id="mapping.dbf.procXSource">
-  <input name="status" style="border:0px;" readonly="true" value="填单"/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
-  <input name="dutypeople" style="border:0px;" readonly="true" value="${CurrentUser.uname}"/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+   ${apply.status}
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource">
+ 
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
 </td></tr></tbody></table>
@@ -55,24 +56,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>登记人姓名</td>
+<td style="height:30px;TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>登记人姓名</td>
 <td>
-  <input style="border:0px;" name="registerpeople" readonly="true" value="${detail.username}"/>
+${apply.registerpeople}
 </td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td>
-   <select id="dept"  name="dept" style="border:0px;font-size:14px;width:275px;height:25px;">
-    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
-  </select>
+ ${apply.dept}
 </td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>登记日期</td>
 <td >
-   <input id="CurrentDate" name="registerdate" class="fieldEditable"/>
+ ${apply.registerdate}
 </td></tr>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">来票说明</td>
+<td  style="height:30px;TEXT-ALIGN: center" dbf.type="" dbf.source="">来票说明</td>
 <td id="来票说明" colspan="5" dbf.type="" dbf.source="">
-   <textarea id="e.来票说明" name="remark" class="fieldEditable" style="HEIGHT: 80px"></textarea>
+  ${apply.remark}
 </td></tr></tbody></table>
 <table class="tableListBorder2" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
@@ -82,28 +81,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col width="350"></colgroup>
 <tbody>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>对方单位全称</td>
+<td style="TEXT-ALIGN: center;height:30px" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>对方单位全称</td>
 <td id="dbf.text0Source" dbf.type="required" dbf.source="" dbf.key="">
-  <input id="e.dbf.text0Source" name="opposite" class="fieldEditable"></td>
+ ${apply.opposite}
+</td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">关联合同</td>
 <td id="dbf.psid3" dbf.type="">
-   <input name="compact" class="fieldEditable"/>
+   ${apply.compact}
 </td></tr>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>来票金额</td>
+<td style="TEXT-ALIGN: center;height:30px" dbf.type="" dbf.source=""><span style="COLOR: rgb(255,0,0)">*</span>来票金额</td>
 <td id="dbf.budget" style="COLOR: rgb(60,188,60)" dbf.type="amount,required!0" dbf.source="">
-  <input onchange="daxie(this)" name="money" class="fieldEditable textAmount" value="0"></td>
+  ${apply.money}
+  </td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">金额大写</td>
 <td id="金额大写" dbf.type="" dbf.source="">
-   <input id="capital" style="border:0px;" readonly="true" name="supermoney">
+  ${apply.supermoney}
 </td></tr>
 <tr>
-<td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">发票日期</td>
+<td style="TEXT-ALIGN: center;height:30px" dbf.type="" dbf.source="">发票日期</td>
 <td id="dbf.time0" dbf.type="date" dbf.source="date">  
-  <input name="date" class="fieldEditable"></td>
+ ${apply.date}</td>
 <td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">发票号码</td>
 <td id="dbf.text6" dbf.type="" dbf.source="">
-  <input name="idnumber" class="fieldEditable">
+  ${apply.idnumber}
 </td></tr></tbody></table>
 <div>&nbsp;</div>
 <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
@@ -113,8 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 </tbody></table>
 <br><div id="_vWorkflowActionsShow" align="right">
-<a id="sub" class="button" href="javascript:" >提交财务处理</a>
-<a id="ret" class="button" href="javascript:" >取消</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
+</div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?753310&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
 
 </td><td></td><td>
@@ -128,9 +128,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
-<script src="js/Vue.js"></script>
-<script src="js/vue-resource.min.js"></script>
-<script src="js/jquery-2.0.3.min.js"></script>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="BackJsp/hcq/js/jquery-2.0.3.min.js"></script>
 <script>
 function daxie(obj){
     $("#capital").val(DX($(obj).val()))

@@ -24,7 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="padding-top:15px;padding-left:10px;">
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
-                        <span style="margin-left:7px;">票据管理</span></h1></td><td id="oWorkflowList" align="right">
+                        <span style="margin-left:7px;">票据管理</span></h1>
+    <img style="margin-left:200px;" src="BackJsp/hcq2/img/coins.gif"> 累计登记额 <span id="TotalMoney" class="textBig" style="color:#E22018;">{{total}}</span>
+                        </td><td id="oWorkflowList" align="right">
   <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>来票登记</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">
@@ -38,9 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <span id="app">
 <table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
 <th>主题</th>
-<th>申请人</th>
+<th>登记人</th>
 <th>所属部门</th>
-<th>申请日期</th>
+<th>登记日期</th>
 <th>开票金额</th>
 <th>对方单位</th>
 </tr></thead>
@@ -49,12 +51,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
-<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a href="javaScript:showItem(&39;事务&39;,&39;1000165&39;);">{{recruit.theme}}</a></td>
+<img v-else width="16" src="BackJsp/hcq/img/search.png"/>
+<a :href="'Chequeregister/detailInfo/'+recruit.chequeid">{{recruit.theme}}</a></td>
 	<td>{{recruit.registerpeople}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
-	<td style="color:#E22018">{{recruit.registerdate}}</td>
-	<td>{{recruit.money}}</td>
+	<td>{{recruit.registerdate}}</td>
+	<td >{{recruit.money}}</td>
 	<td>{{recruit.opposite}}</td>
 </tr>
 <tr>
@@ -69,9 +71,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
      $(function(){
+     //登记
      $("#save").click(function(){
         window.location.href="BackJsp/hcq2/ChequeRegisterApply.jsp"
      })
+     //获取登记金额
+      new Vue({
+        el:"#TotalMoney",
+        data:{
+          total:0
+        },created:function(){
+          this.getTotalMoney();
+        },methods:{
+           getTotalMoney:function(){
+           var url="Chequeregister/getTotalMoney";
+             this.$http.post(url,{emulateJSON:true}).then(function(res){
+                this.total=res.body;
+             })
+           }
+        }
+     })
+     //获取登记支票
        var load=new Vue({
             el:'#app',
             data:{

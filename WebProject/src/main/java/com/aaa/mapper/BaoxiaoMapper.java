@@ -7,6 +7,6 @@ import com.aaa.bean.Baoxiao;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface BaoxiaoMapper extends Mapper<Baoxiao>{
-	@Select("select max(baoxiaoid) from baoxiao")
+   @Select("select max(baoxiaoid) from baoxiao")
    public Integer getMaxId();
 }

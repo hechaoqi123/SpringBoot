@@ -15,6 +15,8 @@ public class Post implements Serializable {
     private Integer seq;
 
     private Integer deptid;
+    
+    private Integer money;
 
     private static final long serialVersionUID = 1L;
 
@@ -46,7 +48,16 @@ public class Post implements Serializable {
         return seq;
     }
 
-    public void setSeq(Integer seq) {
+    
+    public Integer getMoney() {
+		return money;
+	}
+
+	public void setMoney(Integer money) {
+		this.money = money;
+	}
+
+	public void setSeq(Integer seq) {
         this.seq = seq;
     }
 

@@ -32,6 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <H1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:10px;">绩效管理</span>
    <button id="save" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>绩效考核</button>
+   <a href="userdetail/generate"><button id="generate" class="btn" style="position:absolute;right:170px;width:150px;margin-left:300px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer">+生成考勤绩效表</button>
+       </a>               
                         </H1></TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
      <!-- 分类检索 -->

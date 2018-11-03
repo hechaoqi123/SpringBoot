@@ -46,14 +46,13 @@ public class PerformanceController {
     public PageInfo<Performance> queryBycriteria(Integer pageNum,Performance off){
 		  PageHelper.startPage(pageNum,13);
 		  List<Performance> list=null;
-		  if(off.getStatus().equals("")||off.getStatus()==null){
-			  list=service.getAll();
-		  }else{
-			  if(off.getType().equals("")){
+			  if(off.getType()!=null&&off.getType().equals("")){
 				  off.setType(null);
 			  }
+			  if(off.getStatus()!=null&&off.getStatus().equals("")){
+				  off.setStatus(null);
+			  }
 			  list=service.select(off);
-		  }
 		  PageInfo<Performance> info=new PageInfo<Performance>(list);
     	return info;
     }

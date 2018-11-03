@@ -26,6 +26,14 @@ public class PostController {
 	@Autowired
 	UsersService userService;
 	
+	
+	//级联查询部门所有角色
+	@RequestMapping("/getPost")
+	@ResponseBody
+   public List<Post> getPost(String dept){
+		List<Post> list = service.getPost(dept);
+		return list;
+  }
 	@RequestMapping("/getAllpost")
 	@ResponseBody
    public PageInfo<Post> getAll(Integer pageNum, Integer deptId){
