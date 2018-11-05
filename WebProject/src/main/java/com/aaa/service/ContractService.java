@@ -20,4 +20,17 @@ public interface ContractService {
     public void updateTwo(Integer ctid);
     //撤销的合同
     public void updateThree(Integer ctid);
-}
+    //查询某个客户的所有合同
+    public List<Map> selectOneContract(Integer cid);
+    //修改合同
+    public void update(Contract ct);
+    //查询
+    public List<Contract> select();
+    public List<Map> selectAllContract(Integer cid);
+    //查询审核中的合同
+    public List<Map> selectContractState();
+  //唯一的合同号
+    public int selectMaxId();
+    public List<Map> selectHt();
+    public void updateContractId(String contracnumber,Integer detailId,Integer contractid);
+} 

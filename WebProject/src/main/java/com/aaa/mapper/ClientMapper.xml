@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.ClientMapper">
 
- <select id="selectDim" parameterType="java.lang.String" resultType="Client">
-  	select * from client where clientname like '%${key}%'
+ <select id="selectDim" parameterType="java.lang.String" resultType="Map">
+  	<!-- select * from client where clientname like '%${key}%' -->
+select c.*,count.number from client c left join 
+(select clientid,count(*) as number from contract GROUP BY clientid) count on c.clientid=count.clientid 
+  
+  <if test="key!=null and key!=''">
+  		where clientname  like '%${key}%'
+  	</if>
+  
   </select>
 </mapper>

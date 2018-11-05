@@ -60,6 +60,7 @@ public class PlanController {
      @RequestMapping("/seltys")
      public @ResponseBody List<Userdetail> seltys(){
      	List<Userdetail> quers = planservice.quers();
+     	System.out.println(quers.toString());
   
     	return quers;
  }

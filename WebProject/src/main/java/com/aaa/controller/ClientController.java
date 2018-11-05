@@ -80,12 +80,12 @@ public class ClientController {
 	}
 	@RequestMapping("/selectDim")
 	public @ResponseBody PageInfo<Map> selectDim(Integer pageNum,String key){
-		PageHelper.startPage(pageNum, 5);
+		PageHelper.startPage(pageNum, 15);
 		System.out.println(key);
 		System.out.println(111);
 		List<Map> client=service.selectDim(key);
 		PageInfo<Map> info=new PageInfo<Map>(client);
-		System.out.println(info);
+		System.out.println(info.getList());
 		return info;
 	}
 }

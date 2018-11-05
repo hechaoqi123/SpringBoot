@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	}
 	#tabde{
-		 font-family: "楷体"; 
+		 font-family: "微软雅黑"; 
 	}
 	#tabde td{
 	 border:1px solid #c0c0c0;
@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 </style>
   </head>
-  <body style="background-image:url(img/qweq.jpg); font-family:'宋体';">
-   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;margin-left:150px;">
+  <body style=" font-family:'微软雅黑';">
+   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;">
    <form id="myform">
    <table id="tabde" cellspacing="0" cellpadding="0" summary="" border="0" style="table-layout:fixed;margin-left:100px;margin-top:50px;"><col width=100px><col><col width=100px><col>
     <tbody>
@@ -65,18 +65,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </tr>
         <tr>
 	<td  align=right class=fieldLable> 分     类</td>
-	<td><select name="clientclassify">
-		<option value="1">1</option>
+	<td><select name="clientclassify" style="background-color:#f3faff;width:310px;border:0;">
+		<option value="商务">商务</option>
+		<option value="经济">经济</option>
+		<option value="娱乐">娱乐</option>
+		<option value="电竞">电竞</option>
+
 	</select>&nbsp;</td>
 	<td align=right class=fieldLable> 客户来源</td>    
-	<td><select name="clientsource">
-		<option value="1">1</option>
+	<td><select name="clientsource" style=" background-color:#f3faff;width:310px;border:0;">
+		<option value="电话">电话</option>
+		<option value="推荐">推荐</option>
+		<option value="广告">广告</option>
 	</select>&nbsp;</td>
         </tr>
         <tr>
 	<td  align=right class=fieldLable> 所属行业</td>
-	<td><select name="industry">
-	<option value="1">1</option>
+	<td><select name="industry" style="background-color:#f3faff;width:310px;border:0;">
+	
+	<option value="计算机">计算机</option>
+	<option value="农业">农业</option>
+	<option value="运营">运营</option>
+	<option value="开发">开发</option>
 	</select>&nbsp;</td>
 	<td align=right class=fieldLable> 客户网址 </td>
 	<td><input name="clienturl"/>&nbsp;</td>
@@ -151,13 +161,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td><input name="reservedphone"/>&nbsp;</td>
         </tr>
         <tr>
-        	<td><input type="button" value="确定" id="but"></td>
+        	<td><input type="button" value="添加" id="but"></td>
         </tr>
     </tbody>
-</table>
+
 </form>
-   </div>
-   
+ </div>
+
    
   </body>
 </html>
@@ -172,12 +182,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				dataType:"json",
 				success:function(data){
 				
-					alert("保存成功！");
-				},
-				error:function(){
-					  alert("error");
+					
 				}
+				
 	 		})
+	 		alert("添加成功！");
+	 		window.location.href = 'BackJsp/mh/Allcustomers.jsp';
 	 })
 
 </script>
