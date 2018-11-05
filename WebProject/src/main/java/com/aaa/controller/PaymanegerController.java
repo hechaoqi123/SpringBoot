@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.bean.Paymaneger;
 import com.aaa.service.PaymanegerService;
-
+//薪资设置
 @Controller
 @RequestMapping("Paymaneger")
 public class PaymanegerController {

@@ -45,7 +45,7 @@ public class CheckingController {
 	@RequestMapping("/savePlay")
 	public String savePlay(Checking checking,@RequestParam("file") MultipartFile file,
 			   HttpServletRequest request) throws IllegalStateException, IOException{
-		//获取文后缀
+		//获取后缀
 		String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 		//生成唯一标识
 		UUID uuid=UUID.randomUUID();

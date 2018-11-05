@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>招聘和配置</title>
+    <title>差旅费报销</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -31,11 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <a  class="a" style="color:#000" @click="criteria(0,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 差旅费报销
 	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{recruit}}</SPAN> --></a>
-	   <a class="a" @click="criteria(1,$event)" href="javascript:">
+	   <a  @click="criteria(1,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 费用报销
 	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{entry}}</SPAN> -->
 	     </a>
-	  
+	   <a @click="criteria(2,$event)" href="javascript:">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 薪资发放</a>
 	   </span>
 	 </div>
 	 <!-- 数据 -->
@@ -87,7 +88,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 <tr>
 </table>
+<!-- 薪资发放 -->
+<table  v-show="tactics==2"  style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
+<th width="270">主题</th>
+<th>创建人</th>
+<th width="130">薪资月份</th>
+<th>社保月份</th>
+<th>申请时间</th>
+</tr></thead>
+<tbody>
+<tr v-for="recruit in datas">
+<td>
+   
+<img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
+<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
+<a :href="'Paygrantapply/detail/'+recruit.applyid">{{recruit.theme}}</a></td>
+	<td>{{recruit.createpeople}}</td>
+	<td>{{recruit.paymonth}}&nbsp;</td>
+	<td style="color:#E22018">{{recruit.socialmonth}}</td>
+	<td>{{recruit.createdate}}</td>
+</tr>
+<tr>
+</table>
 
+<!-- End -->
 <input id="aa" style="display:none" value="${detail.dependence}"/>
 <input id="bb"  style="display:none" value="${detail.position}"/>
 <br/>
@@ -124,6 +148,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             //费用报销
 		           if(this.tactics==1){url="Baoxiao/queryBycriteria"
 		               this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
+		               this.pageInfo=res.body
+		               this.datas=res.body.list;
+	                })};
+	                //薪资发放
+	                  if(this.tactics==2){url="Paygrantapply/queryBycriteria"
+			           this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
 		               this.pageInfo=res.body
 		               this.datas=res.body.list;
 	                })};

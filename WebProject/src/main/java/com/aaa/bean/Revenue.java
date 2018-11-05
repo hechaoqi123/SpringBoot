@@ -15,6 +15,8 @@ public class Revenue implements Serializable {
     private Integer ratio;
 
     private Integer celerity;
+    
+    private Integer exempt;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,7 +36,16 @@ public class Revenue implements Serializable {
         this.min = min;
     }
 
-    public Integer getMax() {
+    
+    public Integer getExempt() {
+		return exempt;
+	}
+
+	public void setExempt(Integer exempt) {
+		this.exempt = exempt;
+	}
+
+	public Integer getMax() {
         return max;
     }
 

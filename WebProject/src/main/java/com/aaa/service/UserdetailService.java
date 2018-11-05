@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.aaa.bean.Userdetail;
 import com.github.pagehelper.PageInfo;
@@ -27,5 +28,5 @@ public interface UserdetailService {
 	//修改
 	int updateByPrimaryKeySelective(Userdetail record);
 	//生成绩效考勤表
-	public HSSFWorkbook generate();
+	public XSSFWorkbook generate();
 }

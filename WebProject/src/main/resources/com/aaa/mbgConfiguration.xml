@@ -44,7 +44,13 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
          
-         <table schema="first" tableName="revenue" domainObjectName="Revenue"    
+         <table schema="first" tableName="Pay" domainObjectName="Pay"    
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
+               enableSelectByExample="false" selectByExampleQueryId="false" >    
+            <property name="useActualColumnNames" value="false"/>    
+        </table> 
+           
+         <table schema="first" tableName="PaygrantApply" domainObjectName="Paygrantapply"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
             <property name="useActualColumnNames" value="false"/>    

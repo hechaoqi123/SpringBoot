@@ -6,16 +6,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html><head>
+ <base href="<%=basePath%>">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>差旅费报销* - Colloa</title>
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/view.css">
-  <script type="text/javascript" src="js/viewCn.js"></script>
-  <script type="text/javascript" src="js/view.js"></script>
-  <script type="text/javascript" src="js/utility.js"></script>
-  <script type="text/javascript" src="js/ckeditor.js"></script>
+  <link rel="stylesheet" href="BackJsp/hcq/css/font-awesome.min.css">
+  <link rel="stylesheet" href="BackJsp/hcq/css/view.css">
+  <script type="text/javascript" src="BackJsp/hcq/js/viewCn.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/view.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/utility.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/ckeditor.js"></script>
   <style>.cke{visibility:hidden;}</style>
 </head><body id="colloaBody">
    <form id="myform" method="post" action="/CostManager/save">
@@ -191,9 +193,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table>
 </form>
 </body></html>
-<script src="js/Vue.js"></script>
-<script src="js/vue-resource.min.js"></script>
-<script src="js/jquery-2.0.3.min.js"></script>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="BackJsp/hcq/js/jquery-2.0.3.min.js"></script>
 <script>
   $("#sub").click(function(){
      $("#myform").submit();

@@ -6,6 +6,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import com.aaa.service.UserdetailService;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,8 +64,9 @@ public class UserdetailController {
 		 response.setCharacterEncoding("UTF-8");
 		 response.setContentType("text/html;charset=utf-8"); 
 		 response.addHeader("Content-type", "appllication/octet-stream");
-		 response.addHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode("绩效考勤表.xls", "UTF-8"));
-		 HSSFWorkbook workbook=service.generate();
+		 String rename=(new Date().getYear()+1900)+"年"+(new Date().getMonth()+1)+"月份";
+		 response.addHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(rename+"绩效考勤表.xlsx", "UTF-8"));
+		 XSSFWorkbook workbook=service.generate();
 		 workbook.write(response.getOutputStream());
 	}
     //获取员工详细信息：criteria不为空时代表修改操作
