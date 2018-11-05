@@ -16,6 +16,7 @@
      <insert id="addone" parameterType="com.aaa.bean.Krar">
         insert into Krar(tid,kname)VALUES((select MAX(tid) from task),#{kname})
      </insert>
+<<<<<<< HEAD
      <select id="getOne" parameterType="int" resultType="java.util.Map">
      select * from task t  
      join dept d
@@ -29,5 +30,85 @@
        where t.tid=#{id}
      
      </select>
+=======
+     
+     
+     
+     <select id="">
+     
+     
+     
+     
+     </select>
+     
+     
+     
+     
+      <insert id="allIsert"  useGeneratedKeys="true" keyProperty="tid" parameterType="twoUtilEntity">
+        insert into task(tname,ksdeta,workload,deptid,rwsm,rwfl,itemid,zxr)VALUES
+       <!--  <foreach collection="list" item="t" separator=","> -->
+        (#{tname},#{ksdeta},#{workload},#{deptid},#{rwsm},#{rwfl},#{itemid},#{zxr})
+      <!--   </foreach> -->
+        <!--  , -->
+     </insert>
+     
+      <select id="selectMaxIdOne"  resultType="int">
+>>>>>>> refs/remotes/origin/mh
 
+     select max(tid)  from task 
+  </select>
+     
+     
+		 <insert id="allzxr" parameterType="zxr">
+        insert into zxr(taskid,usersid)VALUES
+        (#{taskid},#{usersid})
+       
+        <!--  , -->
+     </insert>
+	
+	
+	 <select id="selectTask" parameterType="java.lang.String" resultType="java.util.Map">
+	
+	select * from task left join itinfor on task.itemid=itinfor.itemid left join userdetail on userdetail.detailId=task.detailld 
+	  <if test="key!=null and key!=''">
+  		where tname like '%${key}%'
+  	</if>
+	
+	 </select>
+	 <select id="selectTailed" parameterType="integer" resultType="java.util.Map">
+	
+	select t.*,i.itemname,i.itemsort,u.username,d.deptName from task t left join itinfor i on t.itemid=i.itemid left join userdetail u on u.detailId=t.detailld left join dept d on d.deptId=t.deptid
+  		where tid=#{tid}
+	
+	 </select>
+	 
+	 
+	  <select id="selectiid" parameterType="integer" resultType="java.util.Map">
+	
+	select t.*,i.itemname,i.itemsort,u.username,d.deptName from task t left join itinfor i on t.itemid=i.itemid left join userdetail u on u.detailId=t.detailld left join dept d on d.deptId=t.deptid
+  		where i.itemid=#{iid}
+	
+	 </select>
+	 
+	 <select id="selectMeTask" parameterType="integer" resultType="java.util.Map">
+	
+		<!-- select * from task left join itinfor on task.itemid=itinfor.itemid left join userdetail on userdetail.detailId=task.detailld 
+		where task.detailld=#{tid} -->
+		
+select * from task left join itinfor on task.itemid=itinfor.itemid 
+left join zxr on zxr.taskid=task.tid left join userdetail on zxr.usersid=userdetail.detailId
+
+  where zxr.usersid=#{tid}
+		
+		
+	 </select>
+	 <update id="updateTask" parameterType="integer">
+	 	update task set rwfl=1 where tid=#{tid}
+	 
+	 </update>
+	  <update id="updateTaskOne" parameterType="integer">
+	 	update task set rwfl=2 where tid=#{tid}
+	 
+	 </update>
+	
 </mapper>

@@ -42,9 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 </style>
   </head>
-  <body style="background-image:url(img/qweq.jpg);">
+  <body >
   
-   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;margin-left:150px;">
+   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;">
    <table style="margin-left:100px;margin-top:0px;" id="lotab">
    		<tr>
    			<td style="float:left;border:0px solid #000;"><h2 style="float:left;margin-left:10px;"> 
@@ -178,12 +178,14 @@ ${client.clientname}
 				dataType:"json",  
 				success:function(data){
 				alert("删除成功！");
+				
 				}
   	})
   }
   else{
   	alert("打扰了！")
   }
+  window.location.href = 'BackJsp/mh/Allcustomers.jsp';
   })
 /* $(function(){
 	alert(111);

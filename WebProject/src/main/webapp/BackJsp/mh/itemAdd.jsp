@@ -5,10 +5,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %> 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html><head>
+ <base href="<%=basePath%>">  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <base href="<%=basePath%>">
+  
   <title>新增项目* - Colloa</title>
 	<link rel="stylesheet" href="BackJsp/mh/css/font-awesome.min.css">
   <link rel="stylesheet" href="BackJsp/mh/css/view.css">
@@ -16,7 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script src="BackJsp/mh/js/hm(1).js"></script>
   <script type="text/javascript" src="BackJsp/mh/js/viewCn.js"></script>
   <script type="text/javascript" src="BackJsp/mh/js/view.js"></script>
-  <style>.cke{visibility:hidden;}</style>
+  <style>.cke{visibility:hidden;}
+  	
+  </style>
 </head><body id="colloaBody"><table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0"><tbody><tr valign="top"><td>&nbsp;</td><td id="colloaForm"><div class="formTaskflowContainer">
 
 <form class="formTaskflow" id="itform"><table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
@@ -25,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col width="180"></colgroup>
 <tbody>
 <tr>
-<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid">-----,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid" value="${didd}" style="display:none">${name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
 <td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
@@ -51,11 +54,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center; WIDTH: 115px"><span style="COLOR: rgb(255,0,0)">*</span>计划完成时间</td>
 <td id="dbf.endTime" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date,required">
 <input name="planendtime"></td></tr>
-<tr>
+<tr  >
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">客户名称</td>
-<td id="dbf.text0" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="editable,prompt:" dbf.type="" dbf.key="">
+<td   id="dbf.text0" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="editable,prompt:" dbf.type="" dbf.key="">
 
-<input name="clientid">
+	<select name="clientid" id="clientid" onchange="gei()">
+	<option>
+	--请选择--
+	
+	</option>
+		<option v-for="c in client" v-bind:value="c.clientid"  >
+		{{c.clientname}}
+		</option>
+	
+	</select>
+
 <!-- <select>
 	<option>
 	
@@ -64,10 +77,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </select> -->
 &nbsp;</td>
-<td style="TEXT-ALIGN: center; WIDTH: 115px">关联合同</td>
-<td id="dbf.psid3" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="editable,prompt:" dbf.type="" dbf.key="0">
+<td  style="TEXT-ALIGN: center; WIDTH: 115px">关联合同</td>
+<td  id="dbf.psid3" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="editable,prompt:" dbf.type="" dbf.key="0">
 
-<input name="contractid">
+	<select name="contractid" id="contractid">
+	
+		<option >
+	--请选择--
+	
+	</option>
+	</select>
+	
 
 <!-- <select>
 	<option>
@@ -146,35 +166,138 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">附件</td>
 <td id="项目成果和总结附件" style="WIDTH: 798px" colspan="3" dbf.source="files" dbf.type="">&nbsp;</td></tr>
 <tr>
-<td id="项目成果和总结" style="HEIGHT: 120px; VERTICAL-ALIGN: top" colspan="4" dbf.source="" dbf.type="">&nbsp;</td></tr></tbody></table>
-</form></div><form method="post"><input type="hidden" id="viewState" name="viewState"></form><br>
+
+<td id="项目成果和总结" style="HEIGHT: 120px; VERTICAL-ALIGN: top" colspan="4" dbf.source="" dbf.type="">&nbsp;</td></tr>
+<tr style="display:none;">
+	<td>
+	
+	 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a> 
+	</td>
 
 
- <div id="_vWorkflowActionsShow" align="right"><a class="button" href="javascript:void(0)" id="but">保存</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;转立项审核&#39;,1,1);return false;">转立项审核</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;直接转项目任命&#39;,1,1);return false;">直接转项目任命</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;取消&#39;,0,0);return false;">取消</a></div><br>
+</tr>
+
+</tbody></table>
+<div  align="right"> 				
+<a class="button" onclick="but()">转立项审核</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;直接转项目任命&#39;,1,1);return false;">直接转项目任命</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;取消&#39;,0,0);return false;">取消</a></div><br>
+<span id="but">转立项审核</span>
+</form>
+
+</div><form method="post"><input type="hidden" id="viewState" name="viewState">
+
+
+
+</form><br>
+
+
+ 
  
  <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table><div id="fieldGetValueBySource.dbf.startTime" style="position: absolute; z-index: 10; background-color: rgb(255, 255, 255); cursor: default; border: 1px solid rgb(221, 221, 221); box-sizing: border-box; padding: 5px; overflow-x: hidden; overflow-y: auto; height: 250px; width: 350px; top: 156px; left: 317px; display: none;"><iframe src="./新增项目_ - Colloa_files/fieldDate.html" style="width:100%;height:95%;" frameborder="0"></iframe></div>
 </body>
 </html>
-<script src="../../assets/js/jquery-2.0.3.min.js"></script>
+	<script src="BackJsp/mh/js/Vue.js"></script>
+	<script src="BackJsp/mh/js/vue-resource.min.js"></script>
+	<script src="BackJsp/mh/js/jquery-2.0.3.min.js"></script>
 <script>
-	$("#but").click(function(){
-	alert(111)
-		$.ajax({
+		
+		
+		function but(){
+		alert(111)
+		 $.ajax({
 			url:"Itinfor/itInsert.action",
 	 			type:"post",
 	 			data:$("#itform").serialize(),
 				dataType:"json",
 				success:function(data){
 				
-					alert("保存成功！");
+					
 				}
-		
+		 
 		})
+		alert("已提交主管审核！");
+	window.location.href = 'BackJsp/mh/itemMeAll.jsp';
+		}
+/* 	$("#but").click(function(){
+alert(111)
+		/* $.ajax({
+			url:"Itinfor/itInsert.action",
+	 			type:"post",
+	 			data:$("#itform").serialize(),
+				dataType:"json",
+				success:function(data){
+				
+					
+				}
+		 
+		})
+	alert("保存成功！");
+	window.location.href = 'BackJsp/mh/projectManager.jsp';
+	}) */
+	
+	function gei(){
+	 $.ajax({
+		url:"contract/selectAllContract",
+		type:"post",
+		data:{cid:$("#clientid").val()},
+		dataType:"json",
+		success:function(data){
+		
+		$("#contractid").html('');
+		var option="<option>--请选择--</option>"
+		for(var i=0;i<data.length;i++){
+		option+="<option value='"+data[i].contractid+"'>"+data[i].contracname+"</option>"
+		
+		}
+		
+		$("#contractid").append(option)
+		
+		}
 	
 	
-	})
-
+	}) 
+	}
+/* 	var con=new Vue({
+	
+		el:"#tab1",
+		data:{
+		contracts:null
+		},
+		methods:{
+			gei:function(){
+			
+			var url='';
+			 this.$http.post(url,{cid:7},{emulateJSON:true}).then(function(res){
+		                this.contracts=res.body.list
+		                  });
+			}
+		}
+	}) */
+	
+	
+	$(function(){
+	 
+	 
+		  var page=new Vue({
+		    el :'#itform',
+		    data:{
+		      client:null,
+		      pageInfo:null
+		    },
+		    methods:{
+		        execute:function(pageNumber){
+		        
+		              var url = '/client/selectDim';
+		             this.$http.post(url,{pageNum:pageNumber,key:null},{emulateJSON:true}).then(function(res){
+		                this.client=res.body.list
+		                this.pageInfo=res.body
+		                alert(this.client)
+		             });
+		        }
+		    }
+		})
+		page.execute(1);
+		})
 
 </script>

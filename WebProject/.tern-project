@@ -4,7 +4,11 @@
     "guess-types": {
       
     },
+<<<<<<< HEAD
     "bootstrap": {
+=======
+    "browser-extension": {
+>>>>>>> refs/remotes/origin/mh
       
     }
   },

@@ -59,6 +59,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	#tab1 td a{
 	text-decoration:none;
+	color:blue;
+	}
+	#tab1 td a:hover{
+	text-decoration:none;
+	color:#000;
 	}
 	#tab1 tr:hover td{
 		background-color:#ffffe0;
@@ -93,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</td>
    		</tr>
    </table>
-   <div style="height:200px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
+   <div style="margin-top:50px;height:200px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
    		<div style="background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);height:40px;border-bottom:1px solid #c0c0c0;"><b style="float:left;margin-top:10px;margin-left:30px;">分类</b></div>
    		<div id="classify" style="height:160px;border:0px solid #000;">
    			<table id="tab">
@@ -127,12 +132,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</tr>
  		<tbody id="tbody"></tbody>
  		 <tr v-for="c in client">
- 			<td class="ktd"><a :href="'client/clientOne?cid=' + c.clientid"><img src="img/customer.gif">{{c.clientname}}</a></td>
+ 			<td class="ktd"><a :href="'client/clientOne?cid=' + c.clientid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"/><span style="float:left;margin-left:5px;">{{c.clientname}}</span></a></td>
  			<td align=right><a href="">2</a></td>
  			<td align=right>0.00</td>
- 			<td align=right><a href="">4</a></td>
+ 			<td align=right v-if="c.number!=null"><a :href="'contract/selectOneContract?pageNum=1&cid=' + c.clientid"><img src="img/ico1.png"  style="float:left;margin-top:2px;margin-left:42px;"><span style="float:left;margin-left:5px;margin-top:3px;">{{c.number}}</span></a></td>
+ 			<td align=right v-if="c.number==null">0</td>
  			<td align=right>0.00</td>
- 			<td align=right style='color:#85d579;'>0.00</td>
+ 			<td align=right style='color:#85d579;'>0.00<a href="#">[+]</a></td>
  			<td align=right><a href="">4</a></td>
  			<td align=center>{{pageInfo.total}}</td>
  		</tr> 
@@ -173,8 +179,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(pageNumber){
-		             var url = '/client/clientSelectBy';
-		             this.$http.post(url,{pageNum:pageNumber},{emulateJSON:true}).then(function(res){
+		             var url = '/client/selectDim';
+		             this.$http.post(url,{pageNum:pageNumber,key:null},{emulateJSON:true}).then(function(res){
 		                this.client=res.body.list
 		                this.pageInfo=res.body
 		             });

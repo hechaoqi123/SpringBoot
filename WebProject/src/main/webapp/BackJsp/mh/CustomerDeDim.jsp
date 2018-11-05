@@ -42,11 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<form >
     		<table style="margin-top:50px;margin-left:50px;">
     			<tr>
-    				<td><h2 style="float:left;">查找客户</h2><span style="float:left;font-size:7px;margin-top:5px;margin-left:5px;"><input type="radio" name="field">按客户名称
-					<input type="radio" name="field">按拼音
-					<input type="radio" name="field">按客户来源<br/>
+    				<td><h2 style="float:left;">查找客户</h2><span style="float:left;font-size:7px;margin-top:50px;margin-left:5px;">>
     				<input name="key"  style="width:700px;height:30px;margin-left:-100px;" ref="test">
-    				<input type="button" @click="execute(1)" value="查找">
+    				<input type="button" @click="execute(1)" value="查找" style="width:50px;height:30px;">
     				</span></td>
     				
     			</tr>
@@ -64,9 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<th>服务均分</th>
  		</tr>
  		<tbody v-if="tris">
- 		<tr v-for="c in client">
- 		<td>{{c.clientid}}</td>
- 		</tr>
+ 		 <tr v-for="c in client">
+ 			<td class="ktd"><a :href="'client/clientOne?cid=' + c.clientid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"/><span style="float:left;margin-left:5px;">{{c.clientname}}</span></a></td>
+ 			<td align=right><a href="">2</a></td>
+ 			<td align=right>0.00</td>
+ 			
+ 			<td align=right v-if="c.number!=null"><a :href="'contract/selectOneContract?pageNum=1&cid=' + c.clientid"><img src="img/ico1.png"  style="float:left;margin-top:2px;margin-left:42px;"><span style="float:left;margin-left:5px;margin-top:3px;">{{c.number}}</span></a></td>
+ 			
+ 			<td align=right v-if="c.number==null">0</td>
+ 			<td align=right></td>
+ 			<td align=right style='color:#85d579;'>0.00</td>
+ 			<td align=right><a href="">4</a></td>
+ 			<td align=center>{{pageInfo.total}}</td>
+ 		</tr> 
  		</tbody>
  		</table>
     	
@@ -94,8 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(pageNumber){
-		         alert(this.$refs.test.value);
-		             var url = '/client/selectDim';
+		        var url = '/client/selectDim';
 		             this.$http.post(url,{pageNum:pageNumber,key:this.$refs.test.value},{emulateJSON:true}).then(function(res){
 		               
 		                this.client=res.body.list
@@ -105,7 +112,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                }else{
 		                this.tris=false
 		                }
-		                alert(res.body.list);
 		               
 		                this.pageInfo=res.body
 		             });

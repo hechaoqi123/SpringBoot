@@ -89,6 +89,5 @@ public String toString() {
 			+ workload + ", deptid=" + deptid + ", detailld=" + detailld + ", rwsm=" + rwsm + ", zxjg=" + zxjg
 			+ ", rwfl=" + rwfl + ", pid=" + pid + "]";
 }
-
-
+   
 }

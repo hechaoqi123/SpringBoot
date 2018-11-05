@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.ItinforMapper">
+
+ <select id="selectDim" parameterType="java.lang.String" resultType="Map">
+select i.*,count.number,count.workload,ct.clientname from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid
+  
+  <if test="key!=null and key!=''">
+  		where itemname  like '%${key}%'
+  	</if>
+  
+  </select>
+
+
+		 <select id="selectDetailed" parameterType="integer" resultType="Map">
+	select ci.*,ct.contracname from 
+(select i.*,c.clientname from itinfor i left join client c on i.clientid=c.clientid) ci left join contract ct on ct.contractid=ci.contractid
+  where itemid=#{iid}
+  </select>
+		
+	<select id="selectState" parameterType="java.lang.String" resultType="Map">
+	select i.*,count.number,count.workload,ct.clientname,u.username from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid left join userdetail u on i.detailid=u.detailId where i.itstate=0
+
+
+
+	  	<!-- where i.itstate=0	where itstate=0 -->
+	  
+	  </select>
+	 
+ 	  <select id="selectStateOne" parameterType="java.lang.String" resultType="Map">
+	select i.*,count.number,count.workload,ct.clientname,u.username from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid left join userdetail u on i.detailid=u.detailId where i.itstate=2
+	  </select> 
+	  <!-- 查询已完成的项目 -->
+	    <select id="selectStateTwo" parameterType="java.lang.String" resultType="Map">
+	select i.*,count.number,count.workload,ct.clientname,u.username from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid left join userdetail u on i.detailid=u.detailId where i.itstate=4
+	  </select> 
+	  <!-- 查询项目经理 -->
+	  
+	  <select id="selectUsers"  resultType="Map">
+	  select * from userdetail where dependence='营销部' and position='项目经理'
+	  </select>
+	  
+	  <!-- 查询项目经理的员工 -->
+	  <select id="selectUsersName"  resultType="Map">
+	  select * from userdetail where dependence='营销部' and position='员工'
+	  </select>
+	  
+	  <!-- 任命项目经理 -->
+	  <update id="updateOrganization" parameterType="Itinfor" >
+  
+  	update itinfor set organization=#{organization} where itemid=#{itemid,jdbcType=INTEGER}
+  
+  </update>
+  <!-- 小组成员 -->
+  
+   <update id="updateItworkplan" parameterType="Itinfor" >
+  
+  	update itinfor set itworkplan=#{itworkplan} where itemid=#{itemid,jdbcType=INTEGER}
+  
+  </update>
+  
+	  
+	  
+	  <update id="updateIdState" parameterType="integer" >
+  
+  	update itinfor set itstate=1 where itemid=#{iid,jdbcType=INTEGER}
+  
+  </update>
+  <update id="updateIdStateOne" parameterType="integer"  >
+  
+  	update itinfor set itstate=2 where itemid=#{iid,jdbcType=INTEGER}
+  
+  </update>
+	   <update id="updateIdStateTwo" parameterType="integer"  >
+  
+  	update itinfor set itstate=4 where itemid=#{iid,jdbcType=INTEGER}
+  
+  </update>
+	   <select id="selectMeItinfor" parameterType="integer" resultType="Map">
+select i.*,count.number,count.workload,ct.clientname from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid where i.detailid=#{did}
+  
+  </select>
+	  
+
+</mapper>
