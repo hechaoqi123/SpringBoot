@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
-      <A href="BackJsp/gm/metting.jsp"><IMG 
+      <A href="BackJsp/gm/metting.jsp" style="color:#000"><IMG 
       src="BackJsp/gm/img/folder.png" border="0"> 会议室列表</A>
       <A href="BackJsp/gm/reserve.jsp"><IMG 
       src="BackJsp/gm/img/folder.png" border="0"> 会议室预定</A>

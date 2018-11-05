@@ -25,12 +25,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- 日志 -->
+        <!--   使用springboot默认日志 
         <dependency>
              <groupId>org.slf4j</groupId>
              <artifactId>slf4j-nop</artifactId>
              <version>1.7.24</version>
-        </dependency>
+        </dependency> -->
         <!-- mysql依赖 -->
         <dependency>
 			<groupId>mysql</groupId>

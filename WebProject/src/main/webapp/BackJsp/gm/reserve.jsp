@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <DIV id="colloaMenu2">
       <A href="BackJsp/gm/metting.jsp"><IMG 
       src="BackJsp/gm/img/folder.png" border="0"> 会议室列表</A>
-      <A href="BackJsp/gm/reserve.jsp"><IMG 
+      <A href="BackJsp/gm/reserve.jsp" style="color:#000"><IMG 
       src="BackJsp/gm/img/folder.png" border="0"> 会议室预定</A>
       </DIV>
       <DIV id="colloaContent2">
