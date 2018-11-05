@@ -86,7 +86,6 @@ function submitFunction() {
         contentType: false,
         processData: false,
         success: function (data) {
-        	alert(data);
         	$("#form-add input").val("");
         },
         error: function (returndata) {

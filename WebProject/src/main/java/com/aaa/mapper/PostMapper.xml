@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.PostMapper" >
+  <!-- 根据名字查职位角色Post getPost(String pname); -->
+  <select id="getOnePost" parameterType="string" resultType="com.aaa.bean.Post">
+  	SELECT * FROM post WHERE pname = #{pname}
+  </select>
   <!--  //查询职位对应的功能 List<map> postTrueVisittwomodile(Map map);-->
 	<select id="postTrueVisittwomodile" parameterType="map" resultType="map">
 		SELECT * FROM visittwomodile vt

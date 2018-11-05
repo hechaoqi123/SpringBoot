@@ -1,4 +1,4 @@
-d<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
@@ -78,10 +78,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="vertical-align: top; display: inline-block;" >
 				<span class="textBig">{{userDetail[0].username}}</span><br><br>
-				从属于： <span>{{userDetail[0].deptName}}</span><br>
-				岗位角色：<span v-for="detail in userDetail"> {{detail.pname}}&nbsp;</span> <br>
+				从属于： <span>{{userDetail[0].dependence}}</span><br>
+				岗位角色：<span v-for="detail in userDetail"> {{userDetail[0].description}}&nbsp;</span> <br>
 				个人状态：在线 <br>
-				简短说明：这家伙很懒什么都没留下 <br>
+				简短说明：{{userDetail[0].unum}} <br>
 				固定电话：{{userDetail[0].telephone}} <br>
 				移动电话：{{userDetail[0].phone}} <br>
 				电子邮件：{{userDetail[0].email}} <br>

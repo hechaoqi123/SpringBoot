@@ -97,11 +97,13 @@ public class UsersController{
 	@RequestMapping("/getOneUserDetails")
 	@ResponseBody
 	public List<Map> getOneUserDetails(Integer uid){
+		System.out.println(uid+"=================");
 		List<Map> oneUserDetails = service.getOneUserDetails(uid);
 		for (Map map : oneUserDetails) {
 			String portraiturl = (String) map.get("file");
 			map.put("file", "../upload/portrait/"+portraiturl);
 		}
+		System.out.println(oneUserDetails.toString());
 		return oneUserDetails;
 	}
 	//修改口令
