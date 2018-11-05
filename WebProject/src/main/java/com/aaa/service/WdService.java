@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.aaa.bean.Wd;
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 import com.github.pagehelper.PageInfo;
 
 public interface WdService {
