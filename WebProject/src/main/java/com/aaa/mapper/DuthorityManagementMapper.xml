@@ -56,11 +56,18 @@
 	</select>
 	<!-- //根据父级菜单查询对应可以访问的事务public List<Map> getMytransaction(Map map); -->
 	<select id="getMytransaction" parameterType="map" resultType="map">
-		SELECT * FROM mytransaction mt 
-		<if test="uid == null">
+		SELECT * FROM mytransaction mt
+		<if test="uid != null and mOneId == -1">
+			JOIN usersandmytransaction uat
+			ON uat.trid = mt.trid
+			JOIN userspost up
+			ON up.pid = uat.pid
+			WHERE up.uid = #{uid}
+		</if>
+		<if test="uid == null and mOneId != -1">
 			WHERE mt.mOneId = #{mOneId}
 		</if>
-		<if test="uid != null">
+		<if test="uid != null and mOneId != -1">
 			JOIN usersandmytransaction uat
 			ON uat.trid = mt.trid
 			JOIN userspost up
@@ -85,12 +92,12 @@
 				WHERE vtms.mTowId IN (
 						SELECT uw.mTowId FROM userstowmodile uw  WHERE uw.uid = #{uid}) 
 					OR vtms.mTowId IN (
-						SELECT  pt.mTwoId from posttwomodile pt
-						JOIN userdetail ud
-						ON ud.position = pt.pid
-						JOIN users u
-						ON u.unum = ud.unum
-						WHERE u.uid = #{uid})
+						SELECT  pt.mTwoId from posttwomodile pt  -- detailId
+							JOIN post p
+							ON p.pid = pt.pid
+							JOIN userdetail ud
+							ON ud.position = p.pname
+							WHERE ud.detailId = #{uid})
 	</select>
 	<!-- //根据二级菜单查询一级菜单
 	public List<Map> selectOneMTowModile(Integer[] mOneIds); -->
@@ -101,11 +108,11 @@
 						SELECT uw.mTowId FROM userstowmodile uw  WHERE uw.uid = #{uid}) 
 					OR vtms.mTowId IN (
 						SELECT  pt.mTwoId from posttwomodile pt
-						JOIN userdetail ud
-						ON ud.position = pt.pid
-						JOIN users u
-						ON u.unum = ud.unum
-						WHERE u.uid = #{uid})
+							JOIN post p
+							ON p.pid = pt.pid
+							JOIN userdetail ud
+							ON ud.position = p.pname
+							WHERE ud.detailId = #{uid})
 	  			)
 	  		ORDER BY vom.msequnce
 	</select>

@@ -219,5 +219,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- /.modal -->
 </body>
 	
-<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/organization.js"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/organization.js?var=1"></script>
 </html>

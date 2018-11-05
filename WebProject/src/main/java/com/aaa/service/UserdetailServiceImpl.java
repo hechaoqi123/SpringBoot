@@ -12,11 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.bean.Post;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
+import com.aaa.bean.Userspost;
 import com.aaa.bean.deptJob;
+import com.aaa.mapper.PostMapper;
 import com.aaa.mapper.UserdetailMapper;
 import com.aaa.mapper.UsersMapper;
+import com.aaa.mapper.UserspostMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -26,6 +30,10 @@ public class UserdetailServiceImpl implements UserdetailService {
 	  UserdetailMapper mapper;
 	@Autowired
 	  UsersMapper usermapper;
+	@Autowired
+	PostMapper postMapper;
+	@Autowired
+	UserspostMapper userspostMapper;
 	//根据主键更改非空字段
 	@Override
 	public void update(Userdetail user) {
@@ -50,9 +58,10 @@ public class UserdetailServiceImpl implements UserdetailService {
 	public void save(Userdetail user) {
 		//根据部门、用户主键生成工号
 		deptJob[] depts=deptJob.values();
+		Integer maxID = mapper.getMaxID();
 		for (deptJob dept : depts) {
 			if(dept.getName().equals(user.getDependence())){
-				user.setUsernum(dept.getJob()+"00"+(mapper.getMaxID()+1));
+				user.setUsernum(dept.getJob()+"00"+(maxID+1));
 			}
 		}
 		user.setFile("01460b57e4a6fa0000012e7ed75e83.png");
@@ -60,11 +69,12 @@ public class UserdetailServiceImpl implements UserdetailService {
 		mapper.insert(user);
            //生成员工账户
 		   Users record=new Users();
-		    record.setUid(mapper.getMaxID());
 			record.setUname(user.getUsername());
 			record.setUnum(user.getUsername());
 			record.setUpass("123456");
 		usermapper.insert(record);
+		Post onePost = postMapper.getOnePost(user.getPosition());
+		userspostMapper.insert(new Userspost(onePost.getPid(), maxID+1));
 	}
 	@Override
 	public List<Userdetail> queryByCriteria(String status) {

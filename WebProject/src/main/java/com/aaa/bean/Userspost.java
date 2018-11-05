@@ -27,6 +27,17 @@ public class Userspost implements Serializable {
         this.uid = uid;
     }
 
+	public Userspost() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Userspost(Integer pid, Integer uid) {
+		super();
+		this.pid = pid;
+		this.uid = uid;
+	}
+
 	@Override
 	public String toString() {
 		return "Userspost [pid=" + pid + ", uid=" + uid + "]";

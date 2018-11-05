@@ -15,7 +15,7 @@ import tk.mybatis.mapper.common.Mapper;
 public interface PostMapper extends Mapper<Post>{
     
     List<Post> getAllPost(@Param("deptId") Integer deptId);
-    
+    Post getOnePost(String pname);
     //查询职位对应的功能
     List<Map> postTrueVisittwomodile(Map map);
     //查询职位没有的功能

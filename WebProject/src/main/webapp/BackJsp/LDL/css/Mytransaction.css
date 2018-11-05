@@ -7,7 +7,7 @@
 	margin-bottom:0;
 	width: 100%;
 	padding-top:5px;
-	text-align: center;
+	padding-left:30px;
 	border: 1px solid #e3e3e3;
 }
 .myTransaction > div > a {
@@ -17,9 +17,8 @@
 	color: #000;
 }
 .myTransaction > div >div>div{
-	padding-left: 20px;
+	padding-left: 30px;
 	border-top: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
 }
 .myTransaction > div >div{
 	line-height: 30px;

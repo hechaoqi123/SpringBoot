@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesomes.css" type="text/css"></link>
 <link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
 <link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.css">
-<link rel="stylesheet" href="<%=basePath%>BackJsp/LDL/css/Mytransaction.css">
+<link rel="stylesheet" href="<%=basePath%>BackJsp/LDL/css/Mytransaction.css?ver=1.01">
 
 <script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/js/viewCn.js"></script>
@@ -57,8 +57,7 @@
 			</tr>
   		</table>
 	</div>
-	<table style="width: 100%; height: 100%; min-width: 980px;" border="0"
-		cellspacing="0" cellpadding="0">
+	<table id="tranVue" style="width: 100%; height: 100%; min-width: 980px;" border="0" cellspacing="0" cellpadding="0">
 		<tbody>
 			<tr valign="top">
 				<td id="colloaContent">
@@ -71,94 +70,55 @@
 						</colgroup>
 						<tbody>
 							<tr valign="top">
-								<td>
-									
+								<td><input id="uid" value="${CurrentUser.uid }" style="display: none;"><input id="uname" value="${CurrentUser.uname }" style="display: none;">
 									<div class="treeOfNavigation" id="treeOfNavigation">
 										<div class="myTransaction" id="accordion" >
-											<div class="panel">
-												<a data-toggle="collapse" data-parent="#accordion" href="#one">
-													<span>财务中心</span>
+											<div class="panel" v-for="(Visitonemodile, index) in Visitonemodiles">
+												<a data-toggle="collapse" data-parent="#accordion" :href='"#collapse"+index'>
+													<span>{{Visitonemodile.mname}}</span>
 												</a>
-												<div id="one" class="panel-collapse collapse">
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
+												<div :id='"collapse"+index' class="panel-collapse collapse">
+													<div v-for="(tran, index) in trans" v-if="tran.mOneId == Visitonemodile.mOneId">
+														<a @click="getRightData(tran.field1,index+1)">{{tran.trname}}</a>
 													</div>
 												</div>
-											</div>
-											<div class="panel">
-												<a data-toggle="collapse" data-parent="#accordion" href="#two">
-													<span>财务中心</span>
-												</a>
-												<div id="two" class="panel-collapse collapse">
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
-													</div>
-												</div>
-											</div>
-											<div class="panel">
-												<a data-toggle="collapse" data-parent="#accordion" href="#Three">
-													<span>财务中心</span>
-												</a>
-												<div id="Three" class="panel-collapse collapse">
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
-													</div>
-													<div>
-														<a>报销审批</a>
-													</div>
-												</div>
-												
 											</div>
 										</div>
 									</div>
 								</td>
 								<td></td>
 								<td>
-									<table class="tableList" border="0" cellspacing="0"
-										cellpadding="0">
+									<table class="tableList" border="0" cellspacing="0" cellpadding="0">
 										<tr>
 											<th>主题</th>
-											<th>当前步骤</th>
-											<th>当前责任人</th>
-											<th>更新时间</th>
+											<th>申请人</th>
+											<th>所属部门</th>
+											<th>需求岗位</th>
+											<th>需求人数</th>
+											<th>希望到岗日期</th>
 										</tr>
 										<tbody>
-											<tr>
-												<td><a href="javascript:showItem('事务','1001944');"><I
-														class="fa fa-lock fa-lg" style="color: rgb(44, 135, 240);">
-													</I> IPD-新品研发项目流程 <IMG
-														src="我发起的事务%20-%20colloa_files/priority0.gif" border="0"></a></td>
-												<td>实施中&nbsp;</td>
-												<td>&nbsp;</td>
-												<td>2017/11/21 16:13</td>
+											<tr v-for="rightData in rightDatas">
+												<td>
+													<img v-if="rightData.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
+													<img v-else-if="rightData.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
+													<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
+													<a :href="'Recruit/detail/'+rightData.recruitId">{{rightData.theme}}{{rightData.recruitid}}</a>
+												</td>
+												<td>{{rightData.principal}}</td>
+												<td>{{rightData.department}}&nbsp;</td>
+												<td>{{rightData.post}}</td>
+												<td>{{rightData.peoplenumber}}</td>
+												<td>{{rightData.enddate}}</td>
 											</tr>
 											<tr>
-												<td><a href="javascript:showItem('事务','1001598');">
-														<I class="fa fa-calendar-check-o fa-lg"
-														style="color: rgb(60, 188, 60);"></I> 系统验证 <IMG
-														src="我发起的事务%20-%20colloa_files/priority0.gif" border="0">
-												</a></td>
-												<td>关闭&nbsp;</td>
-												<td>&nbsp;</td>
-												<td>2017/1/5 13:22</td>
+												<td colspan="6">
+													<span  style="margin-left:100px">
+														<a @click="getRightData('',1)" class="button1 button1L" title="首页">首页</a><a @click="getRightData('',pageInfo.pageNum-1)" class="button1 button1M" title="上页">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="getRightData('',pageInfo.pageNum+1)" class="button1 button1M" title="下页">下一页</a><a @click="getRightData('',pageInfo.pages)"class="button1 button1R" title="尾页">尾页</a></span>
+												</td>
 											</tr>
 										</tbody>
-									</table> <SCRIPT language="javaScript">cataloguePages(504,20);</SCRIPT>
+									</table>
 								</td>
 							</tr>
 						</tbody>
@@ -167,6 +127,11 @@
 			</tr>
 		</tbody>
 	</table>
-
+	
+	
+	
 </body>
+
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/Mytransaction.js?ver=1.0.0.22"></script>
+
 </html>

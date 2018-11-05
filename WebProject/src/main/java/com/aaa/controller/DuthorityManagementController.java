@@ -64,7 +64,9 @@ public class DuthorityManagementController {
 	}
 	@RequestMapping("/selectUserTowModile")
 	public List<Map> selectUserTowModile(Integer uid) {
-		return service.selectUserTowModile(uid);
+		//查询用户登录时访问模块
+		List<Map> selectUserTowModile = service.selectUserTowModile(uid);
+		return selectUserTowModile;
 	}
 	@RequestMapping("/selectOneMTowModile")
 	public List<Map> selectOneMTowModile(Integer uid) {

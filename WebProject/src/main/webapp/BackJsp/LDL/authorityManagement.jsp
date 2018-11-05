@@ -246,5 +246,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </body>
 	
-<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/authorityManagement.js"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/authorityManagement.js?var=1"></script>
 </html>

@@ -40,7 +40,7 @@ var ve = new Vue({
 			  						"<td>"+data.body[Visittwomodile].mname+"</td>"+
 			  						"<td>"+data.body[Visittwomodile].mdescribe+"</td>"+
 			  						"<td>"+data.body[Visittwomodile].mOneId+"</td>"+
-			  						"<td>"+data.body[Visittwomodile].murl+"</td>"+
+			  						"<td>启动</td>"+//+data.body[Visittwomodile].murl+
 			  						"<td>" +
 			  							"<img src='../assets/img/user_add.png' width='15px'  onclick='towModileAllocation("+data.body[Visittwomodile].mTowId+")' data-toggle='modal' data-target='#myModal'> "+
 				  						"<img src='../assets/images/update.png' width='15px' title='修改'> " +
@@ -86,7 +86,6 @@ function submitFunction() {
         contentType: false,
         processData: false,
         success: function (data) {
-        	alert(data);
         	$("#form-add input").val("");
         },
         error: function (returndata) {
