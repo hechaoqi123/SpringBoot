@@ -44,6 +44,7 @@ $(function(){
 			},{emulateJSON: true}).then(function(data) {
 				this.trueVisits = data.body.postTrueVisittwomodile;
 				this.falseVisits = data.body.postFalseVisittwomodile;
+				this.mname = null;
 			}, function(dataError) {
 				
 			})

@@ -2,6 +2,75 @@
 <mapper namespace="com.aaa.mapper.MytransactionMapper">
 	<!-- //查询我发起的事务根据库名字和用户 List<Map> getRightData(Map map); -->
 	<select id="getRightData" parameterType="map" resultType="map">
-		SELECT * FROM ${tableName} r WHERE r.principal = #{principal}
+		<if test="tableName == 'recruit'">
+			SELECT recruitId as recruitId,
+					theme as theme,
+					principal as principal,
+					department as department,
+					post as post
+				FROM ${tableName} r WHERE r.principal = #{principal}
+		</if>
+		<if test="tableName == 'evection'">
+			SELECT evectionId as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					dept as department,
+					field1 as post
+				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+		</if>
+		<if test="tableName == 'overtime'">
+			SELECT overtimeId as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					dept as department,
+					field1 as post
+				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+		</if>
+		<if test="tableName == 'leaveapply'">
+			SELECT leaveId as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					dept as department,
+					field1 as post
+				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+		</if>
+		<!-- 入职申请 -->
+		<if test="tableName == 'entryapply'">
+			SELECT applyID as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					entryPart as department,
+					entryPost as post
+				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+		</if>
+		<!-- 差旅费报销 -->
+		<if test="tableName == 'costmanager'">
+				SELECT costID as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					DEPT as department,
+					field2 as post
+				FROM cost_manager WHERE dutyPeople = #{principal}
+		</if>
+		<!-- 费用报销 -->
+		<if test="tableName == 'baoxiao'">
+				SELECT baoxiaoID as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					DEPT as department,
+					field2 as post
+				FROM baoxiao WHERE dutyPeople = #{principal}
+		</if>
+		
+		
+		<!-- <if test="tableName == 'expendmanager'">
+			SELECT costID as recruitId,
+					theme as theme,
+					dutyPeople as principal,
+					dept as department,
+					field2 as post
+				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+		</if> -->
+		
 	</select>
 </mapper>

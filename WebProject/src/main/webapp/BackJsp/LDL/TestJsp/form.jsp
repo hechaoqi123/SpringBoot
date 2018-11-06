@@ -30,6 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 
 <body>
+<div style="width: 150px;height: 50px; overflow: auto; border: 1px solid #cccccc;">
+	<div style="width: 140px;height: 30px; background: #e3e3e3; float: left;"></div>
+	<div style="width: 140px;height: 30px; background: #e3e3e3; float: left;"></div>
+	<div style="width: 140px;height: 30px; background: #e3e3e3; float: left;"></div>
+</div>
+
+					[{"workspace":"","other":"2018/10/30","education":"","endDate":"132","sex":"2","cause":"21312","language":"","experience":"","principal":"admin","post":"123","major":"","peopleNumber":"","obligation":"312312","recruitId":55,"theme":"招聘申请-admin","department":"人事部","age":"3123","status":"驳回"},{"workspace":"","other":"2018/11/1","education":"","endDate":"2018/10/20","sex":"2","cause":"","language":"","experience":"","principal":"admin","post":"开发人员","major":"","peopleNumber":"10","obligation":"","recruitId":56,"theme":"招聘申请-流程1","department":"人事部","age":"","status":"填单"},{"workspace":"","other":"2018/11/1","education":"","endDate":"2018/10/19","sex":"2","cause":"","language":"","experience":"","principal":"admin","post":"1998/07/10","major":"","peopleNumber":"100","obligation":"","recruitId":57,"theme":"招聘申请-流程2","department":"人事部","age":"","status":"填单"},{"workspace":"","other":"2018/11/4","education":"","endDate":"","sex":"2","cause":"","language":"","experience":"","principal":"admin","post":"","major":"","peopleNumber":"","obligation":"","recruitId":58,"theme":"招聘申请-admin 2018-11-4 19:16:59","department":"人事部","age":"","status":"填单"}]
 
 <div id="spanTest">
 	<form  id="formadd" enctype="multipart/form-data">

@@ -76,6 +76,7 @@ var usersVue = new Vue({
 			},{emulateJSON: true}).then(function(data) {
 			this.trueTrans = data.body.trueTrans;
 			this.falseTrans = data.body.falseTrans;
+			this.pname = null;
 		}, function(dataError) {
 			
 		})
