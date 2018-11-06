@@ -16,7 +16,6 @@
      <insert id="addone" parameterType="com.aaa.bean.Krar">
         insert into Krar(tid,kname)VALUES((select MAX(tid) from task),#{kname})
      </insert>
-<<<<<<< HEAD
      <select id="getOne" parameterType="int" resultType="java.util.Map">
      select * from task t  
      join dept d
@@ -30,16 +29,7 @@
        where t.tid=#{id}
      
      </select>
-=======
      
-     
-     
-     <select id="">
-     
-     
-     
-     
-     </select>
      
      
      
@@ -53,18 +43,14 @@
      </insert>
      
       <select id="selectMaxIdOne"  resultType="int">
->>>>>>> refs/remotes/origin/mh
-
-     select max(tid)  from task 
-  </select>
+        select max(tid)  from task 
+     </select>
      
      
 		 <insert id="allzxr" parameterType="zxr">
-        insert into zxr(taskid,usersid)VALUES
-        (#{taskid},#{usersid})
-       
-        <!--  , -->
-     </insert>
+           insert into zxr(taskid,usersid)VALUES
+           (#{taskid},#{usersid})
+         </insert>
 	
 	
 	 <select id="selectTask" parameterType="java.lang.String" resultType="java.util.Map">

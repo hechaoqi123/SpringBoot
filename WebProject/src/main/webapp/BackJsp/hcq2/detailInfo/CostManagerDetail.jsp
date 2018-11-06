@@ -35,11 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">${apply.theme}</td>
-<td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
-<td><input id="dbf.priority" name="dbf.priority" value="-1" type="radio" autocomplete="off" disabled="">低<input id="dbf.priority" name="dbf.priority" value="0" checked="" type="radio" autocomplete="off" disabled="">中<input id="dbf.priority" name="dbf.priority" value="1" type="radio" autocomplete="off" disabled="">高</td></tr>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
+<td>
+</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">&nbsp;</td></tr></tbody></table>
 <div>&nbsp;</div>

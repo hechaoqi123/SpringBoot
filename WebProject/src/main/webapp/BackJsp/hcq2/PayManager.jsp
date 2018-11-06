@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td>{{recruit.createpeople}}</td>
 	<td>{{recruit.paymonth}}&nbsp;</td>
 	<td style="color:#E22018">{{recruit.socialmonth}}</td>
-	<td>{{recruit.createdata}}</td>
+	<td>{{recruit.createdate}}</td>
 </tr>
 <tr>
 </table><br/>

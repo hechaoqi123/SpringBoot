@@ -42,16 +42,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">
   <input id="e.dbf.subject" name="theme" class="fieldEditable" value="岗位调动申请-${CurrentUser.uname}  <%=new Date().toLocaleString() %>"></td>
-<td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
-<td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
+<td>
+</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
 <td><span id="mapping.dbf.procXSource">
-   <input type="text" style="border:0px" readonly="true" value="填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
-   <input type="text"  style="border:0px" name="dutypeople" readonly="true" value="${superUser.username}" /></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td style="TEXT-ALIGN: right">&nbsp;结束时间:</td>
+   <input type="text" style="border:0px" readonly="true" value="填单" name="status"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp: <span id="mapping.dbf.responsorSource">
+   <input type="text"  style="border:0px" name="dutypeople" readonly="true"  /></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">
-<div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,&#39;&#39;);" id="e.dbf.endTime" class="fieldEditable" contenteditable="true">&nbsp;</div></td></tr></tbody></table>
+</td></tr></tbody></table>
 <div>&nbsp;</div>
 <div style="TEXT-ALIGN: center"><strong><span style="FONT-SIZE: 20px">岗位调动申请单</span></strong></div>
 <div>
@@ -81,24 +82,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>由（现）</td>
 <td id="dbf.text3" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034" dbf.value="销售部"> 
-    <select id="dept1"   name="oldpart" style="border:0px;font-size:14px;width:300px;height:25px;">
-	    <option  v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
+    <select id="dept1"   name="oldpart" v-model="dept" @change="getPost()" style="border:0px;font-size:14px;width:300px;height:25px;">
+	    <option  v-for="dept in depts"  :value="dept.deptname">{{dept.deptname}}</option>
 	</select>
 </td>
 <td id="dbf.text4" dbf.type="required" dbf.source="">
-  <input id="e.dbf.text4" name="oldpost" class="fieldEditable">
+    <select  id="post1" name="oldpost" style="border:0px;font-size:14px;width:300px;height:25px;">
+     <option v-for="p in post" :value="p.pname">{{p.pname}}</option>
+    </select>
 </td>
 <td id="现备注" dbf.type="" dbf.source="">
   <input id="e.现备注" name="field1" class="fieldEditable"></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>至（新）</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-    <select  id="dept2"  name="newpart" style="border:0px;font-size:14px;width:300px;height:25px;">
-	    <option v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
+     <select id="dept2"   name="newpart" v-model="dept" @change="getPost()" style="border:0px;font-size:14px;width:300px;height:25px;">
+	    <option  v-for="dept in depts"  :value="dept.deptname">{{dept.deptname}}</option>
 	</select>
 </td>
 <td id="dbf.positionX" dbf.type="required" dbf.source="">
-  <input id="e.dbf.positionX" name="newpost" class="fieldEditable"></td>
+   <select  id="post2" name="newpost" style="border:0px;font-size:14px;width:300px;height:25px;">
+     <option v-for="p in post" :value="p.pname">{{p.pname}}</option>
+    </select>
+</td>
 <td id="新备注" dbf.type="" dbf.source="">
   <input id="e.新备注" name="field2" class="fieldEditable"></td></tr>
 <tr>
@@ -115,11 +121,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 </tr>
 <tr>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>现部门主管意见</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)"></span>现部门主管意见</td>
 <td id="现部门主管意见" style="HEIGHT: 80px" colspan="3" dbf.type="required" dbf.source="">
   <textarea id="e.调动原因" name="oldsuperiorremark" class="fieldEditable" style="HEIGHT: 80px"></textarea></td></tr>
 <tr>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>新部门主管意见</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)"></span>新部门主管意见</td>
 <td id="新部门主管意见" style="HEIGHT: 80px" colspan="3" dbf.type="required" dbf.source="">
   <textarea id="e.调动原因" name="newsuperiorremark" class="fieldEditable" style="HEIGHT: 80px"></textarea>
 </td></tr>
@@ -130,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form></div><form method="post"><input type="hidden" id="viewState" name="viewState"></form><br><div id="_vWorkflowActionsShow" align="right">
 <a class="button" id="sub" href="javascript:" >提交现部门主管审批</a>
 <a class="button" id="ret" href="javascript:">取消</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703170&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703170&#39;);return false;"></a></div>【处理过程】</div>
 
 </td><td></td><td>
 <div class="boxBorder"><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
@@ -150,31 +156,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   var deptVue=new Vue({
              el:'#dept1',
              data:{
-               depts:null
+               depts:null,
+               dept:"人事部"
              },methods:{
                  getAll:function(){
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body
                  })
+                 },getPost:function(){
+                   postVue1.get(this.dept);
                  }
              }
        })
          var deptVue2=new Vue({
              el:'#dept2',
              data:{
-               depts:null
+               depts:null,
+               dept:"人事部"
              },methods:{
                  getAll:function(){
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body
                  })
-                 }
+                 },getPost:function(){
+                   postVue2.get(this.dept);
+              }
              }
        })
        deptVue.getAll();
        deptVue2.getAll();
+       
+       
+      var postVue1=new Vue({
+         el:'#post1',
+         data:{
+           post:null
+         },created:function(){
+            this.get("人事部")
+         },methods:{
+           get:function(dept){
+           var url="/post/getPost";
+                this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
+                 this.post=res.body
+               })
+           }
+         }
+      })
+         var postVue2=new Vue({
+         el:'#post2',
+         data:{
+           post:null
+         },created:function(){
+            this.get("人事部")
+         },methods:{
+           get:function(dept){
+           var url="/post/getPost";
+                this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
+                 this.post=res.body
+               })
+           }
+         }
+      })
+       //岗位级联
       $("#sub").click(function(){
          $("#subform").submit();
       

@@ -38,8 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
 <TD id=dbf.subject dbf.type="required">
   <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="离职申请-${CurrentUser.uname}"></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR>
+<TD style="TEXT-ALIGN: right">&nbsp;</TD>
+<TD>
+</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
 <TD><SPAN id=mapping.dbf.procXSource>
@@ -89,33 +90,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="HEIGHT: 80px; TEXT-ALIGN: center" dbf.type="" dbf.source=""><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职类型</TD>
 <TD style="HEIGHT: 80px" colSpan=3 dbf.type="" dbf.source="">
-  <div>
   <INPUT id=离职类型 type=radio value=0 name="type">合同到期，公司要求不续签劳动合同&nbsp;
-  </div> 
-    <div>
   <INPUT id=离职类型 type=radio value=1 name="type">合同期满，个人要求不续签劳动合同<BR>
-  </div>
-    <div>
   <INPUT id=离职类型 type=radio value=2 name="type">合同未到期，公司要求解除劳动关系&nbsp; 
-      </div>
-    <div>
   <INPUT id=离职类型 type=radio value=3 name="type">合同未到期，个人要求解除劳动关系<BR>
-     </div>
-    <div>
   <INPUT id=离职类型 type=radio value=4 name="type">试用期内，公司要求解除劳动关系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     </div>
-    <div>
   <INPUT id=离职类型 type=radio value=5 name="type">试用期内，个人要求解除劳动关系
-     </div>
   </TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职原因</TD>
 <TD id=离职原因 colSpan=3 dbf.type="required" >
   <TEXTAREA id=e.离职原因 class=fieldEditable name="supperremark" style="HEIGHT: 80px"></TEXTAREA></TD></TR>
 </TR>
-<TD style="TEXT-ALIGN: center">离职处理</TD>
-<TD colSpan=3 dbf.type="" dbf.source=""><INPUT disabled id=离职处理 type=checkbox name=离职处理>人事手续已经办理 <INPUT disabled id=离职处理 type=checkbox name=离职处理>信息系统已经变更（请人事专员或系统管理员在本系统的【员工管理】模块中变更员工信息）</TD></TR></TBODY></TABLE></DIV>
-<DIV>&nbsp;</DIV>
 <TABLE class=tableForm style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
 <COLGROUP>
 <COL width=60>
@@ -130,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table border=0 cellPadding=0 cellSpacing=0 style="table-layout:fixed;"><col width=60%><col width=2%><col><tbody><tr valign=top><td class=boxBorder>
 <div style="padding:2px 10px;">
 
-<div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen('../flow/view1.htm?703190');return false;">&rsaquo; 显示流程图</a></div>【处理过程】</div>
+<div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen('../flow/view1.htm?703190');return false;">&rsaquo; </a></div>【处理过程】</div>
 
 </td><td></td><td>
 <div class=boxBorder><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>

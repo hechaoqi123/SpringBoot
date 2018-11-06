@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -107,6 +108,19 @@ public class UserdetailController {
 		   PageInfo<Userdetail> info=new PageInfo<Userdetail>(users);
 	        return info;
 	}
+	//模糊查询
+	@RequestMapping("/fuzzy")
+	@ResponseBody
+	public PageInfo<Userdetail> fuzzy(String username){
+		   PageHelper.startPage(1,13);
+		   if(username!=null&&!username.equals("")){
+			   List<Userdetail> users=service.fuzzy(username);
+			   PageInfo<Userdetail> info=new PageInfo<Userdetail>(users);
+		        return info;
+		   }else{
+			   return getAll(1);
+		   }
+	}
 	//添加员工信息
 	@RequestMapping("/save")
 	public String save(Userdetail user){
@@ -118,6 +132,12 @@ public class UserdetailController {
 	public String remove(Integer userId){
 		service.remove(userId);
 		return "success";
+	}
+	//读取员工信息
+	@RequestMapping("/getOne")
+	public @ResponseBody Userdetail getOne(Userdetail record){
+		
+		return service.selectOne(record);
 	}
 	//修改员工信息
 	@RequestMapping("/udate")

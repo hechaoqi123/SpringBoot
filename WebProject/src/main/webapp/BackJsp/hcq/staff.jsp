@@ -3,14 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>员工管理</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -42,6 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <H1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:7px;">员工管理</span></H1></TD>
           <TD align="right">
+                <span id="fuzzy" style="margin-right:470px;">   
+                    按员工姓名查找：<input @focus="fo($event)" @change="byCriteria($event)" type="text"/></span>
           <button id="save"  class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>新增员工</button>
 <SCRIPT language="javaScript">workflowListInit();function showItem(sName,sObjects,bAjax){var s="item.aspx?catalogue=702000&name="+escape(sName)+"&objects="+sObjects; if(bAjax) eval(ajax(s));else windowOpen(s);} function workflowList(stype,sObjects,bPortal,bSelf){if(stype==0) workflowListOne("workflow.aspx","新增员工",702010,"<i class='fa fa-plus fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","修改",702020,"<i class='fa fa-eyedropper fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==1) workflowListOne("workflow.aspx","删除",702030,"<i class='fa fa-remove fa-lg'></i>",702000,sObjects,bPortal,bSelf);if(stype==0) workflowListOne("finder.aspx","查找",702050,"<i class='fa fa-search fa-lg'></i>",702000,sObjects,bPortal,bSelf);}</SCRIPT>
 
@@ -69,7 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <A @click="queryByCriteria('试用')"  href="javascript:catalogue(10,10,'试用期员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 试用期员工 <SPAN class="tipCount">{{onTrial }}</SPAN></A>
                   <A @click="queryByCriteria('临时')"  href="javascript:catalogue(10,5,'临时的员工');"><IMG src="BackJsp/hcq/img/folder.png"  border="0"> 临时的员工 <SPAN class="tipCount">{{temporary}}</SPAN></A>
                   <A @click="queryByCriteria('退休')"  href="javascript:catalogue(10,-1,'退休的员工');"><IMG src="BackJsp/hcq/img/folder.png"   border="0"> 退休的员工 <SPAN class="tipCount">{{retire}}</SPAN></A>
-                  <A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 离职的员工 <SPAN     class="tipCount">{{dimission}}</SPAN></A></DIV></TD></TR></TBODY></TABLE></TD>
+                  <A @click="queryByCriteria('离职')"  href="javascript:catalogue(10,-10,'离职的员工');"><IMG src="BackJsp/hcq/img/folder.png" border="0"> 离职的员工 <SPAN     class="tipCount">{{dimission}}</SPAN></A>
+                  </DIV></TD></TR></TBODY></TABLE></TD>
           <TD></TD>
           <TD >
             <TABLE id="app" class="tableList" border="0" cellspacing="0" 
@@ -121,8 +121,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function flashPage(){
        window.location.href="BackJsp/hcq/staff.jsp";
       }
+      
      //页面加载时，通过vue异步请求获取数据
      $(function(){
+          //模糊查询
+          var fuzzy=new Vue({
+              el:"#fuzzy",
+              methods:{
+                 byCriteria:function(obj){
+                    var url="/userdetail/fuzzy";
+                    var name=$(obj.currentTarget).val();
+                    this.$http.post(url,{username:name},{emulateJSON:true}).then(function(res){
+                        page.users=res.body.list
+                    })
+                 },fo:function(obj){
+                   $(obj.currentTarget).val("")
+                 }
+              }
+          })
         //封装分页链接
         var pageUtil=new Vue({
              el:"#pageUtil",
@@ -133,7 +149,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              },methods:{
                 execute:function(PageNumber){
                   if(this.part==0){//全部加载
-                  
                     var url = '/userdetail/getAllUserdetail';
 		              this.$http.post(url,{pageNum:PageNumber},{emulateJSON:true}).then(function(res){
 		                page.users=res.body.list

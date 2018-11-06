@@ -3,6 +3,7 @@ package com.aaa.mapper;
 
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.CacheNamespaceRef;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.cache.annotation.CacheConfig;
 import java.util.List;
@@ -19,6 +20,8 @@ import tk.mybatis.mapper.common.Mapper;
 public interface UserdetailMapper extends  Mapper<Userdetail>{
 	@Select("select max(detailid) from Userdetail")
 	public Integer getMaxID();
+    @Select("select * from Userdetail where username like #{username}")
+	public List<Userdetail> fuzzy(@Param("username")String username);
 	
 }
 

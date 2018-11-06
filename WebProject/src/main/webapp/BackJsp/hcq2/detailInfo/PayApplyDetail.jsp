@@ -33,8 +33,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.subject" dbf.type="required">
   <input name="theme" readonly="true" class="fieldEditable"  value="${apply.theme}">
 </td>
-<td style="TEXT-ALIGN: right">&nbsp;优先级:</td>
-<td><input  type="radio" value="-1" disabled="false" name="dbf.priority" autocomplete="off">低<input disabled="false" id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input disabled="false" id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
+<td>
+ </td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
 <td><span id="mapping.dbf.procXSource">
@@ -164,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form></div><form method="post"><input type="hidden" id="viewState" name="viewState"></form><br>
   <div id="_vWorkflowActionsShow" align="right">
   </div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" >› 显示流程图</a></div>【处理过程】</div>
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" ></a></div>【处理过程】</div>
 
    <!-- 处理流程 -->
    <div id="approval">

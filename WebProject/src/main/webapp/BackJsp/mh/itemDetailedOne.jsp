@@ -194,10 +194,8 @@ ${list[0].itworkplan}
 <td style=" " dbf.source="" dbf.type="" onclick="addtr()">+</td>
 <!-- <td style=" " dbf.source="" dbf.type="" onclick="cscs()">++</td> -->
 
-<input type="checkbox" name="detailId" class="detailId" value="9">2
-<input type="checkbox"  name="detailId" class="detailId" value="10">2
-<input type="checkbox" name="detailId" class="detailId" value="11">2
-<a  id="sss">222</a>
+<input type="checkbox" name="detailId" class="detailId" value="23">2
+
 </tr>
 </c:if>
 <!-- <tr>

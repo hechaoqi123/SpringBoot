@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseServiceImpl;
 import com.aaa.bean.Post;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
@@ -25,7 +26,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class UserdetailServiceImpl implements UserdetailService {
+public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implements UserdetailService {
 	@Autowired
 	  UserdetailMapper mapper;
 	@Autowired
@@ -111,8 +112,8 @@ public class UserdetailServiceImpl implements UserdetailService {
 	
 	@Transactional
 	@Override
-	public int updateByPrimaryKeySelective(Userdetail record) {
-		return mapper.updateByPrimaryKeySelective(record);
+	public void updateByPrimaryKeySelective(Userdetail record) {
+		 mapper.updateByPrimaryKeySelective(record);
 	}
 	@Override
 	public XSSFWorkbook generate() {
@@ -151,5 +152,10 @@ public class UserdetailServiceImpl implements UserdetailService {
     	    Userrow.createCell(7).setCellStyle(unlock);;
         }
 		return wb;
+	}
+	@Override
+	public List<Userdetail> fuzzy(String username) {
+		username="%"+username+"%";
+		return mapper.fuzzy(username);
 	};
 }

@@ -40,16 +40,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
 <TD id=dbf.subject dbf.type="required">
-  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="出差申请-${CurrentUser.uname}">
+  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="出差申请-${CurrentUser.uname} <%=new Date().toLocaleString()%>">
 </TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0  autocomplete="off">中<INPUT id=dbf.priority type=radio value=1  autocomplete="off">高</TD></TR>
+<TD style="TEXT-ALIGN: right">&nbsp;</TD>
+<TD>
+</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
 <TD colSpan=3><SPAN id=mapping.dbf.procXSource>
   <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
-</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <SPAN id=mapping.dbf.responsorSource>
-  <input type="text" style="border:0px" readonly="true" value="${superUser.username}"  name="dutypeople"/></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD></TR></TBODY></TABLE>
+</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN id=mapping.dbf.responsorSource>
+  <input type="text" style="border:0px" readonly="true"  name="dutypeople"/></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN id=mapping.dbf.participantsSource></SPAN></TD></TR></TBODY></TABLE>
 <DIV style="TEXT-ALIGN: center">&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center"><SPAN style="FONT-SIZE: 20px"><STRONG>出差申请单</STRONG></SPAN></DIV>
 <DIV>
@@ -123,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </span><br/><br/>
 
 <table border=0 cellPadding=0 cellSpacing=0 style="table-layout:fixed;"><col width=60%><col width=2%><col><tbody><tr valign=top><td class=boxBorder>
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen('../flow/view1.htm?703210');return false;">&rsaquo; 显示流程图</a></div>【处理过程】</div>
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen('../flow/view1.htm?703210');return false;"></a></div>【处理过程】</div>
 
 </td><td></td><td>
 <div class=boxBorder><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>

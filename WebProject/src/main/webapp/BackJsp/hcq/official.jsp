@@ -28,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="colloaMenu2">
 	   <a  href="BackJsp/hcq/recruit.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 招聘管理</a>
-	   <a id="ruz"  href="BackJsp/hcq/entryPosition.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职管理</a>
+<!-- 	   <a id="ruz"  href="BackJsp/hcq/entryPosition.jsp">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职管理</a> -->
 	   <a class="textHighlight" href="BackJsp/hcq/official.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 转正管理</a>
 	   <a href="BackJsp/hcq/transfer.jsp">
