@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <TD>
     <H1><img src="BackJsp/hcq/img/log.png"/><span style="margin-left:10px;">薪资管理</span>
     </H1>
-     <button id="oo" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>增加</button>
+     <button id="oo" class="btn" style="display:none;position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>增加</button>
     </TD>
     <TD align="right" id="oWorkflowList"></TD>
     </TR></TBODY></TABLE><BR/>

@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
    
-   <body id=colloaBody style="background-image:url(img/qweq.jpg);"><div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:100px;margin-left:150px;"><table style="margin-left:100px;" id="lotab"><tr valign=top><td>&nbsp;</td><td id=colloaForm>
+   <body id=colloaBody><div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:100px;"><table style="margin-left:100px;" id="lotab"><tr valign=top><td>&nbsp;</td><td id=colloaForm>
    <form action="client/clientUpdate.action?clientid=${client.clientid}" method="post"> <TABLE class=tableForm style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 summary="" border=0>
 <COLGROUP>
 <COL width=100>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </TBODY>
 </TABLE>
-<input type="submit" id="but" value="提交">
+<input type="submit" id="but" value="提交" style="width:100px;height:50px;;margin-left:360px;margin-top:30px;background-color:#ffffff;">
 </form><form method='post'><input type=hidden id=viewState name=viewState></form>
 <script language=javaScript>workflowActionsShow('okCancelWithForm');formOnLoad();</script></td><td>&nbsp;</td></tr></table>
 

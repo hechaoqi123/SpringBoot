@@ -30,15 +30,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">
 
   <input type="text" style="border:0px" readonly="true" value="员工自评" name="status"/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
-  <input type="text" style="border:0px" readonly="true" value="${superUser.username}" name="dutypeople"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource">
+  <input type="text" style="border:0px" readonly="true" name="dutypeople"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
+<td>&nbsp; </td></tr></tbody></table>
 <div>&nbsp;</div>
 <table cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
-
 <textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-${superUser.username}</textarea></td></tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
@@ -65,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="TEXT-ALIGN: center">考核类型</td>
 <td id="考核类型" dbf.source="" dbf.type="">
-  <input type="radio" name="type" value="月度" >月度
+  <input type="radio" checked="true" name="type" value="月度" >月度
   <input type="radio" name="type" value="季度" >季度
   <input type="radio" name="type" value="年度" >年度
   <input type="radio" name="type" value="其他" >其他
@@ -165,11 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center" dbf.source="" dbf.type="">主管评价</td>
 <td id="主管评价" style="HEIGHT: 80px" colspan="2" dbf.source="" dbf.type="">&nbsp;</td>
 <td id="考核结果" dbf.source="list:A,B,C,D" dbf.type="">&nbsp;</td></tr>
-<tr>
-<td style="TEXT-ALIGN: center" dbf.source="" dbf.type="">人事复核</td>
-<td id="人事复核" colspan="2">&nbsp;</td>
 
-<td id="dbf.positionX" dbf.source="list:A,B,C,D" dbf.type="">&nbsp;</td></tr></tbody></table>
+</tbody></table>
 <div>&nbsp;</div>
 <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>

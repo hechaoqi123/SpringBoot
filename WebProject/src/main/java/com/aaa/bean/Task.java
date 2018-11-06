@@ -17,6 +17,9 @@ public class Task implements Serializable{
   private String zxjg;
   private String rwfl;
   private Integer pid;
+  private Integer itemid;
+
+  private static final long serialVersionUID = 1L;
 public Integer getTid() {
 	return tid;
 }
@@ -62,6 +65,13 @@ public void setDetailld(Integer detailld) {
 public String getRwsm() {
 	return rwsm;
 }
+
+public Integer getItemid() {
+	return itemid;
+}
+public void setItemid(Integer itemid) {
+	this.itemid = itemid;
+}
 public void setRwsm(String rwsm) {
 	this.rwsm = rwsm;
 }
@@ -89,6 +99,5 @@ public String toString() {
 			+ workload + ", deptid=" + deptid + ", detailld=" + detailld + ", rwsm=" + rwsm + ", zxjg=" + zxjg
 			+ ", rwfl=" + rwfl + ", pid=" + pid + "]";
 }
-
-
+   
 }

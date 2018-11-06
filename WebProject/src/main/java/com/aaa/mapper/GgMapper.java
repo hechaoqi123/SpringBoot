@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.aaa.bean.Gg;
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 
 import tk.mybatis.mapper.common.Mapper;
 

@@ -13,11 +13,53 @@
   <!--List<Map> getOne(Integer contractid); -->
   <select id="getOne" parameterType="integer" resultType="map">
 
-      select o.*,u.username from (
+      select o.*,u.username,u.detailid,u.position from (
            select ct.*,c.clientname from contract ct 
              left join client c on ct.clientid=c.clientid   where ct.contractid = #{id}) o
       left join userdetail u on u.detailid=o.detailid
   </select>
+  
+  
+  <select id="selectMaxId"  resultType="int">
+
+     select max(contractid)  from contract 
+  </select>
+  
+ 
+  
+  
+  <select id="selectHt" resultType="map">
+  select * from contract 
+  
+  
+  </select>
+  
+  <update id="updateContractId" parameterType="contract" >
+  
+  update contract set contracnumber=#{contracnumber},detailId=#{detailId} where contractid=#{contractid}
+  </update>
+  
+  
+  
+  
+  <select id="selectOneContract" parameterType="integer" resultType="map">
+  		select o.*,u.username from (
+           select ct.*,c.clientname from contract ct 
+             left join client c on ct.clientid=c.clientid   where c.clientid = #{id}) o
+      left join userdetail u on u.detailid=o.detailid
+  
+  </select>
+  <select id="selectAllContract" parameterType="integer" resultType="map">
+  	select * from contract where clientid=#{cid} and contracstate=1
+  
+  </select>
+  
+   <select id="selectContractState"  resultType="java.util.Map">
+  	select * from contract ct left join client c on ct.clientid=c.clientid left join userdetail u on u.detailid=ct.detailid
+   where ct.contracstate=0
+  </select>
+  
+  
   <!--执行中的合同  -->
   <update id="updateid" parameterType="java.lang.Integer" >
   
@@ -25,22 +67,95 @@
   
   </update>
   <!--关闭的合同  -->
-  <update id="updateidOne" parameterType="com.aaa.bean.Contract" >
+  <update id="updateidOne" parameterType="java.lang.Integer" >
   
   	update contract set contracstate =2 where contractid=#{contractid,jdbcType=INTEGER}
   
   </update>
   <!--搁置中的合同  -->
-  <update id="updateidTwo" parameterType="com.aaa.bean.Contract">
+  <update id="updateidTwo" parameterType="java.lang.Integer">
   
   	update contract set contracstate =3 where contractid=#{contractid,jdbcType=INTEGER}
   
   </update>
   <!--撤销中的合同  -->
-  <update id="updateidThree" parameterType="com.aaa.bean.Contract">
+  <update id="updateidThree" parameterType="java.lang.Integer">
   
   	update contract set contracstate =4 where contractid=#{contractid,jdbcType=INTEGER}
   
   </update>
+  
+ <!--  
+  <update id="updateByOne" parameterType="com.aaa.bean.Contract">
+    update contract 
+    <set>
+      <if test="clientid != null">
+        clientid = #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="contracplc != null">
+        contracplc = #{contracplc,jdbcType=VARCHAR},
+      </if>
+      <if test="contraccity != null">
+        contraccity = #{contraccity,jdbcType=VARCHAR},
+      </if>
+      <if test="contracaddress != null">
+        contracaddress = #{contracaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contracname != null">
+        contracname = #{contracname,jdbcType=VARCHAR},
+      </if>
+      <if test="contracnumber != null">
+        contracnumber = #{contracnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contracmoney != null">
+        contracmoney = #{contracmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="signingdate != null">
+        signingdate = #{signingdate,jdbcType=VARCHAR},
+      </if>
+      <if test="effectivedate != null">
+        effectivedate = #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="saasdate != null">
+        saasdate = #{saasdate,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contracqq != null">
+        contracqq = #{contracqq,jdbcType=VARCHAR},
+      </if>
+      <if test="terms != null">
+        terms = #{terms,jdbcType=VARCHAR},
+      </if>
+      <if test="businessterms != null">
+        businessterms = #{businessterms,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="contracstate != null">
+        contracstate = #{contracstate,jdbcType=VARCHAR},
+      </if>
+      <if test="detailid != null">
+        detailId = #{detailid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where contractid = #{contractid,jdbcType=INTEGER}
+  </update> -->
+  
+  
+  
+  
+  
+  
+  
+  
   
 </mapper>

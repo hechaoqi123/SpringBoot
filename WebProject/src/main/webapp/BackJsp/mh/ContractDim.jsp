@@ -41,11 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<form >
     		<table style="margin-top:50px;margin-left:50px;">
     			<tr>
-    				<td><h2 style="float:left;">查找客户</h2><span style="float:left;font-size:7px;margin-top:5px;margin-left:5px;"><input type="radio" name="field">按客户名称
-					<input type="radio" name="field">按拼音
-					<input type="radio" name="field">按客户来源<br/>
+    				<td><h2 style="float:left;">查找客户</h2><span style="float:left;font-size:7px;margin-top:50px;margin-left:5px;">
     				<input name="key"  style="width:700px;height:30px;margin-left:-100px;" ref="test">
-    				<input type="button" @click="execute(1)" value="查找">
+    				<input type="button" @click="execute(1)" value="查找" style="width:50px;height:30px;">
     				</span></td>
     				
     			</tr>
@@ -66,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			
  			
  			<td align=right>{{ct.contracnumber}}</td>
- 			<td align=right>{{ct.contracmoney}}<a href="">4</a></td>
+ 			<td align=right>{{ct.contracmoney}}</td>
  			<td align=right>0.00</td>
  			<td align=right style='color:#85d579;'>0.00</td>
  			<td align=center>{{ct.signingdate}}</td>

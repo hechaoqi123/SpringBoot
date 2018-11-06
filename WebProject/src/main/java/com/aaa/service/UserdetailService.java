@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.aaa.base.BaseService;
 import com.aaa.bean.Userdetail;
 import com.github.pagehelper.PageInfo;
 
-public interface UserdetailService {
+public interface UserdetailService extends BaseService<Userdetail>{
 	//获取单个员工信息
 	public Userdetail getOne(Integer id);
 	//获取所有员工信息
@@ -25,7 +27,9 @@ public interface UserdetailService {
 	
 	public void update(Userdetail user);
 	//修改
-	int updateByPrimaryKeySelective(Userdetail record);
+	public void updateByPrimaryKeySelective(Userdetail record);
 	//生成绩效考勤表
-	public HSSFWorkbook generate();
+	public XSSFWorkbook generate();
+	
+	public List<Userdetail> fuzzy(String username);
 }

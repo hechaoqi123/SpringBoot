@@ -37,9 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
 <TD id=dbf.subject dbf.type="required">
-  <INPUT id=e.dbf.subject name="theme" class=fieldEditable value="离职申请-${CurrentUser.uname}"></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR>
+  <INPUT id=e.dbf.subject name="theme" class=fieldEditable></TD>
+<TD style="TEXT-ALIGN: right">&nbsp;</TD>
+<TD>
+</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
 <TD><SPAN id=mapping.dbf.procXSource>

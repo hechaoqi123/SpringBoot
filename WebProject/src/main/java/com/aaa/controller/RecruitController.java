@@ -73,7 +73,7 @@ public class RecruitController {
 		  PageInfo<Recruit> info=new PageInfo<Recruit>(list);
 	    	return info;
     }
-	//申请详情
+	//审批
 	@RequestMapping("/detail/{id}")
     public String queryByCriteria(@PathVariable("id")Integer pageNum,Model model){
 		  Recruit Apply=service.selectByPrimaryKey(pageNum);

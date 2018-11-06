@@ -3,7 +3,10 @@ package com.aaa.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Id;
+
 public class Approval implements Serializable {
+	@Id
     private Integer approvalid;
 
     private String userid;//审批人

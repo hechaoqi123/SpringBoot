@@ -87,13 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				<div style="float:right;height:36px;width:280px;border:1px solid #c0c0c0;border-radius:5px; background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);"">
    					<a href=""><div style="float:left;height:37px;width:50px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:5px;margin-left:18px;color:#a6a6a6;"><b> < </b> </span> </div></a>
    					<a href="BackJsp/mh/ContractAdd.jsp" style="color:#a6a6a6;"><div style="float:left;height:37px;width:110px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:10px;"><b>+新增合同</b></span></div></a>
-   					<a href="" style="color:#a6a6a6;"><div style="float:left;height:37px;width:70px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:20px;"><b>查找</b></span></div></a>
+   					<a href="BackJsp/mh/ContractDim.jsp" style="color:#a6a6a6;"><div style="float:left;height:37px;width:70px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:20px;"><b>查找</b></span></div></a>
    				
    				</div>
    			</td>
    		</tr>
    </table>
-   <div style="margin-left:50px;height:222px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
+   <div style="margin-top:50px;margin-left:50px;height:222px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
    		<div style="background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);height:40px;border-bottom:1px solid #c0c0c0;"><b style="float:left;margin-top:10px;margin-left:30px;">分类</b></div>
    		<div id="classify" style="height:180px;border:0px solid #000;">
    			<table id="tab">
@@ -154,11 +154,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</tr>
  		<tbody id="tbody"></tbody>
  		 <tr v-for="ct in contract">
- 			<td class="ktd"><a :href="'contract/contractQuery?cid=' + ct.contractid"><img src="img/customer.gif">{{ct.clientname}}-{{ct.contracname}}</a></td>
+ 			<td class="ktd"><a :href="'contract/contractQuery?cid=' + ct.contractid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"><span style="float:left;margin-left:5px;">{{ct.clientname}}-{{ct.contracname}}</span></a></td>
  			
  			
  			<td align=right>{{ct.contracnumber}}</td>
- 			<td align=right>{{ct.contracmoney}}<a href="">4</a></td>
+ 			<td align=right>{{ct.contracmoney}}</td>
  			<td align=right>0.00</td>
  			<td align=right style='color:#85d579;'>0.00</td>
  			<td align=center>{{ct.signingdate}}</td>

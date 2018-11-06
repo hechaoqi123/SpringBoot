@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD class=fieldLable>从属于</TD>
 <TD id=dbf.psid dbf.key="0" dbf.source="select sid,name,psid,stype from userX where statusX=1 and stype=10000 order by sortId,name">
-  <select  id="dept" v-model="dept" name="dependence" @change="getPost()" style="border:0px;font-size:14px;width:300px;height:25px;">
+  <select class=fieldEditable  id="dept" v-model="dept" name="dependence" @change="getPost()" style="border:0px;font-size:14px;width:368px;height:25px;">
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </TD>
@@ -67,7 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <option v-for="p in post" v-bind:value="p.pname">{{p.pname}}</option>
   </select>
 <TD class=fieldLable>职务级别</TD>
-<TD id=dbf.jobLevel dbf.type="required,number"><INPUT id=e.dbf.jobLevel class=fieldEditable value=0></TD></TR>
+<TD id=dbf.jobLevel dbf.type="required,number">
+<INPUT id=e.dbf.jobLevel style="border:0px;"></TD></TR>
 <TR>
 <TD class=fieldLable>出生日期</TD>
 <TD id=dbf.birthday dbf.source="date,editable" dbf.type="date">
@@ -84,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TD>
 <TD class=fieldLable>离职日期</TD>
 <TD id=dbf.jobEndTime dbf.source="date,editable" dbf.type="date">
-<INPUT  name="dimissdate" class=fieldEditable>
+<INPUT  name="dimissdate" readonly="true" style="border:0px;">
 </TD></TR>
 <TR>
 <TD class=fieldLable>职责说明</TD>
@@ -132,8 +133,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD id=dbf.favorite colSpan=3><INPUT id=e.dbf.favorite name="hobby" class=fieldEditable></TD></TR>
 <TR>
 <TD class=fieldLable>状态</TD>
-<TD><INPUT id=dbf.statusX type=checkbox checked="true">有效（能够登录本系统，登录时的用户名默认为姓名）</TD>
-<TD class=fieldLable>指定用户名</TD>
+<TD><INPUT id=dbf.statusX type=checkbox checked="true" disabled="false">有效（能够登录本系统，登录时的用户名默认为姓名）</TD>
+<TD class=fieldLable></TD>
 <TD id=dbf.nameLogin dbf.type="unique(userX)"></TD>
 </TR>
   <tr><td style="border-bottom:0px" colspan="4"><div  id="_vWorkflowActionsShow" align="right"><br/>
@@ -166,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            }
          }
       })
-       var deptVue=new Vue({
+     var deptVue=new Vue({
              el:'#dept',
              data:{
                depts:null,

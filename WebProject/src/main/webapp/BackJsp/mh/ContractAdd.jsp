@@ -38,8 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
   </head>
   
-  <body style="background-image:url(img/qweq.jpg);" id=colloaBody>
-   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;margin-left:150px;">
+  <body  id=colloaBody>
+   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;">
   
   <table style="min-width:950px;width:100%;height:100%;" cellPadding=0 cellSpacing=0 border=0><tr valign=top><td>&nbsp;</td><td id=colloaForm><div class=formTaskflowContainer><form id="myform" class=formTaskflow><TABLE style="HEIGHT: 40px; TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
 <COLGROUP>
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <COL width=150></COLGROUP>
 <TBODY style="float:right;">
 <TR>
-<TD id=dbf.subject style="FONT-SIZE: 20px; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type=""><INPUT id=e.dbf.subject class=fieldEditable></TD>
+<TD id=dbf.subject style="FONT-SIZE: 20px; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type=""></TD>
 <TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
 <TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR></TBODY></TABLE>
 <TABLE class=tableListBorder cellSpacing=0 cellPadding=0 align=center border=0>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR style="border:1px solid #000;">
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">*</SPAN>客户名称</TD>
 <TD id=dbf.text0 style="WIDTH: 320px" dbf.source="editable,prompt:" dbf.type="required" dbf.colmax="1" dbf.key="">
-<select id="clientid" name="clientid">
+<select id="clientid" name="clientid" style="width:310px; background-color:#f3faff;border:0">
 <option>--请选择--</option>
 </select></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">所属行业</TD>
@@ -112,6 +112,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">合同所属部门</TD>
 <TD id=dbf.division style="WIDTH: 320px" dbf.source="form.fieldSource.division" dbf.type="" dbf.key="1000034">
+<select name="department" style="width:310px;border:0;background-color:#f3faff;">
+	<option value="人事部">人事部</option>
+	<option value="总经办">总经办</option>
+	<option value="财务部">财务部</option>
+	<option value="技术部">技术部</option>
+	<option value="营销部">营销部</option>
+
+</select>
 <input name="department"></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">关联人员</TD>
 <TD id=dbf.observer style="WIDTH: 319px" dbf.source="form.fieldSource.userX0" dbf.type="" dbf.key="">
@@ -122,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </TBODY>
 <tr>
-	<td><a href="javascript:void(0)" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:70px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:20px;">保存</span></div></a></td>
+	<td><a href="javascript:void(0)" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:70px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:20px;">转主管审批</span></div></a></td>
 
 </tr>
 
@@ -165,13 +173,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				dataType:"json",
 				success:function(data){
 				
-					alert("保存成功！");
-				},
-				error:function(){
-				$("#myform").html('')
-					  alert("error");
+					
 				}
 	 		})
+	 		alert("保存成功！");
+				window.location.href = 'BackJsp/mh/AllContract.jsp';
 	 })
 	
 

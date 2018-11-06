@@ -31,10 +31,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <a  class="a" style="color:#000" @click="criteria(0,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 招聘申请
 	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{recruit}}</SPAN></a>
-	   <a class="a" @click="criteria(1,$event)" href="javascript:">
+	  <!--  <a class="a" @click="criteria(1,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职申请
 	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{entry}}</SPAN>
-	     </a>
+	     </a> -->
 	   <a class="a" @click="criteria(2,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 转正申请
 	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{office}}</SPAN>
@@ -159,8 +159,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    },
 		    methods:{
 		        execute:function(PageNumber){
-		            var dept=$("#aa").val(); 
-                    var post=$("#bb").val();       
 		          var status="填单";
 		           if(dept=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
 	               if(dept=="总经办"){status="领导审批"}

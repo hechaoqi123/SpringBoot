@@ -3,17 +3,16 @@ package com.aaa.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aaa.base.BaseServiceImpl;
 import com.aaa.bean.Post;
 import com.aaa.bean.Userdetail;
 import com.aaa.bean.Users;
@@ -27,7 +26,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class UserdetailServiceImpl implements UserdetailService {
+public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implements UserdetailService {
 	@Autowired
 	  UserdetailMapper mapper;
 	@Autowired
@@ -113,20 +112,20 @@ public class UserdetailServiceImpl implements UserdetailService {
 	
 	@Transactional
 	@Override
-	public int updateByPrimaryKeySelective(Userdetail record) {
-		return mapper.updateByPrimaryKeySelective(record);
+	public void updateByPrimaryKeySelective(Userdetail record) {
+		 mapper.updateByPrimaryKeySelective(record);
 	}
 	@Override
-	public HSSFWorkbook generate() {
-		HSSFWorkbook wb = new HSSFWorkbook();  
+	public XSSFWorkbook generate() {
+		XSSFWorkbook wb = new XSSFWorkbook();  
 		//创建受保护的sheet
-		HSSFSheet sheet = wb.createSheet("绩效考勤表"); 
+		XSSFSheet sheet = wb.createSheet("绩效考勤表"); 
 		sheet.protectSheet("admin");
 		//单元格样式
-		HSSFCellStyle  unlock = wb.createCellStyle(); 
+		XSSFCellStyle  unlock = wb.createCellStyle(); 
 		unlock.setLocked(false);
 		//创建行
-		HSSFRow row = sheet.createRow(0);  
+		XSSFRow row = sheet.createRow(0);  
 		//创建标题
 	    row.createCell(0).setCellValue("职工工号"); 
 	    row.createCell(1).setCellValue("职工姓名"); 
@@ -136,16 +135,13 @@ public class UserdetailServiceImpl implements UserdetailService {
 	    row.createCell(5).setCellValue("迟到");  
 	    row.createCell(6).setCellValue("早退");  
 	    row.createCell(7).setCellValue("事假");  
-	    List<Userdetail>list=getAll();
-	    List<Userdetail> remove=new ArrayList<Userdetail>();
-	    for (Userdetail userdetail : list) {
-			   if(userdetail.getPosition().equals("超级管理员")||userdetail.getStatus().equals("临时")){
-                remove.add(userdetail);	   
-			   }
-		}
-	    if(remove!=null){list.removeAll(remove);}
+	    Userdetail detail=new Userdetail();
+	    detail.setStatus("试用");
+	    List<Userdetail>list=mapper.select(detail);
+	    detail.setStatus("在职");
+	    list.addAll(mapper.select(detail));
         for(int i=1;i<=list.size();i++){
-        	HSSFRow Userrow = sheet.createRow(i);  
+        	XSSFRow Userrow = sheet.createRow(i);  
     	    Userrow.createCell(0).setCellValue(list.get(i-1).getUsernum());
     	    Userrow.createCell(1).setCellValue(list.get(i-1).getUsername());
     	    Userrow.createCell(2).setCellValue(list.get(i-1).getDependence());
@@ -156,5 +152,10 @@ public class UserdetailServiceImpl implements UserdetailService {
     	    Userrow.createCell(7).setCellStyle(unlock);;
         }
 		return wb;
+	}
+	@Override
+	public List<Userdetail> fuzzy(String username) {
+		username="%"+username+"%";
+		return mapper.fuzzy(username);
 	};
 }

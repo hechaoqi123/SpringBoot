@@ -30,10 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">
   ${apply.status}
-</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource">
- ${superUser.username}
- </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1"  autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" autocomplete="off">高</td></tr></tbody></table>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource">
+ </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
+<td>&nbsp;
+</td></tr></tbody></table>
 <div>&nbsp;</div>
 <table cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
@@ -314,7 +314,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
 <colgroup><col width="60%"><col width="2%"><col></colgroup><tbody>
 <tr valign="top"><td class="boxBorder">
-  <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view.htm?1000019,1000481&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
+  <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view.htm?1000019,1000481&#39;);return false;"></a></div>【处理过程】</div>
   <span v-for="app in approval"> 
     <div  style="padding:5px 10px 0px 10px;border-top:1px dotted #ddd;">
 	  <img src="BackJsp/hcq/img/userX0.gif"> {{app.userid}}<span class="textGray">(  {{app.approvaldate}} )

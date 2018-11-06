@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>费用报销</title>
+    <title>薪资发放</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,7 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td>
   <h1><img src="BackJsp/hcq/img/log.png"/>
                         <span style="margin-left:7px;">费用管理</span></h1></td><td id="oWorkflowList" align="right">
-  <span id="oWorkflowList1"><button id="save" class="btn" style="padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>薪资发放</button></span></td></tr></tbody></table><br>
+  <span id="oWorkflowList1">
+  <button id="save" class="btn" style="padding:5px 20px;
+  border:1px solid #E0E0E0;background:#FCFCFC;
+  border-radius:3px;cursor: pointer ">
+  <b>+</b>薪资发放</button></span></td></tr></tbody></table><br>
     <!-- 分类 -->
 	<div id="colloaMenu2">
 	   <a  href="BackJsp/hcq2/costManager.jsp">
@@ -40,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <span id="app">
 <table style="margin-left:-15px;" cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr>
 <th width="270">主题</th>
-<th>申请人</th>
+<th>创建人</th>
 <th width="130">薪资月份</th>
 <th>社保月份</th>
 <th>申请时间</th>
@@ -51,11 +55,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 <img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a :href="'Baoxiao/detailInfo/'+recruit.baoxiaoid">{{recruit.theme}}</a></td>
-	<td>{{recruit.username}}</td>
-	<td>{{recruit.dept}}&nbsp;</td>
-	<td style="color:#E22018">{{recruit.total}}</td>
-	<td>{{recruit.baoxiaodate}}</td>
+<a :href="'Paygrantapply/detailInfo/'+recruit.applyid">{{recruit.theme}}</a></td>
+	<td>{{recruit.createpeople}}</td>
+	<td>{{recruit.paymonth}}&nbsp;</td>
+	<td style="color:#E22018">{{recruit.socialmonth}}</td>
+	<td>{{recruit.createdate}}</td>
 </tr>
 <tr>
 </table><br/>
@@ -70,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
      $(function(){
      $("#save").click(function(){
-        window.location.href="BackJsp/hcq2/expenseManagerRegister.jsp"
+        window.location.href="BackJsp/hcq2/payManagerApply.jsp"
      })
        var load=new Vue({
             el:'#app',
@@ -79,8 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="/Baoxiao/getAll";
-                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
+                 var url="/Paygrantapply/getAll";
+                 this.$http.post(url,{number:pageNum},{emulateJSON:true}).then(function(res){
                      this.recruits=res.body.list
                      this.pageInfo=res.body
                  })

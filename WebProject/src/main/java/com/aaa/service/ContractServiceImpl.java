@@ -48,6 +48,45 @@ public class ContractServiceImpl implements ContractService{
 	public void updateThree(Integer ctid) {
 		mapper.updateThree(ctid);		
 	}
-	
+
+	@Override
+	public List<Map> selectOneContract(Integer cid) {
+		return mapper.selectOneContract(cid);
+	}
+
+	@Override
+	public void update(Contract ct) {
+		mapper.updateByPrimaryKeySelective(ct);
+	}
+
+	@Override
+	public List<Contract> select() {
+		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Map> selectAllContract(Integer cid) {
+		return mapper.selectAllContract(cid);
+	}
+
+	@Override
+	public List<Map> selectContractState() {
+		return mapper.selectContractState();
+	}
+
+	@Override
+	public int selectMaxId() {
+		return mapper.selectMaxId();
+	}
+
+	@Override
+	public List<Map> selectHt() {
+		return mapper.selectHt();
+	}
+	public void updateContractId(String contracnumber,Integer detailId,Integer contractid){
+		
+	mapper.updateContractId(contracnumber, detailId, contractid);	
+		
+	}
 	
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import tk.mybatis.mapper.common.Mapper;
 //通用Service:对通用mapper的进一步封装
-public abstract  class BaseServiceImpl<T> implements BaseService<T> {
+public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	@Autowired
     protected Mapper<T> mapper;
 	@Override

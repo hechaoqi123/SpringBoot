@@ -62,6 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <THEAD>
         <TR>
           <TH>主题</TH>
+          <TH>考核类型</TH>
           <TH>所属部门</TH>
           <TH>被考核人</TH>
           <TH>主管评分</TH>
@@ -73,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img v-else-if="apply.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 				<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
               {{apply.field20}}</A></TD>
+          <TD>{{apply.type}}&nbsp;</TD>
           <TD>{{apply.dept}}&nbsp;</TD>
           <TD>{{apply.applypeople}}&nbsp;</TD>
           <TD>{{apply.field19}}</TD>

@@ -46,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
   </head>
   
-  <body style="background-image:url(img/qweq.jpg);" id=colloaBody>
-   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;margin-left:150px;">
+  <body  id=colloaBody>
+   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;">
   <table style="min-width:950px;width:100%;height:100%;" cellPadding=0 cellSpacing=0 border=0><tr valign=top><td>&nbsp;</td><td id=colloaForm><div class=formTaskflowContainer><form id="myform" class=formTaskflow><TABLE style="HEIGHT: 40px; TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
 <COLGROUP>
 <COL>
@@ -122,13 +122,23 @@ ${contract[0].department}</TD>
 <TD id=dbf.observer style="WIDTH: 319px" dbf.source="form.fieldSource.userX0" dbf.type="" dbf.key="">
 ${contract[0].username}
 
+
 </TD></TR>
+
+
+
+
+
 	
 </TBODY>
 
 </TABLE>
-
-
+<div style="margin-left:500px;">
+<a href="contract/contractQuerys?cid=${contract[0].contractid}" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:130px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:30px;">修改合同</span></div></a>
+<c:if test="${contract[0].contracstate==0}">
+<a href="contract/updateid?ctid=${contract[0].contractid}" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:130px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:30px;">转执行</span></div></a>
+</c:if>
+</div>
 
 </form></div>
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></table>

@@ -28,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="colloaMenu2">
 	   <a  href="BackJsp/hcq/recruit.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 招聘管理</a>
-	   <a id="ruz"  href="BackJsp/hcq/entryPosition.jsp">
-	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职管理</a>
+	  <!--  <a id="ruz"  href="BackJsp/hcq/entryPosition.jsp">
+	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职管理</a> -->
 	   <a href="BackJsp/hcq/official.jsp">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 转正管理</a>
 	   <a  href="BackJsp/hcq/transfer.jsp">
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr v-for="d in dimission">
 <td><img v-if="d.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-<a :href="'Official/detailInfo/'+d.dimissionid">{{d.theme}}</a></td>
+<a :href="'Dimission/detail/'+d.dimissionid">{{d.theme}}</a></td>
 <td>{{d.dimissionname}}&nbsp;</td>
 <td>{{d.part}}</td>
 <td>{{d.post}}</td>

@@ -30,7 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
 <td id="dbf.subject" dbf.type="required">${apply.theme}</td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
-<td><input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off" disabled="">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off" disabled="">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off" disabled="">高</td></tr>
+<td>
+</td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
 <td colspan="3"><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td></tr></tbody></table>
