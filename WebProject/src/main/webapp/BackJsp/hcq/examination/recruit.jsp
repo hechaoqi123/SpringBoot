@@ -30,22 +30,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <span id="dataCount">
 	   <a  class="a" style="color:#000" @click="criteria(0,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 招聘申请
-	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{recruit}}</SPAN></a>
+	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{recruit}}</SPAN> --></a>
 	  <!--  <a class="a" @click="criteria(1,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 入职申请
 	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{entry}}</SPAN>
 	     </a> -->
 	   <a class="a" @click="criteria(2,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 转正申请
-	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{office}}</SPAN>
+	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{office}}</SPAN> -->
 	     </a>
 	   <a class="a" @click="criteria(3,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 岗位调动申请
-	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{transfer}}</SPAN>
+	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{transfer}}</SPAN> -->
 	     </a>
 	   <a class="a" @click="criteria(4,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 离职申请
-	     <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{dimission}}</SPAN>
+	     <!-- <SPAN class="tipCount" style="margin-left:8px;padding:0px 9px">{{dimission}}</SPAN> -->
 	     </a>
 	   </span>
 	 </div>
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<tr>
 </table>
 <input id="aa" style="display:none" value="${detail.dependence}"/>
-<input id="bb"  style="display:none" value="${detail.position}"/>
+<input id="bb"  style="display:none"  value="${detail.position}"/>
 <br/>
 <!-- 分页 -->
 <span  style="margin-left:100px"><a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
@@ -148,8 +148,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    //封装全部检索                
     var dept=$("#aa").val(); 
     var post=$("#bb").val();  
-        var dept=$("#aa").val(); 
-                    var post=$("#bb").val();            
 		  var page=new Vue({
 		    el :'#app',
 		    data:{
@@ -160,7 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    methods:{
 		        execute:function(PageNumber){
 		          var status="填单";
-		           if(dept=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
+		           if($("#aa").val()=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
+		           
 	               if(dept=="总经办"){status="领导审批"}
 	               if(post=="超级管理员"){status=null};
 		           var url="";

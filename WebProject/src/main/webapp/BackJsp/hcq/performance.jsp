@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in datas">
-          <TD><A :href="'Performance/detail/'+apply.performanceid">
+          <TD><A :href="'Performance/detailInfo/'+apply.performanceid">
                 <img v-if="apply.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
 				<img v-else-if="apply.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 				<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>

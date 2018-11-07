@@ -34,7 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td colspan="3"><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td></tr></tbody></table>
+<td colspan="3"><span id="mapping.dbf.procXSource">
+ <c:if test="${apply.status=='填单'}">主管审批</c:if>
+  <c:if test="${apply.status!='填单'}">${apply.status}</c:if>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td></tr></tbody></table>
 <div style="TEXT-ALIGN: center">&nbsp;</div>
 <div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>出差申请单</strong></span></div>
 <div>
@@ -84,8 +87,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">出差报告</td>
-<td id="出差汇报" style="HEIGHT: 150px; VERTICAL-ALIGN: top" colspan="5" dbf.type="" dbf.source="">&nbsp;
-   ${apply.report}
+<td id="出差汇报" style="HEIGHT: 150px; VERTICAL-ALIGN: top" colspan="5" dbf.type="" dbf.source="">
+    <c:if test="${apply.status=='填写出差报告'}">
+      <TEXTAREA id="report"  class=fieldEditable style="HEIGHT: 150px">${apply.report}</TEXTAREA> 
+    </c:if>
+    <c:if test="${apply.status!='填写出差报告'}">
+      <TEXTAREA id="report" readonly="flase" class=fieldEditable style="HEIGHT: 150px">${apply.report}</TEXTAREA> 
+    </c:if>
+   
 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">出差结果</td>
@@ -116,29 +125,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <c:if test="${apply.status!='驳回'}">
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
-		    <c:if test="${detail.dependence!='总经办'}">
-		     <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
+		  
+		  	<c:choose>
+		<c:when test="${detail.position=='超级管理员'}">
+			   <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		       <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人填写出差报告]</a>
+		       <a class="button" @click="submit('转主管')" href="javascript:" ><b>通过</b>[转主管审批报告]</a>
+		       <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		       <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		</c:when>
+		<c:when test="${apply.status=='填单'}">
+			<a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
-		     <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		</c:when>
+		<c:when test="${apply.status=='领导审批'}">
+		   <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='填写出差报告'}">
+		   <a class="button" @click="submit('转主管')" href="javascript:" ><b>通过</b>[转主管审批报告]</a>
+		   <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		</c:when>
+		<c:when test="${apply.status=='主管审批报告'}">
+		   <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		</c:when>
+		<c:otherwise>
+		   <c:if test="${apply.applypeople==detail.username}"><!-- 填单人 -->
+			  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		   </c:if>
+		</c:otherwise>
+	</c:choose>
 		 </span>
 	 </div>
   </c:if>
   </c:if>
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view.htm?1000019,1000481&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view.htm?1000019,1000481&#39;);return false;"></a></div>【处理过程】</div>
   <span v-for="app in approval"> 
     <div  style="padding:5px 10px 0px 10px;border-top:1px dotted #ddd;">
 	  <img src="BackJsp/hcq/img/userX0.gif"> {{app.userid}}<span class="textGray">(  {{app.approvaldate}} )
 	</div>
     <div v-show="app.sequence==0" style="padding:0px 10px 5px 30px;">[<b>提交主管审批</b>]{{app.remark}} </div>
-    <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>通过并转填单人</b>] {{app.remark}}</div>
-    <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>转主管审批</b>] {{app.remark}}</div>
-    <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>领导审批</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>转主管审批报告</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>转领导审批</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>转填单人填写出差报告</b>] {{app.remark}}</div>
     <div v-show="app.sequence==4" style="padding:0px 10px 5px 30px;">[<b>结束流程</b>] {{app.remark}}</div>
     <div v-show="app.sequence==5" style="padding:0px 10px 5px 30px;">[<b>驳回</b>] {{app.remark}}</div>
   </span>
@@ -182,15 +213,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      var remark=$("#remark").val();
                      var principal=$("#uname").val();
                      var url="Evection/update";
-                     if(obj=="领导"){//转领导审核
+                     if(obj=="领导"){//3
                        this.$http.post(url,{applypeople:principal,evectionid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/check.jsp";                   
                        })  
-                     }else if(obj=="填单人"){//转填单人
+                     }else if(obj=="填单人"){//1
                        this.$http.post(url,{applypeople:principal,evectionid:itemid,status:"填写出差报告",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/check.jsp";                
                        })  
-                     }else if(obj=="结束"){//结束
+                     }else if(obj=="转主管"){//2
+                       this.$http.post(url,{applypeople:principal,report:$("#report").val(),evectionid:itemid,status:"主管审批报告",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/check.jsp";                
+                       })  
+                     }else if(obj=="结束"){//4
                        this.$http.post(url,{applypeople:principal,evectionid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/check.jsp";                
                        })  

@@ -135,12 +135,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               data:{
                  username:people
               },success:function(data){
-                if(data!=null){
+                if(data.dependence!=null){
                   $("#dept").val(data.dependence)
-                  $("#post").val(data.description)
+                  $("#post").val(data.position)
                   $("#entrydate").val(data.entrydate)
                   $("#officialdate").val(data.positivedate)
+                }else{
+                  $("#dept").val("");
+                  $("#post").val("");
+                  $("#entrydate").val("");
+                  $("#officialdate").val("");
                 }
+              },error:function(){
+                  $("#dept").val("");
+                  $("#post").val("");
+                  $("#entrydate").val("");
+                  $("#officialdate").val("");
               }
           })
        

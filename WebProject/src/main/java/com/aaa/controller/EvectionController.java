@@ -42,6 +42,13 @@ public class EvectionController {
 		  List<Evection> list=null;
 		  if(off.getStatus().equals("")||off.getStatus()==null){
 			  list=service.getAll();
+		  }else if(off.getDutypeople()!=null){
+			  String status=off.getStatus();
+			  off.setStatus(off.getDutypeople());
+			  off.setDutypeople(null);
+			  list=service.select(off);
+			  off.setStatus(status);
+			  list.addAll(service.select(off));
 		  }else{
 			  list=service.select(off);
 		  }

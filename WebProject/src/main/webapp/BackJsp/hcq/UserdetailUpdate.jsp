@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD class="fieldLable">从属于</TD>
           <TD>
-	          <select  id="dept"  @change="getPost"   name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
+	          <select  id="dept"  @change="getPost($event)"   name="dependence" style="border:0px;font-size:14px;width:300px;height:25px;">
 	             <option :selected="dept.deptname=='${user.dependence}'" v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
 	          </select>&nbsp;</TD>
           <TD class="fieldLable">在职状态</TD>
@@ -229,6 +229,7 @@ var pa=$("#pa").val();
                    this.depts=res.body
                  })
                  },getPost:function(dept){
+                   this.dept=$(dept.currentTarget).val();
                    postVue.get(this.dept);
                  }
              }

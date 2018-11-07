@@ -105,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        execute:function(PageNumber){ 
 		           var status="员工自评";//默认查询员工自评状态的申请
 	               if(dept=="总经办"){status="领导审批"};//查询状态为领导审批状态的申请
+	               if(dept=="人事部"&&post!="人事主管"){status="人事复核"};
 	               if(post=="超级管理员"){status=null}//查询所有申请
 		           var url="Performance/queryBycriteria";
 		           var type=null;

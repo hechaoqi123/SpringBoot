@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <DIV id="colloaMenu2">
       <A class="textHighlight" href="BackJsp/hcq/checking.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
-      <A href="BackJsp/hcq/overtime.jsp"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
+       <!--<A href="BackJsp/hcq/overtime.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A> -->
       <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
       <A href="BackJsp/hcq/check.jsp"><IMG 

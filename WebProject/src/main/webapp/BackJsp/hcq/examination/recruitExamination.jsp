@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <c:if test="${apply.status=='填单人知悉'}">填单人知悉</c:if>
 <c:if test="${apply.status=='驳回'}">驳回</c:if>
 <c:if test="${apply.status=='结束'}">结束</c:if>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span> ${apply.principal}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable"></td></tr></tbody></table>
 <div>
@@ -123,16 +123,39 @@ ${apply.cause}
     <c:if test="${apply.status!='驳回'}">
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
-		    <c:if test="${detail.dependence!='总经办'}">
-		     <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
+		       <c:choose>
+					<c:when test="${detail.position=='超级管理员'}">
+					      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+						  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+						  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+						  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+						  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+					</c:when>
+					<c:when test="${detail.position=='人事主管'}">
+					      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+						  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+						  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+					</c:when>
+					<c:otherwise>
+					  <c:if test="${detail.dependence=='总经办'}">
+						  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+						  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+					  </c:if>
+					  <c:if test="${detail.dependence=='人事部'}"><!-- 人事部员工 -->
+						  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+						  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+					  </c:if>
+					   <c:if test="${apply.principal==detail.username}"><!-- 填单人 -->
+						  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+					   </c:if>
+					</c:otherwise>
+				</c:choose>
+		   <!--  <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
 		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
-		     <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a> -->
 		 </span>
 	 </div>
   </c:if>
@@ -146,7 +169,6 @@ ${apply.cause}
     <div v-show="app.sequence==0" style="padding:0px 10px 5px 30px;">[<b>提交主管审批</b>]{{app.remark}} </div>
     <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>通过并转领导审批</b>] {{app.remark}}</div>
     <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>通过转人事处理</b>] {{app.remark}}</div>
-    <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>填单人知悉</b>] {{app.remark}}</div>
     <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>结束流程</b>] {{app.remark}}</div>
     <div v-show="app.sequence==5" style="padding:0px 10px 5px 30px;">[<b>驳回</b>] {{app.remark}}</div>
  </span>

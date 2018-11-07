@@ -34,7 +34,7 @@ public class PerformanceServiceImpl extends BaseServiceImpl<Performance> impleme
 		 if(evection.getStatus().equals("人事复核")){
 			 appro.setSequence(2);
 		 }
-		 if(evection.getStatus().equals("被考核人确认")){
+		 if(evection.getStatus().equals("填单人知悉")){
 			 appro.setSequence(3);
 			 }
 		 if(evection.getStatus().equals("结束")){

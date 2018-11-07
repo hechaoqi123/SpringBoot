@@ -36,7 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
 <td><span id="mapping.dbf.procXSource">
-  <input name="status" style="border:0px;" readonly="true" value="填单"/>
+<input name="status" style="border:0px;"  readonly="true" value="填单"/>
+  <input style="border:0px;display:none" readonly="true" value="领导审批"/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource">
 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>

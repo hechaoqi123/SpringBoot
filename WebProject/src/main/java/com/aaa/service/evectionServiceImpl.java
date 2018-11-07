@@ -28,18 +28,19 @@ public class evectionServiceImpl extends BaseServiceImpl<Evection> implements ev
 		 appro.setItemname("出差申请");
 		 evection.setApplypeople(null);//不更改此属性
 		 mapper.updateByPrimaryKeySelective(evection);
-		 if(evection.getStatus().equals("填写出差报告")){
-			 appro.setSequence(1);
-		 }
-		 if(evection.getStatus().equals("转主管审批")){
+		 //0 3 1 2 4 5 
+		 if(evection.getStatus().equals("主管审批报告")){
 			 appro.setSequence(2);
 		 }
 		 if(evection.getStatus().equals("领导审批")){
-		 appro.setSequence(3);
+		     appro.setSequence(3);
+		 }
+		 if(evection.getStatus().equals("填写出差报告")){
+			 appro.setSequence(1);
 		 }
 		 if(evection.getStatus().equals("结束")){
 			 appro.setSequence(4);
-			 }
+	     }
 		 if(evection.getStatus().equals("驳回")){
 			 appro.setSequence(5);
 		 }

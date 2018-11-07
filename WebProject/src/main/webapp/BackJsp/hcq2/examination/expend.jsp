@@ -54,14 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <a :href="'Chequeapply/detail/'+recruit.chequeid">{{recruit.theme}}</a></td>
 	<td>{{recruit.applyname}}</td>
 	<td>{{recruit.dept}}&nbsp;</td>
-	<td style="color:#E22018">{{recruit.applydate}}</td>
+	<td>{{recruit.applydate}}</td>
 	<td>{{recruit.money}}</td>
 	<td>{{recruit.opposite}}</td>
 </tr>
 <tr>
 </table>
 
-<input id="aa" style="display:none" value="${detail.dependence}"/>
+<input id="aa"  style="display:none" value="${detail.dependence}"/>
 <input id="bb"  style="display:none" value="${detail.position}"/>
 <br/>
 <!-- 分页 -->
@@ -86,11 +86,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    methods:{
 		        execute:function(PageNumber){
 		          var status="填单";
-		          if(post=="超级管理员"){status=null}
+		          if(post=="超级管理员"){status=null};
+		          if(dept=="总经办"){status="领导审批"}
+		          if(dept=="财务部"&&post!="财务主管"){status="财务处理"}
 		           var url="";
 		           //开票申请
 		           if(this.tactics==0){url="Chequeapply/queryBycriteria"
-			           this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
+			           this.$http.post(url,{pageNum:PageNumber,status:""},{emulateJSON:true}).then(function(res){
 		               this.pageInfo=res.body
 		               this.datas=res.body.list;
 	                })};

@@ -138,6 +138,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        execute:function(PageNumber){
 		          var status="填单";
 		           var url="";
+		           if(dept=="总经办"){status="领导审批"}
+		            if(dept=="财务部"&&post!="财务主管"){status="财务处理"}
 		           if(post=="超级管理员"){status=null}
 		           //差旅费报销
 		           if(this.tactics==0){url="CostManager/queryBycriteria"
@@ -153,6 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                })};
 	                //薪资发放
 	                  if(this.tactics==2){url="Paygrantapply/queryBycriteria"
+	                    if(dept=="财务部"&&post=="财务主管"){status="填单"}
 			           this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
 		               this.pageInfo=res.body
 		               this.datas=res.body.list;

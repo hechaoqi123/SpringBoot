@@ -74,6 +74,7 @@ public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implement
 			record.setUnum(user.getUsername());
 			record.setUpass("123456");
 		usermapper.insert(record);
+		//
 		Post onePost = postMapper.getOnePost(user.getPosition());
 		userspostMapper.insert(new Userspost(onePost.getPid(), maxID+1));
 	}

@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TH>从属于</TH>
                 <TH>职务</TH>
                 <TH>入职日期</TH>
-                <TH>操作</TH></TR></THEAD>
+                <TH>转正日期</TH></TR></THEAD>
               <TBODY >
                 
               <TR style="font-size:14px;line-height:25px;height:25px;" v-for="user in users" valign="top">
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TD>{{user.dependence}}&nbsp;</TD>
                 <TD>{{user.position}}&nbsp;</TD>
                 <TD>{{user.entrydate}}&nbsp;</TD>
-                <TD><a v-show="user.position!='超级管理员'"  @click="remove(user.detailid)" href="javascript:">删除</a>&nbsp;</TD></TR>
+                <TD>2018/10/10</TD></TR>
                 
                </TBODY>
                </TABLE>

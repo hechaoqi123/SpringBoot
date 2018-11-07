@@ -37,8 +37,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <DIV id="colloaMenu2">
       <A href="BackJsp/hcq/checking.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
-      <A href="BackJsp/hcq/overtime.jsp"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
+    <!--   <A href="BackJsp/hcq/overtime.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A> -->
       <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
       <A href="BackJsp/hcq/check.jsp" class="textHighlight"><IMG 
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in applys">
           <TD>
-                 <img  width="15" src="BackJsp/hcq/img/search.png"/>
+                <!--  <img  width="15" src="BackJsp/hcq/img/search.png"/> -->
              {{apply.theme}}</TD>
           <TD>{{apply.dept}}&nbsp;</TD>
           <TD>{{apply.username}}&nbsp;</TD>

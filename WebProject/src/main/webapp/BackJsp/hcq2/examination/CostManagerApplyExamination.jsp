@@ -40,7 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;<span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">&nbsp;</td></tr></tbody></table>
 <div>&nbsp;</div>
@@ -164,23 +166,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 <tbody>
 </tbody></table>
+<br/>
 <!-- 按钮 -->
  <span id="course">
- <c:if test="${apply.status!='结束'}">
-    <c:if test="${apply.status!='驳回'}">
-	  <div style="margin:20px 0px;" align="right">
-		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
+ 		    <c:choose>
+		<c:when test="${detail.position=='超级管理员'}">
+		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
-		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[填单人]</a>
+		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		    <a class="button" @click="submit('驳回')" href="javascript:">驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='填单'}">
+			<a style="margin-left:680px" class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
-		 </span>
-	 </div>
-  </c:if>
-  </c:if>
+		</c:when>
+		<c:when test="${apply.status=='领导审批'}">
+		   <a style="margin-left:680px" class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='财务处理'}">
+		   <a style="margin-left:680px" class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:otherwise>
+		   <c:if test="${apply.username==detail.username}&&${apply.status!='结束'}"><!-- 填单人 -->
+			  <a style="margin-left:760px"  class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		   </c:if>
+		</c:otherwise>
+	</c:choose>
   <!-- 流程 -->
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody>
 <tr valign="top"><td class="boxBorder">

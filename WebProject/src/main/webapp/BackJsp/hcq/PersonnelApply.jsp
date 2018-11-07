@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
-<textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-${superUser.username}</textarea></td></tr></tbody></table>
+<textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-${detail.username}</textarea></td></tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="100">
@@ -49,18 +49,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">被考核人</td>
 <td>
-  <input name="applypeople" class="fieldEditable">
+  <input name="applypeople" value="${detail.username}" class="fieldEditable">
 </td>
 <td style="TEXT-ALIGN: center">所属部门</td>
 <td>
    <select id="dept" name="dept" style="border:0px;font-size:14px;width:396px;height:25px;">
-    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+    <option v-for="dept in depts" :selected="dept.deptname='${detail.dependence}'" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">岗位或职务</td>
 <td id="岗位或职务" dbf.source="" dbf.type="">
-  <input name="post" class="fieldEditable">
+  <input name="post" value="${detail.position}" class="fieldEditable">
 </td>
 <td style="TEXT-ALIGN: center">考核类型</td>
 <td id="考核类型" dbf.source="" dbf.type="">

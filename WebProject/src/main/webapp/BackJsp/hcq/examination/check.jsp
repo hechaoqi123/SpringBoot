@@ -29,9 +29,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <span id="dataCount">
 	   <a  class="a" style="color:#000" @click="criteria(0,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 出差申请
-  	   <a class="a" @click="criteria(1,$event)" href="javascript:">
+  	  <!--  <a class="a" @click="criteria(1,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 加班申请
-	   </a>
+	   </a> -->
 	   <a class="a" @click="criteria(2,$event)" href="javascript:">
 	     <img border="0" src="BackJsp/hcq/img/folder.png"> 请休假申请
 	   </a>
@@ -139,10 +139,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           var url="";
 		           //出差申请审批
 		           if(this.tactics==0){url="Evection/queryBycriteria"
-			           this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
-		               this.pageInfo=res.body
-		               this.datas=res.body.list;
-	                })};
+		               if(post=="人事主管"||post=="财务主管"||post=="营销主管"||post=="技术主管"||post=="总经理"){
+		                this.$http.post(url,{pageNum:PageNumber,dutypeople:"主管审批报告",status:status},{emulateJSON:true}).then(function(res){
+		                this.pageInfo=res.body
+		                this.datas=res.body.list;
+		                 })
+		               }else{
+		                this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){
+		                this.pageInfo=res.body
+		                this.datas=res.body.list;
+                         })
+		               }
+		               
+	               };
 		             //加班审批
 		           if(this.tactics==1){url="Overtime/queryBycriteria"
 		               this.$http.post(url,{pageNum:PageNumber,status:status},{emulateJSON:true}).then(function(res){

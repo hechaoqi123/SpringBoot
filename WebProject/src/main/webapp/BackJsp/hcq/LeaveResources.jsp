@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <DIV id="colloaMenu2">
       <A href="BackJsp/hcq/checking.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 出差申请</A>
-      <A href="BackJsp/hcq/overtime.jsp"><IMG 
-      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A>
+    <!--   <A href="BackJsp/hcq/overtime.jsp"><IMG 
+      src="BackJsp/hcq/img/folder.png" border="0"> 加班申请</A> -->
       <A href="BackJsp/hcq/leave.jsp"><IMG 
       src="BackJsp/hcq/img/folder.png" border="0"> 请休假申请</A>
       <A href="BackJsp/hcq/check.jsp"><IMG 
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH>上传时间</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="apply in applys">
-          <TD><img  width="15" src="BackJsp/hcq/img/search.png"/>
+          <TD><!-- <img  width="15" src="BackJsp/hcq/img/search.png"/> -->
              {{apply.theme}}</TD>
           <TD>{{apply.createpeople}}&nbsp;</TD>
           <TD><a :href="'leaveResource/down/'+apply.leaveid"><img src="BackJsp/hcq/img/uploadico2.png" width="19" :title="apply.field1"/></a></TD>

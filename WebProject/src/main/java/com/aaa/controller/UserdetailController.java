@@ -136,8 +136,9 @@ public class UserdetailController {
 	//读取员工信息
 	@RequestMapping("/getOne")
 	public @ResponseBody Userdetail getOne(Userdetail record){
-		
-		return service.selectOne(record);
+		Userdetail detail=new Userdetail();
+			detail=service.selectOne(record);
+		return detail;
 	}
 	//修改员工信息
 	@RequestMapping("/udate")

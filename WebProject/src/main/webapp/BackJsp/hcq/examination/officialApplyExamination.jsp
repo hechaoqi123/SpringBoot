@@ -109,25 +109,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col width="60">
 <col></colgroup>
 </table>
-  <span id="course">
-  <c:if test="${apply.status!='结束'}">
-    <c:if test="${apply.status!='驳回'}">
-	  <div style="margin:20px 0px;" align="right">
-		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
+  <span id="course"><br/>
+         <span style="padding-left:550px;">
+      <c:choose>
+		<c:when test="${detail.position=='超级管理员'}">
 		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
-		    <c:if test="${detail.dependence!='总经办'}">
-		     <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
-		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
-		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
-		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
-		 </span>
-	 </div>
-  </c:if>
-  </c:if>
+			  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+			  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+			  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${detail.dependence=='人事部'&&detail.position=='人事主管'}">
+		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+			  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:otherwise>
+		  <c:if test="${detail.dependence=='总经办'}"><!-- 总经办员工 -->
+			  <a class="button" style="margin-left:100px" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		  </c:if>
+		  <c:if test="${detail.dependence='人事部'}"><!-- 人事部员工 -->
+			  <a class="button" style="margin-left:100px" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		  </c:if>
+		   <c:if test="${apply.proposer==detail.username}"><!-- 填单人 -->
+			  <a style="margin-left:200px" class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		   </c:if>
+		</c:otherwise>
+		</c:choose>
+		<br/>
+		</span>
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" ></a></div>【处理过程】</div>
   <span v-for="app in approval">

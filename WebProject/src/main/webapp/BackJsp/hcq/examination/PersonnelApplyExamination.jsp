@@ -268,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 合计 <input id="compute" type="button" value="="/> </td>
 <td id="dbf.budget" dbf.source="" dbf.type="number">
   <c:if test="${apply.status=='员工自评'}">
-     <input id="field19" name="field19" class="fieldEditable"/>
+     <input id="field19" readonly="true" name="field19" class="fieldEditable"/>
     </c:if>
       <c:if test="${apply.status!='员工自评'}">
     ${apply.field19}
@@ -298,15 +298,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <c:if test="${apply.status!='驳回'}">
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		      <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
-		    </c:if>
-		    <c:if test="${detail.dependence!='总经办'}">
-		     <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
-		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
-		    <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		     	<c:choose>
+		<c:when test="${detail.position=='超级管理员'}">
+	      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+		  <a class="button" @click="submit('结束')" href="javascript:" >结束流程</a>
+		</c:when>
+		<c:when test="${apply.status=='员工自评'}">
+	      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+          <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+		</c:when>
+		<c:when test="${apply.status=='新主管审批'}">
+			    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+			    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='领导审批'}">
+			    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='人事复核'}">
+			    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:otherwise>
+		   <c:if test="${apply.applypeople==detail.username}"><!-- 填单人 -->
+			  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		   </c:if>
+		</c:otherwise>
+	</c:choose>
 		 </span>
 	 </div>
   </c:if>
@@ -379,7 +400,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      var url="Performance/update";
                      if(obj=="领导"){//转领导审核
                          var form=$("#subform").serialize();
-                       this.$http.post(url,{applydate:principal,performanceid:itemid,status:"领导审批",remark:remark,
+                       this.$http.post(url,{applypeople:principal,performanceid:itemid,status:"领导审批",remark:remark,
                                      field1:$("#field1").val(),
                                      field2:$("#field2").val(),
                                      field3:$("#field3").val(),
@@ -401,15 +422,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            window.location.href="BackJsp/hcq/examination/performance.jsp";                   
                        })  
                      }else if(obj=="人事"){//转人事
-                       this.$http.post(url,{applydate:principal,performanceid:itemid,status:"人事复核",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{applypeople:principal,performanceid:itemid,status:"人事复核",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/performance.jsp";                
                        })  
                      }else if(obj=="填单人"){//填单人
-                       this.$http.post(url,{applydate:principal,performanceid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{applypeople:principal,performanceid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/performance.jsp";                
                        })  
                      }else if(obj=="结束"){//结束流程
-                       this.$http.post(url,{applydate:principal,performanceid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
+                       this.$http.post(url,{applypeople:principal,performanceid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq/examination/performance.jsp";                
                        })  
                      }else{//驳回

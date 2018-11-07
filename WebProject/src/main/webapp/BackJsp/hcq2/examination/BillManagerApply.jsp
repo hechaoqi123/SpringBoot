@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>事务 - Colloa</title>
+  <title>开票申请 - Colloa</title>
   <link rel="shortcut icon" href="http://cloud.10oa.com/trial/images/colloa.ico">
   <link rel="stylesheet" href="BackJsp/hcq2/css/font-awesome.min.css">
   <link rel="stylesheet" href="BackJsp/hcq2/css/view.css">
@@ -33,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td></tr>
 <tr>
 <td style="TEXT-ALIGN: right">&nbsp;步骤:</td>
-<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td><span id="mapping.dbf.procXSource">${apply.status}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <td style="TEXT-ALIGN: right">&nbsp;</td>
 <td id="dbf.endTime" dbf.type="date" dbf.source="date,editable">&nbsp;</td></tr></tbody></table>
 <div>&nbsp;</div>
@@ -130,21 +131,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tbody></table>
 <!-- 按钮 -->
  <span id="course">
- <c:if test="${apply.status!='结束'}">
-    <c:if test="${apply.status!='驳回'}">
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
+		    <!-- 按钮 -->
+    <c:choose>
+		<c:when test="${detail.position=='超级管理员'}">
+		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转财务]</a>
 		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[填单人]</a>
 		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
 		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
-		 </span>
-	 </div>
-  </c:if>
-  </c:if>
+		</c:when>
+		<c:when test="${apply.status=='填单'}">
+			<a style="margin-left:650px" class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='领导审批'}">
+		   <a style="margin-left:650px" class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='财务处理'}">
+		   <a style="margin-left:650px" class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		   <a   class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		</c:when>
+		<c:when test="${apply.status=='填单人知悉'}">
+		   <a  class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		</c:when>
+	</c:choose>
   <!-- 处理流程 -->
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" ></a></div>【处理过程】</div>
@@ -203,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        this.$http.post(url,{applyname:principal,chequeid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/expend.jsp";                   
                        })  
-                     }else if(obj=="人事"){//转人事
+                     }else if(obj=="财务"){//转人事
                        this.$http.post(url,{applyname:principal,chequeid:itemid,status:"财务处理",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/expend.jsp";                
                        })  
@@ -215,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        this.$http.post(url,{applyname:principal,chequeid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/expend.jsp";                
                        })  
-                     }else{//驳回
+                     }else if(obj=="驳回"){//驳回
                        this.$http.post(url,{applyname:principal,chequeid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
                            window.location.href="BackJsp/hcq2/examination/expend.jsp";                
                        }) 

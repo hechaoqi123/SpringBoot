@@ -35,6 +35,7 @@ public class OfficialServiceImpl extends BaseServiceImpl<Official> implements Of
 			 appro.setSequence(3);
 		 }
 		 if(recruit.getStatus().equals("填单人知悉")){
+			 //发放邮件
 			 appro.setSequence(4);
 		 }
 		 if(recruit.getStatus().equals("结束")){
