@@ -58,9 +58,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <TD>&nbsp;描述</TD>
 		  <TD id="dbf.description"><INPUT class="fieldEditable" id="e.dbf.description" value=""></TD></TR>
 		<TR>
-		  <TD>&nbsp;排序号<B style="color: red;">*</B></TD>
+		  <TD>&nbsp;基本工资<B style="color: red;">*</B></TD>
 		  <TD id="dbf.sortId" dbf.type="number,required">
-		  	<INPUT class="fieldEditable" id="e.dbf.sortId" value="" name="seq">
+		  	<INPUT class="fieldEditable" id="e.dbf.sortId" value="" name="money">
 		  </TD>
 		 </TR>
 		<TR>

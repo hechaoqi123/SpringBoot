@@ -47,10 +47,10 @@
 		<if test="tableName == 'costmanager'">
 				SELECT costID as recruitId,
 					theme as theme,
-					dutyPeople as principal,
+					username as principal,
 					DEPT as department,
 					field2 as post
-				FROM cost_manager WHERE dutyPeople = #{principal}
+				FROM cost_manager WHERE username = #{principal}
 		</if>
 		<!-- 费用报销 -->
 		<if test="tableName == 'baoxiao'">
@@ -60,6 +60,15 @@
 					DEPT as department,
 					field2 as post
 				FROM baoxiao WHERE dutyPeople = #{principal}
+		</if>
+		<!-- 薪资发放 -->
+		<if test="tableName == 'paygrantapply'">
+				SELECT applyid as recruitId,
+					theme as theme,
+					createPeople as principal,
+					Paymonth as department,
+					field2 as post
+				FROM ${tableName} WHERE createPeople = #{principal}
 		</if>
 		
 		

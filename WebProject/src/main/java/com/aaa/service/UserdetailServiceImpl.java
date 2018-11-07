@@ -73,7 +73,7 @@ public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implement
 			record.setUname(user.getUsername());
 			record.setUnum(user.getUsername());
 			record.setUpass("123456");
-		usermapper.insert(record);
+			usermapper.insert(record);
 		Post onePost = postMapper.getOnePost(user.getPosition());
 		userspostMapper.insert(new Userspost(onePost.getPid(), maxID+1));
 	}
@@ -86,6 +86,8 @@ public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implement
 	@Transactional
 	@Override
 	public void remove(Integer userId) {
+		
+		userspostMapper.deluserPost(userId);
 		usermapper.deleteByPrimaryKey(userId);
 		mapper.deleteByPrimaryKey(userId);
 	}
