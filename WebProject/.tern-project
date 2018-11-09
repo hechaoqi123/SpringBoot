@@ -1,20 +1,10 @@
 {
-  "ecmaVersion": 6,
   "plugins": {
-    "guess-types": {
-      
-    },
-<<<<<<< HEAD
-    "bootstrap": {
-=======
-    "browser-extension": {
->>>>>>> refs/remotes/origin/mh
-      
-    }
+    
   },
   "libs": [
+    "jquery",
     "ecma5",
-    "browser",
-    "jquery"
+    "browser"
   ]
 }

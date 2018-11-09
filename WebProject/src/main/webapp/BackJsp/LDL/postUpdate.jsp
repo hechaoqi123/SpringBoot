@@ -51,9 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <TD>&nbsp;描述</TD>
 		  <TD id="dbf.description"><INPUT class="fieldEditable" id="e.dbf.description" value="${post.pname }"></TD></TR>
 		<TR>
-		  <TD>&nbsp;排序号<B style="color: red;">*</B></TD>
+		  <TD>&nbsp;基本工资<B style="color: red;">*</B></TD>
 		  <TD id="dbf.sortId" dbf.type="number,required">
-		  	<INPUT class="fieldEditable" id="e.dbf.sortId" value="${post.seq }" name="seq">
+		  	<INPUT class="fieldEditable" id="e.dbf.sortId" value="${post.money }" name="seq">
 		  </TD>
 		 </TR>
 		<TR>
@@ -159,6 +159,7 @@ var usersVue = new Vue({
 			},{emulateJSON: true}).then(function(data) {
 				this.trueUsers = data.body.postTrueUser;
 				this.falseUsers = data.body.postFalseUser;
+				this.uname = null;
 		}, function(dataError) {
 			
 		})

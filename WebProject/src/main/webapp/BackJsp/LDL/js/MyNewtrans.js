@@ -35,7 +35,7 @@ var ve = new Vue({
 							tr +=	"<tr class='myTr'>"+ 	
 									"<td style='padding-left:40px'>"+ ++i+"</td>"+
 									"<td><a href="+data.body[mytransaction].trurl+">"+data.body[mytransaction].trname+"</a></td>"+
-			  						"<td>&nbsp;10</td>"+
+			  						"<td>&nbsp;</td>"+
 			  						
 			  					"</tr>";
 						}

@@ -58,7 +58,6 @@ public class DuthorityManagementController {
 		Map m = new HashMap();
 		m.put("uid", uid);
 		m.put("mOneId", mOneId);
-		System.out.println(m.toString());
 		List<Map> getMytransaction = service.getMytransaction(m);
 		return getMytransaction;
 	}

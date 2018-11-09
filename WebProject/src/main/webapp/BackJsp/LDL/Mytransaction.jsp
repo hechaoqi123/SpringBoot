@@ -79,7 +79,7 @@
 												</a>
 												<div :id='"collapse"+index' class="panel-collapse collapse">
 													<div v-for="(tran, index) in trans" v-if="tran.mOneId == Visitonemodile.mOneId">
-														<a @click="getRightData(tran.field1,index+1)">{{tran.trname}}</a>
+														<a @click="getRightData(tran.field1,index+1,tran.field2)">{{tran.trname}}</a>
 													</div>
 												</div>
 											</div>
@@ -94,8 +94,6 @@
 											<th>申请人</th>
 											<th>所属部门</th>
 											<th>需求岗位</th>
-											<th>需求人数</th>
-											<th>希望到岗日期</th>
 										</tr>
 										<tbody>
 											<tr v-for="rightData in rightDatas">
@@ -103,13 +101,11 @@
 													<img v-if="rightData.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
 													<img v-else-if="rightData.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 													<img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
-													<a :href="'Recruit/detail/'+rightData.recruitId">{{rightData.theme}}{{rightData.recruitid}}</a>
+													<a :href="url+'/'+rightData.recruitId">{{rightData.theme}}</a>
 												</td>
 												<td>{{rightData.principal}}</td>
 												<td>{{rightData.department}}&nbsp;</td>
 												<td>{{rightData.post}}</td>
-												<td>{{rightData.peoplenumber}}</td>
-												<td>{{rightData.enddate}}</td>
 											</tr>
 											<tr>
 												<td colspan="6">
@@ -132,6 +128,6 @@
 	
 </body>
 
-<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/Mytransaction.js?ver=1.0.0.22"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/Mytransaction.js?ver=1.0.0.23"></script>
 
 </html>

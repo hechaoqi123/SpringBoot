@@ -13,6 +13,7 @@ var ve = new Vue({
 	data:{
 		Visitonemodiles:"",
 		trans:"",
+		url:"",
 		uid:0,
 		uname:"",
 		rightDatas:"",
@@ -39,7 +40,8 @@ var ve = new Vue({
 						alert(error);
 	  				}
 			},
-			getRightData:function(tableName,pageNum){
+			getRightData:function(tableName,pageNum,url){
+				this.url = url;
 				if(tableName != ""){
 					this.tableName = tableName;
 				}

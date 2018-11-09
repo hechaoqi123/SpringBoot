@@ -137,23 +137,28 @@ function formSub(){
 };
 //更换头像
 $('#uploadSubmit').click(function() {
+	
 	var data = new FormData($('#uploadForm')[0]);
-	$.ajax({
-		url : 'userdetail/insertVisitonemodile',
-		type : 'POST',
-		data : data,
-		async : false,
-		cache : false,
-		contentType : false,
-		processData : false,
-		success : function(data) {
-			location.reload();
-			location.reload();
-			location.reload();
-			location.reload();
-		},
-		error : function(data) {
-			console.log(data.status);
-		}
-	});
+	if($("#picID").val()!=""){
+		$.ajax({
+			url : 'userdetail/insertVisitonemodile',
+			type : 'POST',
+			data : data,
+			async : false,
+			cache : false,
+			contentType : false,
+			processData : false,
+			success : function(data) {
+				location.reload();
+				location.reload();
+				location.reload();
+				location.reload();
+			},
+			error : function(data) {
+				console.log(data.status);
+			}
+		});
+	}else{
+		alert("请选择一张合适的图片");
+	}
 });

@@ -64,16 +64,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN:center"><span style="COLOR:rgb(255,0,0)">*</span>申请人</td>
 <td id="dbf.opera">
-  <input id="e.dbf.subject" value="${CurrentUser.uname}" class="fieldEditable" name="principal" /></td>
+  <input id="e.dbf.subject" readonly="true"  value="${CurrentUser.uname}" class="fieldEditable" name="principal" /></td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-    <select  id="dept"  name="department" style="border:0px;font-size:14px;width:355px;height:25px;">
-    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+    <select  id="dept" v-model="dept"  name="department" @change="getPost()" style="border:0px;font-size:14px;width:355px;height:25px;">
+    <option v-for="dept in depts"  :value="dept.deptname">{{dept.deptname}}</option>
   </select> </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>需求岗位</td>
-<td id="dbf.positionX" dbf.type="required">
-  <input id="e.dbf.positionX" name="post" class="fieldEditable"/>
+<td id="post" dbf.type="required">
+{{post}}
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请时间</td>
 <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
@@ -147,7 +147,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    var deptVue=new Vue({
              el:'#dept',
              data:{
-               depts:null
+               depts:null,
+               dept:"人事部"
              },methods:{
                  getAll:function(){
                    var url="/DeptController/getAll";
@@ -157,11 +158,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      var currentDate=new Date().toLocaleDateString();
                       $("#currentDate").val(currentDate) 
                  })
+                 },getPost:function(){
+                   postVue.get(this.dept);
                  }
              }
        })
        deptVue.getAll();
   })
+   var postVue=new Vue({
+         el:'#post',
+         data:{
+           post:null
+         },created:function(){
+            this.get("人事部")
+         },methods:{
+           get:function(dept){
+             alert(dept)
+           var url="/post/getPost";
+                this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
+                 this.post=res.body
+               })
+           }
+         }
+      })
       $("#sub").click(function(){
          $("#subform").submit();
       

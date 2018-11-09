@@ -133,8 +133,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
 	<tr>
 </table>
-<input id="aa" style="display:none" value="${detail.dependence}"/>
-<input id="bb"  style="display:none"  value="${detail.position}"/>
+<input id="aa" style="display:none"  value="${detail.dependence}"/>
+<input id="bb" style="display:none"  value="${detail.position}"/>
 <br/>
 <!-- 分页 -->
 <span  style="margin-left:100px"><a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a></span>
@@ -158,8 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    methods:{
 		        execute:function(PageNumber){
 		          var status="填单";
-		           if($("#aa").val()=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
-		           
+		           if(dept=="人事部"&&post!="人事主管"){dept=null,status="人事处理"}
 	               if(dept=="总经办"){status="领导审批"}
 	               if(post=="超级管理员"){status=null};
 		           var url="";
@@ -218,6 +217,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		               this.dimission=array[4];
 		          })
 		       },criteria:function(cri,event){//条件查询
+		        post=$("#bb").val();
+		        dept=$("#aa").val();  
 		           page.tactics=cri;
 		           target=event.currentTarget;
 		           removeClass();

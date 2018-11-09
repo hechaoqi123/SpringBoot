@@ -124,6 +124,9 @@ ${apply.cause}
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
 		       <c:choose>
+       		       <c:when test="${apply.principal==detail.username}&&">		
+				     <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+			       </c:when>
 					<c:when test="${detail.position=='超级管理员'}">
 					      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 						  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
@@ -145,17 +148,8 @@ ${apply.cause}
 						  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 						  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 					  </c:if>
-					   <c:if test="${apply.principal==detail.username}"><!-- 填单人 -->
-						  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-					   </c:if>
 					</c:otherwise>
 				</c:choose>
-		   <!--  <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
-		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
-		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a> -->
 		 </span>
 	 </div>
   </c:if>

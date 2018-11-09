@@ -163,6 +163,7 @@ var usersVue = new Vue({
 			},{emulateJSON: true}).then(function(data) {
 			this.trueUsers = data.body.alootTrueUser;
 			this.falseUsers = data.body.alootFalseUser;
+			this.uname = null;
 		}, function(dataError) {
 			
 		})

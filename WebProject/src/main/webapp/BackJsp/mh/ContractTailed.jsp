@@ -42,7 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		outline:none;
 		width:400px;
 	} 
-
+#ddd div{
+	float: left;
+}
 </style>
   </head>
   
@@ -56,8 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TBODY style="float:right;">
 <TR>
 <TD id=dbf.subject style="FONT-SIZE: 20px; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type=""><h3>${contract[0].clientname}-${contract[0].contracname}</h3></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR></TBODY></TABLE>
+</TR></TBODY></TABLE>
 <TABLE class=tableListBorder cellSpacing=0 cellPadding=0 align=center border=0>
 <TBODY class="tbodyOne">
 <TR style="border:1px solid #000;">
@@ -133,7 +134,7 @@ ${contract[0].username}
 </TBODY>
 
 </TABLE>
-<div style="margin-left:500px;">
+<div id="ddd" style="margin-left:500px;">
 <a href="contract/contractQuerys?cid=${contract[0].contractid}" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:130px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:30px;">修改合同</span></div></a>
 <c:if test="${contract[0].contracstate==0}">
 <a href="contract/updateid?ctid=${contract[0].contractid}" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:130px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:30px;">转执行</span></div></a>
@@ -145,8 +146,8 @@ ${contract[0].username}
 </div>
 </body></html>
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
-	<script src="BackJsp/mh/js/Vue.js"></script>
-	<script src="BackJsp/mh/js/vue-resource.min.js"></script>
+<script src="BackJsp/mh/js/Vue.js"></script>
+<script src="BackJsp/mh/js/vue-resource.min.js"></script>
 <script>
 
 </script>

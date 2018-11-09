@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD class="fieldLable">出生日期</TD>
           <TD><INPUT  name="birthdate" class=fieldEditable value="${user.birthdate}"/>&nbsp;</TD>
           <TD class="fieldLable">入职日期</TD>
-          <TD><INPUT  name="entrydate" class=fieldEditable value="${user.entrydate}"/>&nbsp;</TD></TR>
+          <TD><INPUT readonly="true" name="entrydate" class=fieldEditable value="${user.entrydate}"/>&nbsp;</TD></TR>
         <TR>
           <TD class="fieldLable">转正日期</TD>
           <TD><INPUT  name="positivedate" class=fieldEditable value="${user.positivedate}"/>&nbsp;</TD>
@@ -160,7 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD class="fieldLable">政治面貌</TD>
           <TD><INPUT id=e.dbf.partyX name="politics" value="${user.politics}" class=fieldEditable>&nbsp;</TD>
           <TD class="fieldLable">婚姻状况</TD>
-          <TD>${user.marriage}</TD></TR>
+          <TD>
+            <INPUT id=dbf.marital checked="${user.marriage=='未婚'}" type=radio  name="marriage" value="未婚" autocomplete="off">未婚
+            <INPUT id=dbf.marital checked="${user.marriage=='已婚'}" type=radio value=20 name=dbf.marital autocomplete="off">已婚
+            <INPUT id=dbf.marital checked="${user.marriage=='离婚'}" type=radio name="marriage" value="已婚"  autocomplete="off">离婚</TD>
+          </TD></TR>
         <TR>
           <TD class="fieldLable">身份证号</TD>
           <TD><INPUT id=e.dbf.nativeSid name="idnumber" value="${user.idnumber}" class=fieldEditable>&nbsp;</TD>

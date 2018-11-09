@@ -98,25 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</td>
    		</tr>
    </table>
-   <div style="margin-top:50px;height:200px;border:1px solid #c0c0c0;border-top:3px solid #c0c0c0;width:230px;float:left;">
-   		<div style="background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);height:40px;border-bottom:1px solid #c0c0c0;"><b style="float:left;margin-top:10px;margin-left:30px;">分类</b></div>
-   		<div id="classify" style="height:160px;border:0px solid #000;">
-   			<table id="tab">
-   				<tr>
-   					<td><a href=""><img src="img/folder.png"/><span style="color:#454545;">(显示所有)</span></a></td>
-   				</tr>
-   				<tr>
-   					<td><a href=""><img src="img/folder.png"/><span>客户分类一</span></a></td>
-   				</tr>
-   				<tr>
-   					<td><a href=""><img src="img/folder.png"/><span>客户分类二</span></a></td>
-   				</tr>
-   				<tr>
-   					<td><a href=""><img src="img/folder.png"/><span>客户分类三</span></a></td>
-   				</tr>
-   			</table>
-   		</div>
-   </div>
+   
    <span id="tab1" >
  	 <table  style="border:1px solid #c0c0c0;border-top:4px solid #c0c0c0;float:left;margin-top:50px;margin-left:50px; border-collapse: collapse; ">
  		 

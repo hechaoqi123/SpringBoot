@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <TD>{{user.dependence}}&nbsp;</TD>
                 <TD>{{user.position}}&nbsp;</TD>
                 <TD>{{user.entrydate}}&nbsp;</TD>
-                <TD>2018/10/10</TD></TR>
+                <TD>{{user.positivedate}}</TD></TR>
                 
                </TBODY>
                </TABLE>

@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><!-- <input name="detailid">-----, --></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
+</tr></tbody></table>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
 <tr>
@@ -101,8 +101,7 @@ ${list[0].estimatecost}</td></tr></tbody></table>
 <td style="TEXT-ALIGN: center; BACKGROUND-COLOR: lightyellow" colspan="2" dbf.source="" dbf.type=""><span style="FONT-SIZE: 14px"><strong>业务需求和目标</strong></span></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">附件</td>
-<td id="主要需求和目标附件" style="WIDTH: 798px" dbf.source="files" dbf.type=""><img onclick="fieldGetValueBySource(&#39;主要需求和目标附件&#39;,this);" class="fieldGetValueBySource" src="./新增项目_ - Colloa_files/fieldSource.gif">
-<div id="e.主要需求和目标附件">&nbsp;</div></td></tr>
+<td id="主要需求和目标附件" style="WIDTH: 798px" dbf.source="files" dbf.type=""><div id="e.主要需求和目标附件">&nbsp;</div></td></tr>
 <tr>
 <td id="主要需求和目标" style="VERTICAL-ALIGN: top" colspan="2" dbf.source="" dbf.type="">
 

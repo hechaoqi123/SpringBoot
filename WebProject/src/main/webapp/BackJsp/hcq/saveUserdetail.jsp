@@ -109,12 +109,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD class=fieldLable>政治面貌</TD>
 <TD id=dbf.partyX><INPUT id=e.dbf.partyX name="politics" class=fieldEditable></TD>
 <TD class=fieldLable>婚姻状况</TD>
-<TD><INPUT id=dbf.marital type=radio  name="marriage" value="未婚" autocomplete="off">未婚 <INPUT id=dbf.marital type=radio value=20 name=dbf.marital autocomplete="off">已婚 <INPUT id=dbf.marital type=radio name="marriage" value="已婚"  autocomplete="off">离婚</TD></TR>
+<TD><INPUT id=dbf.marital type=radio checked="true" name="marriage" value="未婚" autocomplete="off">未婚 <INPUT id=dbf.marital type=radio value=20 name=dbf.marital autocomplete="off">已婚 <INPUT id=dbf.marital type=radio name="marriage" value="已婚"  autocomplete="off">离婚</TD></TR>
 <TR>
 <TD class=fieldLable>身份证号</TD>
 <TD id=dbf.nativeSid><INPUT id=e.dbf.nativeSid name="idnumber" class=fieldEditable></TD>
 <TD class=fieldLable>户口所在地</TD>
-<TD id=dbf.residentPlace><INPUT id=e.dbf.residentPlace class=fieldEditable></TD></TR>
+<TD id=dbf.residentPlace></TD></TR>
 <TR>
 <TD class=fieldLable>联系地址</TD>
 <TD id=dbf.contactAddress colSpan=3><INPUT name="address" id=e.dbf.contactAddress class=fieldEditable></TD></TR>

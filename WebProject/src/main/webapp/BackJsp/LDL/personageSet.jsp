@@ -182,6 +182,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- /.modal -->
 </body>
 	
-<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/personageSet.js"></script>
+<script type="text/javascript" src="<%=basePath%>BackJsp/LDL/js/personageSet.js?var=1.0"></script>
 <script src="<%=basePath%>assets/js/bootstrap-fileinput.js"></script>
 </html>
