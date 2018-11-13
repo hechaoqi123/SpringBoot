@@ -49,14 +49,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
   </head>
   <body style=" font-family:'微软雅黑';">
-   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:50px;">
+   <div style="width:1200px;height:800px;border:0px solid #000;background-color:#ffffff;padding-top:20px;">
    <form id="myform">
    <table id="tabde" cellspacing="0" cellpadding="0" summary="" border="0" style="table-layout:fixed;margin-left:100px;margin-top:50px;"><col width=100px><col><col width=100px><col>
     <tbody>
-        <tr>
-	<td colspan="4" dbf.source="" dbf.type="" style="font-size: 14px;background-color:lightyellow;height:30px;width:1000px;line-height:30px;border-top:4px solid #c0c0c0;"><b>&nbsp;基本信息</b></td>
-        </tr>
-        <tr>
+    <tr>
+    	<th colspan="4" align="center">新增客户</th>
+    </tr>
+	<tr>
+		<td colspan="4" dbf.source="" dbf.type="" style="font-size: 14px;background-color:lightyellow;height:30px;width:1000px;line-height:30px;border-top:4px solid #c0c0c0;"><b>&nbsp;基本信息</b></td>
+	</tr>
+	<tr>
 	<td align=right class=fieldLable> 客户名称<b style="color:red">*</b></td>
 	<td><input name="clientname"/>&nbsp;</td>
 	<td align=right class=fieldLable> 拼      音</td>
@@ -160,8 +163,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td align=right class=fieldLable> 电      话 </td>
 	<td><input name="reservedphone"/>&nbsp;</td>
         </tr>
-        <tr>
-        	<td><input type="button" value="添加" id="but"></td>
+        <tr height="50px">
+        	<td align="right" colspan="4" style="background-color: #fff;">
+        		<div id="but" style="border: 1px solid #c0c0c0;border-radius:20px;width:70;height:30px;margin-right: 50px;">
+					<a href="javascript:void(0)">
+						<span style="float:left;margin-top:5px;margin-left:20px;">添加</span>
+					</a>
+				</div>
+        	</td>
         </tr>
     </tbody>
 

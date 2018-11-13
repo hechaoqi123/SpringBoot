@@ -1,4 +1,4 @@
-  package com.aaa;
+package com.aaa;
 
 
 import java.util.Date;

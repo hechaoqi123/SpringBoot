@@ -20,137 +20,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	
-<style>
-	*{
-		margin:0px;
-		padding:0px;
-		font-family:'微软雅黑';
-	}
-	#lotab span:hover{
-		color:#000;
-	}
-	#tab img{
-	 	float:left;
-	 	
-	} 
-	#tab span{
-	 	float:left;
-		margin-left:5px;
-		
-	} 
-	#tab tr{
-	float:left;
-	width:230px;
-		padding-top:7px;
-		margin-left:20px;
-	} 
-	#classify{
-		
-	}
-	 #tab1 td{
-		border:1px solid #c0c0c0;
-		
-		border-left:0px;
-		border-right:0px;
-	}
-	#tab1 tr{
-	height:40px;
-	}
-	#tab1 td a{
-	text-decoration:none;
-	color:blue;
-	}
-	#tab1 td a:hover{
-	text-decoration:none;
-	color:#000;
-	}
-	#tab1 tr:hover td{
-		background-color:#ffffe0;
-	}
-	th{
-		color:#454545;
-	}
-	.ktd{
-	padding-left:10px;
-	}
-	#classify:hover{
-		background-color:#ffffe0;
-	}
-	#classify td:hover a{
-		color:#000;
-	}
-</style>
+	<link rel="stylesheet" href="<%=basePath%>assets/css/font-awesome-4.7.0/css/font-awesomes.css" type="text/css"></link>
+	<link rel="stylesheet" href="<%=basePath%>assets/css/view.css">
+	<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.css">
   </head>
   
-  <body id="b" style="padding-left:50px;padding-top:50px;">
-  <span id="span">
-   <table  id="lotab">
-   		<tr>
-   			<td style="float:left;border:0px solid #000;"><img src="../assets/images/customersLogo.png" style="float:left;margin-top:10px;"><h1 style="float:left;margin-left:10px;">全部客户</h1></td>
-   			<td style="float:right;margin-left:650px;">
-   				<div style="float:right;height:36px;width:280px;border:1px solid #c0c0c0;border-radius:5px; background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);"">
-   					<a href=""><div style="float:left;height:37px;width:50px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:5px;margin-left:18px;color:#a6a6a6;"><b> < </b> </span> </div></a>
-   					<a href="BackJsp/mh/CustomerDeAdd.jsp" style="color:#a6a6a6;"><div style="float:left;height:37px;width:110px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:10px;"><b>+新增客户</b></span></div></a>
-   					<a href="BackJsp/mh/CustomerDeDim.jsp" style="color:#a6a6a6;"><div style="float:left;height:37px;width:70px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:20px;"><b>查找</b></span></div></a>
-   				
-   				</div>
-   			</td>
-   		</tr>
-   </table>
-   
-   <span id="tab1" >
- 	 <table  style="border:1px solid #c0c0c0;border-top:4px solid #c0c0c0;float:left;margin-top:50px;margin-left:50px; border-collapse: collapse; ">
- 		 
- 		<tr style="height:40px;background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);">
- 		<th style="width:200px;text-align:left;padding-left:10px;">客户名称</th>
- 		<th style="text-align:right;width:65px;">商机数</th>
- 		<th style="text-align:right;width:110px;">预计成交金额</th>
- 		<th style="text-align:right;width:85px;">合同数</th>
- 		<th style="text-align:right;width:95px;">合同金额</th>
- 		<th style="text-align:right;width:85px;">回款额</th>
- 		<th style="text-align:right;width:95px;">售后服务数</th>
- 		<th>服务均分</th>
- 		</tr>
- 		<tbody id="tbody"></tbody>
- 		 <tr v-for="c in client">
- 			<td class="ktd"><a :href="'client/clientOne?cid=' + c.clientid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"/><span style="float:left;margin-left:5px;">{{c.clientname}}</span></a></td>
- 			<td align=right><a href="">2</a></td>
- 			<td align=right>0.00</td>
- 			<td align=right v-if="c.number!=null"><a :href="'contract/selectOneContract?pageNum=1&cid=' + c.clientid"><img src="img/ico1.png"  style="float:left;margin-top:2px;margin-left:42px;"><span style="float:left;margin-left:5px;margin-top:3px;">{{c.number}}</span></a></td>
- 			<td align=right v-if="c.number==null">0</td>
- 			<td align=right>0.00</td>
- 			<td align=right style='color:#85d579;'>0.00<a href="#">[+]</a></td>
- 			<td align=right><a href="">4</a></td>
- 			<td align=center>{{pageInfo.total}}</td>
- 		</tr> 
- 		<tr>
- 			<td colspan="8" align=center> 
- 			
- 			
- 			
- 				 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a> 
- 			</td>
- 		</tr>
- 	</table>
- 	<!-- <div style="margin-left:50px;float:left;height:30px;width:350px;border:1px solid #c0c0c0;border-radius:5px;margin-top:10px;background: -webkit-linear-gradient(#FFFFFF, #F5F5F5);">
-   					<a  href="javascript:void(0)"><div style="float:left;height:30px;width:40px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:3px;margin-left:10px;color:#a6a6a6;"><b> <img src="img/qwq.png" width='25';height='25'> </b> </span> </div></a>
-   					<a href=""><div style="float:left;height:30px;width:50px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:3px;margin-left:17px;color:#a6a6a6;"><b> <img src="img/qeq.png" width='25';height='25'> </b> </span> </div></a>
-   					<div style="float:left;height:30px;width:165px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="font-size:5px;float:left;padding-top:5px;margin-left:10px;">共有 {{pageInfo.total}}条记录,第 ?/?页</span></div>
-   					<a href=""><div style="float:left;height:30px;width:50px;border:1px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:7px;margin-left:17px;color:#a6a6a6;"><b><img src="img/timg.jpg" width='16';height='16'> </b> </span> </div></a>
-   					<a href=""><div style="float:left;height:30px;width:40px;border:0px solid #c0c0c0;border-left:0px;border-top:0px;border-bottom:0px;"><span style="float:left;padding-top:3px;margin-left:10px;color:#a6a6a6;"><b> <img src="img/qqq.png" width='25';height='25'> </b> </span> </div></a>
-   	</div> -->
- 	
- 	</span>
-<!--  	               
- --> 	
-     
-  </span>
+  <body id="b" style="padding:50px;">
+	<div id="topDiv">
+		<table>
+  			<tr>
+	   			<td width="20%">
+	   				<h1>
+	   					<img style="cursor:pointer;" src="../assets/images/menu.png"> 全部客户
+	   				</h1>
+				</td>
+				<td id="oWorkflowList" align="right">
+					<a href="BackJsp/mh/CustomerDeAdd.jsp" class="button1 button1L">
+						<i class="fa">新增客户</i>
+					</a><span id="oWorkflowList1"></span><a href="BackJsp/mh/CustomerDeDim.jsp" class="button1 button1R">
+						<i class="fa">查找</i>
+					</a>
+					<a class="button1 button1L" title="后退" href="javaScript:windowClose();">
+						<i class="fa fa-angle-left"></i>
+					</a><span id="oWorkflowList1"><!-- <a href="#" class="button1 button1M">
+							<i class="fa fa-plus"></i> 新增
+					</a> --></span><a class="button1 button1R" title="刷新" href="javaScript:location.reload();">
+						<i class="fa fa-bolt"></i>
+					</a>
+				</td>
+			</tr>
+  		</table>
+	</div>
+	<br>
+
+  <div id="tab1">
+ 		<table class="table table-bordered table-hover table-condensed">
+ 			<tr class="warning">
+		 		<th>客户名称</th>
+		 		<th>商机数</th>
+		 		<th>预计成交金额</th>
+		 		<th>合同数</th>
+		 		<th>合同金额</th>
+		 		<th>回款额</th>
+		 		<th>售后服务数</th>
+		 		<th>服务均分</th>
+		 	</tr>
+		 	<tbody>
+		 		 <tr v-for="c in client">
+		 			<td class="ktd"><a :href="'client/clientOne?cid=' + c.clientid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"/><span style="float:left;margin-left:5px;">{{c.clientname}}</span></a></td>
+		 			<td align="left"><a href="">2</a></td>
+		 			<td align="left">0.00</td>
+		 			<td align="left" v-if="c.number!=null"><a :href="'contract/selectOneContract?pageNum=1&cid=' + c.clientid"><img src="img/ico1.png"  style="float:left;margin-top:2px;margin-left:42px;"><span style="float:left;margin-left:5px;margin-top:3px;">{{c.number}}</span></a></td>
+		 			<td align="left" v-if="c.number==null">0</td>
+		 			<td align="left">0.00</td>
+		 			<td align="left" style='color:#85d579;'>0.00<a href="#">[+]</a></td>
+		 			<td align="left"><a href="">4</a></td>
+		 			<td align=center>{{pageInfo.total}}</td>
+		 		</tr> 
+		 		<tr>
+		 			<td colspan="8" align=center> 
+		 				 <a @click="execute(1)" class="button1 button1L" title="首页" href="javascript:void(0);">首页</a><a @click="execute(pageInfo.pageNum-1)" class="button1 button1M" title="上页" href="javascript:void(0);">上一页</a><span class="button1M">共有 {{pageInfo.total}} 条记录，第 {{pageInfo.pageNum}}/{{pageInfo.pages}} 页</span><a @click="execute(pageInfo.pageNum+1)" class="button1 button1M" title="下页" href="javascript:void(0);">下一页</a><a @click="execute(pageInfo.pages)"class="button1 button1R" title="尾页" href="javascript:void(0);">尾页</a> 
+		 			</td>
+		 		</tr>
+		 	</tbody>
+		 	
+ 		</table>
+ 	</div>
   </body>
-</html>
 <script src="../../assets/js/jquery-2.0.3.min.js"></script>
-	<script src="BackJsp/mh/js/Vue.js"></script>
-	<script src="BackJsp/mh/js/vue-resource.min.js"></script>
+<script src="BackJsp/mh/js/Vue.js"></script>
+<script src="BackJsp/mh/js/vue-resource.min.js"></script>
 <script>
  $(function(){
 		  var page=new Vue({
@@ -205,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					for(var i=0;i<data.length;i++){
 				var tr="<tr>";
 				tr+="<td class='ktd'><a href='client/clientOne?cid="+data[i].clientid+"'><img src='img/customer.gif'>"+data[i].clientname+"</a></td>";
-				tr+="<td align=right><a href=''>"+data[i].clientid+"</a></td>";
+				tr+="<td align="left"><a href=''>"+data[i].clientid+"</a></td>";
 				  //tr+="<td><a href='goods/del.action?goodsId="+datalist[i].goodsId+"'>删除</a></td>"; 
 				/*  tr+="<td><a href='goods/queryone.action?goodsId="+datalist[i].goodsId+"'>修改</a></td>"; 
 				tr+="</tr>";
@@ -222,3 +161,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       */
     
 </script>
+</html>

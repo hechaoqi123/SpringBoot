@@ -48,9 +48,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <COL width=150></COLGROUP>
 <TBODY style="float:right;">
 <TR>
-<TD id=dbf.subject style="FONT-SIZE: 20px; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type=""></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR></TBODY></TABLE>
+	<th>新建合同</th>
+</TR>
+</TBODY>
+</TABLE>
 <TABLE class=tableListBorder cellSpacing=0 cellPadding=0 align=center border=0>
 <TBODY class="tbodyOne">
 <TR style="border:1px solid #000;">
@@ -130,7 +131,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </TBODY>
 <tr>
-	<td><a href="javascript:void(0)" id="but"><div style="border: 1px solid #c0c0c0;border-radius:20px;width:70px;height:30px;margin-top:20px;"><span style="float:left;margin-top:5px;margin-left:20px;">转主管审批</span></div></a></td>
+	<td colspan="4" align="right">
+		<div style="border: 1px solid #c0c0c0;border-radius:20px;width:120;height:30px;margin-top:20px;">
+			<a href="javascript:void(0)" id="but">
+				<span style="float:left;margin-top:5px;margin-left:20px;">转主管审批</span>
+			</a>
+		</div>
+	</td>
 
 </tr>
 
