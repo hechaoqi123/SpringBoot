@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TBODY>
 <TR>
 <TD class=fieldLable><B style="COLOR: red">*</B>名称</TD>
-<TD><INPUT id=e.dbf.name name="cname" class=fieldEditable :value="${car.cname}"></TD>
+<TD><INPUT id=e.dbf.name name="cname" class=fieldEditable value="${car.cname}"></TD>
 <TD class=fieldLable><B style="COLOR: red">*</B>牌号</TD>
 <TD><INPUT id=e.dbf.sno name="cmarkname" :value="${car.cmarkname}" class=fieldEditable></TD></TR>
 <TR>
@@ -58,13 +58,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD><INPUT id=e.dbf.produceXSource name="cmanufacturer" :value="${car.cmanufacturer}" class=fieldEditable></TD>
 <TD class=fieldLable>生产日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.produceXTime name="cmanudate" :value="${car.cmanudate}" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cmanudate"/></TD></TR>
 <TR>
 <TD class=fieldLable>供应商</TD>
 <TD><INPUT id=e.dbf.supplyXSource name="csupplier" :value="${car.csupplier}" class=fieldEditable></TD>
 <TD class=fieldLable>采购日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.supplyXTime name="cpurchasing" :value="${car.cpurchasing}" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cpurchasing"/></TD></TR>
 <TR>
 <TD class=fieldLable>发动机号</TD>
 <TD><INPUT id=e.dbf.text0 name="cengine" :value="${car.cengine}" class=fieldEditable></TD>
@@ -95,15 +95,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD class=fieldLable>下次年检日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time0 name="casdate" :value="${car.casdate}" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="casdate"/></TD></TR>
 <TR>
 <TD class=fieldLable>保险截止日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time1 name="cinsurancedate" :value="${car.cinsurancedate}" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cinsurancedate"/>
+</TD></TR>
 <TR>
 <TD class=fieldLable>上次保养日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time2 name="cmaintaindate" :value="${car.cmaintaindate}" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cmaintaindate"/>
+</TD></TR>
 <TR height=150>
 <TD class=fieldLable>&nbsp;</TD>
 <TD>&nbsp;</TD></TR>

@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,14 @@ public class CarapplyController {
 	@Autowired
 	CarapplyService service;
 	@ResponseBody
-	@RequestMapping("/getAll")
-    public PageInfo<Carapply> getAll(Integer pageNum){
+	@RequestMapping("/getAllCarapply")
+	 public PageInfo<Map> getAll(Integer pageNum){
 		PageHelper.startPage(pageNum,10);
-		List<Carapply> list=service.getAll();
-	    PageInfo<Carapply> info=new PageInfo<Carapply>(list);
+		List<Map> list=service.getCarapplyDept();
+	    PageInfo<Map> info=new PageInfo<Map>(list);
     	return info;
     }
+	
 	@RequestMapping("/carapplyAdd")
 	public String savePlay(Carapply carapply){
 		service.inserCarapply(carapply);

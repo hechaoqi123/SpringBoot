@@ -57,13 +57,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD><INPUT id=e.dbf.produceXSource name="cmanufacturer" class=fieldEditable></TD>
 <TD class=fieldLable>生产日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.produceXTime name="cmanudate" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<%-- <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.produceXTime name="cmanudate" class=fieldEditable contentEditable=true></DIV>
+ --%>
+ <input type="date" name="cmanudate"/>
+ </TD></TR>
 <TR>
 <TD class=fieldLable>供应商</TD>
 <TD id=dbf.supplyXSource><INPUT id=e.dbf.supplyXSource name="csupplier" class=fieldEditable></TD>
 <TD class=fieldLable>采购日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.supplyXTime name="cpurchasing" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cpurchasing"/></TD></TR>
 <TR>
 <TD class=fieldLable>发动机号</TD>
 <TD><INPUT id=e.dbf.text0 name="cengine" class=fieldEditable></TD>
@@ -94,15 +97,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD class=fieldLable>下次年检日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time0 name="casdate" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="casdate"/></TD></TR>
 <TR>
 <TD class=fieldLable>保险截止日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time1 name="cinsurancedate" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cinsurancedate"/>
+</TD></TR>
 <TR>
 <TD class=fieldLable>上次保养日期</TD>
 <TD>
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time2 name="cmaintaindate" class=fieldEditable contentEditable=true></DIV></TD></TR>
+<input type="date" name="cmaintaindate"/>
+</TD></TR>
+</TD></TR>
 <TR height=150>
 <TD class=fieldLable>&nbsp;</TD>
 <TD>&nbsp;</TD></TR>

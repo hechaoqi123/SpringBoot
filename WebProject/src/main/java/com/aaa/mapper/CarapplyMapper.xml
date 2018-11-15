@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.CarapplyMapper">
+ <select id="getDept" resultType="java.util.Map">
+  	select * from dept
+  </select>
+  
+  <select id="getCar" resultType="java.util.Map">
+  	select * from car
+  </select>
+   <select id="getCarapplyDept" resultType="java.util.Map">
+     select * from carapply a join dept d on a.adept=d.deptId
+    </select>
+    <select id="getCarapplyCar" resultType="java.util.Map">
+     select * from carapply a join car c on a.acar=c.cid
+    </select>
+</mapper>

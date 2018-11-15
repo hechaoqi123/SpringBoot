@@ -7,8 +7,8 @@ public class Carapply {
 	private String astep;
 	private String aenddate;
 	private String aproposer;
-	private String adept;
-	private String acar;
+	private Integer adept;
+	private Integer acar;
 	private String aapplicadate;
 	private String aselfdrive;
 	private String adriver;
@@ -59,16 +59,16 @@ public class Carapply {
 	public void setAproposer(String aproposer) {
 		this.aproposer = aproposer;
 	}
-	public String getAdept() {
+	public Integer getAdept() {
 		return adept;
 	}
-	public void setAdept(String adept) {
+	public void setAdept(Integer adept) {
 		this.adept = adept;
 	}
-	public String getAcar() {
+	public Integer getAcar() {
 		return acar;
 	}
-	public void setAcar(String acar) {
+	public void setAcar(Integer acar) {
 		this.acar = acar;
 	}
 	public String getAapplicadate() {
