@@ -137,4 +137,12 @@ public class ContractController {
 		return info;
 		
 	}
+	@RequestMapping("/contractHu")
+	public String contractHu(Integer cid,Model model){
+		List<Map<String,String>> query = service.query(cid);
+		System.out.println(query.toString());
+		model.addAttribute("contract", query);
+		System.out.println("完成");
+		return "mh/incomeRegister";
+	}
 }

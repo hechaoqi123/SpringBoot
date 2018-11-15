@@ -12,4 +12,6 @@ public interface DeptService {
     List<Dept> getAll();
 
 	public Dept getDept(String dept);
+	
+	public void updateHuiOne(String contracqq, Integer cid);
 }

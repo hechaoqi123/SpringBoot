@@ -101,7 +101,7 @@ ${contract[0].saasdate}</TD></TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">移动电话</TD>
 <TD id=移动电话 style="WIDTH: 320px">${contract[0].cellphone}</TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">邮件/QQ</TD>
-<TD id=邮件/QQ style="WIDTH: 319px">${contract[0].contracqq}</TD></TR>
+<TD id=邮件/QQ style="WIDTH: 319px"></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">主要技术条款</TD>
 <TD id=主要技术条款 colSpan=3 dbf.source="" dbf.type="">${contract[0].terms}</TD></TR>

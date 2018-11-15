@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>${list[0].jsdeta}</td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><strong><font color="#ff0000">*</font></strong>执行人</td>
-<td >${list[0].username}</td>
+<td >${list[0].zxr}</td>
 <td style="TEXT-ALIGN: center">工作量</td>
 <td>${list[0].workload}</td>
 </tr>

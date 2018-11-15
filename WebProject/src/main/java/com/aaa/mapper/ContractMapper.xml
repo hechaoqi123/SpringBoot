@@ -58,7 +58,7 @@
   	select * from contract ct left join client c on ct.clientid=c.clientid left join userdetail u on u.detailid=ct.detailid
    where ct.contracstate=0
   </select>
-  
+
   
   <!--执行中的合同  -->
   <update id="updateid" parameterType="java.lang.Integer" >

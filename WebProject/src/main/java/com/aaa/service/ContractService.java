@@ -3,6 +3,8 @@ package com.aaa.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.aaa.bean.Contract;
 
 public interface ContractService {
@@ -33,4 +35,8 @@ public interface ContractService {
     public int selectMaxId();
     public List<Map> selectHt();
     public void updateContractId(String contracnumber,Integer detailId,Integer contractid);
+    
+    
+    
+    
 } 

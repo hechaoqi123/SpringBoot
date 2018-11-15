@@ -248,7 +248,7 @@ alert(111)
 		option+="<option value='"+data[i].contractid+"'>"+data[i].contracname+"</option>"
 		
 		}
-		
+		alert(option)
 		$("#contractid").append(option)
 		
 		}

@@ -88,5 +88,7 @@ public class ContractServiceImpl implements ContractService{
 	mapper.updateContractId(contracnumber, detailId, contractid);	
 		
 	}
+
+	
 	
 }

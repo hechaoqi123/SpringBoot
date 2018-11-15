@@ -53,8 +53,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td v-if="t.rwfl=='0'"><a :href="'task/selectTailed?tid='+ t.tid"><i style="color:orange;" ></i><img src="img/ico1.png" style="width:15;height:15;float:left;margin-left:2px;margin-top:0px;"> <span style="color:#cc0000">{{t.tname}}</span> </a></td>
 		<td v-else><a :href="'task/selectTailed?tid='+ t.tid"><i style="color:#8ed646;" ></i><img src="BackJsp/hcq/img/ico2.png " style="width:15;height:15;float:left;margin-left:2px;margin-top:0px;"> <span style="color:#8ed646">{{t.tname}}</span> </a></td>
 		<td>{{t.itemname}}</td>
-		<td>{{t.username}}</td>
-		<td>{{t.username}}</td>
+		<td>{{t.organization}}</td>
+		<td>{{t.zxr}}</td>
 		<td>{{t.ksdeta}}&nbsp;</td>
 		<td>{{t.jsdeta}}&nbsp;</td>
 		<td>{{t.workload}}<i class="fa fa-caret-right"></i> 0</td>
