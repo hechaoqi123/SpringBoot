@@ -36,5 +36,7 @@ public interface ItinforMapper extends Mapper<Itinfor>{
     public List<Map> selectUsersName();
     //任命小组成员
     public void updateItworkplan(Itinfor i);
+    public List<Map> selectMeItinforOne(Integer did);
+    public void updatejg(@Param("iid")Integer iid, @Param("itsum") String itsum);
 	  
 } 

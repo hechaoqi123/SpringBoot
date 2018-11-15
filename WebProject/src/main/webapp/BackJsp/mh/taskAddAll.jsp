@@ -185,7 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         type:"post",
         dataType:"json",
         success:function(data){
-         $("deptName").html();
+         $("#deptName").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";

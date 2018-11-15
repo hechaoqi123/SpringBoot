@@ -162,7 +162,7 @@ public class TaskController {
      @RequestMapping("/updateTaskAll")
      public String updateTaskAll(Integer tid){
     	 taskservice.updateTask(tid);
-    	 return "mh/taskAll";
+    	 return "mh/itemMeAll";
      } 
  	@RequestMapping("/addTaskAll")
  	public  String addTaskAll(@RequestBody ArrUtil l){

@@ -29,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid" value="${didd}" style="display:none">${name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
 <tr>
@@ -45,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.keyInfo" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="" dbf.type="">
 <input id="e.dbf.keyInfo" class="fieldEditable" name="itemnumber"></td>
 <td style="TEXT-ALIGN: center; WIDTH: 115px">所属部门</td>
-<td id="dbf.division" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="form.fieldSource.division" dbf.type="" dbf.key="1000034">
-<div id="e.dbf.divisionSource"><input name="department"></div></td></tr>
+<td id="dbf.division" >
+<select style="width:445px; border: #F4F4F4" class="deptname" id="deptName" name="department"></select></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">计划开始时间</td>
 <td id="dbf.startTime" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date">
@@ -179,8 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </tbody></table>
 <div  align="right"> 				
-<a class="button" onclick="but()">转立项审核</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;直接转项目任命&#39;,1,1);return false;">直接转项目任命</a><a class="button" href="javascript:" onclick="javaScript:workflowAction(&#39;取消&#39;,0,0);return false;">取消</a></div><br>
-<span id="but">转立项审核</span>
+<a class="button" onclick="but()">转立项审核</a></div><br>
 </form>
 
 </div><form method="post"><input type="hidden" id="viewState" name="viewState">
@@ -277,8 +275,11 @@ alert(111)
 	
 	
 	$(function(){
+	
+	
+	
 	 
-	 
+	 alert(1)
 		  var page=new Vue({
 		    el :'#itform',
 		    data:{
@@ -292,12 +293,27 @@ alert(111)
 		             this.$http.post(url,{pageNum:pageNumber,key:null},{emulateJSON:true}).then(function(res){
 		                this.client=res.body.list
 		                this.pageInfo=res.body
-		                alert(this.client)
 		             });
 		        }
 		    }
 		})
 		page.execute(1);
+		
+		$.ajax({
+        url:"plan/seltys1",
+        type:"post",
+        dataType:"json",
+        success:function(data){
+       
+         var option="<option>--请选择--</option>";
+          for(var i=0;i<data.length;i++){
+           option+="<option value='"+data[i].deptname+"'>"+data[i].deptname+"</option>";
+          }
+         $("#deptName").append(option);
+         }
+ 
+       });
+		
 		})
-
+			
 </script>

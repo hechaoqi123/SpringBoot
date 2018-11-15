@@ -35,9 +35,9 @@
      
      
       <insert id="allIsert"  useGeneratedKeys="true" keyProperty="tid" parameterType="twoUtilEntity">
-        insert into task(tname,ksdeta,workload,deptid,rwsm,rwfl,itemid,zxr)VALUES
+        insert into task(tname,ksdeta,workload,deptid,rwsm,rwfl,itemid,zxr,detailld)VALUES
        <!--  <foreach collection="list" item="t" separator=","> -->
-        (#{tname},#{ksdeta},#{workload},#{deptid},#{rwsm},#{rwfl},#{itemid},#{zxr})
+        (#{tname},#{ksdeta},#{workload},#{deptid},#{rwsm},#{rwfl},#{itemid},#{zxr},#{detailld})
       <!--   </foreach> -->
         <!--  , -->
      </insert>
