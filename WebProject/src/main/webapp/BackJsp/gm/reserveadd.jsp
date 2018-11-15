@@ -52,7 +52,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD>
 <TD style="TEXT-ALIGN: right">&nbsp;结束时间:</TD>
 <TD id=dbf.endTime dbf.type="date" dbf.source="date,editable">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rendtime" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR></TBODY></TABLE>
+<%-- <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rendtime" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV>
+ --%>
+  <input type="date" name="rendtime"/>
+ </TD></TR></TBODY></TABLE>
 <DIV>&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center">
 <SPAN style="FONT-SIZE: 20px"><STRONG>会议室预定</STRONG></SPAN></DIV>
@@ -62,29 +65,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TD style="TEXT-ALIGN: center; WIDTH: 137px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请人</TD>
 <TD id=dbf.operator style="WIDTH: 317px" dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where stype=0 and statusX>0 and name like '%[!prompt]%' order by name" dbf.key="0">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rproposer" id=e.dbf.operatorSource class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
+<input style="WIDTH: 317px"cellSpacing=0 cellPadding=0 border=0 name="rproposer"/>&nbsp;
+</TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 136px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
 <TD id=dbf.division style="WIDTH: 308px" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rdept" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR>
+<select onkeypress="return event.keyCode!=13;" name="rdept" id="dname" class=fieldEditable contentEditable=true>&nbsp;</select>
+<!--  <td>
+ <select id="dname" name="rdept"></select>
+</td> --></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 137px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请日期</TD>
 <TD id=dbf.time2 style="WIDTH: 317px" dbf.type="date,required" dbf.source="date">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rfilingdate" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
+<%-- <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rfilingdate" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV>
+ --%>
+ <input type="date" name="rfilingdate"/></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 136px" dbf.type="" dbf.source="">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>预定会议室</TD>
 <TD id=dbf.text0 style="WIDTH: 308px" dbf.type="required!0" dbf.source="select sid,name from resourceX where modello='administration.meetingRoom' and statusX=1 order by name" dbf.key="">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rmetting" id=e.dbf.time1 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR>
+<select onkeypress="return event.keyCode!=13;" name="rmetting" id="meid" class=fieldEditable contentEditable=true>&nbsp;</select></TD>
+</TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 137px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>开始时间</TD>
 <TD id=dbf.time0 style="WIDTH: 317px" dbf.type="date,required" dbf.source="datetime,editable">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rstarttime" id=e.dbf.time0 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
-<TD style="TEXT-ALIGN: center; WIDTH: 136px">
+<%-- <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rstarttime" id=e.dbf.time0 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
+ --%>
+ <input type="date" name="rstarttime"><TD style="TEXT-ALIGN: center; WIDTH: 136px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>结束时间</TD>
 <TD id=dbf.time1 style="WIDTH: 308px" dbf.type="date,required" dbf.source="datetime,editable">
-<DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rfinishtime" id=e.dbf.time1 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR>
+<%-- <div onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rfinishtime" id=e.dbf.time1 class=fieldEditable contentEditable=true>&nbsp;
+ --%>
+ <input type="date" name="rfinishtime"/></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 137px">
 <SPAN style="COLOR: rgb(255,0,0)">*</SPAN>使用事由</TD>
@@ -119,8 +132,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;">
 <div style="float:right;">
-<a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703170&#39;);return false;">› 显示流程图</a>
-</div>【处理过程】</div>
+<!-- <a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703170&#39;);return false;">› 显示流程图</a>
+ --></div>【处理过程】</div>
 </td><td></td><td>
 <div class="boxBorder"><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
 
@@ -133,6 +146,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 </html>
 <script>
+  $(function(){
+      //查询出商品类型
+      $.ajax({
+          url:"reserve/getDept",
+          ContentType:"textml;charset=utf-8",
+          type:"post",
+          data:{},
+          dataType:"json",
+          success:function(data){
+           var op="";
+             for(var i=0;i<data.length;i++){
+                 op+="<option value='"+data[i].deptId+"'>"+data[i].deptName+"</option>"
+             }
+
+             $("#dname").append(op);
+          }
+      })
+      });
+      
+      $(function(){
+      //查询出商品类型
+      $.ajax({
+          url:"reserve/getMetting",
+          ContentType:"textml;charset=utf-8",
+          type:"post",
+          data:{},
+          dataType:"json",
+          success:function(data){
+           var op="";
+             for(var i=0;i<data.length;i++){
+                 op+="<option value='"+data[i].mid+"'>"+data[i].mname+"</option>"
+             }
+
+             $("#meid").append(op);
+          }
+      })
+      });
 
       $("#sub").click(function(){
          $("#form").submit();

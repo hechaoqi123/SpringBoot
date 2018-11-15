@@ -36,10 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TR>
           <TD>
             <H1><img src="BackJsp/gm/img/menu.png"/><span style="margin-left:7px;">车辆管理</span></H1>
-          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>用户申请</button>
+          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>车辆保险登记</button>
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
-      <DIV id="colloaMenu2">
+       <DIV id="colloaMenu2">
       <a class=textHighlight href='BackJsp/gm/car.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆列表</a>
       <a  href='BackJsp/gm/carapply.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 用车申请</a>
       <a  href='BackJsp/gm/carinsurance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆保险</a>
@@ -48,25 +48,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆加油</a>
       <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆事故</a>
       </DIV>
-       <DIV id="colloaContent2">
+      
+      <DIV id="colloaContent2">
       <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">
         <THEAD>
         <TR>
           <TH width="400px">主题</TH>
-          <TH>申请人</TH>
-          <TH>所属部门</TH>
-          <TH>指定车辆</TH>
-          <TH>出发时间</TH>
-          <TH>返回时间</TH></TR></THEAD>
+          <TH>车牌号</TH>
+          <TH>保险有效期</TH>
+          <TH>投保总费用(元)</TH>
+          <TH>投保公司</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
-        <TR v-for="carapply in applys">
-          <TD><IMG src="BackJsp/gm/img/ico1.png" border="0">
-              {{carapply.atheme}}</TD>
-          <TD>{{carapply.aproposer}}</TD>
-          <TD>{{carapply.deptName}}</TD>
-          <TD>{{carapply.cname}}</TD>
-          <TD>{{carapply.astartdate}}</TD>
-          <TD>{{carapply.areturndate}}</TD>
+        <TR v-for="carinsurance in applys">
+          <TD><!-- <A :href="'car/getCar?id='+car.cid"> -->{{carinsurance.itheme}}</TD>
+          <TD>{{carinsurance.cmarkname}}</TD>
+          <TD>{{carinsurance.iinsureduration}}~{{carinsurance.iinsuredurationss}}</TD>
+          <TD>{{carinsurance.iinsureallcost}}</TD>
+          <TD>{{carinsurance.iinsurecompany}}</TD>
          </TR>
 </TBODY></TABLE>
 <br/><span style="margin-left:100px">
@@ -84,7 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </BODY>
 </HTML>
 <script>
-      $(function(){        
+      
+     
+     $(function(){        
        var load=new Vue({
             el:'#app',
             data:{
@@ -92,14 +92,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                pageInfo:null
             },methods:{
                execute:function(pageNum){
-                 var url="carapply/getAllCarapply";
+                 var url="carinsurance/getAllCarinsurance";
                  this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
                      this.applys=res.body.list
                      this.pageInfo=res.body
                  })
                },
                 saved:function(){
-                 window.location.href="BackJsp/gm/carapplyadd.jsp ";
+                 window.location.href="BackJsp/gm/carinsuranceadd.jsp ";
        }
 
             }

@@ -1,6 +1,7 @@
 package com.aaa.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class ReserveController {
 	@RequestMapping("/getAllReserve")
 	@ResponseBody
 	public PageInfo<Reserve> getAll(Integer pageNum){
-	   PageHelper.startPage(pageNum,5);
+	   PageHelper.startPage(pageNum,10);
 	   List<Reserve> reserve=service.getAll();
 	   PageInfo<Reserve> pageInfo=new PageInfo<Reserve>(reserve);
        return pageInfo;
@@ -33,5 +34,21 @@ public class ReserveController {
 	public String insertReserve(Reserve reserve){
 		service.insertReserve(reserve);
 		return "gm/reserve";
+	}
+	
+	@RequestMapping("/getDept")
+	@ResponseBody
+	public List<Map> getDept(){
+		return service.getDept();
+	}
+	@RequestMapping("/getMetting")
+	@ResponseBody
+	public List<Map> getMetting(){
+		return service.getMetting();
+	}
+	@RequestMapping("/getReserveDept")
+	@ResponseBody
+	public List<Map> getReserveDept(){
+		return service.getReserveDept();
 	}
 }

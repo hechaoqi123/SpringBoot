@@ -16,10 +16,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<LINK href="BackJsp/gm/css/font-awesome.min.css" rel="stylesheet">  
+    <LINK href="BackJsp/gm/css/view.css" rel="stylesheet">   
+    <SCRIPT src="BackJsp/gm/js/viewCn.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="BackJsp/gm/js/view.js" type="text/javascript"></SCRIPT>
+    <script src="BackJsp/gm/js/Vue.js"></script>
+    <script src="BackJsp/gm/js/vue-resource.min.js"></script>
+    <script src="../../assets/js/jquery-2.0.3.min.js"></script>
   </head>
   
   <body id=colloaBody>
@@ -35,11 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TBODY>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
-<TD id=dbf.subject dbf.type="required"><INPUT id=e.dbf.subject class=fieldEditable value=用车申请-李萌-1002028></TD>
+<TD id=dbf.subject dbf.type="required"><INPUT name="atheme" id=e.dbf.subject class=fieldEditable value=用车申请-李萌-1002028></TD>
 <TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=-1 name=dbf.priority autocomplete="off">低
-<INPUT id=dbf.priority CHECKED type=radio value=0 name=dbf.priority autocomplete="off">中
-<INPUT id=dbf.priority type=radio value=1 name=dbf.priority autocomplete="off">高</TD></TR>
+<TD><INPUT id=dbf.priority type=radio value=低 name="apriority" autocomplete="off">低
+<INPUT id=dbf.priority CHECKED type=radio value=中 name="apriority" autocomplete="off">中
+<INPUT id=dbf.priority type=radio value=高 name="apriority" autocomplete="off">高</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
 <TD><SPAN id=mapping.dbf.procXSource>申请人填单</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,33 +64,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <IMG onclick="fieldGetValueBySource('dbf.operator',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
 <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.operatorSource class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 147px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
-<TD id=dbf.division style="WIDTH: 313px" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034"><IMG onclick="fieldGetValueBySource('dbf.division',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
+<TD id=dbf.division style="WIDTH: 313px" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
+<IMG onclick="fieldGetValueBySource('dbf.division',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
 <DIV id=e.dbf.divisionSource>销售部</DIV></TD></TR>
 <TR>
-<TD style="TEXT-ALIGN: center; WIDTH: 144px" dbf.type="date,required" dbf.source="date"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请日期</TD>
+<TD style="TEXT-ALIGN: center; WIDTH: 144px" dbf.type="date,required" dbf.source="date">
+<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请日期</TD>
 <TD id=dbf.time2 style="WIDTH: 302px" dbf.type="date,required" dbf.source="date">
 <IMG onclick="fieldGetValueBySource('dbf.time2',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
 <DIV id=e.dbf.time2>&nbsp;</DIV></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 147px">是否自驾</TD>
-<TD style="WIDTH: 313px">&nbsp;<INPUT id=是否需要自驾 type=radio value=1 name=是否需要自驾>自驾（不需要安排司机） <INPUT id=是否需要自驾 CHECKED type=radio value=0 name=是否需要自驾>安排司机</TD></TR>
+<TD style="WIDTH: 313px">&nbsp;
+<INPUT id=是否需要自驾 type=radio value=1 name=是否需要自驾>自驾（不需要安排司机） 
+<INPUT id=是否需要自驾 CHECKED type=radio value=0 name=是否需要自驾>安排司机</TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 144px">乘车人信息</TD>
 <TD id=乘车人 style="WIDTH: 302px"><INPUT id=e.乘车人 class=fieldEditable></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 147px" dbf.type="" dbf.source="">乘车人数</TD>
 <TD id=乘车人数 style="WIDTH: 313px" dbf.type="number" dbf.source=""><INPUT id=e.乘车人数 class=fieldEditable></TD></TR>
 <TR>
-<TD style="TEXT-ALIGN: center; WIDTH: 144px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>出发时间</TD>
-<TD id=dbf.time0 style="WIDTH: 302px" dbf.type="date,required" dbf.source="datetime,editable"><IMG onclick="fieldGetValueBySource('dbf.time0',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
+<TD style="TEXT-ALIGN: center; WIDTH: 144px">
+<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>出发时间</TD>
+<TD id=dbf.time0 style="WIDTH: 302px" dbf.type="date,required" dbf.source="datetime,editable">
+<IMG onclick="fieldGetValueBySource('dbf.time0',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
 <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time0 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD>
-<TD style="TEXT-ALIGN: center; WIDTH: 147px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>返回时间</TD>
-<TD id=dbf.time1 style="WIDTH: 313px" dbf.type="date,required" dbf.source="datetime,editable"><IMG onclick="fieldGetValueBySource('dbf.time1',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
+<TD style="TEXT-ALIGN: center; WIDTH: 147px">
+<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>返回时间</TD>
+<TD id=dbf.time1 style="WIDTH: 313px" dbf.type="date,required" dbf.source="datetime,editable">
+<IMG onclick="fieldGetValueBySource('dbf.time1',this);" class=fieldGetValueBySource src="BackJsp/gm/img/fieldSource.gif"> 
 <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" id=e.dbf.time1 class=fieldEditable contentEditable=true>&nbsp;</DIV></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 144px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>用车事由</TD>
 <TD id=用车事由 style="WIDTH: 765px" colSpan=3 dbf.type="required" dbf.source=""><TEXTAREA id=e.用车事由 class=fieldEditable style="HEIGHT: 80px"></TEXTAREA></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 144px">备注</TD>
-<TD id=备注 style="WIDTH: 765px" colSpan=3 dbf.type="" dbf.source=""><TEXTAREA id=e.备注 class=fieldEditable style="HEIGHT: 80px"></TEXTAREA></TD></TR>
+<TD id=备注 style="WIDTH: 765px" colSpan=3 dbf.type="" dbf.source="">
+<TEXTAREA id=e.备注 class=fieldEditable style="HEIGHT: 80px"></TEXTAREA></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 144px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>指定车辆</TD>
 <TD id=dbf.text0 style="WIDTH: 302px" dbf.type="required!0" dbf.source="select sid,name from resourceX where modello='administration.vehicle' and statusX=1 order by name" dbf.key="">&nbsp;</TD>

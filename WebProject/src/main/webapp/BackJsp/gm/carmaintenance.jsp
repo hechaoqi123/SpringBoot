@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,10 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <SCRIPT src="../../assets/js/jquery-2.0.3.min.js"></SCRIPT>
     <style>
        #tt td{
-          height:30px; 
+          height:20px; 
        }
     </style>
-  </head>
+    </head>
+  
   <body style="position:relative;padding-top:15px;padding-left:30px;">
   <span id="app">
  <TABLE  border="0" cellspacing="0" cellpadding="0">
@@ -35,8 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TBODY>
         <TR>
           <TD>
-            <H1><img src="BackJsp/gm/img/menu.png"/><span style="margin-left:7px;">车辆管理</span></H1>
-          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>用户申请</button>
+            <H1><img src="BackJsp/gm/img/menu.png"/><span style="margin-left:7px;">会议室管理</span></H1>
+          <button @click="saved()" class="btn" style="position:absolute;right:10px;width:150px;margin-left:800px;padding:5px 20px;border:1px solid #E0E0E0;background:#FCFCFC;border-radius:3px;cursor: pointer "><b>+</b>登记</button>
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
@@ -48,25 +49,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆加油</a>
       <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆事故</a>
       </DIV>
-       <DIV id="colloaContent2">
+      <DIV id="colloaContent2">
       <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">
         <THEAD>
         <TR>
-          <TH width="400px">主题</TH>
-          <TH>申请人</TH>
-          <TH>所属部门</TH>
-          <TH>指定车辆</TH>
-          <TH>出发时间</TH>
-          <TH>返回时间</TH></TR></THEAD>
+          <TH width="400px">名称：</TH>
+          <TH>牌号：</TH>
+          <TH>下次年检日期：</TH>
+          <TH>保险截止日期：</TH>
+          <TH>上次保养日期：</TH>
+          <TH>状态</TH>
+          <TH>操作</TH></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
-        <TR v-for="carapply in applys">
-          <TD><IMG src="BackJsp/gm/img/ico1.png" border="0">
-              {{carapply.atheme}}</TD>
-          <TD>{{carapply.aproposer}}</TD>
-          <TD>{{carapply.deptName}}</TD>
-          <TD>{{carapply.cname}}</TD>
-          <TD>{{carapply.astartdate}}</TD>
-          <TD>{{carapply.areturndate}}</TD>
+        <TR v-for="car in applys">
+          <TD><A :href="'car/getCar?id='+car.cid">{{car.cname}}</A></TD>
+          <TD>{{car.cmarkname}}</TD>
+          <TD>{{car.casdate}}</TD>
+          <TD>{{car.cinsurancedate}}</TD>
+          <TD>{{car.cmaintaindate}}</TD>
+          <TD>{{car.cstate}}</TD>
+          <TD><button @click="del(car.cid)">删除</button></TD>
          </TR>
 </TBODY></TABLE>
 <br/><span style="margin-left:100px">
@@ -81,37 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TABLE>
 <!-- 分页 -->
 </span>
-</BODY>
-</HTML>
+</BODY></HTML>
 <script>
-      $(function(){        
-       var load=new Vue({
-            el:'#app',
-            data:{
-               applys:null,
-               pageInfo:null
-            },methods:{
-               execute:function(pageNum){
-                 var url="carapply/getAllCarapply";
-                 this.$http.post(url,{pageNum:pageNum},{emulateJSON:true}).then(function(res){
-                     this.applys=res.body.list
-                     this.pageInfo=res.body
-                 })
-               },
-                saved:function(){
-                 window.location.href="BackJsp/gm/carapplyadd.jsp ";
-       }
-
-            }
-       })
-      
-      load.execute(1);
-        $(".btn").each(function(){
-        $(this).hover(function(){
-          $(this).css("border","1px solid #5ea6eb")
-        },function(){
-          $(this).css("border","1px solid #E0E0E0")
-        })
-     })
-  })
+     
 </script>

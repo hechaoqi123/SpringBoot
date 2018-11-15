@@ -8,7 +8,7 @@ public class Reserve {
 	private String rpriority;
 	private Date rendtime;
 	private String rproposer;
-	private String rdept;
+	private Integer rdept;
 	private String rfilingdate;
 	private String rmetting;
 	private Date rstarttime;
@@ -17,7 +17,6 @@ public class Reserve {
 	private String rcomment;
 	private String rpractical;
 	private String raccessory;
-	
 	public Integer getRid() {
 		return rid;
 	}
@@ -48,10 +47,10 @@ public class Reserve {
 	public void setRproposer(String rproposer) {
 		this.rproposer = rproposer;
 	}
-	public String getRdept() {
+	public Integer getRdept() {
 		return rdept;
 	}
-	public void setRdept(String rdept) {
+	public void setRdept(Integer rdept) {
 		this.rdept = rdept;
 	}
 	public String getRfilingdate() {
@@ -102,31 +101,5 @@ public class Reserve {
 	public void setRaccessory(String raccessory) {
 		this.raccessory = raccessory;
 	}
-	public Reserve(Integer rid, String rmotif, String rpriority, Date rendtime, String rproposer, String rdept,
-			String rfilingdate, String rmetting, Date rstarttime, Date rfinishtime, String ruserthing, String rcomment,
-			String rpractical, String raccessory) {
-		super();
-		this.rid = rid;
-		this.rmotif = rmotif;
-		this.rpriority = rpriority;
-		this.rendtime = rendtime;
-		this.rproposer = rproposer;
-		this.rdept = rdept;
-		this.rfilingdate = rfilingdate;
-		this.rmetting = rmetting;
-		this.rstarttime = rstarttime;
-		this.rfinishtime = rfinishtime;
-		this.ruserthing = ruserthing;
-		this.rcomment = rcomment;
-		this.rpractical = rpractical;
-		this.raccessory = raccessory;
-	}
-	public Reserve() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
-
-	                                                                       
-
 }
