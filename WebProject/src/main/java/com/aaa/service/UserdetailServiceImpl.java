@@ -74,9 +74,7 @@ public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implement
 			record.setUnum(user.getUsername());
 			record.setUpass("123456");
 		usermapper.insert(record);
-		System.out.println(user.getPosition()+"========================================");
 		Post onePost = postMapper.getOnePost(user.getPosition());
-		System.out.println(onePost.getPid()+"+++++++++++++++++++++onePost.getPid()========================================");
 		userspostMapper.insert(new Userspost(onePost.getPid(), maxID+1));
 	}
 	@Override
@@ -161,5 +159,14 @@ public class UserdetailServiceImpl extends BaseServiceImpl<Userdetail> implement
 	public List<Userdetail> fuzzy(String username) {
 		username="%"+username+"%";
 		return mapper.fuzzy(username);
+	}
+	@Override
+	public List<Userdetail> getOfficeUser() {
+		   Userdetail detail=new Userdetail();
+		    detail.setStatus("试用");
+		    List<Userdetail>list=mapper.select(detail);
+		    detail.setStatus("在职");
+		    list.addAll(mapper.select(detail));
+		return list;
 	};
 }

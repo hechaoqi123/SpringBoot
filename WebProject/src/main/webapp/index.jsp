@@ -32,13 +32,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
       <tbody id="tbody"></tbody>
    </table>
-
+  <a  href="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=wwc4d7f2e731fc9b7b&corpsecret=4L6X6nqr5IOleK1-O7hedvIkOJQ_rd1Aud6Z_GunE0A&callback=success">655</a>
 
   </body>
 </html>
-
 <script>
-      $(function(){
+
+ 
+   $(function(){
+      var access_token=null;
+        $.ajax({
+            url:"jsonp?https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=wwc4d7f2e731fc9b7b&corpsecret=4L6X6nqr5IOleK1-O7hedvIkOJQ_rd1Aud6Z_GunE0A",
+            type:"GET",
+            dataType:'json',
+            async:false,
+            success:function(da){
+               access_token=da.access_token;
+               var url="https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckindata?access_token="+access_token
+               var  data={
+                      "opencheckindatatype":3,
+					   "starttime": 1541001600,
+					   "endtime": 1542094432,
+					   "useridlist":'["HeChaoQi"]'
+                   }
+                   alert(data.useridlist)
+               $.post(url,data,function(data){
+                 alert(data)
+               })
+        
+            },error:function(XMLHttpRequest, textStatus, errorThrown){
+               alert(XMLHttpRequest.status);
+               alert(XMLHttpRequest.readyState);
+               alert(textStatus);
+            }
+        })
+   })
+ /*      $(function(){
           getAll();
       });
       function getAll(){
@@ -84,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            getAll(nowpage+1);
       })
      
-      
+       */
     
 
 </script>

@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aaa.base.EmailUtil;
 import com.aaa.bean.Checking;
+import com.aaa.bean.Userdetail;
 import com.aaa.bean.leaveResource;
+import com.aaa.service.UserdetailService;
 import com.aaa.service.leaveResourceService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,6 +37,8 @@ import com.github.pagehelper.PageInfo;
 public class leaveResourceController {
 	@Autowired
 	leaveResourceService service;
+	@Autowired
+	UserdetailService Userservice;
 	@ResponseBody
 	@RequestMapping("/getAll")
     public PageInfo<leaveResource> getAll(Integer pageNum){
@@ -41,15 +50,42 @@ public class leaveResourceController {
 	//考勤信息录入:文件上传
 	@RequestMapping("/savePlay")
 	public String savePlay(leaveResource leaveResource,@RequestParam("file") MultipartFile file,
-			   HttpServletRequest request) throws IllegalStateException, IOException{
-		String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-		UUID uuid=UUID.randomUUID();
-        String target=request.getSession().getServletContext().getRealPath("upload/leaveResource/");
-         File  targetFile=new File(target+uuid+suffix);
-		file.transferTo(targetFile);
-		leaveResource.setResourceurl(uuid+suffix);
-		service.save(leaveResource);
-		return "hcq/LeaveResource";
+			   HttpServletRequest request) throws Exception{
+			//上传文件
+		          String suffix="";
+	              int index = file.getOriginalFilename().lastIndexOf(".");
+		          if(index!=-1){
+		        	  suffix=file.getOriginalFilename().substring(index);
+		          }     
+			UUID uuid=UUID.randomUUID();
+			String target=request.getSession().getServletContext().getRealPath("upload/leaveResource/");
+			File  targetFile=new File(target+uuid+suffix);
+			file.transferTo(targetFile);
+			//保存记录
+		    leaveResource.setResourceurl(uuid+suffix);
+			service.save(leaveResource);
+			//发送邮件
+			Session session=EmailUtil.getSession();
+		    String subject="调休资源";
+	        String body="调休资源表已更新，请注意查收";
+	        List<Userdetail> users=Userservice.getOfficeUser();
+	        List<String> list=new ArrayList<String>();
+	        for (Userdetail userdetail : users) {
+	        	String email=userdetail.getEmail();
+	        	if(email!=null&&email.length()>5){
+	        		String suff=userdetail.getEmail().substring(email.length()-6);
+	        		if(suff.equals("qq.com")){
+	        			list.add(email);
+	        		}
+	        	}
+			}
+	        String[] receiveMail=new String[list.size()];
+	        list.toArray(receiveMail);
+	        String fileName="调休资源表"+suffix;
+	        String fileUrl=target+uuid+suffix;
+            MimeMessage message=EmailUtil.createMultipartEmail(subject, body, fileUrl, fileName, receiveMail, session);
+            EmailUtil.SendEmail(session, message);
+            return "hcq/LeaveResources";
 	}
 	//文件下载
 	@RequestMapping("/down/{id}")

@@ -32,4 +32,6 @@ public interface UserdetailService extends BaseService<Userdetail>{
 	public XSSFWorkbook generate();
 	
 	public List<Userdetail> fuzzy(String username);
+	//查询在职员工及试用员工
+	public List<Userdetail> getOfficeUser();
 }

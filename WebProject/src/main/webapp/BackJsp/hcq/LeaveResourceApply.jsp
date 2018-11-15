@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>上传时间</td>
 <td id="dbf.positionX" dbf.type="required">
-  <input id="e.dbf.positionX" name="uploaddate" class="fieldEditable"></td></tr>
+  <input id="e.dbf.positionX" name="uploaddate" value="<%=new Date().toLocaleString()%>" class="fieldEditable"></td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">上传附件</td>
 <td id="出生日期" dbf.type="date" dbf.source="date">
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tbody></table></form></div>
 <input type="hidden" id="viewState" name="viewState"></form>
  <div id="_vWorkflowActionsShow"style="font-size:15px" align="right"><br/>
-<a id="sub" class="button" href="javascript:">提交主管审批</a>
+<a id="sub" class="button" href="javascript:">提交</a>
 <a id="ret" class="button" href="javascript:">取消</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;font-size:13px" ><div style="float:right;"><a href="javaScript:" onclick="javaScript:"></a></div>【处理过程】</div>
 

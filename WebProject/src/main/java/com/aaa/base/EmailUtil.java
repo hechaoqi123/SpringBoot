@@ -1,79 +1,137 @@
 package com.aaa.base;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.MimeUtility;
 
+import org.springframework.web.multipart.MultipartFile;
+/***
+ * 
+ * @author Lenovo
+ *
+ * 2018年11月9日
+ */
 public class EmailUtil {
 	//发件人邮箱及授权码：发件人邮箱须开启POP3/IMAP/SMTP服务
-	private static String myEmailAccount = "1127181497@qq.com";
-	private static String myEmailPsw = "eogwlsdaerbojhib";
+	private static String account="1127181497@qq.com";
+	private static String password="eogwlsdaerbojhib";
 	//QQSMTP服务器地址为:smtp.qq.com
-    private static String myEmailSMTPHost = "smtp.qq.com";
+    private static String SMTPHost= "smtp.qq.com";
 	//收件人邮箱
     // private static String receiveMailAccount = "502498443@qq.com";
+	/***
+     *  读取参数配置(一般写在一个properties文件中),返回Session
+     */
+    public static Session getSession(){
+		Properties props = new Properties();
+		props.setProperty("mail.transport.protocol", "smtp");//使用协议(javaMail规范要求)
+		props.setProperty("mail.smtp.host", SMTPHost);//发件人邮箱的SMTP服务器地址:邮箱类型
+		props.setProperty("mail.smtp.auth", "true");//需要经过请求认证
+		Session session=Session.getInstance(props);
+		 session.setDebug(true);//打印debug
+		return	session;
+    }
       /**
-       * 收件人：
-       * 消息内容
-       * 邮件标题
+       * 发送邮件
+       *   message对象
        * */
-    //创建一封普通邮件
-    public static void SendEmail(String body,String head,String[] receiveMailAccounts) throws Exception{
-		
-    	   System.out.println("收件人数量"+receiveMailAccounts.length);
-    	// 1. 创建参数配置, 用于连接邮件服务器的参数配置(一般写在一个Properties文件里来读取，此处为了方便)
-				Properties props = new Properties();
-				props.setProperty("mail.transport.protocol", "smtp");//使用协议(javaMail规范要求)
-				props.setProperty("mail.smtp.host", myEmailSMTPHost);//发件人的邮箱的SMTP服务器地址
-				props.setProperty("mail.smtp.auth", "true");//需要请求认证	
-		//2. 根据配置创建会话对象，用于和邮件服务器交互
-				Session session = Session.getInstance(props);
-		//3.创建一封邮件
-				MimeMessage message = createMimeMessage(head,body,session, myEmailAccount, receiveMailAccounts);
-		//4.根据Session获取邮件传输对象
+    //发送邮件
+    public static  void SendEmail(Session session,MimeMessage message) throws Exception{
+		System.out.println(session);
+		System.out.println(message);
+			//	MimeMessage message = createMimeMessage(head,body,session, account, receiveMailAccounts);
+		//1.根据Session获取邮件传输对象
 				Transport transport = session.getTransport();
-	    // 5. 使用 邮箱账号 和 密码 连接邮件服务器, 这里认证的邮箱必须与 message 中的发件人邮箱一致, 否则报错
-		        transport.connect(myEmailAccount, myEmailPsw);
-		// 6. 发送邮件, 发到所有的收件地址, message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
+	    // 2. 使用 邮箱账号 和 密码 连接邮件服务器, 这里认证的邮箱必须与 message 中的发件人邮箱一致, 否则报错
+		        transport.connect(account, password);
+		// 3. 发送邮件, 发到所有的收件地址, message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
 		        transport.sendMessage(message, message.getAllRecipients());
-		// 7. 关闭连接
+		// 4. 关闭连接
 		        transport.close();
 	 
 	}
 	/**
-	 * 传入邮件内容,邮件头,发件人邮箱地址
+	 * 创建一封简单邮件
+	 * 邮件标题  邮件内容,Session,发件人邮箱地址,收件人地址
 	 * **/
-	 public static MimeMessage createMimeMessage(String head,String messageBody,Session session, String sendMail, String[] receiveMail) throws Exception {
+	 public static MimeMessage createSimpleEmail(String head,String messageBody,Session session, String fromMail, String[] receiveMail) throws Exception {
 	        // 1. 创建一封邮件
 	        MimeMessage message = new MimeMessage(session);
-	 
-	        // 2. From: 发件人（昵称有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改昵称）	
-	       //InternetAddress(String address, String personal, String charset) 根据地址和名称来构建InternetAddress
-	        message.setFrom(new InternetAddress(sendMail, "Test", "UTF-8"));
+	        // 2. From: 发件人
+	        message.setFrom(new InternetAddress(fromMail,"UTF-8"));
 	        // 3. To: 收件人（主要收件人TO、抄送CC、密送BCC）
 		        InternetAddress[] address=new InternetAddress[receiveMail.length];
 		        for(int i=0;i<address.length;i++){
-		        	System.out.println("这是一个收件人"+receiveMail[i]);
-		        	address[i]=new InternetAddress(receiveMail[i], "嗨SIRI", "UTF-8");
+		        	address[i]=new InternetAddress(receiveMail[i],"UTF-8");
 		        }
 	        message.setRecipients(MimeMessage.RecipientType.TO, address);
-	        
-	        // 4. Subject: 邮件主题（标题有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改标题）
-	        
+	        // 4. Subject: 邮件主题
 	        message.setSubject(head, "UTF-8");
-	 
-	        // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
+	        // 5. Content: 邮件正文（可以使用html标签）
 	        message.setContent(messageBody, "text/html;charset=utf-8");
-	        // 6. 设置发件时间
-	        message.setSentDate(new Date());
-	 
-	        // 7. 保存设置
+	               // 6. 设置发件时间
+	               // message.setSentDate(new Date());
+	        // 7. 保存此邮件
 	        message.saveChanges();
-	 
 	        return message;
 	    }
+	 
+     /***
+      * 创建一封带附件的邮件
+      * 
+      * @param subject 
+      *            邮件标题
+      * @param body
+      *            邮件内容
+      * @param file
+      *            附件url
+      * @param fileName
+      *            附件名称
+      * @param toUrl
+      *            收件人           
+      * @param session
+      */
+      public static MimeMessage createMultipartEmail(String subject,String body,String file,String fileName,String[] receiveMail,Session session) throws MessagingException, UnsupportedEncodingException{
+    	   //用session构建一个邮件:邮件主题  发件人   收件人
+    	       MimeMessage message = new MimeMessage(session);
+    	       message.setSubject(subject, "UTF-8");
+    	       message.setFrom(new InternetAddress(account, "UTF-8"));
+    	       InternetAddress[] address=new InternetAddress[receiveMail.length];
+		        for(int i=0;i<address.length;i++){
+		        	address[i]=new InternetAddress(receiveMail[i],"UTF-8");
+		        }
+    	       message.setRecipients(MimeMessage.RecipientType.TO, address);
+    	 // 向multipart对象中添加邮件的各个部分内容，包括文本内容和附件
+    	       Multipart multipart = new MimeMultipart();
+    	 // 设置邮件的文本内容
+    	       BodyPart contentPart = new MimeBodyPart();
+    	       contentPart.setContent(body, "text/html;charset=UTF-8");
+    	       multipart.addBodyPart(contentPart);
+    	 //添加附件      
+    	       BodyPart messageBodyPart = new MimeBodyPart();
+    	       DataSource source = new FileDataSource(file);
+    	       messageBodyPart.setDataHandler(new DataHandler(source));
+    	       messageBodyPart.setFileName( MimeUtility.encodeText(fileName));
+    	       multipart.addBodyPart(messageBodyPart);     
+    	  //将邮件正文和附件添加到邮件中     
+    	       message.setContent(multipart);  
+    	 // 保存邮件
+    	       message.saveChanges();
+    	  return message;
+      }
 }

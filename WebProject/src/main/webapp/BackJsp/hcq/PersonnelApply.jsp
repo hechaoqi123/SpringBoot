@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <colgroup>
 <col>
 <col width="180"></colgroup>
-<tbody>
+<tbody >
 <tr>
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">
 
@@ -38,7 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td id="dbf.subject" style="FONT-SIZE: 20px; FONT-WEIGHT: bold; TEXT-ALIGN: center; LINE-HEIGHT: 1" dbf.source="" dbf.type="required">
-<textarea id="e.dbf.subject" name="field20" class="fieldEditable" style="height: 40px; font-size: 20px; font-weight: bold; text-align: center;">?年?月绩效考核单-${detail.username}</textarea></td></tr></tbody></table>
+<textarea id="theme"  name="field20" class="fieldEditable" style="overflow:hidden;height: 40px; font-size: 20px; font-weight: bold; text-align: center;">
+<%=new Date().getYear()+1900%>年<%=new Date().getMonth()+1%>月绩效考核单-
+</textarea></td></tr></tbody></table>
 <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
 <colgroup>
 <col width="100">
@@ -49,12 +51,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td style="TEXT-ALIGN: center">被考核人</td>
 <td>
-  <input name="applypeople" value="${detail.username}" class="fieldEditable">
+  <input name="applypeople" id="username" value="${detail.username}" class="fieldEditable">
 </td>
 <td style="TEXT-ALIGN: center">所属部门</td>
 <td>
    <select id="dept" name="dept" style="border:0px;font-size:14px;width:396px;height:25px;">
-    <option v-for="dept in depts" :selected="dept.deptname='${detail.dependence}'" v-bind:value="dept.deptname">{{dept.deptname}}</option>
+    <option v-for="dept in depts"  :value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </td></tr>
 <tr>
@@ -83,12 +85,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><strong>考核项目</strong></td>
 <td><strong>具体内容和重点</strong></td>
 <td><strong>主管评分</strong></td></tr>
-<tr>
-<td>考勤 (5)</td>
-<td>出勤状况 (5)</td>
-<td>执行公司考勤制度，无迟到、无早退、无旷工（上述事项有一次，扣1分）</td>
-<td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
-<tr>
 <td rowspan="5">工作态度 (20)</td>
 <td>忠诚度 (4)</td>
 <td>能否认同公司，忠于公司，热心于本职工作</td>
@@ -131,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>对内与同事们、跨部门，对外与合作单位，是否具备流畅的表达能力和出色的协调沟通能力</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
 <tr>
-<td rowspan="5">工作绩效 (45)</td>
+<td rowspan="5">工作绩效 (50)</td>
 <td>每项工作完成情况 (10)</td>
 <td>是否能正确、有效地工作，取得较好的工作结果（完成比例100%为10分，以此类推）</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
@@ -140,11 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>在被考核的时间段内，对于重要工作事项的完成率（完成比例100%为10分，以此类推）</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
 <tr>
-<td>工作满意度&nbsp;(8)</td>
+<td>工作满意度&nbsp;(10)</td>
 <td>工作表现能否赢得本部门及其他部门领导及员工的表扬和尊重</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
 <tr>
-<td>工作投诉率&nbsp;(7)</td>
+<td>工作投诉率&nbsp;(10)</td>
 <td>是否有部门或人员，对该员工的工作及行为方面有投诉</td>
 <td id="主管评分" dbf.source="" dbf.type="number">&nbsp;</td></tr>
 <tr>
@@ -155,11 +151,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td id="dbf.budget" dbf.source="" dbf.type="number">
   </td>
 </tr>
-<tr>
-<td style="TEXT-ALIGN: center" dbf.source="" dbf.type="">自我评价</td>
-<td id="自我评价" colspan="4" dbf.source="" dbf.type="">
-  <textarea name="myremark" class="fieldEditable" style="HEIGHT: 80px"></textarea>
-</td></tr>
 <tr>
 <td style="TEXT-ALIGN: center" dbf.source="" dbf.type="">主管评价</td>
 <td id="主管评价" style="HEIGHT: 80px" colspan="2" dbf.source="" dbf.type="">&nbsp;</td>
@@ -183,6 +174,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
   $(function(){
+    //获取应用token https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=ID&corpsecret=SECRECT
+      /*  var user=new Array();
+       user.push("HeChaoQi");  
+        $.ajax({
+           url:"https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckinoption?access_token=sFr-1Qm2ju6w8x7B7Pdo2DQGFRALq46aP3UXkGOPZRnZjwA-YTqAS589-QEL9S5T46cn-qQw1vCM1cLVOrRDYH3MpVMUWAzLJYyxC4U6B4BP0C5e_zVsk5_YBD5h9klFpxYg1U0kjMXAeZk42Qx74sjsyWayKSRTXTmi-jac_7fSn96aReNF2wSU3Uo1hrq17atN919xZNYamHK11U1GZg",
+           type:"post",
+           dataType:"json",
+           data:{
+               "datetime": 1542006127,
+			   "useridlist":["YiAn"]
+           },
+           success:function(data){
+             alert("success")
+           },error:function(){
+             alert("error")
+           }
+        }) */
+  
+      $("#username").change(function(){
+         $("#theme").val(new Date().getYear()+1900+"年"+(new Date().getMonth()+1)+"月绩效考核单-"+$(this).val())
+      })
    var deptVue=new Vue({
              el:'#dept',
              data:{
@@ -192,7 +204,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body
-                   
                      var currentDate=new Date().toLocaleDateString();
                       $("#currentDate").val(currentDate) 
                  })
