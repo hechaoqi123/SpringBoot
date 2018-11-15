@@ -132,7 +132,7 @@ public class TaskController {
  		session.setAttribute("didd", did);
     	 return "mh/taskAdd";
      }
-     @RequestMapping("selectMeTask")
+     @RequestMapping("/selectMeTask")
      public @ResponseBody PageInfo<Map> selectMeTask(HttpSession session,Integer pageNum){
     	 PageHelper.startPage(pageNum, 8);
     	 System.out.println(((Users)session.getAttribute("CurrentUser")).getUid()+":usersid");

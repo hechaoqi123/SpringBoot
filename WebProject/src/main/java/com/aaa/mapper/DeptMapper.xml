@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.mapper.DeptMapper" >
-  <!--   public List<Dept> getAllDept(Integer belong); -->
   <select id="getAllDept" parameterType="integer" resultType="com.aaa.bean.Dept">
   		select * from Dept
   			<where>
@@ -10,6 +9,9 @@
   				</if>
   			</where>
   </select>
-
+  <update id="updateHuiOne" parameterType="Contract">
+  	update contract set contracqq=#{contracqq} where contractid=#{cid}
+  </update>
+  
 
 </mapper>

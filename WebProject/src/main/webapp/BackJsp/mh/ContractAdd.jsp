@@ -96,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">移动电话</TD>
 <TD id=移动电话 style="WIDTH: 320px"><input name="cellphone"></TD>
-<TD style="TEXT-ALIGN: center; WIDTH: 133px">邮件/QQ</TD>
-<TD id=邮件/QQ style="WIDTH: 319px"><input name="contracqq"></TD></TR>
+<TD style="TEXT-ALIGN: center; WIDTH: 133px">邮件/QQ</TD> 
+<TD id=邮件/QQ style="WIDTH: 319px"><input name="contracqq" value="0" style="display:none;"></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">主要技术条款</TD>
 <TD id=主要技术条款 colSpan=3 dbf.source="" dbf.type=""><TEXTAREA id=e.主要技术条款 name="terms" class=fieldEditable style="HEIGHT: 100px ;width:850px;;background-color:#f3faff;" >【产品交付和时间】？？？</TEXTAREA></TD></TR>

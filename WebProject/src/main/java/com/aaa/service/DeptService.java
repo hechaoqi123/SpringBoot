@@ -12,5 +12,8 @@ public interface DeptService {
     List<Dept> getAll();
 
 	public Dept getDept(String dept);
+	
     int deleteByPrimaryKey(Integer deptid);
+	
+	public void updateHuiOne(String contracqq, Integer cid);
 }

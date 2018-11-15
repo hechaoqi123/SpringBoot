@@ -34,4 +34,10 @@ public interface ContractMapper extends Mapper<Contract> {
     public int selectMaxId();
     public List<Map> selectHt();
     public void updateContractId(@Param("contracnumber") String contracnumber,@Param("detailId")Integer detailId,@Param("contractid")Integer contractid);
+
+    
+
+
+
+
 }

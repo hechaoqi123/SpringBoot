@@ -11,5 +11,6 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface ClientMapper extends Mapper<Client>{
     public List<Map> selectDim(@Param("key") String key);
+  
     
 }

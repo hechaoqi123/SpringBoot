@@ -228,7 +228,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		for(var i=0;i<data.length;i++){
 		option+="<option value='"+data[i].contractid+"'>"+data[i].contracname+"</option>"
 		}
-		 alert(option)
 		$("#contractid").append(option)
 		}
 	

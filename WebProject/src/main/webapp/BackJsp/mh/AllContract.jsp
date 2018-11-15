@@ -159,7 +159,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			
  			<td align=right>{{ct.contracnumber}}</td>
  			<td align=right>{{ct.contracmoney}}</td>
- 			<td align=right>0.00</td>
+ 			<td align=right v-if="ct.contracqq==''">0<a :href="'contract/contractHu?cid=' + ct.contractid">[+]</a></td>
+ 			<td align=right v-if="ct.contracqq!=''">{{ct.contracqq}}<a :href="'contract/contractHu?cid=' + ct.contractid">[+]</a></td>
  			<td align=right style='color:#85d579;'>0.00</td>
  			<td align=center>{{ct.signingdate}}</td>
  			 

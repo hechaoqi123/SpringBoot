@@ -38,6 +38,9 @@ public class DeptServiceImpl implements DeptService {
 		d.setDeptname(dept);
 		return mapper.selectOne(d);
 	}
+	public void updateHuiOne(String contracqq, Integer cid) {
+		mapper.updateHuiOne(contracqq, cid);
+	}
 
 	
 	
