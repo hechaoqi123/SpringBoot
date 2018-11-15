@@ -28,12 +28,6 @@ public class ContractController {
 	@RequestMapping("/contractInsert")
 	public void contractInsert(Contract ct,HttpSession session){
 		service.insert(ct);
-		/*try {
-			System.out.println(service.selectMaxId()+"1111");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-		System.out.println(1122);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		System.out.println(df.format(new Date()));
 		Calendar   c   =   Calendar.getInstance();//可以用set()对每个时间域单独修改    
@@ -43,16 +37,12 @@ public class ContractController {
 		  int   date   =   c.get(Calendar.DATE);
 		  Integer did=((Users)session.getAttribute("CurrentUser")).getUid();
 			//String name=((Users)session.getAttribute("CurrentUser")).getUname();
-		System.out.println("OA-"+year+(month+1)+date+"-"+service.selectMaxId());
 		try {
 			service.updateContractId("OA-"+year+(month+1)+date+"-"+service.selectMaxId(), did, service.selectMaxId());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//List<Map> list=service.selectHt();
-		System.out.println("添加成功！");
-		
 	}
 	@RequestMapping("/selectAll")
 	public @ResponseBody PageInfo<Map> selectAll(Integer pageNum,String key){
@@ -60,8 +50,6 @@ public class ContractController {
 		List<Map> contract=service.selectAll(key);
 		System.out.println(service.selectAll(key));
 		PageInfo<Map> info=new PageInfo<Map>(contract);
-		System.out.println(info.getList());
-		System.out.println("完成！");
 		return info;
 	}
 	@RequestMapping("/contractQuery")

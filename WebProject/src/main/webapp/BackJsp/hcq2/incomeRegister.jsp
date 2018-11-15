@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td class="fieldLable"><b style="COLOR: red">*</b>收款方式</td>
 <td>
-  <select   name="model" style="border:0px;font-size:15px;width:365px;height:25px;">
+  <select name="model" style="border:0px;font-size:15px;width:365px;height:25px;">
     <option>银行转账</option>
     <option>现金</option>
   </select>

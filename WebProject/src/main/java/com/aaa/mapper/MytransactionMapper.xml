@@ -7,7 +7,7 @@
 					theme as theme,
 					principal as principal,
 					department as department,
-					post as post
+					post as post,status
 				FROM ${tableName} r WHERE r.principal = #{principal}
 		</if>
 		<if test="tableName == 'evection'">

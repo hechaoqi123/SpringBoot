@@ -50,8 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr v-for="recruit in recruits">
 <td>
-   
-<img v-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
+<img v-if="recruit.status == '驳回'" width="16" src="BackJsp/hcq/img/priority1.gif"/>
+<img v-else-if="recruit.status == '结束'" width="16" src="BackJsp/hcq/img/ico2.png"/>
 <img v-else width="16" src="BackJsp/hcq/img/ico1.png"/>
 <a :href="'Recruit/detailInfo/'+recruit.recruitid">{{recruit.theme}}</a></td>
 <td>{{recruit.principal}}</td>

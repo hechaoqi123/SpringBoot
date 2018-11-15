@@ -119,7 +119,7 @@ ${apply.cause}
     <div v-show="app.sequence==0" style="padding:0px 10px 5px 30px;">[<b>提交主管审批</b>]{{app.remark}} </div>
     <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>通过并转领导审批</b>] {{app.remark}}</div>
     <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>通过转人事处理</b>] {{app.remark}}</div>
-    <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>填单人知悉</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==4" style="padding:0px 10px 5px 30px;">[<b>转填单人</b>] {{app.remark}}</div>
     <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>结束流程</b>] {{app.remark}}</div>
     <div v-show="app.sequence==5" style="padding:0px 10px 5px 30px;">[<b>驳回</b>] {{app.remark}}</div>
  </span>

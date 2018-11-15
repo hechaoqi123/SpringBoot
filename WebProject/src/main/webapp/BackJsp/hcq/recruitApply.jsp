@@ -67,13 +67,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input id="e.dbf.subject" readonly="true"  value="${CurrentUser.uname}" class="fieldEditable" name="principal" /></td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
 <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-    <select  id="dept" v-model="dept"  name="department" @change="getPost()" style="border:0px;font-size:14px;width:355px;height:25px;">
+    <select class="fieldEditable"	  id="dept" v-model="dept"  name="department" @change="getPost()" style="border:0px;font-size:14px;width:355px;height:25px;">
     <option v-for="dept in depts"  :value="dept.deptname">{{dept.deptname}}</option>
   </select> </td></tr>
 <tr>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>需求岗位</td>
-<td id="post" dbf.type="required">
-{{post}}
+<td>
+   <select class="fieldEditable" style="border:0px;font-size:14px;width:355px;height:25px;" name="post" id="aaaa">
+   </select>
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请时间</td>
 <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
@@ -104,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="TEXT-ALIGN: center">年龄</td>
 <td id="年龄"><input id="e.年龄" name="age" class="fieldEditable"></td>
 <td style="TEXT-ALIGN: center">性别</td>
-<td>&nbsp;<input id="性别" type="radio" value="男" name="sex">男 <input id="性别" type="radio" value="女" name="sex">女 <input id="性别" checked="" type="radio" value="2" name="sex">不限</td></tr>
+<td>&nbsp;<input id="性别" type="radio" value="男" name="sex">男 <input id="性别" type="radio" value="女" name="sex">女 <input id="性别" checked="" type="radio" value="不限" name="sex">不限</td></tr>
 <tr>
 <td style="TEXT-ALIGN: center">学历</td>
 <td id="学历" dbf.type="">
@@ -126,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="_vWorkflowActionsShow" align="right">
 <a id="sub" class="button" href="javascript:">提交主管审批</a>
 <a id="ret" class="button" href="javascript:">取消</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
-<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703110&#39;);return false;">› 显示流程图</a></div>【处理过程】</div>
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen(&#39;../flow/view1.htm?703110&#39;);return false;"></a></div>【处理过程】</div>
 
 </td><td></td><td>
 <div class="boxBorder"><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
@@ -173,10 +174,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             this.get("人事部")
          },methods:{
            get:function(dept){
-             alert(dept)
            var url="/post/getPost";
                 this.$http.post(url,{dept:dept},{emulateJSON:true}).then(function(res){
                  this.post=res.body
+                 var html="";
+                 $("#aaaa").html(html)
+                 for(var i=0;i<res.body.length;i++){
+                    html+=" <option value='"+res.body[i].pname+"'>"+res.body[i].pname+"</option>"      
+                 }
+                 $("#aaaa").append(html)
                })
            }
          }

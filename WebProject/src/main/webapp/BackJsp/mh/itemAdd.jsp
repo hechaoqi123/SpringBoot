@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script src="BackJsp/mh/js/hm(1).js"></script>
   <script type="text/javascript" src="BackJsp/mh/js/viewCn.js"></script>
   <script type="text/javascript" src="BackJsp/mh/js/view.js"></script>
-  <style>.cke{visibility:hidden;}
-  	
+  <style>
+      .cke{visibility:hidden;}
   </style>
 </head><body id="colloaBody"><table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0"><tbody><tr valign="top"><td>&nbsp;</td><td id="colloaForm"><div class="formTaskflowContainer">
 
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col width="180"></colgroup>
 <tbody>
 <tr>
-<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid" value="${didd}" style="display:none">${name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid" value="${didd}" style="display:none">${name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
 <tr>
@@ -60,7 +60,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<select name="clientid" id="clientid" onchange="gei()">
 	<option>
 	--请选择--
-	
 	</option>
 		<option v-for="c in client" v-bind:value="c.clientid"  >
 		{{c.clientname}}
@@ -202,7 +201,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 		function but(){
-		alert(111)
 		 $.ajax({
 			url:"Itinfor/itInsert.action",
 	 			type:"post",
@@ -214,25 +212,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 		 
 		})
-		alert("已提交主管审核！");
 	window.location.href = 'BackJsp/mh/itemMeAll.jsp';
 		}
-/* 	$("#but").click(function(){
-alert(111)
-		/* $.ajax({
-			url:"Itinfor/itInsert.action",
-	 			type:"post",
-	 			data:$("#itform").serialize(),
-				dataType:"json",
-				success:function(data){
-				
-					
-				}
-		 
-		})
-	alert("保存成功！");
-	window.location.href = 'BackJsp/mh/projectManager.jsp';
-	}) */
 	
 	function gei(){
 	 $.ajax({
@@ -246,40 +227,18 @@ alert(111)
 		var option="<option>--请选择--</option>"
 		for(var i=0;i<data.length;i++){
 		option+="<option value='"+data[i].contractid+"'>"+data[i].contracname+"</option>"
-		
 		}
-		
+		 alert(option)
 		$("#contractid").append(option)
-		
 		}
 	
 	
 	}) 
 	}
-/* 	var con=new Vue({
-	
-		el:"#tab1",
-		data:{
-		contracts:null
-		},
-		methods:{
-			gei:function(){
-			
-			var url='';
-			 this.$http.post(url,{cid:7},{emulateJSON:true}).then(function(res){
-		                this.contracts=res.body.list
-		                  });
-			}
-		}
-	}) */
-	
 	
 	$(function(){
 	
-	
-	
 	 
-	 alert(1)
 		  var page=new Vue({
 		    el :'#itform',
 		    data:{

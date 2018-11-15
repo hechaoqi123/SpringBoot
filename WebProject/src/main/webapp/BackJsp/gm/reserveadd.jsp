@@ -37,25 +37,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <COL>
 <COL width=80>
 <COL width=150></COLGROUP>
-<TBODY>
-<TR>
-<TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
-<TD id=dbf.subject dbf.type="required"><INPUT id=e.dbf.subject class=fieldEditable name="rmotif" value=会议室预定-李萌-1002108></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;优先级:</TD>
-<TD><INPUT id=dbf.priority type=radio value=低 name="rpriority" autocomplete="off">低
-<INPUT id=dbf.priority CHECKED type=radio value=中 name="rpriority" autocomplete="off">中
-<INPUT id=dbf.priority type=radio value=高 name="rpriority" autocomplete="off">高</TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
-<TD><SPAN id=mapping.dbf.procXSource>申请人填单</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-责任人: <SPAN id=mapping.dbf.responsorSource>李萌,</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-参与人: <SPAN id=mapping.dbf.participantsSource></SPAN></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;结束时间:</TD>
-<TD id=dbf.endTime dbf.type="date" dbf.source="date,editable">
-<%-- <DIV onkeypress="return event.keyCode!=13;" onblur="this.innerHTML=this.innerHTML.replace(/<\/?.+?>/g,'');" name="rendtime" id=e.dbf.endTime class=fieldEditable contentEditable=true>&nbsp;</DIV>
- --%>
-  <input type="date" name="rendtime"/>
- </TD></TR></TBODY></TABLE>
+<INPUT id=e.dbf.subject style="display:none" class=fieldEditable name="rmotif" value="会议室预定<%=new Date().toLocaleString() %>">
+</TABLE>
 <DIV>&nbsp;</DIV>
 <DIV style="TEXT-ALIGN: center">
 <SPAN style="FONT-SIZE: 20px"><STRONG>会议室预定</STRONG></SPAN></DIV>
@@ -126,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <form method="post">
 <input type="hidden" id="viewState" name="viewState">
 </form><br><div id="_vWorkflowActionsShow" align="right">
-<a class="button" id="sub" href="javascript:" >转会议室管理员,直接预定</a>
+<a class="button" id="sub" href="javascript:" >确认登记</a>
 <a class="button" id="ret" href="javascript:">取消</a></div><br>
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
 <colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">

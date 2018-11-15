@@ -242,7 +242,6 @@ ${list[0].organization}
 				});
 			},
 			zhend:function(username, index){
-			alert(this.test.length);
 				this.inp += username+",";
 				this.test.splice(this.test,index+1);
 			},
@@ -255,42 +254,6 @@ ${list[0].organization}
 	//添加一行
 	function addtr(){
 	$("#tableAdd").append(tr);
-	
-	/*  $(".t1").html("");
-	var iid=$("#itemid").val();
-		var tr="<tr id='tableTwo'>"
-		tr+="<td><input name='tname' class='tname'></td>"
-		tr+="<td><input name='ksdeta' class='ksdeta'></td>"
-		tr+="<td><input name='workload' class='workload'></td>"
-		tr+="<td><input name='rwsm' class='rwsm'></td>"
-		tr+="<td ><input name='zxr' class='zxr' ></td>"
-	
-		
-		
-		tr+="<td class='t1'></td>"
-		tr+="<td style='display:none'><input name='itemid' value='"+iid+"' class='itemid' style='display:none'></td>"
-		tr+="<td style='display:none'><input name='deptid' value='5' class='deptid' style='display:none'></td>"
-		tr+="<td style='display:none'><input name='rwfl' value='0' class='rwfl' style='display:none'></td>"
-		tr+="<td onclick='del(this)'>-</td></tr>"
-		$("#tableAdd").append(tr);
-		//var sssss=$("#tableAdd").children("tr").length-1;
-	
-			$.ajax({
-			url:"Itinfor/selectUsersName",
-			type:"post",
-			dataType:"json",
-			success:function(data){
-			var td=""
-			for(i=0;i<data.length;i++){
-			td+="<input type='checkbox' name='detailId' class='detailId' value='"+data[i].detailId+"'/>"+data[i].username+"";
-		
-			}	
-			$(".t1").append(td)
-			//$("#tableAdd").children("tr:eq("+sssss+")").find(".t1").append(td);
-				
-			}
-		
-		}) */
 	}
 	function del(obj){
 	obj.parentNode.remove();
@@ -350,7 +313,6 @@ ${list[0].organization}
 		        "usersid":detailId
 		        }
 		         check_valOne.push(ArrStr);
-		        //check_val.push(check_valOne)
 			} 
 			   check_val.push(check_valOne);
 			   jsonArr.push(jsonStr)
@@ -374,13 +336,6 @@ ${list[0].organization}
 	
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	alert("成功！");
 	window.location.href = 'BackJsp/mh/itemMeAll.jsp';
 	})
@@ -397,41 +352,15 @@ function bbb(){
         check_val.push(ArrStr);
         }
     }
-	alert(check_val);
 
 }
 
 
 
 
-/* 	$("#itworkplans").click(function(){
-		
-			$.ajax({
-				url:"Itinfor/selectUsersName",
-	 			type:"post",
-				dataType:"json",
-				success:function(data){
-				
-				alert(data.length)
-				}
-			
-			
-			})
-		
-		
-		})
-
- */
- 
  var tr=null;
  var td="";
 		$(function(){
-		
-	
-	
-		
-		
-		
 			$.ajax({
 				url:"Itinfor/selectUsers",
 	 			type:"post",
@@ -447,8 +376,6 @@ function bbb(){
 			})
 		var ddid=$("#ddid").val();
 		var iid=$("#itemid").val();
-		//$("#tableAdd").append(tr);
-		//var sssss=$("#tableAdd").children("tr").length-1;
 	
 			$.ajax({
 			url:"Itinfor/selectUsersName",

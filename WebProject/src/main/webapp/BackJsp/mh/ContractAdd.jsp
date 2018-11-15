@@ -73,8 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>合同名称</TD>
 <TD id=dbf.subSubject style="WIDTH: 320px" dbf.source="" dbf.type="required"><input name="contracname"></TD>
-<TD style="TEXT-ALIGN: center; WIDTH: 133px"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>合同编号</TD>
-<TD id=dbf.keyInfo style="WIDTH: 319px" dbf.source="" dbf.type="required"><input name="contracnumber"></TD></TR>
+<TD style="TEXT-ALIGN: center; WIDTH: 133px">合同编号</TD>
+<TD style="WIDTH: 319px;background:#fff" ><input style="background:#fff" disabled="false" name="contracnumber"></TD></TR>
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">合同金额</TD>
 <TD id=dbf.budget style="WIDTH: 320px" dbf.source="" dbf.type="amount"><input name="contracmoney" value=0></TD>
@@ -104,10 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <TR>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">主要商务条款</TD>
 <TD id=主要商务条款 colSpan=3 dbf.source="" dbf.type=""><TEXTAREA id=e.主要商务条款 name="businessterms" class=fieldEditable style="HEIGHT: 100px;width:850px;;background-color:#f3faff;">【收款方式和时间】？？？</TEXTAREA></TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: center; WIDTH: 133px">相关附件</TD>
-<TD id=dbf.links colSpan=3 dbf.source="files" dbf.type="">
-<DIV id=e.dbf.links>&nbsp;</DIV></TD></TR></TBODY></TABLE>
+</TBODY></TABLE>
 <TABLE class=tableListBorder cellSpacing=0 cellPadding=0 align=center border=0>
 <TBODY class="tbodyOne">
 <TR>
@@ -124,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input name="department"></TD>
 <TD style="TEXT-ALIGN: center; WIDTH: 133px">关联人员</TD>
 <TD id=dbf.observer style="WIDTH: 319px" dbf.source="form.fieldSource.userX0" dbf.type="" dbf.key="">
-<input name="detailid">
+<input name="detailid"  readonly="true">
 <input name="contracstate" value="0" style="display:none">
 
 </TD></TR>

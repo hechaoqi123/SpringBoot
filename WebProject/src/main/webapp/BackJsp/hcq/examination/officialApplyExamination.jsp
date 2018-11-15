@@ -110,31 +110,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 </table>
   <span id="course"><br/>
-         <span style="padding-left:550px;">
+         <span>
       <c:choose>
 		<c:when test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		      <a style="margin-left:290px" class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 			  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
 			  <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 			  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
 			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
 		<c:when test="${detail.dependence=='人事部'&&detail.position=='人事主管'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
+		      <a style="margin-left:550px"  class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 			  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
 			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
 		<c:otherwise>
 		  <c:if test="${detail.dependence=='总经办'}"><!-- 总经办员工 -->
-			  <a class="button" style="margin-left:100px" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
+			  <a  style="margin-left:550px" class="button" style="margin-left:100px" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
 			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		  </c:if>
-		  <c:if test="${detail.dependence='人事部'}"><!-- 人事部员工 -->
-			  <a class="button" style="margin-left:100px" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		  <c:if test="${detail.dependence=='人事部'}"><!-- 人事部员工 -->
+			  <a style="margin-left:650px" class="button"  @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		  </c:if>
-		   <c:if test="${apply.proposer==detail.username}"><!-- 填单人 -->
-			  <a style="margin-left:200px" class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		   <c:if test="${apply.proposer==detail.username}&&${apply.status=='填单人知悉'}"><!-- 填单人 -->
+			  <a  style="margin-left:700px" class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
 		   </c:if>
 		</c:otherwise>
 		</c:choose>

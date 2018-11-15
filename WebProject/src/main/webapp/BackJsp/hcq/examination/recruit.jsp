@@ -133,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
 	<tr>
 </table>
-<input id="aa" style="display:none"  value="${detail.dependence}"/>
+<input id="aa" style="display:none" value="${detail.dependence}"/>
 <input id="bb" style="display:none"  value="${detail.position}"/>
 <br/>
 <!-- 分页 -->

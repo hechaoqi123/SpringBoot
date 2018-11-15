@@ -56,7 +56,7 @@ left join client ct on ct.clientid=i.clientid left join userdetail u on i.detail
 	  
 	  <!-- 查询项目经理的员工 -->
 	  <select id="selectUsersName"  resultType="Map">
-	  SELECT * FROM userdetail WHERE detailId not in (select zxr.usersid from task left join zxr on zxr.taskid=task.tid where task.rwfl=0) and dependence='技术部' and position='员工'
+	  SELECT * FROM userdetail WHERE detailId not in (select zxr.usersid from task left join zxr on zxr.taskid=task.tid where task.rwfl=0) and dependence='技术部' and position='技术员'
 	  </select>
 	  
 	  <!-- 任命项目经理 -->
