@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <title>项目详情* - Colloa</title>
 	<link rel="stylesheet" href="BackJsp/mh/css/font-awesome.min.css">
   <link rel="stylesheet" href="BackJsp/mh/css/view.css">
+  <script src="../../assets/js/jquery-2.0.3.min.js"></script>
   <script src="BackJsp/mh/js/hm.js"></script>
   <script src="BackJsp/mh/js/hm(1).js"></script>
 	<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
@@ -25,6 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		height:20px;
   
   }
+   #tableTwo td{
+   font-size:6px;
+   }
+   #tableTwo input[type="checkbox"]{
+   		width:10px;
+   		height:10px;
+   		font-size:7px;
+   }
   
   </style>
 </head>
@@ -36,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col width="180"></colgroup>
 <tbody>
 <tr>
-<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请<input name="itstate" value="0" style="display:none"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><!-- <input name="detailid">-----, --></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
+<td>&nbsp;步骤: <span id="mapping.dbf.procXSource">立项申请   <input name="itstate" value="0" style="display:none"></span> <input value="${list[0].detailid}" id="ddid" style="display:none;"></td>
 <td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
@@ -128,48 +137,8 @@ ${list[0].estimatecost}</td></tr></tbody></table>
 ${list[0].organization}
 <input value="${list[0].itemid}" id="itemid" style="display:none;">
 &nbsp;</td>
-<td style="TEXT-ALIGN: center; WIDTH: 115px">项目赞助人</td>
-<td id="项目赞助人" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="form.fieldSource.userX0" dbf.type="" dbf.key="">&nbsp;</td></tr>
 <tr id="app">
-<td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">项目组成员</td>
-<td id="itworkplans" colspan="3" dbf.source="form.fieldSource.userX0" dbf.type="" dbf.key="">
-<c:if test="${list[0].itstate=='2'}">
-
-${list[0].itworkplan}
-
-	
-	</c:if>
-	<c:if test="${list[0].itstate=='1'}">
-	<input name="itworkplan" id="itworkplan" @focus="itworkplan()" v-model="inp">
-	
-	
-	<!-- <select>
-		<option v-for="(t,index) in test" @click="zhend(t.username, index)">{{t.username}}</option>
-	</select> -->
-	
-	<i  v-for="(t,index) in test" style="border: 1px solid #e3e3e3;" @click="zhend(t.username, index)">
-		{{t.username}}
-		
-	</i>
- <i @click="blurTest()" >确定</i> 
-	
-	</c:if>
-	<c:if test="${list[0].itstate=='4'}">
-
-${list[0].itworkplan}
-
-	
-	</c:if>
-	<!-- 
-	<div  @click="zhend()" style="width:">
-		<input  v-for="ts in test" type="checkbox" name="detailId" class="detailId" value="ts.username">{{ts.detailid}}
-	
-	</div> -->
-	
-	
-	
-
-&nbsp;</td></tr>
+</tr>
 <tr>
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">附件</td>
 <td id="项目组织和分工附件" style="WIDTH: 798px" colspan="3" dbf.source="files" dbf.type="">&nbsp;</td></tr>
@@ -191,13 +160,8 @@ ${list[0].itworkplan}
 <td style=" " dbf.source="" dbf.type="">工作量</td>
 <td style=" "dbf.source="" dbf.type="">描述</td>
 <td style="" dbf.source="" dbf.type="">执行人</td>
+<td style="" dbf.source="" dbf.type="">空闲人员</td>
 <td style=" " dbf.source="" dbf.type="" onclick="addtr()">+</td>
-<!-- <td style=" " dbf.source="" dbf.type="" onclick="cscs()">++</td> -->
-
-<input type="checkbox" name="detailId" class="detailId" value="9">2
-<input type="checkbox"  name="detailId" class="detailId" value="10">2
-<input type="checkbox" name="detailId" class="detailId" value="11">2
-<a  id="sss">222</a>
 </tr>
 </c:if>
 <!-- <tr>
@@ -213,18 +177,26 @@ ${list[0].itworkplan}
 </tbody></table>
 <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
 <tbody>
+<c:if test="${list[0].itstate==4}">
 <tr>
 <td style="TEXT-ALIGN: center; BACKGROUND-COLOR: lightyellow" colspan="4" dbf.source="" dbf.type=""><span style="FONT-SIZE: 14px"><strong>项目成果和总结</strong></span></td></tr>
+
 <tr>
+
 <td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">实际开始时间</td>
-<td id="dbf.time0" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date">&nbsp;</td>
+<td id="dbf.time0" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date">${list[0].planstarttime}&nbsp;</td>
 <td style="TEXT-ALIGN: center; WIDTH: 115px"><span style="COLOR: rgb(255,0,0)">*</span>实际完成时间</td>
-<td id="dbf.time1" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date,required">&nbsp;</td></tr>
+<td id="dbf.time1" style="TEXT-ALIGN: left; WIDTH: 336px" dbf.source="date" dbf.type="date,required">${list[0].itsum}&nbsp;</td></tr>
 <tr>
-<td style="TEXT-ALIGN: center; WIDTH: 112px" dbf.source="" dbf.type="">附件</td>
-<td id="项目成果和总结附件" style="WIDTH: 798px" colspan="3" dbf.source="files" dbf.type="">&nbsp;</td></tr>
+
+</tr>
+
+
 <tr>
-<td id="项目成果和总结" style="HEIGHT: 120px; VERTICAL-ALIGN: top" colspan="4" dbf.source="" dbf.type="">&nbsp;</td></tr></tbody></table>
+<td id="项目成果和总结" style="HEIGHT: 120px; VERTICAL-ALIGN: top" colspan="4" dbf.source="" dbf.type="">完成！&nbsp;</td></tr>
+
+</c:if>
+</tbody></table>
 </form></div><form method="post">${list[0].viewState}
 <input id="iid" value="${list[0].itemid}" style="display:none;">
 </form><br>
@@ -246,58 +218,15 @@ ${list[0].itworkplan}
 </td></tr></tbody></table></td><td>&nbsp;</td></tr></tbody></table><div id="fieldGetValueBySource.dbf.startTime" style="position: absolute; z-index: 10; background-color: rgb(255, 255, 255); cursor: default; border: 1px solid rgb(221, 221, 221); box-sizing: border-box; padding: 5px; overflow-x: hidden; overflow-y: auto; height: 250px; width: 350px; top: 156px; left: 317px; display: none;"><iframe src="./新增项目_ - Colloa_files/fieldDate.html" style="width:100%;height:95%;" frameborder="0"></iframe></div>
 
 </body>
-</html>
-<script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-	
-	 $("#sss").click(function(){
-	
- obj = document.getElementsByName("detailId");
-    check_val = [];
-    
- for(k in obj){
-        if(obj[k].checked){
-        var detailId=obj[k].value;
-        var ArrStr={
-        "detailId":detailId
-        }
-        check_val.push(ArrStr);
-        }
-    }
-    alert(check_val)
-     $.ajax({
-     contentType:'application/json;charset=utf-8',
-			url:"task/aaaa.action",
-	 			type:"post",
-	 			data:{"list":JSON.stringify(check_val)},
-				dataType:"json",
-				success:function(data){
-				
-				}
-		
-		})  
+
+</script>
+</html>
+
+<script>
 	
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    
-})
 	
 	new Vue({
 		el:"#app",
@@ -325,53 +254,56 @@ ${list[0].itworkplan}
 	
 	//添加一行
 	function addtr(){
+	$("#tableAdd").append(tr);
+	
+	/*  $(".t1").html("");
 	var iid=$("#itemid").val();
 		var tr="<tr id='tableTwo'>"
 		tr+="<td><input name='tname' class='tname'></td>"
 		tr+="<td><input name='ksdeta' class='ksdeta'></td>"
 		tr+="<td><input name='workload' class='workload'></td>"
 		tr+="<td><input name='rwsm' class='rwsm'></td>"
-		tr+="<td><input name='zxr' class='zxr' ></td>"
+		tr+="<td ><input name='zxr' class='zxr' ></td>"
+	
+		
+		
+		tr+="<td class='t1'></td>"
 		tr+="<td style='display:none'><input name='itemid' value='"+iid+"' class='itemid' style='display:none'></td>"
 		tr+="<td style='display:none'><input name='deptid' value='5' class='deptid' style='display:none'></td>"
 		tr+="<td style='display:none'><input name='rwfl' value='0' class='rwfl' style='display:none'></td>"
 		tr+="<td onclick='del(this)'>-</td></tr>"
 		$("#tableAdd").append(tr);
+		//var sssss=$("#tableAdd").children("tr").length-1;
+	
+			$.ajax({
+			url:"Itinfor/selectUsersName",
+			type:"post",
+			dataType:"json",
+			success:function(data){
+			var td=""
+			for(i=0;i<data.length;i++){
+			td+="<input type='checkbox' name='detailId' class='detailId' value='"+data[i].detailId+"'/>"+data[i].username+"";
+		
+			}	
+			$(".t1").append(td)
+			//$("#tableAdd").children("tr:eq("+sssss+")").find(".t1").append(td);
+				
+			}
+		
+		}) */
 	}
 	function del(obj){
 	obj.parentNode.remove();
 }
 
- var check_val = [];
+
+
+
 
 	$("#but").click(function(){
 	var sss=[];
-		  obj = document.getElementsByName("detailId");
-   /*  check_val = []; */
-    
- for(k in obj){
-        if(obj[k].checked){
-        var detailId=obj[k].value;
-        var ArrStr={
-        "usersid":detailId
-        }
-        check_val.push(ArrStr);
-        }
-    }
-   
-   
-    $.ajax({
-     contentType:'application/json;charset=utf-8',
-			url:"task/aaaa.action",
-	 			type:"post",
-	 			data:JSON.stringify(check_val),
-				dataType:"json",
-				success:function(data){
-				
-				}
 
-		})  
-		 $.ajax({
+	 	 $.ajax({
 			url:"Itinfor/updateIdStateOne.action",
 	 			type:"post",
 	 			data:{iid:$("#iid").val()},
@@ -390,9 +322,11 @@ ${list[0].itworkplan}
 				
 				}
 		
-		})  
-		
-		var jsonArr=new Array();
+		}) 
+		 var check_val =new Array();
+		 var jsonArr=new Array();
+		 var re=0;
+		 
 		$("#tableAdd tr").each(function(){
 			var tname=$(this).find(".tname").val();
 			var ksdeta=$(this).find(".ksdeta").val();
@@ -402,21 +336,30 @@ ${list[0].itworkplan}
 			var deptid=$(this).find(".deptid").val();
 			var rwfl=$(this).find(".rwfl").val();
 			var itemid=$(this).find(".itemid").val();
+			var detailId=$(this).find(".detailIds").val();
 			var jsonStr={
 				"tname":tname,"ksdeta":ksdeta,"workload":workload,"rwsm":rwsm,
-				"zxr":zxr,"deptid":deptid,"rwfl":rwfl,"itemid":itemid
+				"zxr":zxr,"deptid":deptid,"rwfl":rwfl,"itemid":itemid,"detailld":detailId
 			
 			};
-		
-			jsonArr.push(jsonStr)
-				
-			
+			var check_valOne=new Array();
+			if(re!=0){
+			  	   for(var i=0;i<$(this).find(".detailId:checked").length;i++){
+				detailId=$(this).find(".detailId:checked:eq("+i+")").val();
+				 var ArrStr={
+		        "usersid":detailId
+		        }
+		         check_valOne.push(ArrStr);
+		        //check_val.push(check_valOne)
+			} 
+			   check_val.push(check_valOne);
+			   jsonArr.push(jsonStr)
+					
+					}
+		re++;
 		});
-		alert(check_val);
 		
-		 alert(jsonArr);
 		
-			jsonArr.splice(0,1);
 			$.ajax({
 			contentType:'application/json;charset=utf-8',
 				url:"task/addTaskAll",
@@ -479,8 +422,16 @@ function bbb(){
 		})
 
  */
-	
+ 
+ var tr=null;
+ var td="";
 		$(function(){
+		
+	
+	
+		
+		
+		
 			$.ajax({
 				url:"Itinfor/selectUsers",
 	 			type:"post",
@@ -494,7 +445,73 @@ function bbb(){
 				
 			
 			})
+		var ddid=$("#ddid").val();
+		var iid=$("#itemid").val();
+		//$("#tableAdd").append(tr);
+		//var sssss=$("#tableAdd").children("tr").length-1;
+	
+			$.ajax({
+			url:"Itinfor/selectUsersName",
+			type:"post",
+			dataType:"json",
+			success:function(data){
+			
+			for(i=0;i<data.length;i++){
+			td+="<input type='checkbox' name='detailId' onchange='usersid(this)' class='detailId'  value='"+data[i].detailId+"'/><span>"+data[i].username+"</span>";
+			}	
+			 tr="<tr id='tableTwo'>"
+		tr+="<td><input name='tname' class='tname'></td>"
+		tr+="<td><input name='ksdeta' class='ksdeta'></td>"
+		tr+="<td><input name='workload' class='workload'></td>"
+		tr+="<td><input name='rwsm' class='rwsm'></td>"
+		tr+="<td ><input name='zxr' class='zxr' ></td>"
+	
+		
+		
+		tr+="<td class='t1'>"+td+"</td>";
+		tr+="<td style='display:none'><input name='itemid' value='"+iid+"' class='itemid' style='display:none'></td>"
+		tr+="<td style='display:none'><input  value='"+ddid+"' class='detailIds' style='display:none'></td>"
+		tr+="<td style='display:none'><input name='deptid' value='4' class='deptid' style='display:none'></td>"
+		tr+="<td style='display:none'><input name='rwfl' value='0' class='rwfl' style='display:none'></td>"
+		
+		tr+="<td onclick='del(this)'>-</td></tr>"
+			//$("#tableAdd").children("tr:eq("+sssss+")").find(".t1").append(td);
+			
+			
+			
+			
+				
+			}
 		
 		})
+		
+		
+	
+	
+		
+		
+		
+		})
+		 var b="";
+		var oo=0;
+	   function usersid(obj){
+	  
+	        var	a = $(obj).next().html()+",";
+				var bool = !($(obj).is(':checked'));
+				if(bool){
+					b = b.replace($(obj).next().html()+",","");
+					$(obj).parents("tr").children("td:eq(4)").find("input").val(b);
+					
+				}else if($(obj).parents("tr").children("td:eq(4)").find("input").val()=="") {
+				 b="";
+				$(obj).parents("tr").children("td:eq(4)").find("input").val(b+=a);
+				}else{
+					$(obj).parents("tr").children("td:eq(4)").find("input").val(b+=a);
+				}
+	   }
+	
+			
+	
+	
 	
 </script>

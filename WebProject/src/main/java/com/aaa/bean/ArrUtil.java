@@ -3,15 +3,16 @@ package com.aaa.bean;
 import java.util.List;
 
 public class ArrUtil {
-	private List<OneUtilEntity> ch;
-	
+	private List<List<OneUtilEntity>> ch;
+	//[{[1,2,3]},{[]}];
 	private List<TwoUtilEntity> eh;
 
-	public List<OneUtilEntity> getCh() {
+
+	public List<List<OneUtilEntity>> getCh() {
 		return ch;
 	}
 
-	public void setCh(List<OneUtilEntity> ch) {
+	public void setCh(List<List<OneUtilEntity>> ch) {
 		this.ch = ch;
 	}
 

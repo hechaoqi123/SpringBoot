@@ -24,11 +24,18 @@ left join client ct on ct.clientid=i.clientid
 (select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
 left join client ct on ct.clientid=i.clientid left join userdetail u on i.detailid=u.detailId where i.itstate=0
 
-
+	
 
 	  	<!-- where i.itstate=0	where itstate=0 -->
 	  
 	  </select>
+	  
+	  <update id="updatejg" parameterType="Itinfor" >
+	  
+	  update itinfor set itsum=#{itsum} where itemid=#{iid}
+	  
+	  </update>
+	  
 	 
  	  <select id="selectStateOne" parameterType="java.lang.String" resultType="Map">
 	select i.*,count.number,count.workload,ct.clientname,u.username from itinfor i left join 
@@ -44,12 +51,12 @@ left join client ct on ct.clientid=i.clientid left join userdetail u on i.detail
 	  <!-- 查询项目经理 -->
 	  
 	  <select id="selectUsers"  resultType="Map">
-	  select * from userdetail where dependence='营销部' and position='项目经理'
+	  select * from userdetail where dependence='技术部' and position='项目经理'
 	  </select>
 	  
 	  <!-- 查询项目经理的员工 -->
 	  <select id="selectUsersName"  resultType="Map">
-	  select * from userdetail where dependence='营销部' and position='员工'
+	  SELECT * FROM userdetail WHERE detailId not in (select zxr.usersid from task left join zxr on zxr.taskid=task.tid where task.rwfl=0) and dependence='技术部' and position='员工'
 	  </select>
 	  
 	  <!-- 任命项目经理 -->
@@ -84,11 +91,23 @@ left join client ct on ct.clientid=i.clientid left join userdetail u on i.detail
   
   </update>
 	   <select id="selectMeItinfor" parameterType="integer" resultType="Map">
-select i.*,count.number,count.workload,ct.clientname from itinfor i left join 
-(select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid) count on i.itemid=count.itemid
+select i.*,counts.numbers,count.number,count.workload,ct.clientname from itinfor i left join (select itemid,count(*) as number ,sum(workload) as workload from task GROUP BY itemid ) count on i.itemid=count.itemid left join
+(select itemid,count(*) as numbers ,sum(workload) as workload from task where task.rwfl=1  GROUP BY itemid) counts on i.itemid=counts.itemid
 left join client ct on ct.clientid=i.clientid where i.detailid=#{did}
   
   </select>
-	  
+	  	
+	  	<!-- 查询已完成的任务 -->
+	  		   <select id="selectMeItinforOne" parameterType="integer" resultType="Map">
 
+select i.*,count.number,count.workload,ct.clientname from itinfor i left join 
+(select itemid,count(*) as number ,sum(workload) as workload from task where task.rwfl=1  GROUP BY itemid ) count on i.itemid=count.itemid
+left join client ct on ct.clientid=i.clientid where i.detailid=#{did}
+
+
+
+
+  
+  </select>
+		
 </mapper>

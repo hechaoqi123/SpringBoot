@@ -10,6 +10,7 @@ public class TwoUtilEntity {
 	private String rwfl;
 	private int deptid;
 	private int itemid;
+	private int detailld;
 	public String getTname() {
 		return tname;
 	}
@@ -64,6 +65,13 @@ public class TwoUtilEntity {
 	public void setItemid(int itemid) {
 		this.itemid = itemid;
 	}
+	public int getDetailld() {
+		return detailld;
+	}
+	public void setDetailld(int detailld) {
+		this.detailld = detailld;
+	}
+
 	
 	
 

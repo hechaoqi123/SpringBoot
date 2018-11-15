@@ -65,17 +65,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </div></td></tr></tbody></table>
 </td><td></td><td>
-
 <table  cellpadding="0" cellspacing="0" border="0" class="tableList"><thead><tr><th>项目名称和状态</th><th>完成时间</th><th>任务</th><th>工作量</th><th>成本费用</th><th>文档</th><th>讨论板</th></tr></thead>
 <tbody  v-for="i in itinfor"><tr valign="top">
 			
 <td><a :href="'Itinfor/selectDetailedOne?iid=' + i.itemid"><i style="color:#2c87f0;" class="fa fa-lock fa-lg"></i>{{i.itemname}}<img border="0" src="../BackJsp/img/priority0.gif"></a>
 <div style="margin-left:20px;" v-if="i.itstate==0"><br>审核中<span class="tipProgress" style="width:110px;background-color:#2c87f0;">0%</span></div>
 <div style="margin-left:20px;" v-if="i.itstate==1"><br>待开启<span class="tipProgress" style="width:110px;background-color:#2c87f0;">0%</span></div>
-<div style="margin-left:20px;" v-if="i.itstate==2"><br>进行中<span class="tipProgress" style="width:110px;background-color:#2c87f0;">0%</span></div>
+<div style="margin-left:20px;" v-if="i.itstate==2"><br>进行中<span class="tipProgress" style="width:110px;background-color:#2c87f0;" v-if="i.numbers==null">0%</span>
+
+<span class="tipProgress" style="width:110px;background-color:#2c87f0;" v-else>{{100/i.number*i.numbers}}%</span>
+
+</div>
 <div style="margin-left:20px;" v-if="i.itstate==4"><br>已完成<span class="tipProgress" style="width:110px;background-color:#2c87f0;">100%</span></div></td>
+
 <td>{{i.planendtime}}<div><i class="fa fa-caret-right"></i> </div></td>
-<td><br><a :href="'task/selectiid?iid=' + i.itemid"><i class="fa fa-calendar-minus-o fa-lg"></i> {{i.number}}</a></td>
+<td><br><a :href="'task/selectiid?iid=' + i.itemid"><i class="fa fa-calendar-minus-o fa-lg"></i> {{i.number}} </a></td>
 <td>{{i.workload}}<br><i class="fa fa-caret-right"></i> 0</td>
 <td>{{i.estimatecost}}<br><i class="fa fa-caret-right"></i> <a href="javaScript:showItem(&#39;项目成本费用&#39;,&#39;1001944&amp;ex.catalogue=400400&#39;);">0</a></td>
 <td><br><a href="javaScript:showItem(&#39;项目文档&#39;,&#39;1001944&amp;ex.catalogue=400800&#39;);"><i class="fa fa-file-word-o fa-lg"></i> 0</a></td>
@@ -129,8 +133,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		})
 		page.execute(1); 
 		})
-		
-	
 	
 	</script>
 	

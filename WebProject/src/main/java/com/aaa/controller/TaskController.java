@@ -144,7 +144,7 @@ public class TaskController {
      @RequestMapping("/updateTaskAll")
      public String updateTaskAll(Integer tid){
     	 taskservice.updateTask(tid);
-    	 return "mh/taskAll";
+    	 return "mh/itemMeAll";
      } 
  	@RequestMapping("/addTaskAll")
  	public  String addTaskAll(@RequestBody ArrUtil l){//, BindingResult bindingresult
@@ -153,6 +153,16 @@ public class TaskController {
  	for(int i=0;i<eh.size();i++){
  		System.out.println(eh.get(i).getDeptid());
  	}*/
+ 		  /*List<List<OneUtilEntity>> a = l.getCh();
+ 		  List<TwoUtilEntity> b = l.getEh();
+ 		  
+ 		  for(int i=0;i<b.size();i++){
+ 			 TwoUtilEntity renwu = b.get(i);//任务
+ 			 List<OneUtilEntity> zxr = a.get(i);//任务对应的执行人
+ 			 System.out.print("任务："+renwu.getTname()+",对应的执行人数量为：");
+ 			 System.out.print(zxr.size());
+ 			  
+ 		  }*/
  		taskservice.allIsert(l); 
  		return null;
  		

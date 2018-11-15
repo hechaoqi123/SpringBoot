@@ -24,4 +24,6 @@ public interface ItinforService {
     public void updateOrganization(Itinfor i);
     public List<Map> selectUsersName();
     public void updateItworkplan(Itinfor i);
+    public List<Map> selectMeItinforOne(Integer did);
+    public void updatejg(Integer iid,String itsum);
 }

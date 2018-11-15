@@ -154,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</tr>
  		<tbody id="tbody"></tbody>
  		 <tr v-for="ct in contract">
- 			<td class="ktd"><a :href="'contract/contractQuery?cid=' + ct.contractid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"><span style="float:left;margin-left:5px;">{{ct.clientname}}-{{ct.contracname}}</span></a></td>
+ 			<td class="ktd"><a :href="'contract/contractQueryes?cid=' + ct.contractid"><img src="img/customer.gif" style="float:left;padding-left:-5px;margin-top:3px;"><span style="float:left;margin-left:5px;">{{ct.clientname}}-{{ct.contracname}}</span></a></td>
  			
  			
  			<td align=right>{{ct.contracnumber}}</td>

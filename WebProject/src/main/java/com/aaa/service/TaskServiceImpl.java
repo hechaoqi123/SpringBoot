@@ -86,17 +86,26 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public void allIsert(ArrUtil list) {
-		
-		for(TwoUtilEntity a: list.getEh()){
+		List<List<OneUtilEntity>> aa = list.getCh();
+		  List<TwoUtilEntity> b = list.getEh();
+		  System.out.println(b.size());
+		for(int a=0;a<b.size();a++){
+			System.out.println("第"+a+"次");
+			 TwoUtilEntity t = b.get(a);//任务
+			 List<OneUtilEntity> zxr = aa.get(a);
+			mapper.allIsert(t);
 			
-			mapper.allIsert(a);
-			
-			a.getTid();
-			for(OneUtilEntity sp:list.getCh()){
-				System.out.println(a.getTid());
-				System.out.println(sp.getUsersid());
-				mapper.allzxr(a.getTid(), sp.getUsersid());
+			t.getTid();
+			for (OneUtilEntity oneUtilEntity : zxr) {
+				mapper.allzxr(t.getTid(),oneUtilEntity.getUsersid());
 			}
+			
+				/*for (List<OneUtilEntity> aaa : list.getCh()) {
+					System.out.println(((OneUtilEntity) aaa).getUsersid());
+					
+				}
+				*/
+			
 			
 			
 		}

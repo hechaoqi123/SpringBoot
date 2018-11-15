@@ -1,5 +1,7 @@
 package com.aaa.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -54,9 +56,12 @@ public class ItinforController {
 		return "mh/itemDetailed";
 	}
 	@RequestMapping("/selectDetailedOne")
-	public String selectDetailedOne(Integer iid,Model model){
+	public String selectDetailedOne(Integer iid,Model model,HttpSession session){
 		System.out.println(111);
 		List<Map> list=service.selectDetailed(iid);
+		Integer did=((Users)session.getAttribute("CurrentUser")).getUid();
+		model.addAttribute("didd", did);
+		System.out.println(did);
 		model.addAttribute("list", list);
 		
 		return "mh/itemDetailedOne";
@@ -126,7 +131,10 @@ public class ItinforController {
 	}
 	@RequestMapping("/updateIdStateTwo")
 	public String updateIdStateTwo(Integer iid){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		System.out.println(df.format(new Date()));
 		service.updateIdStateTwo(iid);
+		service.updatejg(iid, df.format(new Date()));
 		return "mh/itemMeAll";
 	}
 	//查询已完成的项目
@@ -161,6 +169,16 @@ public class ItinforController {
 	@RequestMapping("/updateItworkplan")
 	public void updateItworkplan(Itinfor i){
 		service.updateItworkplan(i);
+		
+	}
+	@RequestMapping("/selectMeItinforOne")
+	public String selectMeItinforOne(Integer did,HttpSession session){
+		
+		List<Map> list=service.selectMeItinforOne(((Users)session.getAttribute("CurrentUser")).getUid());
+		session.setAttribute("list",list);
+		return null;
+		
+		
 		
 	}
 

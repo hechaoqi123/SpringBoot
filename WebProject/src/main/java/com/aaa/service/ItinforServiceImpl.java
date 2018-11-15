@@ -88,4 +88,14 @@ public class ItinforServiceImpl implements ItinforService{
 		mapper.updateItworkplan(i);
 	}
 
+	@Override
+	public List<Map> selectMeItinforOne(Integer did) {
+		return mapper.selectMeItinforOne(did);
+	}
+
+	@Override
+	public void updatejg(Integer iid, String itsum) {
+		mapper.updatejg(iid, itsum);
+	}
+
 }

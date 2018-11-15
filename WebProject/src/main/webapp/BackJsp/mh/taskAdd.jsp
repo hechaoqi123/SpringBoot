@@ -31,7 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td>&nbsp;步骤: <span id="mapping.dbf.procXSource">新增任务</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任人: <span id="mapping.dbf.responsorSource"><input name="detailid" value="${didd}" style="display:none">${name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参与人: <span id="mapping.dbf.participantsSource"></span></td>
-<td>&nbsp;优先级: <input id="dbf.priority" type="radio" value="-1" name="dbf.priority" autocomplete="off">低<input id="dbf.priority" checked="" type="radio" value="0" name="dbf.priority" autocomplete="off">中<input id="dbf.priority" type="radio" value="1" name="dbf.priority" autocomplete="off">高</td></tr></tbody></table>
 <table cellspacing="0" cellpadding="0" border="0">
 <tbody>
 <tr>
@@ -185,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         type:"post",
         dataType:"json",
         success:function(data){
-         $("deptName").html();
+         $("#deptName").html();
          var option="<option>--请选择--</option>";
           for(var i=0;i<data.length;i++){
            option+="<option value='"+data[i].deptid+"'>"+data[i].deptname+"</option>";
