@@ -13,6 +13,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="description" content="Restyling jQuery UI Widgets and Elements" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="<%=basePath%>assets/css/bootstrap.min.css" />
+		<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
+		<script src="<%=basePath%>assets/js/ace.min.js"></script>
+		<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
+		<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
 		<style type="text/css">
 		.sidebar{
 			width: 200px;
@@ -49,7 +53,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 </head>
 	<body>
-		<div id="sidebar" class="sidebar">
+	
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>1212</span>
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>1212222</span>
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>11111</span>
+	<input type="text" id="t1">
+	
+	
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>1212</span>
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>1212222</span>
+	<input type="checkbox" name="sname" id="c1" value="sid" class="c1"><span>11111</span>
+	<input type="text" id="t1">
+	<script type="text/javascript">
+		var b="";
+		$(".c1").change(function(){
+				var	a = $(this).next().html()+",";
+				alert(a);
+				var bool = !($(this).is(':checked'));
+				alert(bool+"zheshi    bool");
+				if(bool){
+					//$("#t1").val("");
+					b = b.replace($(this).next().html()+",","");
+					alert(b + "    zheshi b");
+					$("#t1").val(b);
+				}else{
+					$("#t1").val(b+=a);
+				}
+		});
+	</script>
+		<!-- <div id="sidebar" class="sidebar">
 			<ul class="nav nav-list" >
 				<li class="w">
 					 <a href="#" class="dropdown-toggle">							
@@ -83,13 +115,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</body>
 
-<script type="text/javascript" src="<%=basePath%>assets/js/jquery.min.js"></script>
-<script src="<%=basePath%>assets/js/ace.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>assets/js/vue.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>assets/js/vue-resource.min.js"></script>
+
 <script type="text/javascript">
 	
 	var myTbody = new Vue({
