@@ -59,7 +59,7 @@ public class EvectionController {
     public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
 		  Evection Apply=service.selectByPrimaryKey(pageNum);
 		  model.addAttribute("apply", Apply);
-	    	return "hcq/detailInfo/EvectionDetail";
+	    	return "hcq/examination/EvectionApplyExamination";
     }
 	//申请详情
 	@RequestMapping("/detail/{id}")

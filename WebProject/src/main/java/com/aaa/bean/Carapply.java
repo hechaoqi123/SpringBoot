@@ -1,32 +1,32 @@
 package com.aaa.bean;
 
 public class Carapply {
-	private Integer aid;
-	private String atheme;
-	private String apriority;
+	private String aid;
+	private String atheme;//主题
+	private String apriority;//
 	private String astep;
 	private String aenddate;
-	private String aproposer;
-	private Integer adept;
-	private Integer acar;
-	private String aapplicadate;
-	private String aselfdrive;
-	private String adriver;
-	private Integer anumberbus;
-	private String astartdate;
-	private String areturndate;
-	private String athing;
-	private String aremark;
+	private String aproposer;//申请人
+	private String adept;//所属部门
+	private String acar;
+	private String aapplicadate;//申请日期
+	private String aselfdrive;//乘车人
+	private String adriver;//驾车方式
+	private String anumberbus;//乘车人数
+	private String astartdate;//出发时间
+	private String areturndate;//返回时间
+	private String athing;//用车事由
+	private String aremark;//备注
 	private String aassigncar;
 	private String apilot;
 	private String atimesite;
 	private String arealcar;
 	private String aoilconsumption;
 	private String amoney;
-	public Integer getAid() {
+	public String getAid() {
 		return aid;
 	}
-	public void setAid(Integer aid) {
+	public void setAid(String aid) {
 		this.aid = aid;
 	}
 	public String getAtheme() {
@@ -59,16 +59,16 @@ public class Carapply {
 	public void setAproposer(String aproposer) {
 		this.aproposer = aproposer;
 	}
-	public Integer getAdept() {
+	public String getAdept() {
 		return adept;
 	}
-	public void setAdept(Integer adept) {
+	public void setAdept(String adept) {
 		this.adept = adept;
 	}
-	public Integer getAcar() {
+	public String getAcar() {
 		return acar;
 	}
-	public void setAcar(Integer acar) {
+	public void setAcar(String acar) {
 		this.acar = acar;
 	}
 	public String getAapplicadate() {
@@ -89,10 +89,10 @@ public class Carapply {
 	public void setAdriver(String adriver) {
 		this.adriver = adriver;
 	}
-	public Integer getAnumberbus() {
+	public String getAnumberbus() {
 		return anumberbus;
 	}
-	public void setAnumberbus(Integer anumberbus) {
+	public void setAnumberbus(String anumberbus) {
 		this.anumberbus = anumberbus;
 	}
 	public String getAstartdate() {

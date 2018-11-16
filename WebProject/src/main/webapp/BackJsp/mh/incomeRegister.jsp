@@ -83,8 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td class="fieldLable">关联合同</td>
 <td id="dbf.contractX" dbf.type="" dbf.source="editable,prompt:" dbf.key="0">
-<input id="qq" value="${contract[0].contracqq}" style="display:none">
-<input id="cid" value="${contract[0].contractid}" style="display:none">
+<input id="qq" name="qq" value="${contract[0].contracqq}" style="display:none">
+<input id="cid" name="cid" value="${contract[0].contractid}" style="display:none">
   <input id="e.dbf.amountIn" name="compact" class="fieldEditable textAmount"  value="${contract[0].contracname}" readonly="readonly">  
 </td></tr>
 <tr>
@@ -123,18 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        })
        deptVue.getAll();
       $("#sub").click(function(){
-     
          $("#subform").submit();
-         $.ajax({
-         	url:"/DeptControllerOne/updateHuiOne",
-         	type:"post",
-         	data:{cid:$("#cid").val(),"contracqq":$("#contracqq").val(),"qq":$("#qq").val()},
-         	dataType:"json",
-         	success:function(data){
-         		
-         	}
-         })
-         window.location.href="BackJsp/mh/AllContract.jsp";
       })
       $("#ret").click(function(){
     /*    var cid =$("#cid").val();

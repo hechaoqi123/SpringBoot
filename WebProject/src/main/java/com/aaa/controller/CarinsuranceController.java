@@ -20,12 +20,17 @@ public class CarinsuranceController {
 	CarinsuranceService service;
 	@ResponseBody
 	@RequestMapping("/getAllCarinsurance")
-    public PageInfo<Map> getAll(Integer pageNum){
+    public PageInfo<Carinsurance> getAll(Integer pageNum){
 		PageHelper.startPage(pageNum,10);
-		List<Map> list=service.getAll();		
-	    PageInfo<Map> info=new PageInfo<Map>(list);
+		List<Carinsurance> list=service.getAll();		
+	    PageInfo<Carinsurance> info=new PageInfo<Carinsurance>(list);
     	return info;
     }
+	@RequestMapping("/save")
+	public String save(Carinsurance car){
+ 		 service.save(car);
+		return "gm/carinsurance";
+	}
    /* public List<Map> getCarinsuranceCar(){
 		List<Map> list=service.getCarinsuranceCar();
 	    //PageInfo<Carinsurance> info=new PageInfo<Carinsurance>();

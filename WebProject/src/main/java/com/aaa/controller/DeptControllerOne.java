@@ -3,6 +3,8 @@ package com.aaa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +14,7 @@ import com.aaa.bean.Income;
 import com.aaa.service.DeptService;
 import com.aaa.service.IncomeService;
 
-@RestController
+@Controller
 @RequestMapping("/DeptControllerOne")
 public class DeptControllerOne {
 	@Autowired
@@ -22,18 +24,18 @@ public class DeptControllerOne {
 	   IncomeService services;
 	
 	@RequestMapping("/selectDept")
-	public List<Dept> selectDept(){
+	public @ResponseBody List<Dept> selectDept(){
 		List<Dept> listDept = service.getAll();
 		return listDept;
 	}
 	@RequestMapping("/addDept")
-	public String addDept(Dept dept){
+	public @ResponseBody String addDept(Dept dept){
 		service.insert(dept);
 		return "true";
 	}
 	 @RequestMapping("/getAll")
 	 @ResponseBody	
-	 public List<Dept> getAll(){
+	 public  List<Dept> getAll(){
 		  return service.getAll();
 	  };
 	  @RequestMapping("/updateHuiOne")
@@ -47,9 +49,11 @@ public class DeptControllerOne {
 		  service.updateHuiOne(qwq, cid);
 	  }
 	  @RequestMapping("/savePlay")
-		public String savePlay(Income income){
+	  @Transactional
+		public String savePlay(Income income,Integer cid,String contracqq,String qq){
 			services.save(income);
-			return null;
+			updateHuiOne(cid,income.getMoney(),qq);
+			return "mh/AllContract";
 		}
 	  
 }

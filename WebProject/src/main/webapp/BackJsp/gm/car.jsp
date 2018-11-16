@@ -44,9 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a  href='BackJsp/gm/carapply.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 用车申请</a>
       <a  href='BackJsp/gm/carinsurance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆保险</a>
       <a  href='BackJsp/gm/carmaintenance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆维修保养</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆年检</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆加油</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆事故</a>
       </DIV>
       <DIV id="colloaContent2">
       <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">
@@ -105,7 +102,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         del:function(id){
            var url="/car/deleteCar/"+id;
            this.$http.post(url).then(function(data){
-                 alert(data);
                  window.location.reload();
             })
         }

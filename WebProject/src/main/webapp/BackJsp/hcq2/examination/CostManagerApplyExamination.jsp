@@ -170,6 +170,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 按钮 -->
  <span id="course">
  		    <c:choose>
+ 		<c:when test="${apply.username==detail.username}&&${apply.status!='结束'}"><!-- 填单人 -->
+			  <a style="margin-left:760px"  class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		</c:when>
 		<c:when test="${detail.position=='超级管理员'}">
 		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
@@ -189,11 +192,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <a style="margin-left:680px" class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
-		<c:otherwise>
-		   <c:if test="${apply.username==detail.username}&&${apply.status!='结束'}"><!-- 填单人 -->
-			  <a style="margin-left:760px"  class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		   </c:if>
-		</c:otherwise>
 	</c:choose>
   <!-- 流程 -->
 <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody>

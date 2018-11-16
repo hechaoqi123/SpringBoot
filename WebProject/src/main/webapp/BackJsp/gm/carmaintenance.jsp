@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,13 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
       <DIV id="colloaMenu2">
-      <a class=textHighlight href='BackJsp/gm/car.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆列表</a>
+      <a  href='BackJsp/gm/car.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆列表</a>
       <a  href='BackJsp/gm/carapply.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 用车申请</a>
       <a  href='BackJsp/gm/carinsurance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆保险</a>
-      <a  href='BackJsp/gm/carmaintenance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆维修保养</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆年检</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆加油</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆事故</a>
+      <a class=textHighlight  href='BackJsp/gm/carmaintenance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆维修保养</a>
       </DIV>
       <DIV id="colloaContent2">
       <TABLE  class="tableList" border="0" cellspacing="0" cellpadding="0">

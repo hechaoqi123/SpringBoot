@@ -77,7 +77,7 @@ public class CostManagerController {
 		  }
 		  model.addAttribute("items", list);
 		  model.addAttribute("numbers", numbers);
-	    	return "hcq2/detailInfo/CostManagerDetail";
+	    	return "hcq2/examination/CostManagerDetail";
     }
 	//条件查询
 	@ResponseBody

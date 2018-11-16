@@ -112,6 +112,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <span id="course"><br/>
          <span>
       <c:choose>
+        <c:when test="${apply.proposer==detail.username}"><!-- 填单人 -->
+			  <a  style="margin-left:820px" class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		 </c:when>
 		<c:when test="${detail.position=='超级管理员'}">
 		      <a style="margin-left:290px" class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 			  <a class="button" @click="submit('人事')" href="javascript:" ><b>通过</b>[转人事]</a>
@@ -133,9 +136,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <a style="margin-left:650px" class="button"  @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 			  <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		  </c:if>
-		   <c:if test="${apply.proposer==detail.username}&&${apply.status=='填单人知悉'}"><!-- 填单人 -->
-			  <a  style="margin-left:700px" class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		   </c:if>
 		</c:otherwise>
 		</c:choose>
 		<br/>

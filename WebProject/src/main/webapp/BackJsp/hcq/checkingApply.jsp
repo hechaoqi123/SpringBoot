@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </TD>
 <TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
 <TD id=dbf.division>
-  <select id="dept"  name="part" style="border:0px;font-size:14px;width:250px;height:25px;">
+  <select id="dept"  name="dept" style="border:0px;font-size:14px;width:250px;height:25px;">
     <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
   </select>
 </TD>

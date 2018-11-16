@@ -40,13 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </TD>
           <TD align="right" id="oWorkflowList"></TD></TR></TBODY></TABLE><BR>
        <DIV id="colloaMenu2">
-      <a class=textHighlight href='BackJsp/gm/car.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆列表</a>
+      <a href='BackJsp/gm/car.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆列表</a>
       <a  href='BackJsp/gm/carapply.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 用车申请</a>
-      <a  href='BackJsp/gm/carinsurance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆保险</a>
+      <a  class=textHighlight  href='BackJsp/gm/carinsurance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆保险</a>
       <a  href='BackJsp/gm/carmaintenance.jsp'><img border=0 src='BackJsp/gm/img/folder.png'> 车辆维修保养</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆年检</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆加油</a>
-      <a  href=''><img border=0 src='BackJsp/gm/img/folder.png'> 车辆事故</a>
       </DIV>
       
       <DIV id="colloaContent2">
@@ -56,15 +53,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TH width="400px">主题</TH>
           <TH>车牌号</TH>
           <TH>保险有效期</TH>
-          <TH>投保总费用(元)</TH>
-          <TH>投保公司</TH></TR></THEAD>
+          <TH>投保公司</TH>
+          <th>经办人</th></TR></THEAD>
         <TBODY id="tt" style="font-size:14px;">
         <TR v-for="carinsurance in applys">
           <TD><!-- <A :href="'car/getCar?id='+car.cid"> -->{{carinsurance.itheme}}</TD>
-          <TD>{{carinsurance.cmarkname}}</TD>
-          <TD>{{carinsurance.iinsureduration}}~{{carinsurance.iinsuredurationss}}</TD>
-          <TD>{{carinsurance.iinsureallcost}}</TD>
-          <TD>{{carinsurance.iinsurecompany}}</TD>
+          <TD>{{carinsurance.icar}}</TD>
+          <TD>{{carinsurance.igbs}}~{{carinsurance.irosc}}</TD>
+          <TD>{{carinsurance.icpli}}</TD>
+          <TD>{{carinsurance.isdew}}</TD>
          </TR>
 </TBODY></TABLE>
 <br/><span style="margin-left:100px">

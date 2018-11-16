@@ -182,9 +182,12 @@ public class PaygrantapplyServiceImpl extends BaseServiceImpl<Paygrantapply> imp
 	 * 将double类型的字符串转换为Integer
 	 * */
 	private Integer converter(String doubleString){
-		double number=Double.valueOf(doubleString);
-		int data=(int)number;
-		return data;
+		if(!doubleString.isEmpty()){
+			double number=Double.valueOf(doubleString);
+			int data=(int)number;
+			return data;
+		}
+		return 0;
 	}
 	/**
 	 * 计算考勤

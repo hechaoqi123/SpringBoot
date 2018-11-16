@@ -34,7 +34,7 @@ public class LeaveController {
     public String queryByDetailInfo(@PathVariable("id")Integer pageNum,Model model){
 		Leaveapply Apply=service.selectByPrimaryKey(pageNum);
 		  model.addAttribute("apply", Apply);
-	    	return "hcq/detailInfo/LeaveapplyDetail";
+	    	return "hcq/examination/LeaveApplyExamination";
     }
 	//休假申请
 	@RequestMapping("/savePlay")

@@ -13,35 +13,43 @@
 		<if test="tableName == 'evection'">
 			SELECT evectionId as recruitId,
 					theme as theme,
-					dutyPeople as principal,
+					applyPeople as principal,
 					dept as department,
 					field1 as post
-				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+				FROM ${tableName} r WHERE r.applyPeople = #{principal}
 		</if>
-		<if test="tableName == 'overtime'">
-			SELECT overtimeId as recruitId,
+		<if test="tableName == 'Transfer'">
+			SELECT transferid as recruitId,
 					theme as theme,
-					dutyPeople as principal,
-					dept as department,
-					field1 as post
-				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+					applyPeople as principal,
+					oldPart as department,
+					oldpost as post,status
+				FROM ${tableName} r WHERE r.applyPeople = #{principal}
 		</if>
 		<if test="tableName == 'leaveapply'">
 			SELECT leaveId as recruitId,
 					theme as theme,
-					dutyPeople as principal,
-					dept as department,
-					field1 as post
-				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+					applyDate as principal,
+					dept as department,field3,status
+				FROM ${tableName} r WHERE r.applyDate = #{principal}
 		</if>
-		<!-- 入职申请 -->
-		<if test="tableName == 'entryapply'">
-			SELECT applyID as recruitId,
+		<!-- 转正申请 -->
+		<if test="tableName == 'official'">
+			SELECT  officialid as recruitId,
 					theme as theme,
-					dutyPeople as principal,
-					entryPart as department,
-					entryPost as post
-				FROM ${tableName} r WHERE r.dutyPeople = #{principal}
+					proposer as principal,
+					department as department,
+					post as post,status
+				FROM ${tableName} r WHERE r.proposer = #{principal}
+		</if>
+		<!-- 离职申请 -->
+		<if test="tableName == 'Dimission'">
+			SELECT  dimissionid as recruitId,
+					theme as theme,
+					dimissionName as principal,
+					part as department,
+					post as post,status
+				FROM ${tableName} r WHERE r.dimissionName = #{principal}
 		</if>
 		<!-- 差旅费报销 -->
 		<if test="tableName == 'costmanager'">
@@ -56,10 +64,9 @@
 		<if test="tableName == 'baoxiao'">
 				SELECT baoxiaoID as recruitId,
 					theme as theme,
-					dutyPeople as principal,
-					DEPT as department,
-					field2 as post
-				FROM baoxiao WHERE dutyPeople = #{principal}
+					username as principal,
+					DEPT as department,status
+				FROM baoxiao WHERE username = #{principal}
 		</if>
 		<!-- 薪资发放 -->
 		<if test="tableName == 'paygrantapply'">

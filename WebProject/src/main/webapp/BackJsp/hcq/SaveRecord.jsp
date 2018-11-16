@@ -72,11 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <col></colgroup>
 <tbody style="font-size:13px">
 <tr>
-<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>部门名称</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>上传人</td>
 <td id="dbf.division" dbf.type="required!0,required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-    <select class=fieldEditable  id="dept" v-model="dept" name="dependence"  style="border:0px;font-size:14px;width:295px;height:25px;">
-     <option v-for="dept in depts" :value="dept.deptname">{{dept.deptname}}</option>
-    </select>
+   <input class=fieldEditable  name="username" /> 
 </td>
 <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>上传时间</td>
 <td id="dbf.positionX" dbf.type="required">
@@ -100,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tbody></table></form></div>
 <input type="hidden" id="viewState" name="viewState"></form>
  <div id="_vWorkflowActionsShow"style="font-size:15px" align="right"><br/>
-<a id="sub" class="button" href="javascript:">提交主管审批</a>
+<a id="sub" class="button" href="javascript:">确认</a>
 <a id="ret" class="button" href="javascript:">取消</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
 <div style="padding:2px 10px;font-size:13px" ><div style="float:right;"><a href="javaScript:" onclick="javaScript:"> </a></div>【处理过程】</div>
 
@@ -123,7 +121,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                dept:'人事部'
              },methods:{
                  getAll:function(){
-                    alert(1)
                    var url="/DeptController/getAll";
                    this.$http.post(url,{emulateJSON:true}).then(function(res){
                    this.depts=res.body

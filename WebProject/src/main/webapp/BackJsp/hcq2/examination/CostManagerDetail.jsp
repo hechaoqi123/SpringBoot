@@ -165,18 +165,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 </tbody></table>
 <!-- 按钮 -->
- <span id="course">
+ <span id="course">${apply.status}
  <c:if test="${apply.status!='结束'}">
     <c:if test="${apply.status!='驳回'}">
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
-		    <c:if test="${detail.position=='超级管理员'}">
-		      <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
-		    </c:if>
+		  		    <c:choose>
+ 		<c:when test="${apply.username==detail.username}&&${apply.status=='填单人知悉'}"><!-- 填单人 -->
+			  <a style="margin-left:760px"  class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		</c:when>
+		<c:when test="${detail.position=='超级管理员'}">
+		    <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
-		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[填单人]</a>
+		    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 		    <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		    <a class="button" @click="submit('驳回')" href="javascript:">驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='填单'}">
+			<a style="margin-left:680px" class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
 		    <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='领导审批'}">
+		   <a style="margin-left:680px" class="button" @click="submit('财务')" href="javascript:" ><b>通过</b>[转财务]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+		<c:when test="${apply.status=='财务处理'}">
+		   <a style="margin-left:680px" class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
+		   <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
+		</c:when>
+	</c:choose>
 		 </span>
 	 </div>
   </c:if>

@@ -1,24 +1,24 @@
 package com.aaa.bean;
 
 public class Carinsurance {
-	private Integer iid;
-	private String itheme;
+	private String iid;
+	private String itheme;//主题
 	private String ipriority;
-	private String iendtime;
-	private String iproposer;
-	private String iapplydate;
-	private Integer idept;
-	private Integer icar;
+	private String iendtime;//结束时间
+	private String iproposer;//登记人
+	private String iapplydate;//申请时间
+	private String idept;//所属部门
+	private String icar;//车辆
 	private String isali;
 	private String idt;
 	private String irc;
-	private String icpli;
+	private String icpli;//投保公司
 	private String itheftprotection;
 	private String iscratch;
-	private String igbs;
-	private String irosc;
+	private String igbs;//有效期开始时间
+	private String irosc;//有效期结束时间
 	private String idecoration;
-	private String isdew;
+	private String isdew;//经办人
 	private String iinsurecompany;
 	private String iinsurephone;
 	private String iinsureduration;
@@ -26,10 +26,10 @@ public class Carinsurance {
 	private String iinsureallcost;
 	private String ioperators;
 	private String iaccessory;
-	public Integer getIid() {
+	public String getIid() {
 		return iid;
 	}
-	public void setIid(Integer iid) {
+	public void setIid(String iid) {
 		this.iid = iid;
 	}
 	public String getItheme() {
@@ -62,16 +62,16 @@ public class Carinsurance {
 	public void setIapplydate(String iapplydate) {
 		this.iapplydate = iapplydate;
 	}
-	public Integer getIdept() {
+	public String getIdept() {
 		return idept;
 	}
-	public void setIdept(Integer idept) {
+	public void setIdept(String idept) {
 		this.idept = idept;
 	}
-	public Integer getIcar() {
+	public String getIcar() {
 		return icar;
 	}
-	public void setIcar(Integer icar) {
+	public void setIcar(String icar) {
 		this.icar = icar;
 	}
 	public String getIsali() {

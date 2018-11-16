@@ -54,7 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <THEAD>
         <TR>
           <TH width="400px">主题</TH>
-          <TH>部门</TH>
           <TH>上传人</TH>
           <TH>附件</TH>
           <TH>上传时间</TH></TR></THEAD>
@@ -63,7 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <TD>
                 <!--  <img  width="15" src="BackJsp/hcq/img/search.png"/> -->
              {{apply.theme}}</TD>
-          <TD>{{apply.dept}}&nbsp;</TD>
           <TD>{{apply.username}}&nbsp;</TD>
           <TD><a :href="'Checking/down/'+apply.checkingid"><img src="BackJsp/hcq/img/uploadico2.png" width="19" :title="apply.duration"/></a></TD>
           <TD>{{apply.checkingdate}}</TD>

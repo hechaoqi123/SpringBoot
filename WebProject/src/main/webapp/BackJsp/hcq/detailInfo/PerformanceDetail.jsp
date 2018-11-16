@@ -85,19 +85,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><strong>考核项目</strong></td>
 <td><strong>具体内容和重点</strong></td>
 <td><strong>主管评分</strong></td></tr>
-<tr>
-<td>考勤 (5)</td>
-<td>出勤状况 (5)</td>
-<td>执行公司考勤制度，无迟到、无早退、无旷工（上述事项有一次，扣1分）</td>
-<td id="主管评分" dbf.source="" dbf.type="number">
-    <c:if test="${apply.status=='员工自评'}">
-     <input id="field1" name="field1" class="fieldEditable"/>
-    </c:if>
-     <c:if test="${apply.status!='员工自评'}">
-        ${apply.field1}
-    </c:if>
-   </td></tr>
-<tr>
 <td rowspan="5">工作态度 (20)</td>
 <td>忠诚度 (4)</td>
 <td>能否认同公司，忠于公司，热心于本职工作</td>
@@ -210,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </c:if>
 </td></tr>
 <tr>
-<td rowspan="5">工作绩效 (45)</td>
+<td rowspan="5">工作绩效 (50)</td>
 <td>每项工作完成情况 (10)</td>
 <td>是否能正确、有效地工作，取得较好的工作结果（完成比例100%为10分，以此类推）</td>
 <td id="主管评分" dbf.source="" dbf.type="number">
@@ -233,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </c:if>
 </td></tr>
 <tr>
-<td>工作满意度&nbsp;(8)</td>
+<td>工作满意度&nbsp;(10)</td>
 <td>工作表现能否赢得本部门及其他部门领导及员工的表扬和尊重</td>
 <td id="主管评分" dbf.source="" dbf.type="number">
      <c:if test="${apply.status=='员工自评'}">
@@ -244,7 +231,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </c:if>
 </td></tr>
 <tr>
-<td>工作投诉率&nbsp;(7)</td>
+<td>工作投诉率&nbsp;(10)</td>
 <td>是否有部门或人员，对该员工的工作及行为方面有投诉</td>
 <td id="主管评分" dbf.source="" dbf.type="number">
     <c:if test="${apply.status=='员工自评'}">
@@ -334,10 +321,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
   $(function(){
     $("#compute").click(function(){
-       var number1=parseInt($("#field1").val()); var number2=parseInt($("#field2").val());var number3=parseInt($("#field3").val());var number4=parseInt($("#field4").val());var number5=parseInt($("#field5").val());
+ var number2=parseInt($("#field2").val());var number3=parseInt($("#field3").val());var number4=parseInt($("#field4").val());var number5=parseInt($("#field5").val());
        var number6=parseInt($("#field6").val()); var number7=parseInt($("#field7").val()); var number8=parseInt($("#field8").val()); var number9=parseInt($("#field9").val()); var number10=parseInt($("#field10").val()); var number11=parseInt($("#field11").val()); var number12=parseInt($("#field12").val());var number13=parseInt($("#field13").val());
        var number14=parseInt($("#field14").val()); var number15=parseInt($("#field15").val());  var number16=parseInt($("#field16").val());
-          $("#field19").val(number1+number2+number3+number4+number5+number6+number7+number8+number9+number10+number11+number12+number13+number14+number15+number16);
+          $("#field19").val(number2+number3+number4+number5+number6+number7+number8+number9+number10+number11+number12+number13+number14+number15+number16);
     })
    var page=new Vue({
               el:"#course",

@@ -23,17 +23,17 @@ public class CarapplyController {
 	CarapplyService service;
 	@ResponseBody
 	@RequestMapping("/getAllCarapply")
-	 public PageInfo<Map> getAll(Integer pageNum){
+	 public PageInfo<Carapply> getAll(Integer pageNum){
 		PageHelper.startPage(pageNum,10);
-		List<Map> list=service.getCarapplyDept();
-	    PageInfo<Map> info=new PageInfo<Map>(list);
+		List<Carapply> list=service.getAll();
+	    PageInfo<Carapply> info=new PageInfo<Carapply>(list);
     	return info;
     }
 	
 	@RequestMapping("/carapplyAdd")
 	public String savePlay(Carapply carapply){
 		service.inserCarapply(carapply);
-		return "gm/getAll";
+		return "gm/carapply";
 	}
 
 }

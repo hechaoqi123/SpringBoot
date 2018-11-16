@@ -49,7 +49,7 @@ public class BaoxiaoController {
 		List<Baoxiaoitem> items = itemService.select(record);
 		  model.addAttribute("items",items);
 		  model.addAttribute("apply", Apply);
-	      return "hcq2/detailInfo/BaoxiaoDetail";
+	      return "hcq2/examination/BaoxiaoDetail";
     }
 /*	@RequestMapping("/savePlay")
 	public String savePlay(Baoxiao disburse){

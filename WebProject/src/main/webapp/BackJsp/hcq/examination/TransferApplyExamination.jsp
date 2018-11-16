@@ -145,6 +145,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div style="margin:20px 0px;" align="right">
 		  <span id="oWorkflowList1">
 	<c:choose>
+	    <c:when test="${apply.applypeople==detail.username}&&${apply.status=='填单人知悉'}"><!-- 填单人 -->
+			<a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
+		</c:when>
 		<c:when test="${detail.position=='超级管理员'}">
 				<a class="button" @click="submit('新主管')" href="javascript:" ><b>通过</b>[转新部门主管]</a>
 		        <a class="button" @click="submit('领导')" href="javascript:" ><b>通过</b>[转领导审批]</a>
@@ -153,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
 		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
-		<c:when test="${apply.status=='现主管审批'}">
+		<c:when test="${apply.status=='填单'}">
 			    <a class="button" @click="submit('新主管')" href="javascript:" ><b>通过</b>[转新部门主管]</a>
 		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
@@ -170,11 +173,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <a class="button" @click="submit('填单人')" href="javascript:" ><b>通过</b>[转填单人]</a>
 		        <a class="button" @click="submit('驳回')" href="javascript:" >驳回</a>
 		</c:when>
-		<c:otherwise>
-		   <c:if test="${apply.applypeople==detail.username}"><!-- 填单人 -->
-			  <a class="button" @click="submit('结束')" href="javascript:" ><b>结束流程</b></a>
-		   </c:if>
-		</c:otherwise>
 	</c:choose>
 		 </span>
 	 </div>

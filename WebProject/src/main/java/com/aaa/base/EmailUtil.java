@@ -52,8 +52,6 @@ public class EmailUtil {
        * */
     //发送邮件
     public static  void SendEmail(Session session,MimeMessage message) throws Exception{
-		System.out.println(session);
-		System.out.println(message);
 			//	MimeMessage message = createMimeMessage(head,body,session, account, receiveMailAccounts);
 		//1.根据Session获取邮件传输对象
 				Transport transport = session.getTransport();
@@ -69,14 +67,16 @@ public class EmailUtil {
 	 * 创建一封简单邮件
 	 * 邮件标题  邮件内容,Session,发件人邮箱地址,收件人地址
 	 * **/
-	 public static MimeMessage createSimpleEmail(String head,String messageBody,Session session, String fromMail, String[] receiveMail) throws Exception {
+	 public static MimeMessage createSimpleEmail(String head,String messageBody,Session session, String[] receiveMail) throws Exception {
 	        // 1. 创建一封邮件
 	        MimeMessage message = new MimeMessage(session);
 	        // 2. From: 发件人
-	        message.setFrom(new InternetAddress(fromMail,"UTF-8"));
+	        System.out.println("发件人："+account);
+	        message.setFrom(new InternetAddress(account,"UTF-8"));
 	        // 3. To: 收件人（主要收件人TO、抄送CC、密送BCC）
 		        InternetAddress[] address=new InternetAddress[receiveMail.length];
 		        for(int i=0;i<address.length;i++){
+		        	System.out.println("发件人："+receiveMail[i]);
 		        	address[i]=new InternetAddress(receiveMail[i],"UTF-8");
 		        }
 	        message.setRecipients(MimeMessage.RecipientType.TO, address);

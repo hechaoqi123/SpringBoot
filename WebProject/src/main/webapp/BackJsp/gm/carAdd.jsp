@@ -127,7 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                data: $('#form').serialize(), 
                dataType:'text', 
                success: function (data) {
-                  alert("success");
                   window.location.href = "BackJsp/gm/car"+data;
             }   
         })

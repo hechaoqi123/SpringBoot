@@ -6,10 +6,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aaa.base.BaseServiceImpl;
 import com.aaa.bean.Carapply;
 import com.aaa.mapper.CarapplyMapper;
 @Service
-public class CarapplyServiceImpl implements CarapplyService{
+public class CarapplyServiceImpl extends BaseServiceImpl<Carapply> implements CarapplyService{
     @Autowired
     CarapplyMapper mapper;
 	public List<Carapply> getAll() {

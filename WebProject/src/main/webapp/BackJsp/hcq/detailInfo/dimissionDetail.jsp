@@ -1,179 +1,259 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>离职申请</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-    <LINK href="BackJsp/hcq/css/font-awesome.min.css" rel="stylesheet">  
-    <LINK href="BackJsp/hcq/css/view.css" rel="stylesheet">  
-    <script src="BackJsp/hcq/js/viewCn.js"></script>
-    <script src="BackJsp/hcq/js/utility.js"></script> 
-    <script src="BackJsp/hcq/js/view.js"></script>  
-    <script src="BackJsp/hcq/js/jquery-2.0.3.min.js"></script>  
-    <style>
-    </style>
-  </head>
-  <body id="colloaBody" style="margin-top:-10px;">
-   <form id="subform" action="Dimission/savePlay" method="post">
-<table style="min-width:950px;width:100%;height:100%;" cellPadding=0 cellSpacing=0 border=0><tr valign=top><td>&nbsp;</td><td id=colloaForm><div class=formTaskflowContainer><form class=formTaskflow><TABLE class=tableForm style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
-<COLGROUP>
-<COL width=60>
-<COL>
-<COL width=80>
-<COL width=150></COLGROUP>
-<TBODY>
-<TR>
-<TD style="TEXT-ALIGN: right">&nbsp;<SPAN style="COLOR: rgb(255,0,0)">*</SPAN>主题:</TD>
-<TD id=dbf.subject dbf.type="required">
-  <INPUT id=e.dbf.subject name="theme" class=fieldEditable></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;</TD>
-<TD>
-</TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: right">&nbsp;步骤:</TD>
-<TD><SPAN id=mapping.dbf.procXSource>
-   <input type="text" style="border:0px" readonly="true" value="填单" name="status"/>
-</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN id=mapping.dbf.responsorSource>
-   <input type="text"  style="border:0px" name="dutypeople" readonly="true" value="" />
-</SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN id=mapping.dbf.participantsSource></SPAN></TD>
-<TD style="TEXT-ALIGN: right">&nbsp;</TD>
-<TD >
-<DIV </DIV></TD></TR></TBODY></TABLE>
-<DIV>&nbsp;</DIV>
-<DIV style="TEXT-ALIGN: center"><SPAN style="FONT-SIZE: 20px"><STRONG>离职申请单</STRONG></SPAN></DIV>
-<DIV>
-<TABLE id="dept"  class=tableListBorder style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
-<COLGROUP>
-<COL width=150>
-<COL width=200>
-<COL width=150>
-<COL></COLGROUP>
-<TBODY>
-<TR>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请人</TD>
-<TD id=dbf.operator dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where stype=0 and statusX>0 and name like '%[!prompt]%' order by name" dbf.key="0">
-    <INPUT id=e.dbf.subject name="dimissionname" class=fieldEditable ></TD>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>申请日期</TD>
-<TD id=dbf.time2 dbf.type="date,required" dbf.source="date">
-    <INPUT id=e.dbf.subject name="applydate" class=fieldEditable ></TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>所属部门</TD>
-<TD id=dbf.division dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
-     <select   name="part" style="border:0px;font-size:14px;width:480px;height:25px;">
-    <option v-for="dept in depts" v-bind:value="dept.deptname">{{dept.deptname}}</option>
-  </select>
-</TD>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>工作岗位</TD>
-<TD id=dbf.positionX dbf.type="required" dbf.source="" dbf.key="">
-  <INPUT id=e.dbf.subject name="post" class=fieldEditable >
- </TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>入职日期</TD>
-<TD id=入职日期 dbf.type="date,required" dbf.source="date">
-  <INPUT id=e.dbf.subject name="entrydate"  class=fieldEditable >
-</TD>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>预计离职日期</TD>
-<TD id=dbf.time0 dbf.type="date,required" dbf.source="date">
-  <INPUT id=e.dbf.subject name="dimissiondate" class=fieldEditable ></TD></TR>
-<TR>
-<TD style="HEIGHT: 80px; TEXT-ALIGN: center" dbf.type="" dbf.source=""><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职类型</TD>
-<TD style="HEIGHT: 80px" colSpan=3 dbf.type="" dbf.source="">
-  <div>
-  <INPUT id=离职类型 type=radio value=0 name="type">合同到期，公司要求不续签劳动合同&nbsp;
-  </div> 
-    <div>
-  <INPUT id=离职类型 type=radio value=1 name="type">合同期满，个人要求不续签劳动合同<BR>
-  </div>
-    <div>
-  <INPUT id=离职类型 type=radio value=2 name="type">合同未到期，公司要求解除劳动关系&nbsp; 
-      </div>
-    <div>
-  <INPUT id=离职类型 type=radio value=3 name="type">合同未到期，个人要求解除劳动关系<BR>
-     </div>
-    <div>
-  <INPUT id=离职类型 type=radio value=4 name="type">试用期内，公司要求解除劳动关系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     </div>
-    <div>
-  <INPUT id=离职类型 type=radio value=5 name="type">试用期内，个人要求解除劳动关系
-     </div>
-  </TD></TR>
-<TR>
-<TD style="TEXT-ALIGN: center"><SPAN style="COLOR: rgb(255,0,0)">*</SPAN>离职原因</TD>
-<TD id=离职原因 colSpan=3 dbf.type="required" >
-  <TEXTAREA id=e.离职原因 class=fieldEditable name="supperremark" style="HEIGHT: 80px"></TEXTAREA></TD></TR>
-</TR>
-<TD style="TEXT-ALIGN: center">离职处理</TD>
-<TD colSpan=3 dbf.type="" dbf.source=""><INPUT disabled id=离职处理 type=checkbox name=离职处理>人事手续已经办理 <INPUT disabled id=离职处理 type=checkbox name=离职处理>信息系统已经变更（请人事专员或系统管理员在本系统的【员工管理】模块中变更员工信息）</TD></TR></TBODY></TABLE></DIV>
-<DIV>&nbsp;</DIV>
-<TABLE class=tableForm style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 align=center border=0>
-<COLGROUP>
-<COL width=60>
-<COL></COLGROUP>
-<TBODY>
-<TR>
-<TD style="TEXT-ALIGN: right">&nbsp;</TD>
-<TD id=attachments dbf.source="files">
-<DIV id=e.attachments>&nbsp;</DIV></TD></TR></TBODY></TABLE></form></div><form method='post'><input type=hidden id=viewState name=viewState></form>
-<span style="margin-left:700px"><a id="sub" class="button" href="javascript:">提交主管审批</a>
-<a id="ret" class="button" href="javascript:">取消</a></span>
-<table border=0 cellPadding=0 cellSpacing=0 style="table-layout:fixed;"><col width=60%><col width=2%><col><tbody><tr valign=top><td class=boxBorder>
-<div style="padding:2px 10px;">
-
-<div style="float:right;"><a href="javaScript:" onclick="javaScript:windowOpen('../flow/view1.htm?703190');return false;">&rsaquo; 显示流程图</a></div>【处理过程】</div>
-
+<!DOCTYPE html>
+<!-- saved from url=(0093)http://cloud.10oa.com/trial/view/item.aspx?catalogue=703110&name=%u4E8B%u52A1&objects=1000163 -->
+<html><head>
+   <base href="<%=basePath%>">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>事务 - Colloa</title>
+  <LINK href="BackJsp/hcq/css/font-awesome.min.css" rel="stylesheet">  
+  <LINK href="BackJsp/hcq/css/view.css" rel="stylesheet">   
+  <script type="text/javascript" src="BackJsp/hcq/js/viewCn.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/view.js"></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/utility.js."></script>
+  <script type="text/javascript" src="BackJsp/hcq/js/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+</head><body id="colloaBody">
+<table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0"><tbody><tr valign="top"><td>&nbsp;</td><td id="colloaForm"><table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<colgroup>
+<col width="60">
+<col>
+<col width="80">
+<col width="150"></colgroup>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: right">&nbsp;<span style="COLOR: rgb(255,0,0)">*</span>主题:</td>
+<td id="dbf.subject" dbf.type="required">${apply.theme}</td>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
+<td>
+</td></tr>
+<tr>
+<td style="TEXT-ALIGN: right">&nbsp;步骤:
+</td>
+<td><span id="mapping.dbf.procXSource"> 
+<c:if test="${apply.status=='填单'}">提交主管审批</c:if>
+<c:if test="${apply.status=='领导审批'}">领导审批</c:if>
+<c:if test="${apply.status=='填单人知悉'}">填单人知悉</c:if>
+<c:if test="${apply.status=='人事处理'}">人事处理</c:if>
+<c:if test="${apply.status=='驳回'}">驳回</c:if>
+<c:if test="${apply.status=='结束'}">结束</c:if>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="mapping.dbf.responsorSource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="mapping.dbf.participantsSource"></span></td>
+<td style="TEXT-ALIGN: right">&nbsp;</td>
+<td id="dbf.endTime" dbf.type="date" dbf.source="date,editable"></td></tr></tbody></table>
+<div>
+<div style="TEXT-ALIGN: center">&nbsp;</div>
+<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>离职申请单</strong></span></div></div>
+<div>
+<table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<colgroup>
+<col width="150">
+<col width="300">
+<col width="150">
+<col></colgroup>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>离职人</td>
+<td id="dbf.operator" dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where stype=0 and statusX&gt;0 and name like &#39;%[!prompt]%&#39; order by name" dbf.key="1000071">
+  ${apply.dimissionname}
+</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>离职部门</td>
+<td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="1000034">
+  ${apply.applydate}</td></tr>
+<tr>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>所属部门</td>
+<td id="dbf.positionX" dbf.type="required">
+  ${apply.part}</td>
+<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>工作岗位</td>
+<td id="dbf.time2" dbf.type="date,required" dbf.source="date">
+  ${apply.post}</td></tr>
+<tr>
+<td style="TEXT-ALIGN: center">入职日期</td>
+<td id="外语要求">
+  ${apply.entrydate}</td>
+<td style="TEXT-ALIGN: center">预计离职日期</td>
+<td id="工作地点">
+  ${apply.dimissiondate}</td></tr>
+  <tr>
+<td style="TEXT-ALIGN: center">离职类型</td>
+<td id="外语要求" colspan="3">
+  <c:if test="${apply.type==0}">合同到期，公司要求不续签劳动合同  </c:if>
+  <c:if test="${apply.type==1}">合同期满，个人要求不续签劳动合同  </c:if>
+  <c:if test="${apply.type==2}">合同未到期，公司要求解除劳动关系  </c:if>
+  <c:if test="${apply.type==3}">合同未到期，个人要求解除劳动关系  </c:if>
+  <c:if test="${apply.type==4}">试用期内，公司要求解除劳动关系     </c:if>
+  <c:if test="${apply.type==5}">试用期内，个人要求解除劳动关系  </c:if>
+  </td>
+</tr>
+<tr>
+<td style="TEXT-ALIGN: center">离职原因</td>
+<td id="离职原因说明" style="HEIGHT: 80px" colspan="3" dbf.type="" dbf.source="">
+  ${apply.entrydate}
+</td></tr>
+ <c:if test="${apply.status!='结束'}">
+ <c:if test="${apply.status!='驳回'}">
+<tr>
+<td style="TEXT-ALIGN: center">备注</td>
+<td  style="HEIGHT: 30px" colspan="3" dbf.type="" dbf.source="">
+  <input id="remark" class="fieldEditable" name="theme" />
+</td></tr>
+</c:if>
+</c:if>
+</tbody></table></div>
+<div>&nbsp;</div>
+<table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center" border="0">
+<colgroup>
+<col width="60">
+<col></colgroup>
+</table>
+  <span id="course">
+  <c:if test="${apply.status!='结束'}">
+    <c:if test="${apply.status!='驳回'}">
+	  <div style="margin:20px 0px;" align="right">
+		  <span id="oWorkflowList1">
+		
+		 </span>
+	 </div>
+  </c:if>
+  </c:if>
+<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><colgroup><col width="60%"><col width="2%"><col></colgroup><tbody><tr valign="top"><td class="boxBorder">
+<div style="padding:2px 10px;"><div style="float:right;"><a href="javaScript:" ></a></div>【处理过程】</div>
+  <span v-for="app in approval">
+	<div  style="padding:5px 10px 0px 10px;border-top:1px dotted #ddd;">
+	  <img src="BackJsp/hcq/img/userX0.gif"> {{app.userid}}<span class="textGray">(  {{app.approvaldate}} )
+	</div>
+    <div v-show="app.sequence==0" style="padding:0px 10px 5px 30px;">[<b>提交主管审批</b>]{{app.remark}} </div>
+    <div v-show="app.sequence==1" style="padding:0px 10px 5px 30px;">[<b>通过并转领导审批</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==2" style="padding:0px 10px 5px 30px;">[<b>结束流程</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==3" style="padding:0px 10px 5px 30px;">[<b>通过转人事处理</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==5" style="padding:0px 10px 5px 30px;">[<b>驳回</b>] {{app.remark}}</div>
+    <div v-show="app.sequence==4" style="padding:0px 10px 5px 30px;">[<b>通过转填单人知悉</b>] {{app.remark}}</div>
+ </span>
 </td><td></td><td>
-<div class=boxBorder><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
+<div class="boxBorder"><div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【父事务】</div>
 
 </div>
-<div class=boxBorder>
+<div class="boxBorder">
 <div style="padding:2px 10px;border-bottom:1px dotted #ddd;margin-bottom:5px;">【子事务】</div>
 
 <br></div>
-</td></tr></tbody></table></td><td>&nbsp;</td></tr></table>
-</form>
-</body></html>
-
- <script src="BackJsp/hcq/js/Vue.js"></script>
- <script src="BackJsp/hcq/js/vue-resource.min.js"></script>
- <script src="../../assets/js/jquery-2.0.3.min.js"></script>
+</td></tr></tbody></table>
+</span></td><td>&nbsp;</td></tr></tbody></table>
+<input id="recruitid" style="display:none" value="${apply.dimissionid}"/>
+<input id="uname" style="display:none" value="${detail.username}"/>
+</body>
+</html>
+<script src="BackJsp/hcq/js/Vue.js"></script>
+<script src="BackJsp/hcq/js/vue-resource.min.js"></script>
+<script src="../../assets/js/jquery-2.0.3.min.js"></script>
 <script>
-  $(function(){
-   var deptVue=new Vue({
-             el:'#dept',
-             data:{
-               depts:null
-             },methods:{
+       $(function(){
+        new Vue({
+              el:"#course",
+              data:{
+                 approval:null,
+              },created:function(){
+                 this.getAll();
+              },methods:{
                  getAll:function(){
-                   var url="/DeptController/getAll";
-                   this.$http.post(url,{emulateJSON:true}).then(function(res){
-                   this.depts=res.body
-                   
-                     var currentDate=new Date().toLocaleDateString();
-                      $("#currentDate").val(currentDate) 
-                 })
+                     var itemid=$("#recruitid").val();
+                     var url="Approval/queryByCriteria";
+                     this.$http.post(url,{itemname:"离职申请",itemid:itemid},{emulateJSON:true}).then(function(res){
+                        this.approval=res.body
+                        for(var i=0;i<this.approval.length;i++){
+                          var approvaldate=this.approval[i].approvaldate;
+                          this.approval[i].approvaldate=datetimeFormat(approvaldate)              
+                          }
+                     })
+                 },submit:function(obj){
+                     var itemid=$("#recruitid").val();
+                     var remark=$("#remark").val();
+                     var principal=$("#uname").val();
+                     var url="Dimission/update";
+                     if(obj=="领导"){//转领导审核
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"领导审批",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                   
+                       })  
+                     }else if(obj=="人事"){//转人事
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"人事处理",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       })  
+                     }else if(obj=="填单人"){//转人事
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"填单人知悉",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       })  
+                     }else if(obj=="结束"){//转人事
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"结束",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       })  
+                     }else{//驳回
+                       this.$http.post(url,{dimissionname:principal,dimissionid:itemid,status:"驳回",remark:remark},{emulateJSON:true}).then(function(res){
+                           window.location.href="BackJsp/hcq/examination/recruit.jsp";                
+                       }) 
+                     }
                  }
-             }
+              }
+          })
        })
-       deptVue.getAll();
-  })
-      $("#sub").click(function(){
-         $("#subform").submit();
-      
-      })
-      $("#ret").click(function(){
-        window.location.href="BackJsp/hcq/dimission.jsp";
-      })
+     function datetimeFormat(longTypeDate){ 
+	  var datetimeType = ""; 
+	  var date = new Date(); 
+	  date.setTime(longTypeDate); 
+	  datetimeType+= date.getFullYear();  //年 
+	  datetimeType+= "-" + getMonth(date); //月  
+	  datetimeType += "-" + getDay(date);  //日 
+	  datetimeType+= "  " + getHours(date);  //时 
+	  datetimeType+= ":" + getMinutes(date);   //分
+	  datetimeType+= ":" + getSeconds(date);   //分
+	  return datetimeType;
+	} 
+	//返回 01-12 的月份值  
+	function getMonth(date){ 
+	  var month = ""; 
+	  month = date.getMonth() + 1; //getMonth()得到的月份是0-11 
+	  if(month<10){ 
+	    month = "0" + month; 
+	  } 
+	  return month; 
+	} 
+	//返回01-30的日期 
+	function getDay(date){ 
+	  var day = ""; 
+	  day = date.getDate(); 
+	  if(day<10){ 
+	    day = "0" + day; 
+	  } 
+	  return day; 
+	}
+	//返回小时
+	function getHours(date){
+	  var hours = "";
+	  hours = date.getHours();
+	  if(hours<10){ 
+	    hours = "0" + hours; 
+	  } 
+	  return hours; 
+	}
+	//返回分
+	function getMinutes(date){
+	  var minute = "";
+	  minute = date.getMinutes();
+	  if(minute<10){ 
+	    minute = "0" + minute; 
+	  } 
+	  return minute; 
+	}
+	//返回秒
+	function getSeconds(date){
+	  var second = "";
+	  second = date.getSeconds();
+	  if(second<10){ 
+	    second = "0" + second; 
+	  } 
+	  return second; 
+	}
 </script>
-
